@@ -1,82 +1,5 @@
 .
-├── ~Book of Business~
-│   ├── Business Documents
-│   │   ├── Billing FD101.docx
-│   │   ├── Book of Business.xlsx
-│   │   ├── Business Expances .xlsx
-│   │   ├── Carriers FD101.docx
-│   │   ├── Course Descriptions and Seminar_.docx
-│   │   ├── Daily Process FD101.docx
-│   │   ├── Document 1.docx
-│   │   ├── Document 2.docx
-│   │   ├── Document 3.docx
-│   │   ├── Drivers and Emails.xlsx
-│   │   ├── EIN # - Fast&Easy Dispatching LLC.pdf
-│   │   ├── EIN # - Fast&Easy Dispatching LLC.pdf_
-│   │   ├── Emailing Policy-English (1).pdf
-│   │   ├── Email_s For Constants Contact.xlsx
-│   │   ├── Facebook Ad Copies.docx
-│   │   ├── FAST & EASY (6).png
-│   │   ├── Form_W-9 2020.pdf
-│   │   ├── Groceries List.docx
-│   │   ├── IMG_2097.jpg
-│   │   ├──  Incident Report Statement.docx
-│   │   ├── Intro Slide.pptx
-│   │   ├── Items Needed.docx
-│   │   ├── Knowledge FD101.docx
-│   │   ├── LLC Certification.pdf
-│   │   ├── LLC Certification.pdf_
-│   │   ├── Operating Agreement - Fast&Easy Dispatching LLC.docx
-│   │   ├── Operating Agreement - Fast&Easy Dispatching LLC.docx_
-│   │   ├── Personal & Business Monthly & Annual Bills.xlsx
-│   │   ├── Personal Vault.lnk
-│   │   ├── Questions for Brokers.docx
-│   │   ├── Rate Agreement.docx
-│   │   ├── Seminar Training Script_.docx
-│   │   ├── Terms and Agreements_.docx
-│   │   ├── Things To Do.xlsx
-│   │   ├── Untitled document(1).docx
-│   │   ├── Untitled document(1).pdf
-│   │   ├── Untitled document(2).docx
-│   │   ├── Untitled document(3).docx
-│   │   ├── Untitled document(4).docx
-│   │   ├── Untitled document.docx
-│   │   ├── Untitled document.pdf
-│   │   ├── Untitled presentation(1).pptx
-│   │   ├── Untitled presentation.pptx
-│   │   ├── Video Script _Billing_.docx
-│   │   ├── Video Script _Carriers_.docx
-│   │   ├── Video Script _Daily Process_.docx
-│   │   ├── Video Script _Knowledge_.docx
-│   │   ├── Video Script _Trucking Industry_.docx
-│   │   ├── Video Script _What is a Dispatcher_.docx
-│   │   ├── Video Script _Your Business_.docx
-│   │   ├── _VM-ADDTRAN1_DATA_VISUALLP_DOCUMENTS_380605A.PDF
-│   │   ├── Website and App Notes for Business.docx
-│   │   ├── Website To Do List.docx
-│   │   ├── Welcome to the World of Independent Freight Dispatching.docx
-│   │   ├── What is a Dispatcher FD101.docx
-│   │   └── Your Business FD101.docx
-│   └── Ray C. Williams - 360 Trucking
-│       ├── Carrier Paperwork
-│       │   ├── MC Authority.pdf
-│       │   └── Workmens Comp..pdf
-│       ├── Half Dispatcher Agreement for Ray C. Williams.docx
-│       ├── Invoices
-│       │   ├── $193  --PAID--$7 extra was Paid.docx
-│       │   └── new.docx
-│       ├── Rate Agreement for Ray C. Williams.docx
-│       └── Rate Confirmation
-│           ├── PRO# 0247108 $1,800 USD.pdf
-│           ├── PRO# 100162   $2,800 USD.pdf
-│           ├── PRO# 14771050 $2,100 USD.pdf
-│           ├── PRO# 5875596 $1,700 USD.pdf
-│           ├── PRO# 6083555 $2,900 USD.pdf
-│           ├── PRO# 6098185 $1,000 USD.pdf
-│           ├── PRO# 660808   $1,850 USD.pdf
-│           └── PRO# 7199       $1,400 USD.pdf
-├── .dev
-│   └── nodes
+├── ~Book of Business~ -> /home/admin/~Book of Business~
 ├── ~Fast&Easy Dispatching LLC~
 │   ├── Blank Agreements and Forms
 │   │   ├── GENERIC Factoring Company - Payment Deduction.pdf
@@ -275,59 +198,130 @@
 │   └── WEBSITE IDEAS.docx
 ├── freightdev
 │   ├── MarkOS
-│   │   ├── lib
-│   │   │   ├── Codriver
-│   │   │   │   ├── Cargo.lock
-│   │   │   │   ├── Cargo.toml
-│   │   │   │   ├── Dockerfile.codriver
-│   │   │   │   ├── etc
-│   │   │   │   │   ├── codriver.toml
-│   │   │   │   │   └── systemd
-│   │   │   │   └── src
-│   │   │   │       ├── api
-│   │   │   │       ├── bin
-│   │   │   │       ├── chat
-│   │   │   │       ├── config
-│   │   │   │       ├── core
-│   │   │   │       ├── extractors
-│   │   │   │       ├── handlers
-│   │   │   │       ├── lib.rs
-│   │   │   │       ├── main.rs
-│   │   │   │       ├── main_v1.rs
-│   │   │   │       ├── middleware
-│   │   │   │       ├── responses
-│   │   │   │       ├── routes
-│   │   │   │       ├── server
-│   │   │   │       ├── static
-│   │   │   │       └── tls
-│   │   │   └── Marketeer
-│   │   │       ├── Cargo.lock
-│   │   │       ├── Cargo.toml
-│   │   │       ├── Dockerfile.marketeer
-│   │   │       ├── etc
-│   │   │       │   ├── marketeer.toml
-│   │   │       │   └── systemd
-│   │   │       └── src
-│   │   │           ├── api
-│   │   │           ├── bin
-│   │   │           ├── config
-│   │   │           ├── lib.rs
-│   │   │           ├── main.rs
-│   │   │           ├── main_v1.rs
-│   │   │           ├── middleware
-│   │   │           ├── pingora_router.rs
-│   │   │           ├── routes
-│   │   │           ├── server
-│   │   │           ├── static
-│   │   │           └── tls
+│   │   ├── index.tree
+│   │   ├── Marketeer
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   ├── config
+│   │   │   ├── Dockerfile.marketeer
+│   │   │   ├── .env.example
+│   │   │   ├── etc
+│   │   │   │   ├── marketeer.toml
+│   │   │   │   ├── marketeer.yaml
+│   │   │   │   ├── middlewares.yaml
+│   │   │   │   ├── registration.yaml
+│   │   │   │   ├── routes.yaml
+│   │   │   │   ├── services.yaml
+│   │   │   │   └── systemd
+│   │   │   │       └── marketeer.service
+│   │   │   ├── README.md
+│   │   │   └── src
+│   │   │       ├── api
+│   │   │       │   ├── admin-server.rs
+│   │   │       │   └── mod.rs
+│   │   │       ├── bin
+│   │   │       │   └── marketeer.rs
+│   │   │       ├── config
+│   │   │       │   ├── loader.rs
+│   │   │       │   ├── mod.rs
+│   │   │       │   ├── types.rs
+│   │   │       │   └── validator.rs
+│   │   │       ├── lib.rs
+│   │   │       ├── main.rs
+│   │   │       ├── main_v1.rs
+│   │   │       ├── middleware
+│   │   │       │   ├── auth.rs
+│   │   │       │   ├── cors.rs
+│   │   │       │   ├── mod.rs
+│   │   │       │   └── rate_limit.rs
+│   │   │       ├── pingora_router.rs
+│   │   │       ├── routes
+│   │   │       │   ├── matcher.rs
+│   │   │       │   └── mod.rs
+│   │   │       ├── server
+│   │   │       │   ├── mod.rs
+│   │   │       │   ├── server.rs
+│   │   │       │   └── upstream.rs
+│   │   │       ├── static
+│   │   │       │   └── mod.rs
+│   │   │       └── tls
+│   │   │           └── mod.rs
 │   │   ├── markos-build-documents.html
 │   │   ├── MarkOS-Marketing-Book.html
 │   │   ├── MarkOS-Marketing-Home.html
 │   │   ├── markos-playground-canva.html
-│   │   ├── markos-playground-compiler.html
-│   │   └── tmp
+│   │   └── markos-playground-compiler.html
 │   └── OpenHWY
-│       ├── doc
+│       ├── apps
+│       │   ├── app_ELDA-freight-business-workplace-training-application
+│       │   │   └── Modelfile.elda
+│       │   ├── app_FED-freight-business-workplace-environment-application
+│       │   │   ├── example-design
+│       │   │   │   ├── ARCHITECTURE.md
+│       │   │   │   ├── astro.config.mjs
+│       │   │   │   ├── docker-compose.yml
+│       │   │   │   ├── Dockerfile
+│       │   │   │   ├── env.d.ts
+│       │   │   │   ├── fed-calendar.html
+│       │   │   │   ├── fed-cargo-connect.html
+│       │   │   │   ├── fed-dashboard.html
+│       │   │   │   ├── fed-dispatch-board.html
+│       │   │   │   ├── fed-documents.html
+│       │   │   │   ├── fed-drivers.html
+│       │   │   │   ├── fed-elda.html
+│       │   │   │   ├── fed-eld.html
+│       │   │   │   ├── fed-invoicing.html
+│       │   │   │   ├── fed-live-tracking.html
+│       │   │   │   ├── fed-loads.html
+│       │   │   │   ├── fed-messaging.html
+│       │   │   │   ├── fed-packet-pilot.html
+│       │   │   │   ├── fed-payments.html
+│       │   │   │   ├── fed-training-center.html
+│       │   │   │   ├── package.json
+│       │   │   │   ├── package-lock.json
+│       │   │   │   ├── routes.ts
+│       │   │   │   ├── tailwind.config.mjs
+│       │   │   │   └── tsconfig.json
+│       │   │   └── flutter-design
+│       │   │       ├── analysis_options.yaml
+│       │   │       ├── devtools_options.yaml
+│       │   │       ├── docker-compose.yml
+│       │   │       ├── Dockerfile
+│       │   │       ├── lib
+│       │   │       └── pubspec.yaml
+│       │   ├── app_HWY-freight-business-workplace-networking-application
+│       │   │   ├── authentication-access-control.html
+│       │   │   ├── billing-and-payment.js
+│       │   │   ├── client-management-portal.html
+│       │   │   ├── cloud-auth-page
+│       │   │   ├── cloud-control-center
+│       │   │   ├── cloud-email-page
+│       │   │   ├── cloud-landing-page
+│       │   │   ├── cloud-payment-page
+│       │   │   ├── cluster-monitoring.html
+│       │   │   ├── cost-analytics.html
+│       │   │   ├── development-pipeline.html
+│       │   │   ├── email-system.js
+│       │   │   ├── firecracker-vm-management.html
+│       │   │   ├── hyprtasker-custom.html
+│       │   │   ├── infrastructure-control-center.js
+│       │   │   ├── monitoring-and-alerts.js
+│       │   │   ├── network-topology.html
+│       │   │   ├── security-monitoring.html
+│       │   │   ├── stroage-management.js
+│       │   │   └── system-health.html
+│       │   └── web_OpenHWY-freight-business-landing-application
+│       │       ├── index.js
+│       │       ├── openhwy-markering-business.html
+│       │       ├── openhwy-marketing-courses.html
+│       │       ├── openhwy-marketing-courses-v2.html
+│       │       ├── openhwy-marketing-dispatchers.html
+│       │       ├── openhwy-marketing-drivers.html
+│       │       ├── openhwy-marketing-investors.html
+│       │       ├── openhwy-marketing-journel.html
+│       │       ├── openhwy-marketing-protocol.html
+│       │       └── openhwy-marketing-wheelers.html
+│       ├── docs
 │       │   ├── architecture.md
 │       │   ├── BIG_VISION.md
 │       │   ├── design.md
@@ -347,618 +341,627 @@
 │       │   ├── SCHEMA.md
 │       │   ├── terminology.md
 │       │   └── the-tale-system.md
-│       ├── lib
-│       │   ├── ELDA_INDUSTRY-TEACHER
-│       │   │   └── .gitkeep
-│       │   ├── FED_TMS-TRAINER
-│       │   │   ├── fed-calendar.html
-│       │   │   ├── fed-cargo-connect.html
-│       │   │   ├── fed-dashboard.html
-│       │   │   ├── fed-dispatch-board.html
-│       │   │   ├── fed-documents.html
-│       │   │   ├── fed-drivers.html
-│       │   │   ├── fed-elda.html
-│       │   │   ├── fed-eld.html
-│       │   │   ├── fed-invoicing.html
-│       │   │   ├── fed-live-tracking.html
-│       │   │   ├── fed-loads.html
-│       │   │   ├── fed-messaging.html
-│       │   │   ├── fed-packet-pilot.html
-│       │   │   ├── fed-payments.html
-│       │   │   └── fed-training-center.html
-│       │   ├── HWY_INFRA-BUILDER
-│       │   │   └── .gitkeep
-│       │   └── MARK_SYSTEM-MANAGER
-│       │       ├── authentication-access-control.html
-│       │       ├── billing-and-payment.js
-│       │       ├── client-management-portal.html
-│       │       ├── cloud-auth-page
-│       │       ├── cloud-control-center
-│       │       ├── cloud-email-page
-│       │       ├── cloud-landing-page
-│       │       ├── cloud-payment-page
-│       │       ├── cluster-monitoring.html
-│       │       ├── cost-analytics.html
-│       │       ├── development-pipeline.html
-│       │       ├── email-system.js
-│       │       ├── firecracker-vm-management.html
-│       │       ├── hyprtasker-custom.html
-│       │       ├── infrastructure-control-center.js
-│       │       ├── monitoring-and-alerts.js
-│       │       ├── network-topology.html
-│       │       ├── security-monitoring.html
-│       │       ├── stroage-management.js
-│       │       └── system-health.html
-│       ├── src
-│       │   ├── crates
-│       │   │   ├── audit
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   ├── docs
-│       │   │   │   └── src
-│       │   │   ├── chat
-│       │   │   │   ├── build.sh
-│       │   │   │   ├── BUILD_SUMMARY.md
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   ├── configs
-│       │   │   │   ├── examples.sh
-│       │   │   │   ├── README.md
-│       │   │   │   ├── src
-│       │   │   │   └── USAGE.md
-│       │   │   ├── code
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── collection
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── data
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── database
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── file
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── lead::analyzer
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── lead::handler
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── lead::scraper
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── mail
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── mcp
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   ├── CLAUDE.md
-│       │   │   │   ├── config.toml
-│       │   │   │   ├── .env.example
-│       │   │   │   ├── examples
-│       │   │   │   ├── QUICKSTART.md
-│       │   │   │   ├── README.md
-│       │   │   │   └── src
-│       │   │   ├── pdf
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── prompt
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── RAG_AND_MCP_SETUP.md
-│       │   │   ├── rag::qdrant
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   ├── CLAUDE.md
-│       │   │   │   ├── config.toml
-│       │   │   │   ├── docker-compose.yml
-│       │   │   │   ├── .env.example
-│       │   │   │   ├── examples
-│       │   │   │   ├── QUICKSTART.md
-│       │   │   │   ├── README.md
-│       │   │   │   └── src
-│       │   │   ├── screen
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── search
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── service
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── test
-│       │   │   │   └── src
-│       │   │   ├── vision
-│       │   │   │   ├── Cargo.lock
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   └── workflow
-│       │   │       ├── Cargo.lock
-│       │   │       ├── Cargo.toml
-│       │   │       └── src
-│       │   ├── designs
-│       │   │   ├── astro-web
-│       │   │   │   ├── api
-│       │   │   │   ├── auth
-│       │   │   │   ├── auth.astro
-│       │   │   │   ├── AuthLayout.astro
-│       │   │   │   ├── BaseLayout.astro
-│       │   │   │   ├── BaseLayout.astro_
-│       │   │   │   ├── BaseLayout.configs.ts
-│       │   │   │   ├── components
-│       │   │   │   ├── home
-│       │   │   │   ├── index.astro
-│       │   │   │   ├── index.v2.astro
-│       │   │   │   ├── islands
-│       │   │   │   ├── MainLayout.astro
-│       │   │   │   ├── PaymentLayout.astro
-│       │   │   │   ├── styles
-│       │   │   │   └── types
-│       │   │   ├── flutter-lib
-│       │   │   │   ├── app.dart
-│       │   │   │   ├── bootstraps
-│       │   │   │   ├── configs
-│       │   │   │   ├── errors
-│       │   │   │   ├── main1.dart
-│       │   │   │   ├── main.dart
-│       │   │   │   ├── map_view.dart
-│       │   │   │   ├── models
-│       │   │   │   ├── pages
-│       │   │   │   ├── providers
-│       │   │   │   ├── router.dart
-│       │   │   │   ├── screens
-│       │   │   │   ├── services
-│       │   │   │   ├── styles
-│       │   │   │   ├── theme.dart
-│       │   │   │   ├── utils
-│       │   │   │   └── widgets
-│       │   │   ├── jninja2-src
-│       │   │   │   ├── auth
-│       │   │   │   ├── base
-│       │   │   │   ├── base.html
-│       │   │   │   ├── base.html.backup
-│       │   │   │   ├── chat
-│       │   │   │   ├── chat.html
-│       │   │   │   ├── chat.html.backup
-│       │   │   │   ├── code-block.html
-│       │   │   │   ├── css
-│       │   │   │   ├── dashboard.html
-│       │   │   │   ├── docs
-│       │   │   │   ├── errors
-│       │   │   │   ├── file-tree.html
-│       │   │   │   ├── ide
-│       │   │   │   ├── ide.html
-│       │   │   │   ├── ide.html.backup
-│       │   │   │   ├── index.css
-│       │   │   │   ├── index.html
-│       │   │   │   ├── js
-│       │   │   │   ├── login.html
-│       │   │   │   ├── marketing
-│       │   │   │   ├── modal.html
-│       │   │   │   ├── _nav.html
-│       │   │   │   ├── settings
-│       │   │   │   ├── settings.html
-│       │   │   │   └── settings.html.backup
-│       │   │   ├── nextjs-app
-│       │   │   │   ├── components
-│       │   │   │   ├── configs.ts
-│       │   │   │   ├── constants.ts
-│       │   │   │   ├── (dashboard)
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── layout.tsx
-│       │   │   │   ├── (marketing)
-│       │   │   │   ├── utils
-│       │   │   │   └── utils.ts
-│       │   │   └── svelte-lib
-│       │   │       ├── auth.ts
-│       │   │       ├── backend
-│       │   │       ├── components
-│       │   │       ├── config.ts
-│       │   │       ├── email.yaml
-│       │   │       ├── .env
-│       │   │       ├── .env.example
-│       │   │       ├── filters.yaml
-│       │   │       ├── .gitignore
-│       │   │       ├── httpClient.js
-│       │   │       ├── index.ts
-│       │   │       ├── index.ts_
-│       │   │       ├── index.ts_0
-│       │   │       ├── loadTester.js
-│       │   │       ├── mockDataGenerator.js
-│       │   │       ├── .npmrc
-│       │   │       ├── ollama_service.py
-│       │   │       ├── .prettierignore
-│       │   │       ├── .prettierrc
-│       │   │       ├── requestTempletes.js
-│       │   │       ├── routes
-│       │   │       ├── schema.ts
-│       │   │       ├── scoring.yaml
-│       │   │       ├── serviceManager.js
-│       │   │       ├── services.ts
-│       │   │       ├── settings.py
-│       │   │       ├── sources.yaml
-│       │   │       ├── testRunner.js
-│       │   │       ├── tests.ts
-│       │   │       └── ui.ts
-│       │   ├── engines
-│       │   │   ├── cpu_llamacpp
-│       │   │   │   ├── build.rs
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   ├── docs
-│       │   │   │   ├── .env.example
-│       │   │   │   ├── .gitignore
-│       │   │   │   ├── src
-│       │   │   │   ├── sripts
-│       │   │   │   └── tests
-│       │   │   ├── gpu_candle
-│       │   │   │   └── .gitkeep
-│       │   │   └── npu_openvino
-│       │   │       ├── docker-compose.yml
-│       │   │       ├── Dockerfile
-│       │   │       ├── install-intel-npu.sh
-│       │   │       ├── install_openvino.sh
-│       │   │       ├── openvino.sevice
-│       │   │       ├── scripts
-│       │   │       └── setup-openvino.sh
-│       │   ├── guides
-│       │   │   ├── databases
-│       │   │   │   ├── arrow-and-parquet.md
-│       │   │   │   ├── best-in-class.md
-│       │   │   │   └── duckdb.md
-│       │   │   ├── environments
-│       │   │   │   ├── ARCHITECTURE.md
-│       │   │   │   ├── bootstrap-problems.md
-│       │   │   │   ├── Dockerfile.zbox
-│       │   │   │   ├── env-examples
-│       │   │   │   ├── forturn-&-neofetch.md
-│       │   │   │   ├── IN-PROGRESS.md
-│       │   │   │   ├── PROJECT-BREAKDOWN.md
-│       │   │   │   ├── README_1.md
-│       │   │   │   ├── README.md
-│       │   │   │   ├── shell-completions.md
-│       │   │   │   ├── shell-loading-diagram2.md
-│       │   │   │   ├── shell-loading-diagram3.md
-│       │   │   │   ├── shell-loading-diagram.md
-│       │   │   │   ├── SYSTEM-&-USER-CONFIGURATION-HIERARCHY.md
-│       │   │   │   ├── TRASH-SYSTEM.md
-│       │   │   │   ├── USAGE.md
-│       │   │   │   ├── what-is-globbing.md
-│       │   │   │   ├── ZBOX-MEMORY-FEATURES.md
-│       │   │   │   ├── zsh-built-in-flags.md
-│       │   │   │   ├── zsh-cheat-sheet.md
-│       │   │   │   ├── ZSH-MASTER-CHEAT-SHEET.md
-│       │   │   │   ├── ZSH-MASTER-CHEAT-SHEET.txt
-│       │   │   │   ├── zsh-prezto-diagram-loader.md
-│       │   │   │   ├── zsh-prezto-vs-ohmyzsh.md
-│       │   │   │   ├── zsh-shell-loading2.md
-│       │   │   │   └── zsh-shell-loading.md
-│       │   │   ├── languages
-│       │   │   │   ├── ast.md
-│       │   │   │   ├── avaliable-crates.md
-│       │   │   │   ├── bindings-check.md
-│       │   │   │   ├── build-ideas.md
-│       │   │   │   ├── cargo-rules.md
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   ├── cc.md
-│       │   │   │   ├── cranelift.md
-│       │   │   │   ├── crates-vs-packages2.md
-│       │   │   │   ├── crates-vs-packages3.md
-│       │   │   │   ├── crates-vs-packages.md
-│       │   │   │   ├── decision-making.md
-│       │   │   │   ├── deps-measuring.md
-│       │   │   │   ├── downstream-breaks.md
-│       │   │   │   ├── example-layout.md
-│       │   │   │   ├── glue-vs-engine.md
-│       │   │   │   ├── HIR&MIR.md
-│       │   │   │   ├── hotspot.md
-│       │   │   │   ├── JIT&AOT.md
-│       │   │   │   ├── lisp-clojure.md
-│       │   │   │   ├── macros&codegen2.md
-│       │   │   │   ├── macros&codegen.md
-│       │   │   │   ├── orthogonality.md
-│       │   │   │   ├── REPLs.md
-│       │   │   │   ├── run-dev.md
-│       │   │   │   ├── semvar.md
-│       │   │   │   ├── signatures.md
-│       │   │   │   ├── usage-dev.md
-│       │   │   │   └── wrapper.h
-│       │   │   ├── questions
-│       │   │   │   ├── 1-2-3rule.md
-│       │   │   │   ├── ai-environment-setup.md
-│       │   │   │   ├── algorithms-and midsets..md
-│       │   │   │   ├── archives-vs-backups-vs-packages.md
-│       │   │   │   ├── assest-understand2.md
-│       │   │   │   ├── assest-understanding.md
-│       │   │   │   ├── asus-system-diagnostic.md
-│       │   │   │   ├── asus-system-overview.md
-│       │   │   │   ├── backup-crafts.md
-│       │   │   │   ├── backup-setup2.md
-│       │   │   │   ├── backup-setup.md
-│       │   │   │   ├── catch-all-category.md
-│       │   │   │   ├── changing-permissions.md
-│       │   │   │   ├── compression-and-lock-guilds.md
-│       │   │   │   ├── compression-guilds.md
-│       │   │   │   ├── configs-vs-variables-vs-keys-vs-etc-vs-settings.md
-│       │   │   │   ├── containering-understanding.md
-│       │   │   │   ├── danger-level.md
-│       │   │   │   ├── discord-and-substack.md
-│       │   │   │   ├── display-control.md
-│       │   │   │   ├── display-manager.md
-│       │   │   │   ├── env-access-bootstrap-setup.md
-│       │   │   │   ├── env-bootstrap-setup.md
-│       │   │   │   ├── find-keyID.md
-│       │   │   │   ├── full-wipe-and-setup.md
-│       │   │   │   ├── gnupg-storage.md
-│       │   │   │   ├── greek-capital-sigma.md
-│       │   │   │   ├── hiding-stuff.md
-│       │   │   │   ├── how-bootstraping-works.md
-│       │   │   │   ├── how-hosting-works.md
-│       │   │   │   ├── how-pays-for-social-media.md
-│       │   │   │   ├── how-vectoring-works.md
-│       │   │   │   ├── IDE-notes.md
-│       │   │   │   ├── IEEE-754-formual.md
-│       │   │   │   ├── installation.md
-│       │   │   │   ├── key-infro.md
-│       │   │   │   ├── key-usage.md
-│       │   │   │   ├── LXC-vs-Docker.md
-│       │   │   │   ├── map-fill-setup.md
-│       │   │   │   ├── multi-tar.md
-│       │   │   │   ├── naming-layers.md
-│       │   │   │   ├── partial-achives-manipulation.md
-│       │   │   │   ├── proper-certs-generator.md
-│       │   │   │   ├── pro-tips.md
-│       │   │   │   ├── public-relations.md
-│       │   │   │   ├── public-wifi-bypass-tunneling-designs.md
-│       │   │   │   ├── rsync-understanding.txt
-│       │   │   │   ├── sandbox-setup.md
-│       │   │   │   ├── scaffolding-map-understanding.md
-│       │   │   │   ├── scaffolding-understanding.md
-│       │   │   │   ├── scratch-pad.md
-│       │   │   │   ├── setting-vs-config.md
-│       │   │   │   ├── setup-asus-decisions.md
-│       │   │   │   ├── shadow-limited.md
-│       │   │   │   ├── starting-fights.md
-│       │   │   │   ├── test-batches.md
-│       │   │   │   ├── token-buffers.md
-│       │   │   │   ├── variables-and-memory.md
-│       │   │   │   ├── vectors-and-similarity.md
-│       │   │   │   ├── vscode-pro-tips.md
-│       │   │   │   ├── what-does-'.d'-mean-in-linux.md
-│       │   │   │   ├── what-is-a-compositor.md
-│       │   │   │   ├── what-is-ASCII.md
-│       │   │   │   ├── what-is-a-vector.md
-│       │   │   │   ├── what-is-exponent-and-fraction.mantissa.md
-│       │   │   │   ├── what-is-gpg.md
-│       │   │   │   ├── what-is-hexadecimal.md
-│       │   │   │   ├── what-is-IEEE-754.md
-│       │   │   │   ├── what-is-memory-REALLY.md
-│       │   │   │   ├── what -is-orthogonal.md
-│       │   │   │   ├── what-is-tailscale-really.md
-│       │   │   │   ├── what-is-telegram.md
-│       │   │   │   ├── what-tailscale-actually-is.md
-│       │   │   │   ├── where-things-live.md
-│       │   │   │   └── workspace-setups.md
-│       │   │   └── scaffolds
-│       │   │       ├── ai.tree
-│       │   │       ├── api-endpoints.tree
-│       │   │       ├── archbox-rust-stack.md
-│       │   │       ├── assets-stack.md
-│       │   │       ├── build-environments.tree
-│       │   │       ├── core-stub.md
-│       │   │       ├── custom-stacks.tree
-│       │   │       ├── document.tree
-│       │   │       ├── domain-tree.md
-│       │   │       ├── fs-tree.md
-│       │   │       ├── full2-stack.md
-│       │   │       ├── full-stack.md
-│       │   │       ├── full_stack.tree
-│       │   │       ├── github-template.tree
-│       │   │       ├── infrastructure.tree
-│       │   │       ├── lead-collection.tree
-│       │   │       ├── ml-frameworks.tree
-│       │   │       ├── ml-models.tree
-│       │   │       ├── nix-tree.md
-│       │   │       ├── old-workspace2.md
-│       │   │       ├── old-workspace.md
-│       │   │       ├── production-grade-repo-stack.md
-│       │   │       ├── script-stack.md
-│       │   │       ├── server.tree
-│       │   │       ├── service.tree
-│       │   │       ├── src-tree.md
-│       │   │       ├── stack.tree
-│       │   │       ├── stack-tree.md
-│       │   │       └── state-stub.md
-│       │   ├── models
-│       │   │   ├── Big_Bear
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── Cargo_Connect
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── Legal_Logger
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── Packet_Pilot
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   ├── Trucker_Tales
-│       │   │   │   ├── Cargo.toml
-│       │   │   │   └── src
-│       │   │   └── Whisper_Witness
-│       │   │       ├── Cargo.toml
-│       │   │       └── src
-│       │   ├── nodes
-│       │   │   ├── ASUS-TUF-Gaming.md
-│       │   │   ├── callbox(4vCPU, null, 12GB RAM, [256GB SSD, 1TB HDD])
-│       │   │   │   └── callbox_node.yaml
-│       │   │   ├── devbox(22vCPU, [iGPU,NPU], 16GB RAM, 1TB NVMe)
-│       │   │   │   └── devbox_node.yaml
-│       │   │   ├── gpubox(8vCPU, GPU 4vRAM, 32GB RAM, 1TB NVMe)
-│       │   │   │   ├── gpubox_node.yaml
-│       │   │   │   └── nix
-│       │   │   ├── infrastructue.md
-│       │   │   ├── Lenovo-Yoga-9i.md
-│       │   │   └── workbox(20vCPU, iGPU, 24GB RAM, 1TB NVMe)
-│       │   │       └── workbox_node.yaml
-│       │   ├── scripts
-│       │   │   ├── agent
-│       │   │   │   ├── add_missing_docstrings.py
-│       │   │   │   ├── agency-client.py
-│       │   │   │   ├── ai-control.sh
-│       │   │   │   ├── audit_components.sh
-│       │   │   │   ├── audit-system-status.sh
-│       │   │   │   ├── build-all.sh
-│       │   │   │   ├── check-models-integrity.sh
-│       │   │   │   ├── code-indexer.py
-│       │   │   │   ├── collection-webhook.py
-│       │   │   │   ├── create-all-commands.sh
-│       │   │   │   ├── create-commands.sh
-│       │   │   │   ├── data-collector-orchestrator.py
-│       │   │   │   ├── deep-scan.sh
-│       │   │   │   ├── download-models.sh
-│       │   │   │   ├── generate_model_configs.py
-│       │   │   │   ├── index-models.sh
-│       │   │   │   ├── index-prompts.sh
-│       │   │   │   ├── install-models.sh
-│       │   │   │   ├── list-models.sh
-│       │   │   │   ├── list-prompts.sh
-│       │   │   │   ├── loader.zsh
-│       │   │   │   ├── main.zsh
-│       │   │   │   ├── ollama-cluster.py
-│       │   │   │   ├── pre-flight.sh
-│       │   │   │   ├── pull-models.sh
-│       │   │   │   ├── python-make-init.sh
-│       │   │   │   ├── setup-auto-sync.sh
-│       │   │   │   ├── setup-data-collectors.sh
-│       │   │   │   ├── setup-rag-mcp.sh
-│       │   │   │   ├── setup.sh
-│       │   │   │   ├── setup.sh_
-│       │   │   │   ├── start-agency.sh
-│       │   │   │   ├── start-all-services.sh
-│       │   │   │   ├── start-auto-collection.sh
-│       │   │   │   ├── start.sh
-│       │   │   │   ├── state-restore.sh
-│       │   │   │   ├── state-sync.sh
-│       │   │   │   ├── status-check.sh
-│       │   │   │   ├── status.sh
-│       │   │   │   ├── stop-agency.sh
-│       │   │   │   ├── stop.sh
-│       │   │   │   ├── system-status.sh
-│       │   │   │   ├── test-db.sh
-│       │   │   │   ├── trigger-collection-api.sh
-│       │   │   │   ├── update_with_env_pairs.py
-│       │   │   │   └── validate-models.sh
-│       │   │   ├── collect
-│       │   │   │   ├── daily-digest.sh
-│       │   │   │   ├── quick-test.sh
-│       │   │   │   ├── scrape-leads.sh
-│       │   │   │   ├── start-lead-system.sh
-│       │   │   │   ├── status-lead-system.sh
-│       │   │   │   ├── stop-lead-system.sh
-│       │   │   │   └── test_leads.py
-│       │   │   ├── common
-│       │   │   │   ├── analyze-full-projects.zsh
-│       │   │   │   ├── barrel-typescript-ui.sh
-│       │   │   │   ├── c++-api-extractor.sh
-│       │   │   │   ├── check-for-duplicates.zsh
-│       │   │   │   ├── check-ollama-cluster.py
-│       │   │   │   ├── check-recent-outputs.sh
-│       │   │   │   ├── cleanup-whitespaces.sh
-│       │   │   │   ├── collab-setups.sh
-│       │   │   │   ├── convert-json-o-yaml.sh
-│       │   │   │   ├── convert-yaml-o-json.sh
-│       │   │   │   ├── git-keep-helper.sh
-│       │   │   │   ├── helpful-auto-fix.zsh
-│       │   │   │   ├── push-file-updates.sh
-│       │   │   │   ├── remove-barrel-typescript-ui.sh
-│       │   │   │   └── reverse-init-collector.zsh
-│       │   │   ├── golang
-│       │   │   │   ├── go-auto-fix.sh
-│       │   │   │   ├── go-build-errors.sh
-│       │   │   │   ├── go-comprehensive-check.sh
-│       │   │   │   ├── go-debug-toolkit.sh
-│       │   │   │   ├── go-fix-content.sh
-│       │   │   │   ├── go-quick-debug.sh
-│       │   │   │   ├── go-scaffold-check.sh
-│       │   │   │   └── go-tools.zsh
-│       │   │   ├── install
-│       │   │   │   ├── install-dependencies.zsh
-│       │   │   │   ├── install-infrastructure.zsh
-│       │   │   │   ├── install_llama_cpp.sh
-│       │   │   │   ├── install-miniconda.sh
-│       │   │   │   ├── install-poetry.sh
-│       │   │   │   ├── install-systems.zsh
-│       │   │   │   ├── install-tools.zsh
-│       │   │   │   ├── install-yq.sh
-│       │   │   │   └── install-zsh-5.9.zsh
-│       │   │   ├── testing
-│       │   │   │   ├── go_test
-│       │   │   │   ├── node_test
-│       │   │   │   ├── python_test
-│       │   │   │   ├── pytorch_test
-│       │   │   │   ├── rust_test
-│       │   │   │   └── verify-dev-setup.sh
-│       │   │   └── utility
-│       │   │       ├── bash_helpers.sh
-│       │   │       ├── .broken
-│       │   │       └── package_helpers.sh
-│       │   └── tools
-│       │       ├── chat-indexer
-│       │       │   ├── ai_query.py
-│       │       │   ├── analytics.py
-│       │       │   ├── batch_query.py
-│       │       │   ├── config.toml
-│       │       │   ├── conversation_indexer.py
-│       │       │   ├── EXAMPLES.md
-│       │       │   ├── .gitignore
-│       │       │   ├── query_artifacts.py
-│       │       │   ├── query_conversations.py
-│       │       │   ├── query_templates.py
-│       │       │   ├── QUICK_REFERENCE.md
-│       │       │   ├── README.md
-│       │       │   ├── setup_indexer.sh
-│       │       │   └── templates
-│       │       ├── pytorch-trainer
-│       │       │   ├── core
-│       │       │   ├── deploy.sh
-│       │       │   ├── INSTALL.md
-│       │       │   ├── main.py
-│       │       │   ├── QUICKSTART.md
-│       │       │   ├── README.md
-│       │       │   └── src
-│       │       └── template-engine
-│       │           ├── config_base.py
-│       │           ├── k8s
-│       │           ├── load_services.py
-│       │           ├── prompts
-│       │           ├── render_service.py
-│       │           └── update_values.py
-│       └── www
-│           ├── openhwy-markering-business.html
-│           ├── openhwy-marketing-courses.html
-│           ├── openhwy-marketing-courses-v2.html
-│           ├── openhwy-marketing-dispatchers.html
-│           ├── openhwy-marketing-drivers.html
-│           ├── openhwy-marketing-investors.html
-│           ├── openhwy-marketing-journel.html
-│           ├── openhwy-marketing-protocol.html
-│           └── openhwy-marketing-wheelers.html
+│       ├── index.tree
+│       └── pkgs
+│           ├── crates
+│           │   ├── audit
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   ├── docs
+│           │   │   └── src
+│           │   ├── chat
+│           │   │   ├── build.sh
+│           │   │   ├── BUILD_SUMMARY.md
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   ├── configs
+│           │   │   ├── examples.sh
+│           │   │   ├── README.md
+│           │   │   ├── src
+│           │   │   └── USAGE.md
+│           │   ├── code
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── collection
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── data
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── database
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── file
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── lead::analyzer
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── lead::handler
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── lead::scraper
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── mail
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── mcp
+│           │   │   ├── Cargo.toml
+│           │   │   ├── CLAUDE.md
+│           │   │   ├── config.toml
+│           │   │   ├── .env.example
+│           │   │   ├── examples
+│           │   │   ├── QUICKSTART.md
+│           │   │   ├── README.md
+│           │   │   └── src
+│           │   ├── pdf
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── prompt
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── RAG_AND_MCP_SETUP.md
+│           │   ├── rag::qdrant
+│           │   │   ├── Cargo.toml
+│           │   │   ├── CLAUDE.md
+│           │   │   ├── config.toml
+│           │   │   ├── docker-compose.yml
+│           │   │   ├── .env.example
+│           │   │   ├── examples
+│           │   │   ├── QUICKSTART.md
+│           │   │   ├── README.md
+│           │   │   └── src
+│           │   ├── screen
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── search
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── service
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── test
+│           │   │   └── src
+│           │   ├── vision
+│           │   │   ├── Cargo.lock
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   └── workflow
+│           │       ├── Cargo.lock
+│           │       ├── Cargo.toml
+│           │       └── src
+│           ├── designs
+│           │   ├── astro-web
+│           │   │   ├── api
+│           │   │   ├── auth
+│           │   │   ├── auth.astro
+│           │   │   ├── AuthLayout.astro
+│           │   │   ├── BaseLayout.astro
+│           │   │   ├── BaseLayout.astro_
+│           │   │   ├── BaseLayout.configs.ts
+│           │   │   ├── components
+│           │   │   ├── home
+│           │   │   ├── index.astro
+│           │   │   ├── index.v2.astro
+│           │   │   ├── islands
+│           │   │   ├── MainLayout.astro
+│           │   │   ├── PaymentLayout.astro
+│           │   │   ├── styles
+│           │   │   └── types
+│           │   ├── flutter-lib
+│           │   │   ├── app.dart
+│           │   │   ├── bootstraps
+│           │   │   ├── configs
+│           │   │   ├── errors
+│           │   │   ├── main1.dart
+│           │   │   ├── main.dart
+│           │   │   ├── map_view.dart
+│           │   │   ├── models
+│           │   │   ├── pages
+│           │   │   ├── providers
+│           │   │   ├── router.dart
+│           │   │   ├── screens
+│           │   │   ├── services
+│           │   │   ├── styles
+│           │   │   ├── theme.dart
+│           │   │   ├── utils
+│           │   │   └── widgets
+│           │   ├── jninja2-src
+│           │   │   ├── auth
+│           │   │   ├── base
+│           │   │   ├── base.html
+│           │   │   ├── base.html.backup
+│           │   │   ├── chat
+│           │   │   ├── chat.html
+│           │   │   ├── chat.html.backup
+│           │   │   ├── code-block.html
+│           │   │   ├── css
+│           │   │   ├── dashboard.html
+│           │   │   ├── docs
+│           │   │   ├── errors
+│           │   │   ├── file-tree.html
+│           │   │   ├── ide
+│           │   │   ├── ide.html
+│           │   │   ├── ide.html.backup
+│           │   │   ├── index.css
+│           │   │   ├── index.html
+│           │   │   ├── js
+│           │   │   ├── login.html
+│           │   │   ├── marketing
+│           │   │   ├── modal.html
+│           │   │   ├── _nav.html
+│           │   │   ├── settings
+│           │   │   ├── settings.html
+│           │   │   └── settings.html.backup
+│           │   ├── nextjs-app
+│           │   │   ├── components
+│           │   │   ├── configs.ts
+│           │   │   ├── constants.ts
+│           │   │   ├── (dashboard)
+│           │   │   ├── index.ts
+│           │   │   ├── layout.tsx
+│           │   │   ├── (marketing)
+│           │   │   ├── utils
+│           │   │   └── utils.ts
+│           │   └── svelte-lib
+│           │       ├── auth.ts
+│           │       ├── backend
+│           │       ├── components
+│           │       ├── config.ts
+│           │       ├── email.yaml
+│           │       ├── .env
+│           │       ├── .env.example
+│           │       ├── filters.yaml
+│           │       ├── .gitignore
+│           │       ├── httpClient.js
+│           │       ├── index.ts
+│           │       ├── index.ts_
+│           │       ├── index.ts_0
+│           │       ├── loadTester.js
+│           │       ├── mockDataGenerator.js
+│           │       ├── .npmrc
+│           │       ├── ollama_service.py
+│           │       ├── .prettierignore
+│           │       ├── .prettierrc
+│           │       ├── requestTempletes.js
+│           │       ├── routes
+│           │       ├── schema.ts
+│           │       ├── scoring.yaml
+│           │       ├── serviceManager.js
+│           │       ├── services.ts
+│           │       ├── settings.py
+│           │       ├── sources.yaml
+│           │       ├── testRunner.js
+│           │       ├── tests.ts
+│           │       └── ui.ts
+│           ├── engines
+│           │   ├── cpu_llamacpp
+│           │   │   ├── build.rs
+│           │   │   ├── Cargo.toml
+│           │   │   ├── docs
+│           │   │   ├── .env.example
+│           │   │   ├── .gitignore
+│           │   │   ├── src
+│           │   │   ├── sripts
+│           │   │   └── tests
+│           │   ├── gpu_candle
+│           │   │   ├── candle
+│           │   │   ├── Cargo.toml
+│           │   │   ├── .gitignore
+│           │   │   ├── models
+│           │   │   ├── scripts
+│           │   │   └── src
+│           │   └── npu_openvino
+│           │       ├── docker-compose.yml
+│           │       ├── Dockerfile
+│           │       ├── install-intel-npu.sh
+│           │       ├── install_openvino.sh
+│           │       ├── openvino.sevice
+│           │       ├── scripts
+│           │       └── setup-openvino.sh
+│           ├── guides
+│           │   ├── databases
+│           │   │   ├── arrow-and-parquet.md
+│           │   │   ├── best-in-class.md
+│           │   │   └── duckdb.md
+│           │   ├── environments
+│           │   │   ├── ARCHITECTURE.md
+│           │   │   ├── bootstrap-problems.md
+│           │   │   ├── Dockerfile.zbox
+│           │   │   ├── env-examples
+│           │   │   ├── forturn-&-neofetch.md
+│           │   │   ├── IN-PROGRESS.md
+│           │   │   ├── PROJECT-BREAKDOWN.md
+│           │   │   ├── README_1.md
+│           │   │   ├── README.md
+│           │   │   ├── shell-completions.md
+│           │   │   ├── shell-loading-diagram2.md
+│           │   │   ├── shell-loading-diagram3.md
+│           │   │   ├── shell-loading-diagram.md
+│           │   │   ├── SYSTEM-&-USER-CONFIGURATION-HIERARCHY.md
+│           │   │   ├── TRASH-SYSTEM.md
+│           │   │   ├── USAGE.md
+│           │   │   ├── what-is-globbing.md
+│           │   │   ├── ZBOX-MEMORY-FEATURES.md
+│           │   │   ├── zsh-built-in-flags.md
+│           │   │   ├── zsh-cheat-sheet.md
+│           │   │   ├── ZSH-MASTER-CHEAT-SHEET.md
+│           │   │   ├── ZSH-MASTER-CHEAT-SHEET.txt
+│           │   │   ├── zsh-prezto-diagram-loader.md
+│           │   │   ├── zsh-prezto-vs-ohmyzsh.md
+│           │   │   ├── zsh-shell-loading2.md
+│           │   │   └── zsh-shell-loading.md
+│           │   ├── languages
+│           │   │   ├── ast.md
+│           │   │   ├── avaliable-crates.md
+│           │   │   ├── bindings-check.md
+│           │   │   ├── build-ideas.md
+│           │   │   ├── cargo-rules.md
+│           │   │   ├── Cargo.toml
+│           │   │   ├── cc.md
+│           │   │   ├── cranelift.md
+│           │   │   ├── crates-vs-packages2.md
+│           │   │   ├── crates-vs-packages3.md
+│           │   │   ├── crates-vs-packages.md
+│           │   │   ├── decision-making.md
+│           │   │   ├── deps-measuring.md
+│           │   │   ├── downstream-breaks.md
+│           │   │   ├── example-layout.md
+│           │   │   ├── glue-vs-engine.md
+│           │   │   ├── HIR&MIR.md
+│           │   │   ├── hotspot.md
+│           │   │   ├── JIT&AOT.md
+│           │   │   ├── lisp-clojure.md
+│           │   │   ├── macros&codegen2.md
+│           │   │   ├── macros&codegen.md
+│           │   │   ├── orthogonality.md
+│           │   │   ├── REPLs.md
+│           │   │   ├── run-dev.md
+│           │   │   ├── semvar.md
+│           │   │   ├── signatures.md
+│           │   │   ├── usage-dev.md
+│           │   │   └── wrapper.h
+│           │   ├── questions
+│           │   │   ├── 1-2-3rule.md
+│           │   │   ├── ai-environment-setup.md
+│           │   │   ├── algorithms-and midsets..md
+│           │   │   ├── archives-vs-backups-vs-packages.md
+│           │   │   ├── assest-understand2.md
+│           │   │   ├── assest-understanding.md
+│           │   │   ├── asus-system-diagnostic.md
+│           │   │   ├── asus-system-overview.md
+│           │   │   ├── backup-crafts.md
+│           │   │   ├── backup-setup2.md
+│           │   │   ├── backup-setup.md
+│           │   │   ├── catch-all-category.md
+│           │   │   ├── changing-permissions.md
+│           │   │   ├── compression-and-lock-guilds.md
+│           │   │   ├── compression-guilds.md
+│           │   │   ├── configs-vs-variables-vs-keys-vs-etc-vs-settings.md
+│           │   │   ├── containering-understanding.md
+│           │   │   ├── danger-level.md
+│           │   │   ├── discord-and-substack.md
+│           │   │   ├── display-control.md
+│           │   │   ├── display-manager.md
+│           │   │   ├── env-access-bootstrap-setup.md
+│           │   │   ├── env-bootstrap-setup.md
+│           │   │   ├── find-keyID.md
+│           │   │   ├── full-wipe-and-setup.md
+│           │   │   ├── gnupg-storage.md
+│           │   │   ├── greek-capital-sigma.md
+│           │   │   ├── hiding-stuff.md
+│           │   │   ├── how-bootstraping-works.md
+│           │   │   ├── how-hosting-works.md
+│           │   │   ├── how-pays-for-social-media.md
+│           │   │   ├── how-vectoring-works.md
+│           │   │   ├── IDE-notes.md
+│           │   │   ├── IEEE-754-formual.md
+│           │   │   ├── installation.md
+│           │   │   ├── key-infro.md
+│           │   │   ├── key-usage.md
+│           │   │   ├── LXC-vs-Docker.md
+│           │   │   ├── map-fill-setup.md
+│           │   │   ├── multi-tar.md
+│           │   │   ├── naming-layers.md
+│           │   │   ├── partial-achives-manipulation.md
+│           │   │   ├── proper-certs-generator.md
+│           │   │   ├── pro-tips.md
+│           │   │   ├── public-relations.md
+│           │   │   ├── public-wifi-bypass-tunneling-designs.md
+│           │   │   ├── rsync-understanding.txt
+│           │   │   ├── sandbox-setup.md
+│           │   │   ├── scaffolding-map-understanding.md
+│           │   │   ├── scaffolding-understanding.md
+│           │   │   ├── scratch-pad.md
+│           │   │   ├── setting-vs-config.md
+│           │   │   ├── setup-asus-decisions.md
+│           │   │   ├── shadow-limited.md
+│           │   │   ├── starting-fights.md
+│           │   │   ├── test-batches.md
+│           │   │   ├── token-buffers.md
+│           │   │   ├── variables-and-memory.md
+│           │   │   ├── vectors-and-similarity.md
+│           │   │   ├── vscode-pro-tips.md
+│           │   │   ├── what-does-'.d'-mean-in-linux.md
+│           │   │   ├── what-is-a-compositor.md
+│           │   │   ├── what-is-ASCII.md
+│           │   │   ├── what-is-a-vector.md
+│           │   │   ├── what-is-exponent-and-fraction.mantissa.md
+│           │   │   ├── what-is-gpg.md
+│           │   │   ├── what-is-hexadecimal.md
+│           │   │   ├── what-is-IEEE-754.md
+│           │   │   ├── what-is-memory-REALLY.md
+│           │   │   ├── what -is-orthogonal.md
+│           │   │   ├── what-is-tailscale-really.md
+│           │   │   ├── what-is-telegram.md
+│           │   │   ├── what-tailscale-actually-is.md
+│           │   │   ├── where-things-live.md
+│           │   │   └── workspace-setups.md
+│           │   └── scaffolds
+│           │       ├── ai.tree
+│           │       ├── api-endpoints.tree
+│           │       ├── archbox-rust-stack.md
+│           │       ├── assets-stack.md
+│           │       ├── build-environments.tree
+│           │       ├── core-stub.md
+│           │       ├── custom-stacks.tree
+│           │       ├── document.tree
+│           │       ├── domain-tree.md
+│           │       ├── fs-tree.md
+│           │       ├── full2-stack.md
+│           │       ├── full-stack.md
+│           │       ├── full_stack.tree
+│           │       ├── github-template.tree
+│           │       ├── infrastructure.tree
+│           │       ├── lead-collection.tree
+│           │       ├── ml-frameworks.tree
+│           │       ├── ml-models.tree
+│           │       ├── nix-tree.md
+│           │       ├── old-workspace2.md
+│           │       ├── old-workspace.md
+│           │       ├── production-grade-repo-stack.md
+│           │       ├── script-stack.md
+│           │       ├── server.tree
+│           │       ├── service.tree
+│           │       ├── src-tree.md
+│           │       ├── stack.tree
+│           │       ├── stack-tree.md
+│           │       └── state-stub.md
+│           ├── models
+│           │   ├── Big_Bear
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── Cargo_Connect
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── Legal_Logger
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── Packet_Pilot
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   ├── Trucker_Tales
+│           │   │   ├── Cargo.toml
+│           │   │   └── src
+│           │   └── Whisper_Witness
+│           │       ├── Cargo.toml
+│           │       └── src
+│           ├── nodes
+│           │   ├── ASUS-TUF-Gaming.md
+│           │   ├── callbox(4vCPU, null, 12GB RAM, [256GB SSD, 1TB HDD])
+│           │   │   └── callbox_node.yaml
+│           │   ├── devbox(22vCPU, [iGPU,NPU], 16GB RAM, 1TB NVMe)
+│           │   │   └── devbox_node.yaml
+│           │   ├── gpubox(8vCPU, GPU 4vRAM, 32GB RAM, 1TB NVMe)
+│           │   │   ├── gpubox_node.yaml
+│           │   │   └── nix
+│           │   ├── infrastructue.md
+│           │   ├── Lenovo-Yoga-9i.md
+│           │   └── workbox(20vCPU, iGPU, 24GB RAM, 1TB NVMe)
+│           │       └── workbox_node.yaml
+│           ├── scripts
+│           │   ├── agency-client.py
+│           │   ├── audit_components.sh
+│           │   ├── audit-system-status.sh
+│           │   ├── build-all.sh
+│           │   ├── check-models-integrity.sh
+│           │   ├── code-indexer.py
+│           │   ├── collection-webhook.py
+│           │   ├── data-collector-orchestrator.py
+│           │   ├── deep-scan.sh
+│           │   ├── download-models.sh
+│           │   ├── index-models.sh
+│           │   ├── index-prompts.sh
+│           │   ├── install-models.sh
+│           │   ├── list-models.sh
+│           │   ├── list-prompts.sh
+│           │   ├── ollama-cluster.py
+│           │   ├── pre-flight.sh
+│           │   ├── pull-models.sh
+│           │   ├── setup-auto-sync.sh
+│           │   ├── setup-data-collectors.sh
+│           │   ├── start-agency.sh
+│           │   ├── start-all-services.sh
+│           │   ├── start-auto-collection.sh
+│           │   ├── start.sh
+│           │   ├── state-restore.sh
+│           │   ├── state-sync.sh
+│           │   ├── status-check.sh
+│           │   ├── status.sh
+│           │   ├── stop-agency.sh
+│           │   ├── stop.sh
+│           │   ├── system-status.sh
+│           │   ├── test-db.sh
+│           │   ├── trigger-collection-api.sh
+│           │   └── validate-models.sh
+│           ├── stories
+│           │   ├── but-you-said
+│           │   │   ├── t01.trust.md
+│           │   │   ├── t02.i-thought-it-lied.md
+│           │   │   ├── t03.but.md
+│           │   │   ├── t04.the-world-needs-to-see.md
+│           │   │   ├── t05.it-talked.md
+│           │   │   ├── t06.but-you-said.md
+│           │   │   ├── t07.i-trust-you-now.md
+│           │   │   ├── t08.goodbye.md
+│           │   │   ├── t09.ooooo.md
+│           │   │   ├── t10.i-want-to-see-it.md
+│           │   │   ├── t11.but-wait-theres-more.md
+│           │   │   ├── t12.i-dont-like-it.md
+│           │   │   ├── t13.he-was-right.md
+│           │   │   ├── t14.i-have-to-do-what.md
+│           │   │   ├── t15.lets-goooo.md
+│           │   │   ├── t16.i-saw-it-again.md
+│           │   │   ├── t17.whiteboarding.md
+│           │   │   ├── t18.you-said.md
+│           │   │   ├── t19.learn-before-you-burn.md
+│           │   │   ├── t20.wake-up-but-not-too-fast.md
+│           │   │   ├── t21.its-alive.md
+│           │   │   ├── t22.its-bright-when-you-come-from-darkness.md
+│           │   │   ├── t23.dont-quit-because-but-you-said.md
+│           │   │   ├── t24.together-we-build.md
+│           │   │   └── t25.just-a-reminder.md
+│           │   ├── ill-do-it-anyway
+│           │   │   ├── t01.i-didnt-know.md
+│           │   │   ├── t02.it-clicked.md
+│           │   │   ├── t03.the-road-was-long.md
+│           │   │   ├── t04.structure-code-structure-code.md
+│           │   │   ├── t05.i-woke-up.md
+│           │   │   ├── t06.my-last-drive.md
+│           │   │   ├── t07.when-i-saw-it.md
+│           │   │   ├── t08.ui-was-hell.md
+│           │   │   ├── t09.no-one-understands.md
+│           │   │   ├── t10.ill-do-it-anway.md
+│           │   │   ├── t11.watchers-vs-believers.md
+│           │   │   ├── t12.you-wont-be-forgotten.md
+│           │   │   ├── t13.the-lonely-nights.md
+│           │   │   ├── t14.why-am-i-mad-a-something-i-did.md
+│           │   │   ├── t15.i-thought-i-already-did-this.md
+│           │   │   ├── t17.when-you-need-help.md
+│           │   │   ├── t18.dont-forget-to-eat.md
+│           │   │   ├── t19.when-you-hear-it.md
+│           │   │   ├── t20.you-was-right-there-was-a-syntax-error.md
+│           │   │   ├── t21.tomorrow.md
+│           │   │   ├── t22.its-almost-done.md
+│           │   │   ├── t23.i-lied-i-meant-its-close-to-being-done.md
+│           │   │   ├── t24.it-has-to-be-perfect.md
+│           │   │   ├── t25.query-what.md
+│           │   │   ├── t26.i-see-it-again-but-they-call-it-a-pointer.md
+│           │   │   ├── t27.think.md
+│           │   │   ├── t28.zzz-is-structure.md
+│           │   │   ├── t29.help-who-wants-to-build-next.md
+│           │   │   └── t30.build-again.md
+│           │   ├── i-wrote-it-anyway
+│           │   │   ├── t01.you-were-with-me.md
+│           │   │   ├── t02.why-do-they-watch.md
+│           │   │   ├── t03.doubt.md
+│           │   │   ├── t04.but-they-need-this.md
+│           │   │   ├── t05.the-build.md
+│           │   │   ├── t06.seeing-the-structure.md
+│           │   │   ├── t07.when.md
+│           │   │   ├── t08.no-worries.md
+│           │   │   ├── t09.its-not-their-call.md
+│           │   │   ├── t10.the-next.md
+│           │   │   ├── t11.polymorfic.md
+│           │   │   ├── t12.mark-it-if-you-can.md
+│           │   │   ├── t13.marketing.md
+│           │   │   ├── t14.dont-hide.md
+│           │   │   ├── t15.error.md
+│           │   │   ├── t16.pieces.md
+│           │   │   ├── t17.dont-be-too-loud.md
+│           │   │   ├── t18.understand-noise.md
+│           │   │   ├── t19.confusion-kills-builds.md
+│           │   │   ├── t20.the-circle.md
+│           │   │   ├── t21.keep-it-real.md
+│           │   │   ├── t22.full-clarity.md
+│           │   │   ├── t23.all-they-do-is-stare.md
+│           │   │   ├── t24.but-you-said-ill-do-it-anyway.md
+│           │   │   ├── t25.terms.md
+│           │   │   ├── t26.respect.md
+│           │   │   ├── t27.a-thought-to-explore.md
+│           │   │   ├── t28.change.md
+│           │   │   ├── t29.the-law.md
+│           │   │   ├── t30.canyou-didyou.md
+│           │   │   └── t31.whoami.md
+│           │   └── long-way-home
+│           │       ├── t01.is-it-bc.md
+│           │       ├── t02.moments.md
+│           │       ├── t03.when-i-arrived.md
+│           │       ├── t04.the-wait.md
+│           │       ├── t05.meet-up.md
+│           │       ├── t06.the-drive.md
+│           │       ├── t07.when-you-see-it.md
+│           │       ├── t08.take-your-time.md
+│           │       ├── t09.logs.md
+│           │       ├── t10.i-knew-it.md
+│           │       ├── t11.hook-a-trailer-hook-a-handle-drop-a-trailer-drop-a-handle.md
+│           │       ├── t12.no-second-chances.md
+│           │       ├── t13.dont-hit-nothing.md
+│           │       ├── t14.mirror.md
+│           │       ├── t15.drop-it-low.md
+│           │       ├── t16.number-one-sign.md
+│           │       ├── t17.scary-story-sorry.md
+│           │       ├── t18.no-way.md
+│           │       ├── t19.health.md
+│           │       ├── t20.wings.md
+│           │       ├── t21.pretrip.md
+│           │       ├── t22.rock-in-a-river.md
+│           │       ├── t23.smith-system.md
+│           │       ├── t24.tailgating.md
+│           │       ├── t25.tip-from-jeff-brown.md
+│           │       ├── t26.then-she-was-mine.md
+│           │       ├── t27.lesson.md
+│           │       ├── t28.i-left.md
+│           │       ├── t29.why-i-build.md
+│           │       ├── t30.goodbye-old-friend.md
+│           │       ├── t31.i-will-stand.md
+│           │       └── t32.my-last-drive.md
+│           └── tools
+│               ├── chat-indexer
+│               │   ├── ai_query.py
+│               │   ├── analytics.py
+│               │   ├── batch_query.py
+│               │   ├── config.toml
+│               │   ├── conversation_indexer.py
+│               │   ├── EXAMPLES.md
+│               │   ├── .gitignore
+│               │   ├── query_artifacts.py
+│               │   ├── query_conversations.py
+│               │   ├── query_templates.py
+│               │   ├── QUICK_REFERENCE.md
+│               │   ├── README.md
+│               │   ├── setup_indexer.sh
+│               │   └── templates
+│               ├── pytorch-trainer
+│               │   ├── core
+│               │   ├── deploy.sh
+│               │   ├── INSTALL.md
+│               │   ├── main.py
+│               │   ├── QUICKSTART.md
+│               │   ├── README.md
+│               │   └── src
+│               └── template-engine
+│                   ├── config_base.py
+│                   ├── k8s
+│                   ├── load_services.py
+│                   ├── prompts
+│                   ├── render_service.py
+│                   └── update_values.py
 ├── .gitignore
 └── index.tree
 
-205 directories, 757 files
+178 directories, 787 files
