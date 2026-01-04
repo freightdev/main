@@ -1,0 +1,63 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "source/*"
+      ],
+      "@components/*": [
+        "source/components/*"
+      ],
+      "@configs/*": [
+        "source/configs/*"
+      ],
+      "@layouts/*": [
+        "source/layouts/*"
+      ],
+      "@pages/*": [
+        "source/pages/*"
+      ],
+      "@content/*": [
+        "source/content/*"
+      ],
+      "@lib/*": [
+        "source/lib/*"
+      ],
+      "@utils/*": [
+        "source/lib/utils/*"
+      ],
+      "@styles/*": [
+        "source/styles/*"
+      ],
+      "@types/*": [
+        "source/types/*"
+      ],
+      "@hooks/*": [
+        "source/hooks/*"
+      ]
+    },
+    "types": [
+      "astro/client"
+    ]
+  },
+  "include": [
+    "source/**/*.ts",
+    "source/**/*.d.ts",
+    "source/**/*.astro",
+    "source/**/*.tsx",
+    ".astro/types.d.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}
