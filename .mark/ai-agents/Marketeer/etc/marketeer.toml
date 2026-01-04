@@ -1,0 +1,26 @@
+# Marketeer Configuration - Edge Router
+
+listen_addr = "0.0.0.0"
+listen_port = 8000
+codriver_url = "http://localhost:8001"
+
+[security]
+enabled = true
+required_header = "X-API-Key"
+api_keys = [
+    "dev-key-change-me-in-production",
+    # Add more API keys here
+]
+
+[marking]
+enabled = true
+header_name = "X-Marketeer-Mark"
+prefix = "MRK"
+
+[logging]
+level = "info"
+format = "json"
+
+[metrics]
+enabled = true
+endpoint = "/metrics"

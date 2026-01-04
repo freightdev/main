@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0e27;
+            color: #e0e6ed;
+            padding: 16px;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 16px rgba(79, 172, 254, 0.3);
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .add-client-btn {
+            background: rgba(255, 255, 255, 0.25);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            backdrop-filter: blur(10px);
+        }
+
+        .add-client-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: #1a1f3a;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #2d3548;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #4facfe;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #9ca3af;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .client-card {
+            background: #1a1f3a;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2d3548;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .client-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-color: #4facfe;
+        }
+
+        .client-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .client-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e0e6ed;
+            margin-bottom: 4px;
+        }
+
+        .client-id {
+            font-size: 12px;
+            color: #9ca3af;
+            font-family: monospace;
+        }
+
+        .client-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .client-status.active {
+            background: #065f46;
+            color: #10b981;
+        }
+
+        .client-status.trial {
+            background: #78350f;
+            color: #f59e0b;
+        }
+
+        .client-status.suspended {
+            background: #7f1d1d;
+            color: #ef4444;
+        }
+
+        .client-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .info-item {
+            background: #0f1629;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .info-label {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #4facfe;
+        }
+
+        .resource-usage {
+            margin-top: 12px;
+        }
+
+        .usage-bar {
+            margin-bottom: 10px;
+        }
+
+        .usage-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #9ca3af;
+            margin-bottom: 4px;
+        }
+
+        .bar-container {
+            background: #0a0e27;
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.3s;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+        }
+
+        .bar-fill.warn {
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+        }
+
+        .bar-fill.danger {
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+        }
+
+        .client-services {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .service-badge {
+            background: #0f1629;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .service-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #10b981;
+        }
+
+        .service-dot.down {
+            background: #ef4444;
+        }
+
+        .client-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #2d3548;
+        }
+
+        .action-btn {
+            flex: 1;
+            background: #2d3548;
+            border: none;
+            color: #9ca3af;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background: #3d4556;
+            color: #e0e6ed;
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+        }
+
+        .action-btn.primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(79, 172, 254, 0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #1a1f3a;
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid #2d3548;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #4facfe;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #9ca3af;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .close-btn:hover {
+            background: #2d3548;
+            color: #e0e6ed;
+        }
+
+        .detail-section {
+            background: #0f1629;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .detail-section h3 {
+            font-size: 14px;
+            color: #4facfe;
+            margin-bottom: 12px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #1a1f3a;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-size: 13px;
+            color: #9ca3af;
+        }
+
+        .detail-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e0e6ed;
+        }
+
+        .service-list {
+            margin-top: 12px;
+        }
+
+        .service-item {
+            background: #1a1f3a;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-name {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .filter-tab {
+            background: #1a1f3a;
+            border: 1px solid #2d3548;
+            color: #9ca3af;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .filter-tab:hover {
+            background: #2d3548;
+            color: #e0e6ed;
+        }
+
+        .filter-tab.active {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            border-color: transparent;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #9ca3af;
+        }
+
+        .empty-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .empty-text {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .empty-subtext {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+            .client-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>👥 Client Management Portal</h1>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search clients by name or ID..." id="searchInput">
+            <button class="add-client-btn" onclick="openAddClientModal()">
+                <span>➕</span>
+                <span>Add Client</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value" id="totalClients">0</div>
+            <div class="stat-label">Total Clients</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="activeClients">0</div>
+            <div class="stat-label">Active</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="totalServices">0</div>
+            <div class="stat-label">Services Running</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="totalRevenue">$0</div>
+            <div class="stat-label">Monthly Revenue</div>
+        </div>
+    </div>
+
+    <div class="filter-tabs">
+        <button class="filter-tab active" onclick="filterClients('all')">All Clients</button>
+        <button class="filter-tab" onclick="filterClients('active')">✅ Active</button>
+        <button class="filter-tab" onclick="filterClients('trial')">⏳ Trial</button>
+        <button class="filter-tab" onclick="filterClients('suspended')">⛔ Suspended</button>
+    </div>
+
+    <div class="clients-grid" id="clientsGrid"></div>
+
+    <!-- Client Detail Modal -->
+    <div class="modal" id="clientModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalClientName">Client Details</h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+
+            <div class="detail-section">
+                <h3>📊 Account Information</h3>
+                <div class="detail-row">
+                    <span class="detail-label">Client ID</span>
+                    <span class="detail-value" id="modalClientId">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Status</span>
+                    <span class="detail-value" id="modalStatus">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Joined</span>
+                    <span class="detail-value" id="modalJoined">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Monthly Cost</span>
+                    <span class="detail-value" id="modalCost">-</span>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3>⚙️ Resource Usage</h3>
+                <div class="detail-row">
+                    <span class="detail-label">vCPU</span>
+                    <span class="detail-value" id="modalCpu">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Memory</span>
+                    <span class="detail-value" id="modalMemory">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Storage</span>
+                    <span class="detail-value" id="modalStorage">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Bandwidth (30d)</span>
+                    <span class="detail-value" id="modalBandwidth">-</span>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3>🚀 Services</h3>
+                <div class="service-list" id="modalServices"></div>
+            </div>
+
+            <div class="detail-section">
+                <h3>🔐 Access</h3>
+                <div class="detail-row">
+                    <span class="detail-label">Wireguard Config</span>
+                    <button class="action-btn" onclick="downloadConfig()">Download</button>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Database URL</span>
+                    <span class="detail-value" style="font-family: monospace; font-size: 11px;" id="modalDbUrl">-</span>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 12px; margin-top: 20px;">
+                <button class="action-btn primary" onclick="openClientDashboard()">Open Dashboard</button>
+                <button class="action-btn" onclick="manageServices()">Manage Services</button>
+                <button class="action-btn" onclick="viewLogs()">View Logs</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentFilter = 'all';
+        let selectedClient = null;
+
+        function generateMockClients() {
+            return [
+                {
+                    id: 'client-001',
+                    name: 'Acme Corporation',
+                    status: 'active',
+                    joined: '2024-06-15',
+                    cost: 149,
+                    cpu: { used: 4, limit: 8 },
+                    memory: { used: 6, limit: 16 },
+                    storage: 45,
+                    bandwidth: 234,
+                    services: [
+                        { name: 'Web App', status: 'running', url: 'https://acme.example.com' },
+                        { name: 'API Server', status: 'running', url: 'https://api.acme.example.com' },
+                        { name: 'Worker Queue', status: 'running', url: 'internal' }
+                    ],
+                    dbUrl: 'postgresql://user:pass@acme-db.rds.amazonaws.com:5432/acme'
+                },
+                {
+                    id: 'client-002',
+                    name: 'TechStart Inc',
+                    status: 'trial',
+                    joined: '2024-12-01',
+                    cost: 0,
+                    cpu: { used: 1, limit: 2 },
+                    memory: { used: 2, limit: 4 },
+                    storage: 12,
+                    bandwidth: 45,
+                    services: [
+                        { name: 'Landing Page', status: 'running', url: 'https://techstart.example.com' }
+                    ],
+                    dbUrl: 'postgresql://user:pass@techstart-db.rds.amazonaws.com:5432/techstart'
+                },
+                {
+                    id: 'client-003',
+                    name: 'Global Solutions',
+                    status: 'active',
+                    joined: '2024-03-22',
+                    cost: 299,
+                    cpu: { used: 7.5, limit: 12 },
+                    memory: { used: 18, limit: 24 },
+                    storage: 128,
+                    bandwidth: 892,
+                    services: [
+                        { name: 'E-commerce Platform', status: 'running', url: 'https://shop.global.example.com' },
+                        { name: 'Admin Panel', status: 'running', url: 'https://admin.global.example.com' },
+                        { name: 'Payment Service', status: 'running', url: 'internal' },
+                        { name: 'Analytics Engine', status: 'running', url: 'internal' }
+                    ],
+                    dbUrl: 'postgresql://user:pass@global-db.rds.amazonaws.com:5432/global'
+                },
+                {
+                    id: 'client-004',
+                    name: 'DevShop LLC',
+                    status: 'active',
+                    joined: '2024-09-10',
+                    cost: 99,
+                    cpu: { used: 2.5, limit: 4 },
+                    memory: { used: 5, limit: 8 },
+                    storage: 32,
+                    bandwidth: 156,
+                    services: [
+                        { name: 'Portfolio Site', status: 'running', url: 'https://devshop.example.com' },
+                        { name: 'Blog', status: 'running', url: 'https://blog.devshop.example.com' }
+                    ],
+                    dbUrl: 'postgresql://user:pass@devshop-db.rds.amazonaws.com:5432/devshop'
+                },
+                {
+                    id: 'client-005',
+                    name: 'Beta Testing Co',
+                    status: 'suspended',
+                    joined: '2024-07-05',
+                    cost: 149,
+                    cpu: { used: 0, limit: 8 },
+                    memory: { used: 0, limit: 16 },
+                    storage: 0,
+                    bandwidth: 0,
+                    services: [
+                        { name: 'Test App', status: 'stopped', url: 'https://beta.example.com' }
+                    ],
+                    dbUrl: 'postgresql://user:pass@beta-db.rds.amazonaws.com:5432/beta'
+                }
+            ];
+        }
+
+        function renderClients() {
+            const clients = generateMockClients();
+            const filtered = clients.filter(c => {
+                if (currentFilter === 'all') return true;
+                return c.status === currentFilter;
+            });
+
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const searched = filtered.filter(c => 
+                c.name.toLowerCase().includes(searchTerm) || 
+                c.id.toLowerCase().includes(searchTerm)
+            );
+
+            // Update stats
+            document.getElementById('totalClients').textContent = clients.length;
+            document.getElementById('activeClients').textContent = clients.filter(c => c.status === 'active').length;
+            document.getElementById('totalServices').textContent = clients.reduce((sum, c) => sum + c.services.length, 0);
+            document.getElementById('totalRevenue').textContent = '$' + clients.reduce((sum, c) => sum + c.cost, 0);
+
+            if (searched.length === 0) {
+                document.getElementById('clientsGrid').innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <div class="empty-icon">🔍</div>
+                        <div class="empty-text">No clients found</div>
+                        <div class="empty-subtext">Try adjusting your filters or search terms</div>
+                    </div>
+                `;
+                return;
+            }
+
+            const html = searched.map(client => {
+                const cpuPercent = Math.round((client.cpu.used / client.cpu.limit) * 100);
+                const memPercent = Math.round((client.memory.used / client.memory.limit) * 100);
+
+                return `
+                    <div class="client-card" onclick="openClientDetails('${client.id}')">
+                        <div class="client-header">
+                            <div>
+                                <div class="client-name">${client.name}</div>
+                                <div class="client-id">${client.id}</div>
+                            </div>
+                            <span class="client-status ${client.status}">${client.status.toUpperCase()}</span>
+                        </div>
+
+                        <div class="client-info">
+                            <div class="info-item">
+                                <div class="info-label">Monthly Cost</div>
+                                <div class="info-value">$${client.cost}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Services</div>
+                                <div class="info-value">${client.services.length}</div>
+                            </div>
+                        </div>
+
+                        <div class="resource-usage">
+                            <div class="usage-bar">
+                                <div class="usage-label">
+                                    <span>CPU</span>
+                                    <span>${client.cpu.used}/${client.cpu.limit} vCPU</span>
+                                </div>
+                                <div class="bar-container">
+                                    <div class="bar-fill ${cpuPercent > 80 ? 'danger' : cpuPercent > 60 ? 'warn' : ''}" 
+                                         style="width: ${cpuPercent}%"></div>
+                                </div>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-label">
+                                    <span>Memory</span>
+                                    <span>${client.memory.used}/${client.memory.limit} GB</span>
+                                </div>
+                                <div class="bar-container">
+                                    <div class="bar-fill ${memPercent > 80 ? 'danger' : memPercent > 60 ? 'warn' : ''}" 
+                                         style="width: ${memPercent}%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="client-services">
+                            ${client.services.map(s => `
+                                <div class="service-badge">
+                                    <span class="service-dot ${s.status === 'stopped' ? 'down' : ''}"></span>
+                                    <span>${s.name}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="client-actions">
+                            <button class="action-btn" onclick="event.stopPropagation(); quickAction('logs', '${client.id}')">Logs</button>
+                            <button class="action-btn" onclick="event.stopPropagation(); quickAction('restart', '${client.id}')">Restart</button>
+                            <button class="action-btn primary" onclick="event.stopPropagation(); quickAction('dashboard', '${client.id}')">Dashboard</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('clientsGrid').innerHTML = html;
+        }
+
+        function openClientDetails(clientId) {
+            const clients = generateMockClients();
+            selectedClient = clients.find(c => c.id === clientId);
+            
+            if (!selectedClient) return;
+
+            document.getElementById('modalClientName').textContent = selectedClient.name;
+            document.getElementById('modalClientId').textContent = selectedClient.id;
+            document.getElementById('modalStatus').textContent = selectedClient.status.toUpperCase();
+            document.getElementById('modalJoined').textContent = new Date(selectedClient.joined).toLocaleDateString();
+            document.getElementById('modalCost').textContent = '$' + selectedClient.cost + '/month';
+            document.getElementById('modalCpu').textContent = selectedClient.cpu.used + '/' + selectedClient.cpu.limit + ' vCPU';
+            document.getElementById('modalMemory').textContent = selectedClient.memory.used + '/' + selectedClient.memory.limit + ' GB';
+            document.getElementById('modalStorage').textContent = selectedClient.storage + ' GB';
+            document.getElementById('modalBandwidth').textContent = selectedClient.bandwidth + ' GB';
+            document.getElementById('modalDbUrl').textContent = selectedClient.dbUrl;
+
+            const servicesHtml = selectedClient.services.map(s => `
+                <div class="service-item">
+                    <div>
+                        <div class="service-name">${s.name}</div>
+                        <div style="font-size: 11px; color: #9ca3af;">${s.url}</div>
+                    </div>
+                    <span class="client-status ${s.status === 'running' ? 'active' : 'suspended'}">${s.status}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('modalServices').innerHTML = servicesHtml;
+            document.getElementById('clientModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('clientModal').classList.remove('active');
+            selectedClient = null;
+        }
+
+        function filterClients(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-tab').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderClients();
+        }
+
+        function quickAction(action, clientId) {
+            console.log(`Action: ${action} for client: ${clientId}`);
+            alert(`${action} action triggered for client ${clientId}`);
+        }
+
+        function openAddClientModal() {
+            alert('Add Client modal would open here');
+        }
+
+        function downloadConfig() {
+            alert('Wireguard config download started');
+        }
+
+        function openClientDashboard() {
+            alert(`Opening dashboard for ${selectedClient.name}`);
+        }
+
+        function manageServices() {
+            alert(`Managing services for ${selectedClient.name}`);
+        }
+
+        function viewLogs() {
+            alert(`Viewing logs for ${selectedClient.name}`);
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', renderClients);
+
+        // Click outside modal to close
+        document.getElementById('clientModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Initial render
+        renderClients();
+    </script>
+</body>
+</html>

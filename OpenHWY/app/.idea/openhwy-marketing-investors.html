@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenHWY - Building the Future of Freight</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --road-black: #0a0a0a;
+            --asphalt-gray: #1a1a1a;
+            --line-yellow: #ffd700;
+            --signal-orange: #ff6b35;
+            --diesel-blue: #00a8e8;
+            --steel-gray: #4a5568;
+            --paper-white: #f7f7f7;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--road-black);
+            color: var(--paper-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated road lines background */
+        .road-lines {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.1;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .line {
+            position: absolute;
+            left: 50%;
+            width: 4px;
+            height: 80px;
+            background: var(--line-yellow);
+            animation: roadMove 2s linear infinite;
+        }
+
+        .line:nth-child(1) { animation-delay: 0s; top: -80px; }
+        .line:nth-child(2) { animation-delay: 0.5s; top: -180px; }
+        .line:nth-child(3) { animation-delay: 1s; top: -280px; }
+        .line:nth-child(4) { animation-delay: 1.5s; top: -380px; }
+
+        @keyframes roadMove {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--line-yellow);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .beta-badge {
+            font-size: 0.7rem;
+            background: var(--signal-orange);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--paper-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--line-yellow);
+        }
+
+        .cta-btn {
+            background: var(--line-yellow);
+            color: var(--road-black);
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background: var(--signal-orange);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--line-yellow), var(--signal-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--steel-gray);
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .stat {
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .stat:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--line-yellow);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--steel-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mission {
+            background: var(--asphalt-gray);
+            border-radius: 20px;
+            padding: 4rem;
+            margin: 4rem 0;
+            border-left: 6px solid var(--line-yellow);
+        }
+
+        .mission h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--line-yellow);
+        }
+
+        .mission-story {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--paper-white);
+            margin-bottom: 1rem;
+        }
+
+        .mission-story em {
+            color: var(--signal-orange);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .ecosystem {
+            margin: 6rem 0;
+        }
+
+        .ecosystem h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--line-yellow);
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .app-card {
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .app-card:hover::before {
+            left: 100%;
+        }
+
+        .app-card:hover {
+            border-color: var(--line-yellow);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+        }
+
+        .app-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-card h3 {
+            font-size: 1.8rem;
+            color: var(--line-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .app-card p {
+            color: var(--paper-white);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .app-status {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--signal-orange);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .journey {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(0, 168, 232, 0.1));
+            border-radius: 20px;
+            padding: 4rem;
+            margin: 4rem 0;
+        }
+
+        .journey h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--line-yellow);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin-top: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--line-yellow);
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.6rem;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--signal-orange);
+            border-radius: 50%;
+            border: 3px solid var(--road-black);
+        }
+
+        .timeline-item h4 {
+            color: var(--line-yellow);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .founders-program {
+            background: var(--asphalt-gray);
+            border-radius: 20px;
+            padding: 4rem;
+            margin: 4rem 0;
+            text-align: center;
+            border: 3px solid var(--line-yellow);
+        }
+
+        .founders-program h2 {
+            font-size: 3rem;
+            color: var(--line-yellow);
+            margin-bottom: 1.5rem;
+        }
+
+        .founders-program p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--paper-white);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid var(--line-yellow);
+            border-radius: 12px;
+            padding: 2rem;
+            min-width: 200px;
+            transition: all 0.3s;
+        }
+
+        .badge:hover {
+            transform: scale(1.05);
+            background: rgba(255, 215, 0, 0.2);
+        }
+
+        .badge-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge h4 {
+            color: var(--line-yellow);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge p {
+            font-size: 0.9rem;
+            color: var(--steel-gray);
+        }
+
+        .donation-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tier {
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: left;
+            transition: all 0.3s;
+        }
+
+        .tier:hover {
+            border-color: var(--line-yellow);
+            transform: translateY(-5px);
+        }
+
+        .tier h4 {
+            color: var(--line-yellow);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tier-amount {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--signal-orange);
+            margin-bottom: 1rem;
+        }
+
+        .tier ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .tier li {
+            padding: 0.5rem 0;
+            color: var(--paper-white);
+        }
+
+        .tier li::before {
+            content: '✓ ';
+            color: var(--line-yellow);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .signup-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: rgba(255, 215, 0, 0.05);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .signup-form h3 {
+            color: var(--line-yellow);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--paper-white);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--road-black);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            color: var(--paper-white);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--line-yellow);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--line-yellow);
+            color: var(--road-black);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--signal-orange);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--road-black);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        footer p {
+            color: var(--steel-gray);
+        }
+
+        .social-links {
+            margin: 1rem 0;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--line-yellow);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--signal-orange);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .apps-grid,
+            .donation-tiers {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="road-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <nav>
+        <div class="nav-content">
+            <div class="logo">
+                OPENHWY
+                <span class="beta-badge">BETA</span>
+            </div>
+            <div class="nav-links">
+                <a href="#mission">Mission</a>
+                <a href="#ecosystem">Ecosystem</a>
+                <a href="#journey">Journey</a>
+                <a href="#join">Join</a>
+                <a href="#join" class="cta-btn">Get Your Logbook</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>The Future of Freight<br>Is Being Built Right Now</h1>
+        <p class="subtitle">One driver. 18 months. An entire ecosystem to fix the industry that made him.</p>
+        
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number">10</span>
+                <span class="stat-label">Years Behind The Wheel</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">1.5</span>
+                <span class="stat-label">Years Building Solo</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Interconnected Apps</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Specialized AI Tools</span>
+            </div>
+        </div>
+
+        <a href="#join" class="cta-btn">Join The Journey</a>
+    </section>
+
+    <section id="mission" class="mission">
+        <h2>The Mission</h2>
+        <p class="mission-story">
+            After 10 years as a truck driver, I stepped away from the wheel—but I couldn't leave the industry behind. 
+            Not when I knew exactly what was broken. Not when I saw AI racing to automate everything without understanding what drivers, dispatchers, and brokers actually need.
+        </p>
+        <p class="mission-story">
+            So I taught myself <em>distributed systems</em>. Self-taught. Solo. For 18 months.
+            Before that, I spent <em>6 years studying dispatching</em>—not just doing it, but mastering every detail 
+            so I could build something that actually works.
+        </p>
+        <p class="mission-story">
+            Not to build another logistics app. But to create an <em>entire ecosystem</em> that protects the human element while embracing AI's power.
+        </p>
+        <p class="mission-story">
+            <strong>OpenHWY is being built as a non-profit educational foundation.</strong> Free courses. Free alignment tools. 
+            Open-source protocols. Powered by the infrastructure I built through <em>Fast&Easy Dispatching LLC</em>—my 6-year-old 
+            dispatching company that funds this mission through FED TMS.
+        </p>
+        <p class="mission-story">
+            This is <em>for the drivers, dispatchers, and small fleets</em> who deserve better tools and a voice in how AI changes our world.
+            Education stays free. The mission stays protected. Forever.
+        </p>
+    </section>
+
+    <section id="ecosystem" class="ecosystem">
+        <h2>The OpenHWY Ecosystem</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--steel-gray); font-size: 1.2rem;">
+            Three apps. One vision. Complete freight alignment from education to execution.
+        </p>
+
+        <div class="apps-grid">
+            <div class="app-card">
+                <div class="app-icon">📚</div>
+                <h3>ELDA</h3>
+                <p><strong>Edge Logistics Dispatch Alignments</strong></p>
+                <p>Your AI alignment specialist. ELDA teaches you logistics through 75+ gamified modules, connects you with the industry, and gives you a free TMS to get started. She's here to align your goals, hear your stories, and help you navigate the freight world—without judgment.</p>
+                <p><strong>Features:</strong> Course learning, community connections, emotional support chat, free basic TMS, and your first Logbook.</p>
+                <span class="app-status">BETA - Join Now</span>
+            </div>
+
+            <div class="app-card">
+                <div class="app-icon">🚛</div>
+                <h3>FED</h3>
+                <p><strong>Fleet Ecosystem Director</strong></p>
+                <p>The full-power commercial TMS built by Fast&Easy Dispatching LLC. FED is a paid product with advanced features, 
+                automation tools, and desktop/mobile capabilities. <strong>FED's revenue funds the entire OpenHWY ecosystem</strong>—
+                keeping education free while powering the infrastructure behind ELDA, Logbooks, and Highway Watch Yard.</p>
+                <p><strong>Features:</strong> Advanced TMS, automation workflows, multi-platform access, integrated ELDA chat, and complete Logbook management.</p>
+                <span class="app-status">In Development</span>
+            </div>
+
+            <div class="app-card">
+                <div class="app-icon">🛣️</div>
+                <h3>Highway Watch Yard</h3>
+                <p><strong>The Human Verification Layer</strong></p>
+                <p>When AI starts booking freight, someone needs to watch over it. Highway Watch Yard connects brokers to Highway Yarddogs (verified drivers) for human-confirmed load handoffs. No AI hallucinations. No miscommunication. Just real people verifying real freight.</p>
+                <p><strong>Purpose:</strong> Protect drivers and brokers during the AI transition. Keep humans in the loop for rate negotiations and booking decisions.</p>
+                <span class="app-status">Coming 2025</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 4rem; padding: 3rem; background: rgba(255, 107, 53, 0.1); border-radius: 16px; border-left: 6px solid var(--signal-orange);">
+            <h3 style="color: var(--signal-orange); margin-bottom: 1rem; font-size: 1.8rem;">How OpenHWY is Funded</h3>
+            <p style="color: var(--paper-white); font-size: 1.1rem; line-height: 1.8;">
+                OpenHWY is being structured as a <strong>non-profit educational foundation</strong>. All courses, alignment tools, 
+                and open protocols will remain free forever. The infrastructure is powered by <strong>Fast&Easy Dispatching LLC</strong>, 
+                my 6-year-old dispatching company that built <strong>FED TMS</strong> as a commercial product.
+            </p>
+            <p style="color: var(--paper-white); font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                <strong>FED TMS profits fund OpenHWY's mission.</strong> This ensures education stays free while maintaining 
+                the infrastructure needed to power ELDA, the Logbook system, and Highway Watch Yard. It's the Mozilla model for freight—
+                commercial products funding free education and open standards.
+            </p>
+            <p style="color: var(--paper-white); font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                Your founder donations accelerate development and help establish OpenHWY Inc. as an independent non-profit entity. 
+                You're not just supporting software—you're supporting a protected mission that can't be bought out or shut down.
+            </p>
+        </div>
+    </section>
+
+    <section id="journey" class="journey">
+        <h2>The 1.5 Year Journey</h2>
+        <p style="text-align: center; color: var(--paper-white); max-width: 700px; margin: 0 auto 3rem;">
+            Building a distributed AI ecosystem from scratch while documenting every experiment, every chat log, every version.
+        </p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>Year 1: Foundation</h4>
+                <p>Self-taught distributed systems, designed the three-app architecture, built the Logbook protocol, and created the first 30 AI tools including Packet Pilot, Cargo Connect, and Big Bear.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Months 12-15: ELDA Takes Shape</h4>
+                <p>Developed 75+ course modules, built the Flutter application, integrated FED TMS orchestration in background, and refined ELDA's personality as the alignment specialist who listens without judgment.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Month 16: The Ecosystem Connects</h4>
+                <p>Architected how FED dispatches to Highway Watch Yard, how Logbooks create network effects, and how all three apps share data while maintaining clear boundaries.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Month 17: Ready to Ship</h4>
+                <p>Preparing ELDA beta launch, building founder program, and opening the doors for the community that will shape the future of freight alongside me.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>Now: Join The Mission</h4>
+                <p>This is where you come in. Help fund the final build. Get early access. Become a founder. Shape the tools that will define AI-assisted freight.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="join" class="founders-program">
+        <h2>🏆 Founders Program</h2>
+        <p>
+            Join the mission. Get your Logbook. Talk to ELDA. Test modules as they publish. Try the FED TMS dashboard. 
+            Earn badges that mark you as someone who believed from the beginning.
+        </p>
+        <p style="font-size: 1rem; color: var(--steel-gray);">
+            You don't need to be in the freight industry to help. Every contribution—small or generous—accelerates the build and gets you access to the beta ecosystem.
+        </p>
+
+        <div class="badges">
+            <div class="badge">
+                <div class="badge-icon">⭐</div>
+                <h4>Founder Badge</h4>
+                <p>Early believers who joined before launch</p>
+            </div>
+            <div class="badge">
+                <div class="badge-icon">💎</div>
+                <h4>Investor Badge</h4>
+                <p>Financial supporters accelerating development</p>
+            </div>
+            <div class="badge">
+                <div class="badge-icon">🚛</div>
+                <h4>Yarddog Badge</h4>
+                <p>Drivers and industry veterans</p>
+            </div>
+            <div class="badge">
+                <div class="badge-icon">🎓</div>
+                <h4>Beta Tester Badge</h4>
+                <p>Active testers shaping features</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 4rem; margin-bottom: 2rem; color: var(--line-yellow);">Support Tiers</h3>
+        
+        <div class="donation-tiers">
+            <div class="tier">
+                <h4>Roadside Support</h4>
+                <div class="tier-amount">$10</div>
+                <ul>
+                    <li>Beta access to ELDA</li>
+                    <li>Your first Logbook</li>
+                    <li>Founder badge</li>
+                    <li>Journey updates</li>
+                </ul>
+            </div>
+
+            <div class="tier">
+                <h4>Convoy Partner</h4>
+                <div class="tier-amount">$50</div>
+                <ul>
+                    <li>Everything in Roadside</li>
+                    <li>Early FED TMS access</li>
+                    <li>Investor badge</li>
+                    <li>Priority support</li>
+                    <li>Name in credits</li>
+                </ul>
+            </div>
+
+            <div class="tier">
+                <h4>Fleet Founder</h4>
+                <div class="tier-amount">$250</div>
+                <ul>
+                    <li>Everything in Convoy</li>
+                    <li>Custom Logbook design</li>
+                    <li>All badges unlocked</li>
+                    <li>Direct feedback line</li>
+                    <li>Lifetime premium features</li>
+                </ul>
+            </div>
+
+            <div class="tier">
+                <h4>Highway Legend</h4>
+                <div class="tier-amount">$1000+</div>
+                <ul>
+                    <li>Everything above</li>
+                    <li>Exclusive Legend badge</li>
+                    <li>Advisory board access</li>
+                    <li>Lifetime premium features</li>
+                    <li>Your name in the app</li>
+                    <li>Direct influence on roadmap</li>
+                    <li>Shape the future with me</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="signup-form">
+            <h3>Get Your Logbook & Join The Beta</h3>
+            <form id="founderForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Smith">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="role">Your Role in Freight (or "Supporter")</label>
+                    <select id="role" name="role">
+                        <option value="driver">Truck Driver</option>
+                        <option value="dispatcher">Dispatcher</option>
+                        <option value="broker">Broker</option>
+                        <option value="owner">Fleet Owner</option>
+                        <option value="tech">Tech/Developer</option>
+                        <option value="supporter">Supporter (Not in Industry)</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tier">Support Level</label>
+                    <select id="tier" name="tier">
+                        <option value="roadside">Roadside Support - $10</option>
+                        <option value="convoy">Convoy Partner - $50</option>
+                        <option value="fleet">Fleet Founder - $250</option>
+                        <option value="legend">Highway Legend - $1000+</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Why are you joining this mission? (Optional)</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell me your story..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Get My Logbook & Join Beta</button>
+            </form>
+            <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--steel-gray);">
+                After submitting, you'll receive payment instructions and immediate beta access details.
+            </p>
+        </div>
+    </section>
+
+    <section style="padding: 4rem 2rem; background: var(--asphalt-gray); margin: 4rem 0; border-radius: 20px;">
+        <h2 style="text-align: center; font-size: 2.5rem; color: var(--line-yellow); margin-bottom: 2rem;">
+            What You Get as a Founder
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+            <div style="padding: 2rem; background: rgba(255, 215, 0, 0.05); border-radius: 12px; border-left: 4px solid var(--diesel-blue);">
+                <h3 style="color: var(--diesel-blue); margin-bottom: 1rem;">🎮 Beta Access</h3>
+                <p style="color: var(--paper-white);">
+                    Chat with ELDA right now. Try course modules as they're published. Test the FED TMS dashboard. 
+                    See the Logbook system in action. You're not waiting—you're building alongside me.
+                </p>
+            </div>
+            
+            <div style="padding: 2rem; background: rgba(255, 215, 0, 0.05); border-radius: 12px; border-left: 4px solid var(--signal-orange);">
+                <h3 style="color: var(--signal-orange); margin-bottom: 1rem;">📖 Your Logbook</h3>
+                <p style="color: var(--paper-white);">
+                    The first users to get a Logbook in the OpenHWY ecosystem. Your digital identity with custom badges 
+                    showing you were here from day one. This is your story—achievement tracking, connections, reputation.
+                </p>
+            </div>
+            
+            <div style="padding: 2rem; background: rgba(255, 215, 0, 0.05); border-radius: 12px; border-left: 4px solid var(--line-yellow);">
+                <h3 style="color: var(--line-yellow); margin-bottom: 1rem;">🎖️ Exclusive Badges</h3>
+                <p style="color: var(--paper-white);">
+                    Founder, Investor, Beta Tester, or Yarddog badges displayed prominently on your Logbook. 
+                    These are permanent marks that you believed in the mission before anyone else did.
+                </p>
+            </div>
+            
+            <div style="padding: 2rem; background: rgba(255, 215, 0, 0.05); border-radius: 12px; border-left: 4px solid var(--diesel-blue);">
+                <h3 style="color: var(--diesel-blue); margin-bottom: 1rem;">💬 Direct Line</h3>
+                <p style="color: var(--paper-white);">
+                    Share feedback directly with me. Your input shapes features, tools, and how the ecosystem evolves. 
+                    This isn't just beta testing—it's co-creation.
+                </p>
+            </div>
+            
+            <div style="padding: 2rem; background: rgba(255, 215, 0, 0.05); border-radius: 12px; border-left: 4px solid var(--signal-orange);">
+                <h3 style="color: var(--signal-orange); margin-bottom: 1rem;">📊 Behind the Scenes</h3>
+                <p style="color: var(--paper-white);">
+                    Regular updates on development progress, technical challenges I'm solving, and where the build is heading. 
+                    See the 1.5-year journey continue in real-time.
+                </p>
+            </div>
+            
+            <div style="padding: 2rem; background: rgba(255, 215, 0, 0.05); border-radius: 12px; border-left: 4px solid var(--line-yellow);">
+                <h3 style="color: var(--line-yellow); margin-bottom: 1rem;">🚀 Future Benefits</h3>
+                <p style="color: var(--paper-white);">
+                    When Highway Watch Yard launches, founders get priority access. When premium features roll out, 
+                    founders get discounts or lifetime access. You're investing in what's coming next.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 4rem 2rem; max-width: 1000px; margin: 4rem auto; text-align: center;">
+        <h2 style="font-size: 2.5rem; color: var(--line-yellow); margin-bottom: 2rem;">
+            Why Now?
+        </h2>
+        <p style="font-size: 1.2rem; line-height: 1.8; color: var(--paper-white); margin-bottom: 2rem;">
+            AI is coming to freight whether we're ready or not. Big tech companies are building automation tools 
+            without understanding what truckers, dispatchers, and small fleets actually need.
+        </p>
+        <p style="font-size: 1.2rem; line-height: 1.8; color: var(--paper-white); margin-bottom: 2rem;">
+            OpenHWY is different. It's built by someone who spent <strong>10 years behind the wheel</strong>. 
+            Someone who knows the loneliness of the road, the pressure of dispatch, the razor-thin margins of freight operations.
+        </p>
+        <p style="font-size: 1.2rem; line-height: 1.8; color: var(--paper-white); margin-bottom: 2rem;">
+            This is your chance to be part of something that <em>actually understands the industry</em>. 
+            To shape AI tools that enhance human decision-making instead of replacing it.
+        </p>
+        <p style="font-size: 1.3rem; line-height: 1.8; color: var(--signal-orange); font-weight: 600;">
+            The first Logbooks are being issued now. The beta is launching. The mission is real.
+        </p>
+        <a href="#join" class="cta-btn" style="margin-top: 2rem; display: inline-block;">Join The Founders Program</a>
+    </section>
+
+    <section style="padding: 4rem 2rem; background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 107, 53, 0.1)); border-radius: 20px; margin: 4rem 0;">
+        <h2 style="text-align: center; font-size: 2.5rem; color: var(--line-yellow); margin-bottom: 3rem;">
+            Frequently Asked Questions
+        </h2>
+        
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(10, 10, 10, 0.5); border-radius: 12px;">
+                <h4 style="color: var(--line-yellow); margin-bottom: 1rem; font-size: 1.3rem;">
+                    Do I need to be in the freight industry to join?
+                </h4>
+                <p style="color: var(--paper-white); line-height: 1.7;">
+                    Absolutely not. Anyone who believes in the mission can join and get a Logbook. 
+                    Supporters from outside the industry are just as valuable—you're helping fund a tool 
+                    that will change lives for drivers and small fleet owners.
+                </p>
+            </div>
+
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(10, 10, 10, 0.5); border-radius: 12px;">
+                <h4 style="color: var(--line-yellow); margin-bottom: 1rem; font-size: 1.3rem;">
+                    What can I do with beta access right now?
+                </h4>
+                <p style="color: var(--paper-white); line-height: 1.7;">
+                    You can chat with ELDA, explore the dashboard-style Logbook, try course modules as they're published, 
+                    and see the FED TMS dashboard in action. It's early but functional—you'll be testing real features.
+                </p>
+            </div>
+
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(10, 10, 10, 0.5); border-radius: 12px;">
+                <h4 style="color: var(--line-yellow); margin-bottom: 1rem; font-size: 1.3rem;">
+                    How are donations used?
+                </h4>
+                <p style="color: var(--paper-white); line-height: 1.7;">
+                    100% goes toward development: server costs, AI infrastructure, tool integrations, 
+                    Flutter app deployment, and accelerating the build timeline. This is a solo project—every 
+                    dollar directly impacts how fast I can ship features.
+                </p>
+            </div>
+
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(10, 10, 10, 0.5); border-radius: 12px;">
+                <h4 style="color: var(--line-yellow); margin-bottom: 1rem; font-size: 1.3rem;">
+                    Will ELDA stay free?
+                </h4>
+                <p style="color: var(--paper-white); line-height: 1.7;">
+                    Yes. ELDA's core features (courses, basic TMS, ELDA chat, Logbook) will always be free or minimal cost. 
+                    Advanced automation and AI-heavy features in FED may have compute fees, but the mission is to make 
+                    logistics alignment accessible to everyone.
+                </p>
+            </div>
+
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(10, 10, 10, 0.5); border-radius: 12px;">
+                <h4 style="color: var(--line-yellow); margin-bottom: 1rem; font-size: 1.3rem;">
+                    When does Highway Watch Yard launch?
+                </h4>
+                <p style="color: var(--paper-white); line-height: 1.7;">
+                    Targeting 2025, but it depends on how fast ELDA and FED mature. Highway Watch Yard is the biggest 
+                    piece—it's the marketplace that protects human decision-making as AI automates freight booking. 
+                    Founders will get priority access when it launches.
+                </p>
+            </div>
+
+            <div style="padding: 1.5rem; background: rgba(10, 10, 10, 0.5); border-radius: 12px;">
+                <h4 style="color: var(--line-yellow); margin-bottom: 1rem; font-size: 1.3rem;">
+                    Can I get a refund?
+                </h4>
+                <p style="color: var(--paper-white); line-height: 1.7;">
+                    This is a donation-based founder program, not a traditional purchase. Contributions support ongoing 
+                    development, and you receive beta access and badges in return. If you're unsatisfied with beta access, 
+                    reach out directly—I'll work with you.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 4rem 2rem; background: var(--road-black); text-align: center;">
+        <h2 style="font-size: 3rem; color: var(--line-yellow); margin-bottom: 1.5rem;">
+            A Message From The Builder
+        </h2>
+        <div style="max-width: 800px; margin: 0 auto; padding: 3rem; background: rgba(255, 215, 0, 0.05); border-radius: 16px; border: 2px solid rgba(255, 215, 0, 0.2);">
+            <p style="font-size: 1.2rem; line-height: 1.9; color: var(--paper-white); margin-bottom: 1.5rem; font-style: italic;">
+                "I spent 10 years on the road. I know what it's like to wait hours for dispatch. 
+                To watch margins shrink while tech companies build tools that don't understand our world. 
+                To feel the isolation that comes with this job.
+            </p>
+            <p style="font-size: 1.2rem; line-height: 1.9; color: var(--paper-white); margin-bottom: 1.5rem; font-style: italic;">
+                When I stepped away from driving, I made myself a promise: I won't leave without giving back 
+                to the industry that made me who I am.
+            </p>
+            <p style="font-size: 1.2rem; line-height: 1.9; color: var(--paper-white); margin-bottom: 1.5rem; font-style: italic;">
+                For 1.5 years, I've been teaching myself distributed systems, building agents, 
+                creating tools that actually solve real problems. Every line of code. Every late night. Every experiment. 
+                All documented. All saved. All leading to this.
+            </p>
+            <p style="font-size: 1.2rem; line-height: 1.9; color: var(--paper-white); margin-bottom: 1.5rem; font-style: italic;">
+                OpenHWY isn't just my project—it's a mission to protect what matters as AI changes everything. 
+                To keep humans in the driver's seat for the decisions that count.
+            </p>
+            <p style="font-size: 1.3rem; line-height: 1.9; color: var(--signal-orange); font-weight: 700;">
+                Join me. Let's build the future of freight together."
+            </p>
+            <p style="margin-top: 2rem; font-size: 1.1rem; color: var(--line-yellow); font-weight: 600;">
+                — The Guy Who Wouldn't Leave Without Giving Back
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="margin-bottom: 2rem;">
+                <div class="logo" style="justify-content: center; font-size: 2.5rem;">
+                    OPENHWY
+                    <span class="beta-badge">BETA</span>
+                </div>
+                <p style="margin-top: 1rem; color: var(--steel-gray); font-size: 0.9rem;">
+                    A non-profit educational initiative<br>
+                    Created by <strong style="color: var(--line-yellow);">Fast&Easy Dispatching LLC</strong>
+                </p>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" title="Twitter">𝕏</a>
+                <a href="#" title="LinkedIn">in</a>
+                <a href="#" title="GitHub">⚡</a>
+                <a href="#" title="Email">✉</a>
+            </div>
+            
+            <p style="margin-top: 2rem;">
+                Built solo by a driver who refused to leave the industry behind.
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                © 2024 OpenHWY. Infrastructure powered by Fast&Easy Dispatching LLC.
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">
+                <a href="#" style="color: var(--line-yellow); text-decoration: none;">Privacy Policy</a> | 
+                <a href="#" style="color: var(--line-yellow); text-decoration: none; margin-left: 1rem;">Terms of Service</a> |
+                <a href="#" style="color: var(--line-yellow); text-decoration: none; margin-left: 1rem;">Contact</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('founderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                role: document.getElementById('role').value,
+                tier: document.getElementById('tier').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Here you would integrate with your backend/payment system
+            console.log('Founder signup:', formData);
+            
+            // Show success message
+            alert('Welcome to OpenHWY! Check your email for beta access instructions and payment details.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Add scroll-based animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all major sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARK - Atomic Canvas Builder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Toolbar */
+        .toolbar {
+            width: 60px;
+            background: #0a0a0a;
+            border-right: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            padding: 10px 5px;
+            gap: 5px;
+        }
+
+        .tool-btn {
+            width: 50px;
+            height: 50px;
+            background: #222;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.2s;
+        }
+
+        .tool-btn:hover {
+            background: #333;
+            border-color: #555;
+        }
+
+        .tool-btn.active {
+            background: #4a90e2;
+            border-color: #6ba6ff;
+        }
+
+        /* Canvas Area */
+        .canvas-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background: #2a2a2a;
+        }
+
+        #canvas {
+            position: absolute;
+            cursor: crosshair;
+        }
+
+        .remote-cursor {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .cursor-pointer {
+            width: 0;
+            height: 0;
+            border-left: 8px solid;
+            border-bottom: 8px solid transparent;
+        }
+
+        .cursor-label {
+            position: absolute;
+            left: 10px;
+            top: 2px;
+            background: inherit;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        /* Right Panel */
+        .right-panel {
+            width: 280px;
+            background: #0a0a0a;
+            border-left: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-section {
+            border-bottom: 1px solid #333;
+            padding: 15px;
+        }
+
+        .panel-title {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .layers-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .layer-item {
+            padding: 8px 10px;
+            background: #222;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+
+        .layer-item:hover {
+            background: #333;
+        }
+
+        .layer-item.selected {
+            background: #4a90e2;
+        }
+
+        .layer-icon {
+            font-size: 16px;
+        }
+
+        .property-group {
+            margin-bottom: 12px;
+        }
+
+        .property-label {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .property-input {
+            width: 100%;
+            background: #222;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 6px 10px;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .color-input {
+            width: 100%;
+            height: 36px;
+            border: 1px solid #333;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Code Export Panel */
+        .code-export {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            overflow: hidden;
+        }
+
+        .export-btn {
+            background: #4a90e2;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .export-btn:hover {
+            background: #5a9ff2;
+        }
+
+        .code-preview {
+            flex: 1;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow: auto;
+            white-space: pre;
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 8px 15px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            z-index: 100;
+            font-size: 13px;
+        }
+
+        .zoom-controls {
+            display: flex;
+            gap: 5px;
+        }
+
+        .zoom-btn {
+            background: #222;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .selection-handles {
+            position: absolute;
+            pointer-events: none;
+            border: 2px solid #4a90e2;
+        }
+
+        .handle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border: 1px solid #4a90e2;
+            pointer-events: all;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <button class="tool-btn active" data-tool="select" title="Select (V)">↖️</button>
+            <button class="tool-btn" data-tool="rectangle" title="Rectangle (R)">▭</button>
+            <button class="tool-btn" data-tool="circle" title="Circle (C)">⭕</button>
+            <button class="tool-btn" data-tool="text" title="Text (T)">T</button>
+            <button class="tool-btn" data-tool="frame" title="Frame (F)">🖼️</button>
+        </div>
+
+        <!-- Canvas Area -->
+        <div class="canvas-container">
+            <div class="top-bar">
+                <span>MARK Canvas</span>
+                <div class="zoom-controls">
+                    <button class="zoom-btn" id="zoom-out">−</button>
+                    <span id="zoom-level">100%</span>
+                    <button class="zoom-btn" id="zoom-in">+</button>
+                </div>
+                <span id="cursor-pos">0, 0</span>
+            </div>
+            <canvas id="canvas"></canvas>
+            <div id="cursors"></div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <!-- Layers Panel -->
+            <div class="panel-section">
+                <div class="panel-title">Layers</div>
+                <div class="layers-list" id="layers-list"></div>
+            </div>
+
+            <!-- Properties Panel -->
+            <div class="panel-section">
+                <div class="panel-title">Properties</div>
+                <div id="properties-panel">
+                    <div class="property-group">
+                        <div class="property-label">X</div>
+                        <input type="number" class="property-input" id="prop-x" />
+                    </div>
+                    <div class="property-group">
+                        <div class="property-label">Y</div>
+                        <input type="number" class="property-input" id="prop-y" />
+                    </div>
+                    <div class="property-group">
+                        <div class="property-label">Width</div>
+                        <input type="number" class="property-input" id="prop-width" />
+                    </div>
+                    <div class="property-group">
+                        <div class="property-label">Height</div>
+                        <input type="number" class="property-input" id="prop-height" />
+                    </div>
+                    <div class="property-group">
+                        <div class="property-label">Fill</div>
+                        <input type="color" class="color-input" id="prop-fill" value="#4a90e2" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Export -->
+            <div class="code-export">
+                <button class="export-btn" id="export-btn">Generate Code</button>
+                <div class="code-preview" id="code-preview">// Click "Generate Code" to export your design</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // ATOMIC COMPONENT SYSTEM
+        // ============================================
+        
+        class Component {
+            constructor(type, id = Date.now() + Math.random()) {
+                this.id = id;
+                this.type = type;
+                this.transform = { x: 0, y: 0, rotation: 0, scaleX: 1, scaleY: 1 };
+                this.style = { fill: '#4a90e2', stroke: null, opacity: 1 };
+                this.visible = true;
+                this.locked = false;
+            }
+
+            serialize() {
+                return {
+                    id: this.id,
+                    type: this.type,
+                    transform: this.transform,
+                    style: this.style,
+                    visible: this.visible,
+                    locked: this.locked
+                };
+            }
+
+            bounds() {
+                return { x: 0, y: 0, width: 0, height: 0 };
+            }
+
+            containsPoint(x, y) {
+                const bounds = this.bounds();
+                return x >= bounds.x && x <= bounds.x + bounds.width &&
+                       y >= bounds.y && y <= bounds.y + bounds.height;
+            }
+
+            render(ctx) {}
+        }
+
+        class Rectangle extends Component {
+            constructor(x, y, width, height) {
+                super('rectangle');
+                this.transform.x = x;
+                this.transform.y = y;
+                this.width = width;
+                this.height = height;
+            }
+
+            bounds() {
+                return {
+                    x: this.transform.x,
+                    y: this.transform.y,
+                    width: this.width,
+                    height: this.height
+                };
+            }
+
+            render(ctx) {
+                ctx.fillStyle = this.style.fill;
+                ctx.fillRect(this.transform.x, this.transform.y, this.width, this.height);
+                
+                if (this.style.stroke) {
+                    ctx.strokeStyle = this.style.stroke;
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(this.transform.x, this.transform.y, this.width, this.height);
+                }
+            }
+
+            serialize() {
+                return { ...super.serialize(), width: this.width, height: this.height };
+            }
+        }
+
+        class Circle extends Component {
+            constructor(x, y, radius) {
+                super('circle');
+                this.transform.x = x;
+                this.transform.y = y;
+                this.radius = radius;
+            }
+
+            bounds() {
+                return {
+                    x: this.transform.x - this.radius,
+                    y: this.transform.y - this.radius,
+                    width: this.radius * 2,
+                    height: this.radius * 2
+                };
+            }
+
+            containsPoint(x, y) {
+                const dx = x - this.transform.x;
+                const dy = y - this.transform.y;
+                return Math.sqrt(dx * dx + dy * dy) <= this.radius;
+            }
+
+            render(ctx) {
+                ctx.fillStyle = this.style.fill;
+                ctx.beginPath();
+                ctx.arc(this.transform.x, this.transform.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                
+                if (this.style.stroke) {
+                    ctx.strokeStyle = this.style.stroke;
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                }
+            }
+
+            serialize() {
+                return { ...super.serialize(), radius: this.radius };
+            }
+        }
+
+        class TextComponent extends Component {
+            constructor(x, y, text = 'Text') {
+                super('text');
+                this.transform.x = x;
+                this.transform.y = y;
+                this.text = text;
+                this.fontSize = 24;
+                this.fontFamily = 'Arial';
+            }
+
+            bounds() {
+                const width = this.text.length * this.fontSize * 0.6;
+                return {
+                    x: this.transform.x,
+                    y: this.transform.y - this.fontSize,
+                    width: width,
+                    height: this.fontSize
+                };
+            }
+
+            render(ctx) {
+                ctx.fillStyle = this.style.fill;
+                ctx.font = `${this.fontSize}px ${this.fontFamily}`;
+                ctx.fillText(this.text, this.transform.x, this.transform.y);
+            }
+
+            serialize() {
+                return { ...super.serialize(), text: this.text, fontSize: this.fontSize };
+            }
+        }
+
+        // ============================================
+        // SCENE GRAPH
+        // ============================================
+        
+        class SceneGraph {
+            constructor() {
+                this.components = new Map();
+                this.root = null;
+            }
+
+            add(component) {
+                this.components.set(component.id, component);
+                return component.id;
+            }
+
+            remove(id) {
+                this.components.delete(id);
+            }
+
+            get(id) {
+                return this.components.get(id);
+            }
+
+            all() {
+                return Array.from(this.components.values());
+            }
+
+            queryPoint(x, y) {
+                return this.all()
+                    .filter(c => c.visible && c.containsPoint(x, y))
+                    .reverse(); // Reverse for top-to-bottom hit testing
+            }
+
+            serialize() {
+                return {
+                    components: Array.from(this.components.values()).map(c => c.serialize())
+                };
+            }
+        }
+
+        // ============================================
+        // RENDERER
+        // ============================================
+        
+        class CanvasRenderer {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.viewport = { x: 0, y: 0, zoom: 1 };
+                
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+            }
+
+            resize() {
+                const container = this.canvas.parentElement;
+                this.canvas.width = container.clientWidth;
+                this.canvas.height = container.clientHeight;
+            }
+
+            clear() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            }
+
+            render(scene, selection = null) {
+                this.clear();
+                
+                this.ctx.save();
+                this.ctx.translate(this.viewport.x, this.viewport.y);
+                this.ctx.scale(this.viewport.zoom, this.viewport.zoom);
+                
+                scene.all().forEach(component => {
+                    if (component.visible) {
+                        component.render(this.ctx);
+                    }
+                });
+
+                // Draw selection
+                if (selection) {
+                    const bounds = selection.bounds();
+                    this.ctx.strokeStyle = '#4a90e2';
+                    this.ctx.lineWidth = 2 / this.viewport.zoom;
+                    this.ctx.strokeRect(bounds.x, bounds.y, bounds.width, bounds.height);
+                }
+                
+                this.ctx.restore();
+            }
+
+            screenToWorld(x, y) {
+                return {
+                    x: (x - this.viewport.x) / this.viewport.zoom,
+                    y: (y - this.viewport.y) / this.viewport.zoom
+                };
+            }
+        }
+
+        // ============================================
+        // CODE GENERATOR
+        // ============================================
+        
+        class CodeGenerator {
+            static toReact(scene) {
+                let code = "import React from 'react';\n\n";
+                code += "export default function GeneratedComponent() {\n";
+                code += "  return (\n";
+                code += "    <div style={{ position: 'relative', width: '100%', height: '100vh' }}>\n";
+                
+                scene.all().forEach(comp => {
+                    code += this.componentToJSX(comp, 6);
+                });
+                
+                code += "    </div>\n";
+                code += "  );\n";
+                code += "}";
+                return code;
+            }
+
+            static componentToJSX(comp, indent) {
+                const spaces = ' '.repeat(indent);
+                const bounds = comp.bounds();
+                
+                const style = {
+                    position: 'absolute',
+                    left: `${bounds.x}px`,
+                    top: `${bounds.y}px`,
+                    width: `${bounds.width}px`,
+                    height: `${bounds.height}px`,
+                    background: comp.style.fill,
+                };
+
+                if (comp.type === 'circle') {
+                    style.borderRadius = '50%';
+                }
+
+                const styleStr = JSON.stringify(style, null, 2)
+                    .split('\n')
+                    .join('\n' + spaces + '  ');
+
+                let jsx = `${spaces}<div\n`;
+                jsx += `${spaces}  style={${styleStr}}\n`;
+                jsx += `${spaces}>\n`;
+                
+                if (comp.type === 'text') {
+                    jsx += `${spaces}  ${comp.text}\n`;
+                }
+                
+                jsx += `${spaces}</div>\n`;
+                return jsx;
+            }
+
+            static toDioxus(scene) {
+                let code = "use dioxus::prelude::*;\n\n";
+                code += "pub fn GeneratedComponent() -> Element {\n";
+                code += "    rsx! {\n";
+                code += "        div {\n";
+                code += "            style: \"position: relative; width: 100%; height: 100vh;\",\n";
+                
+                scene.all().forEach(comp => {
+                    code += this.componentToRsx(comp, 12);
+                });
+                
+                code += "        }\n";
+                code += "    }\n";
+                code += "}";
+                return code;
+            }
+
+            static componentToRsx(comp, indent) {
+                const spaces = ' '.repeat(indent);
+                const bounds = comp.bounds();
+                
+                let rsx = `${spaces}div {\n`;
+                rsx += `${spaces}    style: "position: absolute; left: ${bounds.x}px; top: ${bounds.y}px; width: ${bounds.width}px; height: ${bounds.height}px; background: ${comp.style.fill};`;
+                
+                if (comp.type === 'circle') {
+                    rsx += ` border-radius: 50%;`;
+                }
+                
+                rsx += `",\n`;
+                
+                if (comp.type === 'text') {
+                    rsx += `${spaces}    "${comp.text}"\n`;
+                }
+                
+                rsx += `${spaces}}\n`;
+                return rsx;
+            }
+        }
+
+        // ============================================
+        // COLLABORATION (Simulated)
+        // ============================================
+        
+        class CollaborationManager {
+            constructor(cursorsContainer) {
+                this.cursorsContainer = cursorsContainer;
+                this.remoteCursors = new Map();
+                this.myColor = this.randomColor();
+                
+                // Simulate remote users
+                this.simulateRemoteUsers();
+            }
+
+            randomColor() {
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#6c5ce7'];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            simulateRemoteUsers() {
+                const users = [
+                    { id: 'user1', name: 'Alice', color: '#ff6b6b' },
+                    { id: 'user2', name: 'Bob', color: '#4ecdc4' }
+                ];
+
+                users.forEach(user => {
+                    const cursorEl = document.createElement('div');
+                    cursorEl.className = 'remote-cursor';
+                    cursorEl.innerHTML = `
+                        <div class="cursor-pointer" style="border-left-color: ${user.color}"></div>
+                        <div class="cursor-label" style="background: ${user.color}">${user.name}</div>
+                    `;
+                    this.cursorsContainer.appendChild(cursorEl);
+                    this.remoteCursors.set(user.id, { element: cursorEl, user });
+
+                    // Animate cursor
+                    this.animateCursor(cursorEl);
+                });
+            }
+
+            animateCursor(el) {
+                setInterval(() => {
+                    const x = Math.random() * window.innerWidth * 0.6 + 100;
+                    const y = Math.random() * window.innerHeight * 0.6 + 100;
+                    el.style.left = x + 'px';
+                    el.style.top = y + 'px';
+                }, 3000);
+            }
+        }
+
+        // ============================================
+        // APPLICATION
+        // ============================================
+        
+        class MarkApp {
+            constructor() {
+                this.scene = new SceneGraph();
+                this.renderer = new CanvasRenderer(document.getElementById('canvas'));
+                this.collaboration = new CollaborationManager(document.getElementById('cursors'));
+                
+                this.currentTool = 'select';
+                this.selection = null;
+                this.isDrawing = false;
+                this.drawStart = null;
+                this.tempComponent = null;
+                
+                this.setupEventListeners();
+                this.render();
+            }
+
+            setupEventListeners() {
+                // Tool selection
+                document.querySelectorAll('.tool-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        this.currentTool = btn.dataset.tool;
+                    });
+                });
+
+                // Canvas events
+                this.renderer.canvas.addEventListener('mousedown', (e) => this.onMouseDown(e));
+                this.renderer.canvas.addEventListener('mousemove', (e) => this.onMouseMove(e));
+                this.renderer.canvas.addEventListener('mouseup', (e) => this.onMouseUp(e));
+
+                // Zoom controls
+                document.getElementById('zoom-in').addEventListener('click', () => {
+                    this.renderer.viewport.zoom *= 1.2;
+                    this.render();
+                    this.updateZoomDisplay();
+                });
+
+                document.getElementById('zoom-out').addEventListener('click', () => {
+                    this.renderer.viewport.zoom /= 1.2;
+                    this.render();
+                    this.updateZoomDisplay();
+                });
+
+                // Export button
+                document.getElementById('export-btn').addEventListener('click', () => {
+                    const code = CodeGenerator.toReact(this.scene);
+                    document.getElementById('code-preview').textContent = code;
+                });
+
+                // Property inputs
+                ['x', 'y', 'width', 'height', 'fill'].forEach(prop => {
+                    const input = document.getElementById(`prop-${prop}`);
+                    input.addEventListener('change', () => this.updateSelectionProperty(prop, input.value));
+                });
+
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Delete' && this.selection) {
+                        this.scene.remove(this.selection.id);
+                        this.selection = null;
+                        this.render();
+                        this.updateLayers();
+                    }
+                });
+            }
+
+            onMouseDown(e) {
+                const rect = this.renderer.canvas.getBoundingClientRect();
+                const pos = this.renderer.screenToWorld(e.clientX - rect.left, e.clientY - rect.top);
+
+                if (this.currentTool === 'select') {
+                    const hits = this.scene.queryPoint(pos.x, pos.y);
+                    this.selection = hits[0] || null;
+                    this.render();
+                    this.updateProperties();
+                } else {
+                    this.isDrawing = true;
+                    this.drawStart = pos;
+                }
+            }
+
+            onMouseMove(e) {
+                const rect = this.renderer.canvas.getBoundingClientRect();
+                const pos = this.renderer.screenToWorld(e.clientX - rect.left, e.clientY - rect.top);
+                
+                document.getElementById('cursor-pos').textContent = `${Math.round(pos.x)}, ${Math.round(pos.y)}`;
+
+                if (this.isDrawing && this.drawStart) {
+                    const width = pos.x - this.drawStart.x;
+                    const height = pos.y - this.drawStart.y;
+
+                    if (this.tempComponent) {
+                        this.scene.remove(this.tempComponent.id);
+                    }
+
+                    if (this.currentTool === 'rectangle') {
+                        this.tempComponent = new Rectangle(this.drawStart.x, this.drawStart.y, width, height);
+                    } else if (this.currentTool === 'circle') {
+                        const radius = Math.sqrt(width * width + height * height);
+                        this.tempComponent = new Circle(this.drawStart.x, this.drawStart.y, radius);
+                    } else if (this.currentTool === 'text') {
+                        this.tempComponent = new TextComponent(this.drawStart.x, this.drawStart.y);
+                    }
+
+                    if (this.tempComponent) {
+                        this.scene.add(this.tempComponent);
+                        this.render();
+                    }
+                }
+            }
+
+            onMouseUp(e) {
+                if (this.isDrawing) {
+                    this.isDrawing = false;
+                    this.drawStart = null;
+                    this.tempComponent = null;
+                    this.updateLayers();
+                }
+            }
+
+            updateProperties() {
+                if (!this.selection) return;
+
+                const bounds = this.selection.bounds();
+                document.getElementById('prop-x').value = Math.round(bounds.x);
+                document.getElementById('prop-y').value = Math.round(bounds.y);
+                document.getElementById('prop-width').value = Math.round(bounds.width);
+                document.getElementById('prop-height').value = Math.round(bounds.height);
+                document.getElementById('prop-fill').value = this.selection.style.fill;
+            }
+
+            updateSelectionProperty(prop, value) {
+                if (!this.selection) return;
+
+                if (prop === 'x') this.selection.transform.x = parseFloat(value);
+                if (prop === 'y') this.selection.transform.y = parseFloat(value);
+                if (prop === 'width' && this.selection.width !== undefined) this.selection.width = parseFloat(value);
+                if (prop === 'height' && this.selection.height !== undefined) this.selection.height = parseFloat(value);
+                if (prop === 'fill') this.selection.style.fill = value;
+
+                this.render();
+            }
+
+            updateLayers() {
+                const layersList = document.getElementById('layers-list');
+                layersList.innerHTML = '';
+
+                this.scene.all().forEach(comp => {
+                    const layerItem = document.createElement('div');
+                    layerItem.className = 'layer-item';
+                    if (this.selection && this.selection.id === comp.id) {
+                        layerItem.classList.add('selected');
+                    }
+
+                    const icon = comp.type === 'rectangle' ? '▭' : 
+                                comp.type === 'circle' ? '⭕' : 
+                                comp.type === 'text' ? 'T' : '📦';
+
+                    layerItem.innerHTML = `
+                        <span class="layer-icon">${icon}</span>
+                        <span>${comp.type} #${comp.id.toString().slice(0, 4)}</span>
+                    `;
+
+                    layerItem.addEventListener('click', () => {
+                        this.selection = comp;
+                        this.render();
+                        this.updateProperties();
+                        this.updateLayers();
+                    });
+
+                    layersList.appendChild(layerItem);
+                });
+            }
+
+            updateZoomDisplay() {
+                document.getElementById('zoom-level').textContent = 
+                    Math.round(this.renderer.viewport.zoom * 100) + '%';
+            }
+
+            render() {
+                this.renderer.render(this.scene, this.selection);
+            }
+        }
+
+        // Initialize the app
+        const app = new MarkApp();
+    </script>
+</body>
+</html>

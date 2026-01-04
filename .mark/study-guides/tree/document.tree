@@ -1,0 +1,52 @@
+.
+├── api
+│   ├── agents.md
+│   ├── auth.md
+│   ├── fetch-agent.md
+│   ├── index.md
+│   ├── models.md
+│   └── run-prompt.md
+├── badges
+│   ├── assigning-badges.md
+│   ├── certified-badges.md
+│   └── ledger-badges.md
+├── design
+│   ├── components.md
+│   ├── openhwy-stack.md
+│   ├── system.md
+│   ├── tokens.md
+│   └── visuals.md
+├── ethics
+│   ├── ai.md
+│   ├── automation.md
+│   ├── data.md
+│   ├── human.md
+│   └── transparency.md
+├── features
+│   ├── chat.md
+│   ├── dashboard.md
+│   ├── inference.md
+│   ├── licensing.md
+│   ├── local-database.md
+│   └── portal.md
+├── guides
+│   ├── cli.md
+│   ├── customizing.md
+│   ├── deploy.md
+│   ├── setup.md
+│   └── training.md
+├── index.tree
+├── misc
+│   ├── build.md
+│   ├── docker.md
+│   ├── index.md
+│   ├── install.md
+│   ├── quickstart.md
+│   └── system-overview.md
+└── onboarding
+    ├── agents.md
+    ├── developers.md
+    ├── faq.md
+    └── users.md
+
+9 directories, 41 files

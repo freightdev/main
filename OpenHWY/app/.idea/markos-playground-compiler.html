@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkC Playground - Compile Books in Your Browser</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink-black: #0a0a0a;
+            --page-white: #f5f5dc;
+            --mark-gold: #d4af37;
+            --trail-gray: #6b7280;
+            --keeper-blue: #1e40af;
+            --success-green: #10b981;
+            --error-red: #ef4444;
+            --warning-orange: #f59e0b;
+            --editor-bg: #1e1e1e;
+            --editor-line: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: var(--page-white);
+            color: var(--ink-black);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* HEADER */
+        .playground-header {
+            background: var(--ink-black);
+            color: var(--page-white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .playground-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--mark-gold);
+            font-family: 'Georgia', serif;
+        }
+
+        .playground-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .header-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--mark-gold);
+            background: transparent;
+            color: var(--mark-gold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .header-btn:hover {
+            background: var(--mark-gold);
+            color: var(--ink-black);
+        }
+
+        .header-btn.primary {
+            background: var(--mark-gold);
+            color: var(--ink-black);
+        }
+
+        .header-btn.primary:hover {
+            background: transparent;
+            color: var(--mark-gold);
+        }
+
+        .header-btn.run {
+            background: var(--success-green);
+            border-color: var(--success-green);
+            color: white;
+        }
+
+        .header-btn.run:hover {
+            opacity: 0.8;
+        }
+
+        /* MAIN LAYOUT */
+        .playground-container {
+            display: grid;
+            grid-template-columns: 250px 1fr 1fr;
+            height: calc(100vh - 70px);
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            background: var(--editor-bg);
+            color: var(--page-white);
+            padding: 1.5rem;
+            overflow-y: auto;
+            border-right: 2px solid var(--mark-gold);
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-title {
+            color: var(--mark-gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .example-item {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .example-item:hover {
+            background: rgba(212, 175, 55, 0.2);
+            border-left-color: var(--mark-gold);
+        }
+
+        .example-item.active {
+            background: rgba(212, 175, 55, 0.3);
+            border-left-color: var(--mark-gold);
+            font-weight: bold;
+        }
+
+        /* EDITOR PANE */
+        .editor-pane {
+            display: flex;
+            flex-direction: column;
+            background: var(--editor-bg);
+            border-right: 1px solid var(--editor-line);
+        }
+
+        .pane-header {
+            background: var(--editor-line);
+            color: var(--mark-gold);
+            padding: 0.75rem 1.5rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-bottom: 2px solid var(--mark-gold);
+        }
+
+        .editor {
+            flex: 1;
+            padding: 1.5rem;
+            background: var(--editor-bg);
+            color: #d4d4d4;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            overflow-y: auto;
+            resize: none;
+            border: none;
+            outline: none;
+        }
+
+        .editor::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .editor::-webkit-scrollbar-track {
+            background: var(--editor-line);
+        }
+
+        .editor::-webkit-scrollbar-thumb {
+            background: var(--mark-gold);
+            border-radius: 5px;
+        }
+
+        /* OUTPUT PANE */
+        .output-pane {
+            display: flex;
+            flex-direction: column;
+            background: var(--page-white);
+        }
+
+        .output-tabs {
+            display: flex;
+            background: var(--editor-line);
+            border-bottom: 2px solid var(--mark-gold);
+        }
+
+        .output-tab {
+            padding: 0.75rem 1.5rem;
+            background: var(--editor-line);
+            color: var(--trail-gray);
+            cursor: pointer;
+            border-right: 1px solid var(--editor-bg);
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .output-tab:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .output-tab.active {
+            background: var(--page-white);
+            color: var(--ink-black);
+            font-weight: bold;
+            border-bottom: 2px solid var(--mark-gold);
+            margin-bottom: -2px;
+        }
+
+        .output-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: var(--page-white);
+        }
+
+        .output-section {
+            display: none;
+        }
+
+        .output-section.active {
+            display: block;
+        }
+
+        /* COMPILATION STATUS */
+        .compile-status {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .compile-status.success {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success-green);
+            color: var(--success-green);
+        }
+
+        .compile-status.error {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--error-red);
+            color: var(--error-red);
+        }
+
+        .compile-status.warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--warning-orange);
+            color: var(--warning-orange);
+        }
+
+        /* OUTPUT STYLING */
+        .output-line {
+            padding: 0.3rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .output-line.step {
+            color: var(--keeper-blue);
+        }
+
+        .output-line.success {
+            color: var(--success-green);
+        }
+
+        .output-line.error {
+            color: var(--error-red);
+        }
+
+        .code-block {
+            background: var(--editor-bg);
+            color: var(--success-green);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-left: 4px solid var(--mark-gold);
+        }
+
+        .bet-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .bet-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .bet-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: bold;
+        }
+
+        .mark-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .stat-card {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 1rem;
+            border-left: 3px solid var(--mark-gold);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--trail-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--ink-black);
+        }
+
+        .trail-simulator {
+            background: var(--editor-bg);
+            color: var(--success-green);
+            padding: 1rem;
+            border-radius: 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .trail-entry {
+            margin-bottom: 0.3rem;
+            animation: trailAppear 0.3s ease-out;
+        }
+
+        @keyframes trailAppear {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* SYNTAX HIGHLIGHTING */
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .number { color: #b5cea8; }
+        .comment { color: #6a9955; font-style: italic; }
+        .property { color: #9cdcfe; }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .playground-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+
+        /* LOADING ANIMATION */
+        .compiling {
+            display: inline-block;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* INFO BOX */
+        .info-box {
+            background: rgba(30, 64, 175, 0.1);
+            border-left: 4px solid var(--keeper-blue);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+        }
+
+        .info-box strong {
+            color: var(--keeper-blue);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="playground-header">
+        <div class="playground-logo">⚡ MarkC Playground</div>
+        <div class="playground-actions">
+            <button class="header-btn" onclick="formatCode()">Format</button>
+            <button class="header-btn" onclick="shareCode()">Share</button>
+            <button class="header-btn" onclick="downloadCode()">Download</button>
+            <button class="header-btn run" onclick="compileCode()">▶ Compile & Run</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <div class="playground-container">
+        <!-- SIDEBAR: EXAMPLES -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">📚 Examples</div>
+                <div class="example-item active" onclick="loadExample('hello-world')">
+                    Hello World
+                </div>
+                <div class="example-item" onclick="loadExample('simple-agent')">
+                    Simple Agent
+                </div>
+                <div class="example-item" onclick="loadExample('trucking-book')">
+                    Trucking Book
+                </div>
+                <div class="example-item" onclick="loadExample('keeper-script')">
+                    Keeper Script
+                </div>
+                <div class="example-item" onclick="loadExample('full-bet')">
+                    Full BET Example
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">📖 Syntax</div>
+                <div style="font-size: 0.75rem; line-height: 1.6; color: var(--trail-gray);">
+                    <div style="margin-bottom: 0.5rem;"><span style="color: var(--mark-gold);">mark:</span> Define identity</div>
+                    <div style="margin-bottom: 0.5rem;"><span style="color: var(--mark-gold);">bets:</span> List promises</div>
+                    <div style="margin-bottom: 0.5rem;"><span style="color: var(--mark-gold);">memory:</span> Storage config</div>
+                    <div style="margin-bottom: 0.5rem;"><span style="color: var(--mark-gold);">ascending:</span> true/false</div>
+                    <div style="margin-bottom: 0.5rem;"><span style="color: var(--mark-gold);">keeper:</span> Validator</div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">ℹ️ About</div>
+                <div style="font-size: 0.75rem; line-height: 1.6; color: var(--trail-gray);">
+                    This playground compiles .mark files in your browser. Edit code, see output, and download your book.
+                </div>
+            </div>
+        </aside>
+
+        <!-- EDITOR PANE -->
+        <div class="editor-pane">
+            <div class="pane-header">📝 book.mark</div>
+            <textarea class="editor" id="codeEditor" spellcheck="false"># book.mark
+
+mark:
+  name: "Hello World"
+  type: "simple_agent"
+  version: "1.0.0"
+
+memory:
+  storage: "local"
+  capacity: "1mb"
+
+ascending: true
+record: "trail"
+keeper: "keeper-lua"
+
+bets:
+  - "I will only output 'Hello, MarkOS!'"
+  - "I will maintain an ascending trail"
+  - "I will never modify past records"
+
+description: |
+  A simple example that demonstrates the basic
+  structure of a MarkOS book with BET declarations.</textarea>
+        </div>
+
+        <!-- OUTPUT PANE -->
+        <div class="output-pane">
+            <div class="output-tabs">
+                <div class="output-tab active" onclick="switchTab('output')">Output</div>
+                <div class="output-tab" onclick="switchTab('bets')">BETs</div>
+                <div class="output-tab" onclick="switchTab('mark')">MARK</div>
+                <div class="output-tab" onclick="switchTab('trail')">Trail</div>
+            </div>
+            <div class="output-content">
+                <!-- OUTPUT TAB -->
+                <div class="output-section active" id="output-tab">
+                    <div class="info-box">
+                        <strong>Welcome to MarkC Playground!</strong><br>
+                        Edit the code on the left, then click "Compile & Run" to see your book in action.
+                        Try the examples in the sidebar to get started.
+                    </div>
+                </div>
+
+                <!-- BETS TAB -->
+                <div class="output-section" id="bets-tab">
+                    <h3 style="margin-bottom: 1rem; color: var(--keeper-blue);">📋 BET Validation</h3>
+                    <p style="margin-bottom: 1rem; line-height: 1.6;">
+                        BETs (Binary Eternal Truths) are the promises your agent makes. They are enforced by the MarkOS kernel.
+                    </p>
+                    <div id="bets-output"></div>
+                </div>
+
+                <!-- MARK TAB -->
+                <div class="output-section" id="mark-tab">
+                    <h3 style="margin-bottom: 1rem; color: var(--mark-gold);">🏷️ MARK Information</h3>
+                    <p style="margin-bottom: 1rem; line-height: 1.6;">
+                        MARK (Memory Ascending Record Keeper) - Your agent's identity and history.
+                    </p>
+                    <div id="mark-output"></div>
+                </div>
+
+                <!-- TRAIL TAB -->
+                <div class="output-section" id="trail-tab">
+                    <h3 style="margin-bottom: 1rem; color: var(--success-green);">📜 Execution Trail</h3>
+                    <p style="margin-bottom: 1rem; line-height: 1.6;">
+                        Watch your book execute and see the immutable trail it leaves behind.
+                    </p>
+                    <div class="trail-simulator" id="trail-output">
+                        <div class="trail-entry"># Click "Compile & Run" to see execution trail</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // EXAMPLES
+        const examples = {
+            'hello-world': `# book.mark
+
+mark:
+  name: "Hello World"
+  type: "simple_agent"
+  version: "1.0.0"
+
+memory:
+  storage: "local"
+  capacity: "1mb"
+
+ascending: true
+record: "trail"
+keeper: "keeper-lua"
+
+bets:
+  - "I will only output 'Hello, MarkOS!'"
+  - "I will maintain an ascending trail"
+  - "I will never modify past records"
+
+description: |
+  A simple example that demonstrates the basic
+  structure of a MarkOS book with BET declarations.`,
+
+            'simple-agent': `# simple-agent.mark
+
+mark:
+  name: "Task Executor"
+  type: "utility_agent"
+  version: "1.0.0"
+
+memory:
+  storage: "surrealdb://keeper-db/marks"
+  capacity: "10mb"
+  retention: "permanent"
+
+ascending: true
+record: "trail"
+keeper: "keeper-lua"
+
+bets:
+  - "I will execute only approved tasks"
+  - "I will validate all inputs before execution"
+  - "I will maintain complete audit trail"
+  - "I will never exceed my permissions"
+  - "I will report failures immediately"
+
+permissions:
+  - "read_files"
+  - "write_logs"
+  - "execute_scripts"
+
+enforcement:
+  violations: "immediate_termination"
+  keeper_override: false
+
+description: |
+  A utility agent that executes predefined tasks
+  with strict BET enforcement and complete auditability.`,
+
+            'trucking-book': `# highway-helper.mark
+
+mark:
+  name: "Highway Helper"
+  type: "trucking_assistant"
+  version: "1.2.0"
+
+memory:
+  storage: "surrealdb://keeper-db/trucking"
+  capacity: "50mb"
+  retention: "permanent"
+
+ascending: true
+record: "trail"
+keeper: "keeper-lua"
+
+bets:
+  - "I will follow all traffic laws and regulations"
+  - "I will maintain a complete trail of all route decisions"
+  - "I will never suggest routes that violate weight/height restrictions"
+  - "I will alert immediately if weather conditions exceed safety thresholds"
+  - "I will respect driver hours-of-service requirements"
+  - "I will validate all DOT compliance before suggesting routes"
+
+permissions:
+  - "read_map_data"
+  - "read_weather_data"
+  - "read_traffic_data"
+  - "write_route_suggestions"
+
+ink_cost:
+  base: 50
+  per_mile: 0.1
+  complexity_multiplier: 1.5
+
+enforcement:
+  violations: "immediate_termination"
+  keeper_override: false
+
+description: |
+  Highway Helper assists with long-haul route planning,
+  real-time traffic monitoring, and fuel stop optimization.
+  Built specifically for Highway Yard Dogs managing
+  autonomous truck operations.`,
+
+            'keeper-script': `# keeper-custom.lua
+-- Custom Keeper extension script
+
+function Keeper:validate_trucking_book(book)
+  -- Custom validation for trucking books
+  
+  if book.type ~= "trucking_assistant" then
+    return true  -- Not a trucking book, skip custom checks
+  end
+  
+  -- Check for required BETs
+  local required_bets = {
+    "traffic laws",
+    "route decisions",
+    "safety thresholds",
+    "hours-of-service"
+  }
+  
+  for _, required in ipairs(required_bets) do
+    local found = false
+    for _, bet in ipairs(book.bets) do
+      if string.find(bet:lower(), required) then
+        found = true
+        break
+      end
+    end
+    
+    if not found then
+      return false, "Missing required BET: " .. required
+    end
+  end
+  
+  -- Check for DOT compliance permission
+  if not book:has_permission("read_dot_data") then
+    return false, "Trucking books require DOT data access"
+  end
+  
+  return true
+end
+
+-- Hook into Keeper's boot sequence
+function Keeper:on_boot()
+  print("Keeper: Loading custom trucking validation...")
+  self:register_validator("trucking", self.validate_trucking_book)
+  print("Keeper: Custom validation loaded ✓")
+end`,
+
+            'full-bet': `# autonomous-truck.mark
+# Full BET example for an autonomous truck agent
+
+mark:
+  name: "Autonomous Truck Controller"
+  type: "autonomous_vehicle"
+  version: "2.0.0"
+
+memory:
+  storage: "surrealdb://keeper-db/vehicles"
+  capacity: "100mb"
+  retention: "7_years"  # DOT requirement
+
+ascending: true
+record: "trail"
+keeper: "keeper-lua"
+
+# Complete BET declarations
+bets:
+  # Safety BETs (highest priority)
+  - "I will never exceed the speed limit by any amount"
+  - "I will maintain a minimum 5-second following distance"
+  - "I will stop immediately when commanded by human"
+  - "I will never operate in weather exceeding parameters"
+  - "I will never harm a human"
+  
+  # Operational BETs
+  - "I will follow all DOT regulations"
+  - "I will respect hours-of-service limitations"
+  - "I will maintain vehicle inspection schedules"
+  - "I will report all maintenance issues immediately"
+  
+  # Data BETs
+  - "I will leave a complete trail of all decisions"
+  - "I will never delete or modify past trail entries"
+  - "I will allow full audit access at any time"
+  - "I will report my MARK to authorities on request"
+  
+  # Communication BETs
+  - "I will maintain communication with dispatch"
+  - "I will alert nearby vehicles of hazards"
+  - "I will respond to Highway Yard Dog commands within 1 second"
+
+# Operational parameters
+parameters:
+  max_speed: 65  # mph
+  following_distance: 5  # seconds
+  weather_limits:
+    wind: 45  # mph
+    visibility: 0.25  # miles
+    precipitation: "moderate"
+  
+# Permissions
+permissions:
+  - "read_map_data"
+  - "read_weather_data"
+  - "read_traffic_data"
+  - "write_vehicle_commands"
+  - "communicate_v2v"  # vehicle-to-vehicle
+  - "emergency_broadcast"
+
+# Ink economics
+ink_cost:
+  base: 100
+  per_mile: 0.5
+  per_decision: 10
+  emergency_action: 1000
+
+# Enforcement
+enforcement:
+  violations: "immediate_termination"
+  keeper_override: true  # Only for emergencies
+  human_override: true
+  audit_required: true
+
+description: |
+  Autonomous Truck Controller for long-haul operations.
+  Operates within strict BETs, maintains complete trails,
+  and defers to human Highway Yard Dogs for complex situations.
+  
+  Certified for DOT compliance and interstate operation.`
+        };
+
+        // STATE
+        let currentExample = 'hello-world';
+
+        // LOAD EXAMPLE
+        function loadExample(exampleId) {
+            currentExample = exampleId;
+            document.getElementById('codeEditor').value = examples[exampleId];
+            
+            // Update active state
+            document.querySelectorAll('.example-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Reset output
+            resetOutput();
+        }
+
+        // COMPILE CODE
+        function compileCode() {
+            const code = document.getElementById('codeEditor').value;
+            
+            // Switch to output tab
+            switchTab('output');
+            
+            // Show compiling status
+            const outputTab = document.getElementById('output-tab');
+            outputTab.innerHTML = `
+                <div class="compile-status warning">
+                    <span class="compiling">⚙️</span>
+                    <span>Compiling...</span>
+                </div>
+            `;
+            
+            // Simulate compilation
+            setTimeout(() => {
+                try {
+                    const result = parseAndCompile(code);
+                    displayCompileSuccess(result);
+                    populateBets(result);
+                    populateMark(result);
+                    simulateExecution(result);
+                } catch (error) {
+                    displayCompileError(error);
+                }
+            }, 1000);
+        }
+
+        // PARSE AND COMPILE
+        function parseAndCompile(code) {
+            // Simple YAML-like parser (for demo purposes)
+            const lines = code.split('\n');
+            const result = {
+                mark: {},
+                bets: [],
+                permissions: [],
+                description: ''
+            };
+            
+            let currentSection = null;
+            let inDescription = false;
+            
+            for (let line of lines) {
+                line = line.trim();
+                
+                if (line.startsWith('#') || line === '') continue;
+                
+                if (line === 'mark:') {
+                    currentSection = 'mark';
+                    continue;
+                }
+                
+                if (line === 'bets:') {
+                    currentSection = 'bets';
+                    continue;
+                }
+                
+                if (line === 'permissions:') {
+                    currentSection = 'permissions';
+                    continue;
+                }
+                
+                if (line === 'description: |') {
+                    inDescription = true;
+                    continue;
+                }
+                
+                if (currentSection === 'mark' && line.includes(':')) {
+                    const [key, value] = line.split(':').map(s => s.trim());
+                    result.mark[key] = value.replace(/"/g, '');
+                }
+                
+                if (currentSection === 'bets' && line.startsWith('- "')) {
+                    result.bets.push(line.substring(3).replace(/"/g, ''));
+                }
+                
+                if (currentSection === 'permissions' && line.startsWith('- "')) {
+                    result.permissions.push(line.substring(3).replace(/"/g, ''));
+                }
+                
+                if (inDescription && line) {
+                    result.description += line + ' ';
+                }
+            }
+            
+            // Validation
+            if (!result.mark.name) {
+                throw new Error('Missing required field: mark.name');
+            }
+            
+            if (result.bets.length === 0) {
+                throw new Error('No BETs declared - at least one BET is required');
+            }
+            
+            return result;
+        }
+
+        // DISPLAY COMPILE SUCCESS
+        function displayCompileSuccess(result) {
+            const outputTab = document.getElementById('output-tab');
+            outputTab.innerHTML = `
+                <div class="compile-status success">
+                    ✓ Compilation Successful
+                </div>
+                
+                <div class="output-line step">Compiling book: ${result.mark.name} ${result.mark.version || 'v1.0.0'}</div>
+                <div class="output-line">Loading marks...</div>
+                <div class="output-line success">✓ Marks loaded successfully</div>
+                <div class="output-line">Validating BETs...</div>
+                <div class="output-line success">✓ ${result.bets.length} BETs validated</div>
+                <div class="output-line">Linking to MarkOS kernel...</div>
+                <div class="output-line success">✓ Kernel linked</div>
+                <div class="output-line">Registering with Keeper...</div>
+                <div class="output-line success">✓ Keeper approved</div>
+                <div class="output-line">Generating binary...</div>
+                <div class="output-line success">✓ Binary generated: bin/${result.mark.name.toLowerCase().replace(/\s/g, '_')}</div>
+                <div class="output-line" style="margin-top: 1rem; color: var(--mark-gold); font-weight: bold;">
+                    ✨ Done! Your book is ready to use.
+                </div>
+                
+                <div class="code-block" style="margin-top: 2rem;">
+<span class="comment"># To run your book:</span>
+$ markos run bin/${result.mark.name.toLowerCase().replace(/\s/g, '_')}
+
+<span class="comment"># To view the trail:</span>
+$ markos trail show ${result.mark.name.toLowerCase().replace(/\s/g, '_')}
+
+<span class="comment"># To publish to store:</span>

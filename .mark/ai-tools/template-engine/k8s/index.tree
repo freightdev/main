@@ -1,0 +1,1371 @@
+.
+├── astro
+│   ├── components
+│   │   ├── Badge
+│   │   │   ├── Badge.astro
+│   │   │   ├── index.ts
+│   │   │   └── TrustBadge.astro
+│   │   ├── Button
+│   │   │   ├── Button.astro
+│   │   │   ├── Button.astro_
+│   │   │   ├── button.types.ts
+│   │   │   ├── button.utils.ts
+│   │   │   ├── button.variants.ts
+│   │   │   ├── index.ts
+│   │   │   └── index.ts_
+│   │   ├── Card
+│   │   │   ├── Card.astro
+│   │   │   ├── CardSurface.astro
+│   │   │   ├── card.types.ts
+│   │   │   ├── card.utils.ts
+│   │   │   ├── card.variants.ts
+│   │   │   ├── ContactCard
+│   │   │   │   ├── ContactCard.astro
+│   │   │   │   └── contact.ts
+│   │   │   ├── FAQCard
+│   │   │   │   ├── FAQCard.astro
+│   │   │   │   ├── FAQCard.config.ts
+│   │   │   │   └── FAQItem.astro
+│   │   │   ├── FeatureCard
+│   │   │   │   ├── FeatureCard.astro
+│   │   │   │   ├── FeatureCard.astro_
+│   │   │   │   ├── FeatureCategoryCard.astro
+│   │   │   │   ├── FeatureCategoryFeature.astro
+│   │   │   │   └── features.ts
+│   │   │   ├── index.ts
+│   │   │   ├── IntegrationCard
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── IntegrationCard.astro
+│   │   │   │   └── IntegrationsSection.astro
+│   │   │   ├── LinkCard
+│   │   │   │   ├── FaqLinkCard.astro
+│   │   │   │   └── index.ts
+│   │   │   ├── MapCard
+│   │   │   │   ├── index.ts
+│   │   │   │   └── MapCard.astro
+│   │   │   ├── PricingCard
+│   │   │   │   ├── PricingCard.astro
+│   │   │   │   ├── PricingFeature.astro
+│   │   │   │   └── pricing.ts
+│   │   │   ├── ReviewCard
+│   │   │   │   ├── index.ts
+│   │   │   │   └── TestimonialsSection.astro
+│   │   │   ├── ServiceCard
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── ServiceCard.astro
+│   │   │   │   └── ServicesSection.astro
+│   │   │   ├── StatCard
+│   │   │   │   ├── StatCard.astro
+│   │   │   │   └── statCard.configs.ts
+│   │   │   ├── StatCard.astro
+│   │   │   ├── TeamCard
+│   │   │   │   ├── TeamCard.astro
+│   │   │   │   └── teamCard.configs.ts
+│   │   │   ├── TestimonialCard
+│   │   │   │   ├── TestimonialCard.astro
+│   │   │   │   └── testimonials.ts
+│   │   │   ├── TestimonialCard.astro
+│   │   │   └── ValueCard
+│   │   │       ├── ValueCard.astro
+│   │   │       └── value.configs.ts
+│   │   ├── Container
+│   │   │   ├── Container.astro
+│   │   │   ├── container.types.ts
+│   │   │   ├── container.utils.ts
+│   │   │   └── index.ts
+│   │   ├── CTA
+│   │   │   ├── CTA.astro
+│   │   │   ├── cta.configs.ts
+│   │   │   ├── cta.types.ts
+│   │   │   ├── cta.variants.ts
+│   │   │   └── index.ts
+│   │   ├── Field
+│   │   │   ├── FormField
+│   │   │   │   ├── FormField.astro
+│   │   │   │   └── form-field.types.ts
+│   │   │   └── Typography
+│   │   │       ├── GradientText.astro
+│   │   │       ├── Heading.astro
+│   │   │       ├── index.ts
+│   │   │       ├── index.ts_
+│   │   │       └── Text.astro
+│   │   ├── Header
+│   │   │   ├── Header.astro
+│   │   │   └── index.ts
+│   │   ├── Hero
+│   │   │   ├── HeroActions.astro
+│   │   │   ├── Hero.astro
+│   │   │   ├── hero.configs.ts
+│   │   │   ├── HeroHeading.astro
+│   │   │   ├── HeroMedia.astro
+│   │   │   ├── hero.types.ts
+│   │   │   ├── hero.variants.ts
+│   │   │   └── index.ts
+│   │   ├── Navbar
+│   │   │   ├── index.ts
+│   │   │   ├── NavbarActions.astro
+│   │   │   ├── Navbar.astro
+│   │   │   ├── NavbarBrand.astro
+│   │   │   ├── navbar.configs.ts
+│   │   │   ├── NavbarLinks.astro
+│   │   │   ├── NavbarMobileMenu.astro
+│   │   │   └── navbar.scripts.ts
+│   │   ├── Section
+│   │   │   ├── ContactSection
+│   │   │   │   ├── contact.configs.ts
+│   │   │   │   ├── ContactForm.astro
+│   │   │   │   ├── ContactSection.astro
+│   │   │   │   └── index.ts
+│   │   │   ├── CTASection
+│   │   │   │   ├── CTASection.astro
+│   │   │   │   └── index.ts
+│   │   │   ├── FAQSection
+│   │   │   │   ├── FAQSection.astro
+│   │   │   │   └── index.ts
+│   │   │   ├── FeatureSection
+│   │   │   │   ├── FeatureSection.astro
+│   │   │   │   └── index.ts
+│   │   │   ├── FooterSection
+│   │   │   │   ├── Footer.astro
+│   │   │   │   ├── FooterBrand.astro
+│   │   │   │   ├── footer.configs.ts
+│   │   │   │   ├── FooterSections.astro
+│   │   │   │   ├── FooterSocial.astro
+│   │   │   │   ├── index.ts
+│   │   │   │   └── TrustSections.astro
+│   │   │   ├── HeroSection
+│   │   │   │   ├── HeroSection.astro
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── PricingSession
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── PricingCard.astro
+│   │   │   │   └── PricingSection.astro
+│   │   │   ├── Section.astro
+│   │   │   ├── SectionHeading.astro
+│   │   │   ├── section.types.ts
+│   │   │   ├── section.utils.ts
+│   │   │   └── section.variants.ts
+│   │   └── Template
+│   │       └── PageComposer
+│   │           ├── component-registry.ts
+│   │           ├── ComposerList.astro
+│   │           ├── ComposerNode.astro
+│   │           ├── composer.types.ts
+│   │           └── PageComposer.astro
+│   ├── index.astro
+│   ├── index.v2.astro
+│   ├── interfaces
+│   │   ├── api
+│   │   │   ├── auth.astro
+│   │   │   ├── contact.astro
+│   │   │   └── payment.astro
+│   │   ├── auth
+│   │   │   ├── login.astro
+│   │   │   └── signup.astro
+│   │   ├── AuthLayout.astro
+│   │   ├── BaseLayout.astro
+│   │   ├── BaseLayout.astro_
+│   │   ├── BaseLayout.configs.ts
+│   │   ├── home
+│   │   │   ├── about
+│   │   │   │   ├── about.astro
+│   │   │   │   └── about.configs.ts
+│   │   │   ├── contact
+│   │   │   │   ├── contact.astro
+│   │   │   │   └── contact.configs.ts
+│   │   │   ├── features
+│   │   │   │   ├── features.astro
+│   │   │   │   └── features.configs.ts
+│   │   │   └── pricing
+│   │   │       ├── pricing.astro
+│   │   │       └── pricing.configs.ts
+│   │   ├── MainLayout.astro
+│   │   └── PaymentLayout.astro
+│   ├── islands
+│   │   └── Counter.tsx
+│   ├── styles
+│   │   ├── global1.css
+│   │   ├── global.css
+│   │   ├── typography.css
+│   │   └── utilities.css
+│   └── types
+│       ├── api.ts
+│       ├── content.ts
+│       ├── index.ts
+│       └── page.ts
+├── codriver
+│   ├── api
+│   │   ├── admin-server.rs
+│   │   └── mod.rs
+│   ├── bin
+│   │   └── codriver_v0.rs
+│   ├── chat
+│   │   ├── mod.rs
+│   │   ├── monitor.rs
+│   │   ├── parser.rs
+│   │   └── writer.rs
+│   ├── config
+│   │   ├── loader.rs
+│   │   ├── mod.rs
+│   │   ├── types.rs
+│   │   └── validator.rs
+│   ├── core
+│   │   ├── agent.rs
+│   │   ├── command.rs
+│   │   ├── grpc_service.rs
+│   │   ├── http_service.rs
+│   │   ├── lib.rs
+│   │   ├── llm.rs
+│   │   ├── main.rs
+│   │   ├── monitor.rs
+│   │   ├── openhwy-tms-api.rs
+│   │   ├── system.rs
+│   │   └── tools.rs
+│   ├── extractors
+│   │   ├── auth.rs
+│   │   ├── json.rs
+│   │   └── mod.rs
+│   ├── handlers
+│   │   ├── batch.rs
+│   │   ├── inference.rs
+│   │   ├── mod.rs
+│   │   ├── streaming.rs
+│   │   └── websocket.rs
+│   ├── lib.rs
+│   ├── main.rs
+│   ├── main_v1.rs
+│   ├── middleware
+│   │   ├── auth.rs
+│   │   ├── cors.rs
+│   │   ├── logging.rs
+│   │   ├── metrics.rs
+│   │   ├── mod.rs
+│   │   └── rate_limit.rs
+│   ├── responses
+│   │   ├── error.rs
+│   │   ├── mod.rs
+│   │   ├── streaming.rs
+│   │   └── success.rs
+│   ├── routes
+│   │   ├── admin.rs
+│   │   ├── chat.rs
+│   │   ├── completions.rs
+│   │   ├── embeddings.rs
+│   │   ├── health.rs
+│   │   ├── matcher.rs
+│   │   ├── models.rs
+│   │   └── mod.rs
+│   ├── server
+│   │   ├── mod.rs
+│   │   ├── server.rs
+│   │   └── upstream.rs
+│   ├── static
+│   │   └── mod.rs
+│   └── tls
+│       └── mod.rs
+├── flutter
+│   ├── app.dart
+│   ├── bootstraps
+│   │   └── bootstrap.dart
+│   ├── configs
+│   │   ├── env.dart
+│   │   └── flavors.dart
+│   ├── errors
+│   │   ├── exception.dart
+│   │   └── failure.dart
+│   ├── main1.dart
+│   ├── main.dart
+│   ├── map_view.dart
+│   ├── models
+│   │   ├── company.dart
+│   │   ├── document.dart
+│   │   ├── driver.dart
+│   │   ├── invoice.dart
+│   │   ├── load.dart
+│   │   ├── message.dart
+│   │   ├── payment.dart
+│   │   └── user.dart
+│   ├── pages
+│   │   ├── accounting_page.dart
+│   │   ├── compliance_page.dart
+│   │   ├── dispatch_page.dart
+│   │   ├── onboarding_page.dart
+│   │   ├── settings_page.dart
+│   │   └── training_page.dart
+│   ├── providers
+│   │   ├── auth_provider.dart
+│   │   ├── document_provider.dart
+│   │   ├── driver_provider.dart
+│   │   ├── invoice_provider.dart
+│   │   ├── load_provider.dart
+│   │   ├── message_provider.dart
+│   │   └── payment_provider.dart
+│   ├── router.dart
+│   ├── screens
+│   │   ├── accounting
+│   │   │   ├── invoice_details_screen.dart
+│   │   │   ├── invoices_list_screen.dart
+│   │   │   ├── invoices_screen.dart
+│   │   │   ├── invoicing_screen.dart
+│   │   │   └── payments_screen.dart
+│   │   ├── compliance
+│   │   │   ├── documents_manager_screen.dart
+│   │   │   ├── documents_screen.dart
+│   │   │   ├── eld_screen.dart
+│   │   │   ├── hos_screen.dart
+│   │   │   ├── hos_tracking_screen.dart
+│   │   │   └── reports_screen.dart
+│   │   ├── dashboard
+│   │   │   ├── calendar_dispatch_screen.dart
+│   │   │   ├── calendar_screen.dart
+│   │   │   ├── create_load_screen.dart
+│   │   │   ├── dashboard_screen.dart
+│   │   │   ├── dashboardv2_screen.dart
+│   │   │   ├── driver_details_screen.dart
+│   │   │   ├── drivers_screen.dart
+│   │   │   ├── loadboard_screen.dart
+│   │   │   ├── load_detail_screen.dart
+│   │   │   ├── load_details_screen.dart
+│   │   │   ├── loads_list_screen.dart
+│   │   │   ├── loads_screen.dart
+│   │   │   └── tracking_screen.dart
+│   │   ├── notifications
+│   │   │   ├── messages_screen.dart
+│   │   │   ├── messaging_screen.dart
+│   │   │   ├── notifications_screen.dart
+│   │   │   └── response_model.dart
+│   │   ├── onboarding
+│   │   │   └── company_screen.dart
+│   │   ├── reports
+│   │   │   └── analytics_screen.dart
+│   │   ├── settings
+│   │   │   ├── company_screen.dart
+│   │   │   ├── profile_screen.dart
+│   │   │   └── settings_main_screen.dart
+│   │   ├── splash
+│   │   │   └── splash_screen.dart
+│   │   └── training
+│   │       └── courses_screen.dart
+│   ├── services
+│   │   ├── api_client.dart
+│   │   ├── auth_service.dart
+│   │   ├── cloud_storage_service.dart
+│   │   ├── database_service.dart
+│   │   ├── document_service.dart
+│   │   ├── driver_service.dart
+│   │   ├── http_client.dart
+│   │   ├── invoice_service.dart
+│   │   ├── load_service.dart
+│   │   ├── local_storage_service.dart
+│   │   ├── logger.dart
+│   │   ├── message_service.dart
+│   │   └── payment_service.dart
+│   ├── styles
+│   │   ├── app_theme.dart
+│   │   ├── colors.dart
+│   │   ├── theme.dart
+│   │   └── typography.dart
+│   ├── theme.dart
+│   ├── utils
+│   │   └── theme.dart
+│   └── widgets
+│       ├── app_button.dart
+│       ├── app_card.dart
+│       ├── app_drawer.dart
+│       ├── app_drawer.dart_
+│       ├── app_empty_state.dart
+│       ├── app_icon.dart
+│       ├── app_loader.dart
+│       ├── app_search_bar.dart
+│       ├── app_stat_card.dart
+│       ├── app_text_field.dart
+│       ├── detail_card.dart
+│       ├── driver_card.dart
+│       ├── driver_detail_card.dart
+│       ├── load_card.dart
+│       ├── load_status_badge.dart
+│       ├── main_navigation.dart
+│       ├── notification_tile.dart
+│       ├── rate_confirmation_form.dart
+│       ├── setup_card.dart
+│       └── video_card.dart
+├── index.tree
+├── lua
+│   ├── autocmds.lua
+│   ├── fdart
+│   │   ├── ai
+│   │   │   ├── agent.lua
+│   │   │   ├── ollama-2.lua
+│   │   │   ├── ollama.lua
+│   │   │   ├── tool_registry.lua
+│   │   │   └── tools
+│   │   │       ├── file_tools.lua
+│   │   │       └── project_tools.lua
+│   │   ├── cli.lua
+│   │   ├── commands
+│   │   │   ├── doctor.lua
+│   │   │   └── init.lua
+│   │   ├── commands.lua
+│   │   ├── config.lua
+│   │   ├── examples
+│   │   │   └── ai_usage.lua
+│   │   ├── logging-2.lua
+│   │   ├── logging.lua
+│   │   ├── plugins
+│   │   │   ├── completion.lua
+│   │   │   ├── editor.lua
+│   │   │   ├── git.lua
+│   │   │   ├── init.lua
+│   │   │   ├── lsp.lua
+│   │   │   └── ui.lua
+│   │   └── utils.lua
+│   ├── init.lua
+│   ├── keymaps.lua
+│   ├── main.lua
+│   ├── options.lua
+│   └── types.lua
+├── nextjs
+│   ├── components
+│   │   ├── action
+│   │   │   ├── index.ts
+│   │   │   ├── Popover
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Popover.tsx
+│   │   │   ├── ScrollArea
+│   │   │   │   ├── index.ts
+│   │   │   │   └── ScrollArea.tsx
+│   │   │   ├── Search
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Search.tsx
+│   │   │   ├── Slider
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Slider.tsx
+│   │   │   ├── Switch
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Switch.tsx
+│   │   │   ├── Tab
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Tab.tsx
+│   │   │   ├── Toggle
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Toggle.tsx
+│   │   │   └── Tooltip
+│   │   │       ├── index.ts
+│   │   │       └── Tooltip.tsx
+│   │   ├── code
+│   │   │   ├── CodeBlock
+│   │   │   │   ├── CodeBlock.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── Keyboard
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Keyboard.tsx
+│   │   │   └── TextHighlight
+│   │   │       ├── index.ts
+│   │   │       └── TextHighlight.tsx
+│   │   ├── content
+│   │   │   ├── Card
+│   │   │   │   ├── Card.tsx
+│   │   │   │   └── index.ts
+│   │   │   └── Iframe
+│   │   │       ├── Iframe.tsx
+│   │   │       └── index.ts
+│   │   ├── cover
+│   │   │   ├── back
+│   │   │   │   └── .gitkeep
+│   │   │   ├── front
+│   │   │   │   └── .gitkeep
+│   │   │   ├── README.md
+│   │   │   └── side
+│   │   │       └── .gitkeep
+│   │   ├── data
+│   │   │   ├── Divider
+│   │   │   │   ├── Divider.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── Pagination
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Pagination.tsx
+│   │   │   ├── ProgressBar
+│   │   │   │   ├── index.ts
+│   │   │   │   └── ProgressBar.tsx
+│   │   │   └── Separator
+│   │   │       ├── index.ts
+│   │   │       └── Separator.tsx
+│   │   ├── display
+│   │   │   ├── Avatar
+│   │   │   │   ├── Avatar.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Badge
+│   │   │   │   ├── Badge.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Blockquote
+│   │   │   │   ├── Blockquote.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Button
+│   │   │   │   ├── Button.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Heading
+│   │   │   │   ├── Heading.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Icon
+│   │   │   │   ├── Icon.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── Logo
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Logo.tsx
+│   │   │   ├── Pill
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Pill.tsx
+│   │   │   ├── StatusDot
+│   │   │   │   ├── index.ts
+│   │   │   │   └── StatusDot.tsx
+│   │   │   ├── Tagline
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Tagline.tsx
+│   │   │   └── Text
+│   │   │       ├── index.ts
+│   │   │       └── Text.tsx
+│   │   ├── document
+│   │   │   ├── book.md
+│   │   │   ├── faq
+│   │   │   │   └── .gitkeep
+│   │   │   ├── get-support
+│   │   │   │   └── .gitkeep
+│   │   │   ├── how-to-guilds
+│   │   │   │   └── manage-access
+│   │   │   │       └── .gitkeep
+│   │   │   ├── integrations
+│   │   │   │   └── .gitkeep
+│   │   │   ├── reference
+│   │   │   │   └── .gitkeep
+│   │   │   ├── resources
+│   │   │   │   ├── changelog.md
+│   │   │   │   ├── comparions.md
+│   │   │   │   ├── features.md
+│   │   │   │   ├── release-stages.md
+│   │   │   │   ├── security.md
+│   │   │   │   ├── use-cases.md
+│   │   │   │   └── versions
+│   │   │   │       └── unstable-builds.md
+│   │   │   └── start
+│   │   │       ├── install-tailos
+│   │   │       │   ├── connections.md
+│   │   │       │   ├── deploying.md
+│   │   │       │   ├── download.md
+│   │   │       │   ├── interations.md
+│   │   │       │   ├── revisioning.md
+│   │   │       │   └── updates.md
+│   │   │       └── quicksetup.md
+│   │   ├── feedback
+│   │   │   ├── Alert
+│   │   │   │   ├── Alert.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Error
+│   │   │   │   ├── Error.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── LoadingDots
+│   │   │   │   ├── index.ts
+│   │   │   │   └── LoadingDots.tsx
+│   │   │   ├── Skeleton
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Skeleton.tsx
+│   │   │   └── Spinner
+│   │   │       ├── index.ts
+│   │   │       └── Spinner.tsx
+│   │   ├── forms
+│   │   │   ├── Checkbox
+│   │   │   │   ├── Checkbox.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Fieldset
+│   │   │   │   ├── Fieldset.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Form
+│   │   │   │   ├── Form.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── Input
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Input.tsx
+│   │   │   ├── Label
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Label.tsx
+│   │   │   ├── Legend
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Legend.tsx
+│   │   │   ├── Output
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Output.tsx
+│   │   │   ├── Radio
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Radio.tsx
+│   │   │   ├── Select
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Select.tsx
+│   │   │   └── Textarea
+│   │   │       ├── index.ts
+│   │   │       └── Textarea.tsx
+│   │   ├── index.ts
+│   │   ├── layout
+│   │   │   ├── AdminLayout.tsx
+│   │   │   ├── AuthLayout.tsx
+│   │   │   ├── BlogLayout.tsx
+│   │   │   ├── CourseLayout.tsx
+│   │   │   ├── DashboardLayout.tsx
+│   │   │   ├── DocsLayout.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── MarketingLayout.tsx
+│   │   │   ├── Navbar
+│   │   │   │   ├── FloatingNavbar.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── PortalLayout.tsx
+│   │   │   ├── ProfileLayout.tsx
+│   │   │   ├── SettingsLayout.tsx
+│   │   │   ├── Shell
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Shell.tsx
+│   │   │   ├── Sidebar
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Sidebar.tsx
+│   │   │   ├── SupportLayout.tsx
+│   │   │   └── ToolsLayout.tsx
+│   │   ├── media
+│   │   │   ├── Audio
+│   │   │   │   ├── Audio.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Canvas
+│   │   │   │   ├── Canvas.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Img
+│   │   │   │   ├── Img.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── Picture
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Picture.tsx
+│   │   │   ├── Svg
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Svg.tsx
+│   │   │   └── Video
+│   │   │       ├── index.ts
+│   │   │       └── Video.tsx
+│   │   ├── meta
+│   │   │   ├── Base
+│   │   │   │   ├── Base.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── Mark
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Mark.tsx
+│   │   │   ├── Script
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Script.tsx
+│   │   │   └── Title
+│   │   │       ├── index.ts
+│   │   │       └── Title.tsx
+│   │   ├── misc
+│   │   │   ├── Datalist
+│   │   │   │   ├── Datalist.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Figcaption
+│   │   │   │   ├── Figcaption.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── Figure
+│   │   │   │   ├── Figure.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── Table
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Table.tsx
+│   │   │   └── Time
+│   │   │       ├── index.ts
+│   │   │       └── Time.tsx
+│   │   ├── navigation
+│   │   │   ├── Area
+│   │   │   │   ├── Area.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── Link
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Link.tsx
+│   │   │   ├── Map
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Map.tsx
+│   │   │   ├── Menu
+│   │   │   │   ├── index.ts
+│   │   │   │   └── Menu.tsx
+│   │   │   └── Option
+│   │   │       ├── index.ts
+│   │   │       └── Option.tsx
+│   │   ├── page
+│   │   │   ├── about
+│   │   │   │   └── .gitkeep
+│   │   │   ├── account
+│   │   │   │   └── .gitkeep
+│   │   │   ├── address
+│   │   │   │   └── .gitkeep
+│   │   │   ├── admin
+│   │   │   │   ├── dashboard
+│   │   │   │   └── .gitkeep
+│   │   │   ├── article
+│   │   │   │   └── .gitkeep
+│   │   │   ├── blog
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── [slug]
+│   │   │   │       └── page.tsx
+│   │   │   ├── blog_
+│   │   │   │   └── .gitkeep
+│   │   │   ├── canva
+│   │   │   │   └── .gitkeep
+│   │   │   ├── career
+│   │   │   │   └── .gitkeep
+│   │   │   ├── cart
+│   │   │   │   └── .gitkeep
+│   │   │   ├── checkin
+│   │   │   │   └── .gitkeep
+│   │   │   ├── checkout
+│   │   │   │   └── .gitkeep
+│   │   │   ├── codespace
+│   │   │   │   └── .gitkeep
+│   │   │   ├── community
+│   │   │   │   └── .gitkeep
+│   │   │   ├── contact
+│   │   │   │   └── .gitkeep
+│   │   │   ├── contract
+│   │   │   │   └── .gitkeep
+│   │   │   ├── cookie
+│   │   │   │   └── .gitkeep
+│   │   │   ├── discussion
+│   │   │   │   └── .gitkeep
+│   │   │   ├── document
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── download
+│   │   │   │   └── .gitkeep
+│   │   │   ├── email
+│   │   │   │   └── .gitkeep
+│   │   │   ├── explore
+│   │   │   │   └── .gitkeep
+│   │   │   ├── feature
+│   │   │   │   └── .gitkeep
+│   │   │   ├── feedback
+│   │   │   │   └── .gitkeep
+│   │   │   ├── forums
+│   │   │   │   └── .gitkeep
+│   │   │   ├── freight
+│   │   │   │   └── .gitkeep
+│   │   │   ├── help
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── home
+│   │   │   │   └── .gitkeep
+│   │   │   ├── issue
+│   │   │   │   └── .gitkeep
+│   │   │   ├── landing
+│   │   │   │   └── .gitkeep
+│   │   │   ├── layout
+│   │   │   │   └── views
+│   │   │   │       ├── app
+│   │   │   │       ├── auth
+│   │   │   │       ├── .gitkeep
+│   │   │   │       └── store
+│   │   │   ├── legal
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── login
+│   │   │   │   └── .gitkeep
+│   │   │   ├── logout
+│   │   │   │   └── .gitkeep
+│   │   │   ├── managing
+│   │   │   │   └── .gitkeep
+│   │   │   ├── marketing
+│   │   │   │   └── .gitkeep
+│   │   │   ├── marketplace
+│   │   │   │   └── .gitkeep
+│   │   │   ├── onboarding
+│   │   │   │   └── .gitkeep
+│   │   │   ├── order
+│   │   │   │   └── .gitkeep
+│   │   │   ├── password-reset
+│   │   │   │   └── .gitkeep
+│   │   │   ├── personal
+│   │   │   │   └── .gitkeep
+│   │   │   ├── platform
+│   │   │   │   └── .gitkeep
+│   │   │   ├── playground
+│   │   │   │   └── .gitkeep
+│   │   │   ├── playlist
+│   │   │   │   └── .gitkeep
+│   │   │   ├── portal
+│   │   │   │   └── .gitkeep
+│   │   │   ├── pricing
+│   │   │   │   └── .gitkeep
+│   │   │   ├── privacy
+│   │   │   │   └── .gitkeep
+│   │   │   ├── profile
+│   │   │   │   └── .gitkeep
+│   │   │   ├── project
+│   │   │   │   └── .gitkeep
+│   │   │   ├── recommendation
+│   │   │   │   └── .gitkeep
+│   │   │   ├── register
+│   │   │   │   └── .gitkeep
+│   │   │   ├── request
+│   │   │   │   └── .gitkeep
+│   │   │   ├── sandbox
+│   │   │   │   └── .gitkeep
+│   │   │   ├── security
+│   │   │   │   └── .gitkeep
+│   │   │   ├── service
+│   │   │   │   └── .gitkeep
+│   │   │   ├── setting
+│   │   │   │   └── .gitkeep
+│   │   │   ├── showcase
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── sign-in
+│   │   │   │   └── .gitkeep
+│   │   │   ├── sign-out
+│   │   │   │   └── .gitkeep
+│   │   │   ├── status
+│   │   │   │   └── .gitkeep
+│   │   │   ├── storage
+│   │   │   │   └── .gitkeep
+│   │   │   ├── store
+│   │   │   │   └── .gitkeep
+│   │   │   ├── subscription
+│   │   │   │   └── .gitkeep
+│   │   │   ├── support
+│   │   │   │   └── business
+│   │   │   │       └── .gitkeep
+│   │   │   ├── term
+│   │   │   │   └── .gitkeep
+│   │   │   ├── user
+│   │   │   │   └── .gitkeep
+│   │   │   └── wallet
+│   │   │       └── .gitkeep
+│   │   ├── scroll
+│   │   │   ├── admin
+│   │   │   │   └── .gitkeep
+│   │   │   ├── advertising
+│   │   │   │   └── .gitkeep
+│   │   │   ├── banner
+│   │   │   │   └── .gitkeep
+│   │   │   ├── chat
+│   │   │   │   └── .gitkeep
+│   │   │   ├── error
+│   │   │   │   └── .gitkeep
+│   │   │   ├── faq
+│   │   │   │   └── .gitkeep
+│   │   │   ├── feedback
+│   │   │   │   └── .gitkeep
+│   │   │   ├── help
+│   │   │   │   └── .gitkeep
+│   │   │   ├── history
+│   │   │   │   └── .gitkeep
+│   │   │   ├── layout
+│   │   │   │   └── views
+│   │   │   │       ├── app
+│   │   │   │       ├── auth
+│   │   │   │       ├── .gitkeep
+│   │   │   │       └── store
+│   │   │   ├── loading
+│   │   │   │   └── .gitkeep
+│   │   │   ├── logging
+│   │   │   │   └── .gitkeep
+│   │   │   ├── map
+│   │   │   │   └── .gitkeep
+│   │   │   ├── me
+│   │   │   │   └── .gitkeep
+│   │   │   ├── media
+│   │   │   │   └── .gitkeep
+│   │   │   ├── menu
+│   │   │   │   └── .gitkeep
+│   │   │   ├── message
+│   │   │   │   └── .gitkeep
+│   │   │   ├── modal
+│   │   │   │   └── .gitkeep
+│   │   │   ├── payment
+│   │   │   │   └── .gitkeep
+│   │   │   ├── phone
+│   │   │   │   └── .gitkeep
+│   │   │   ├── popup
+│   │   │   │   └── .gitkeep
+│   │   │   ├── progress
+│   │   │   │   └── .gitkeep
+│   │   │   ├── review
+│   │   │   │   └── .gitkeep
+│   │   │   ├── search
+│   │   │   │   └── .gitkeep
+│   │   │   ├── tool
+│   │   │   │   └── .gitkeep
+│   │   │   ├── upload
+│   │   │   │   └── .gitkeep
+│   │   │   ├── user
+│   │   │   │   └── .gitkeep
+│   │   │   ├── utility
+│   │   │   │   └── .gitkeep
+│   │   │   └── weather
+│   │   │       └── .gitkeep
+│   │   ├── session
+│   │   │   ├── index.ts
+│   │   │   └── Marketing
+│   │   │       ├── CTASession.tsx
+│   │   │       ├── DemoSession.tsx
+│   │   │       ├── FeaturesSession.tsx
+│   │   │       ├── FooterSession.tsx
+│   │   │       ├── HeroSession.tsx
+│   │   │       ├── index.ts
+│   │   │       ├── PoweringSession.tsx
+│   │   │       ├── PricingSession.tsx
+│   │   │       └── SponsorSession.tsx
+│   │   ├── store
+│   │   │   ├── box
+│   │   │   │   ├── deposit
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   ├── .gitkeep
+│   │   │   │   └── return
+│   │   │   │       └── .gitkeep
+│   │   │   ├── case
+│   │   │   │   └── .gitkeep
+│   │   │   ├── rack
+│   │   │   │   └── .gitkeep
+│   │   │   ├── shelf
+│   │   │   │   └── .gitkeep
+│   │   │   ├── stand
+│   │   │   │   ├── checkout
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   └── .gitkeep
+│   │   │   └── wall
+│   │   │       └── .gitkeep
+│   │   └── structure
+│   │       ├── Article
+│   │       │   ├── Article.tsx
+│   │       │   └── index.ts
+│   │       ├── Aside
+│   │       │   ├── Aside.tsx
+│   │       │   └── index.ts
+│   │       ├── Footer
+│   │       │   ├── Footer.tsx
+│   │       │   └── index.ts
+│   │       ├── Header
+│   │       │   ├── Header.tsx
+│   │       │   └── index.ts
+│   │       ├── index.ts
+│   │       ├── Main
+│   │       │   ├── index.ts
+│   │       │   └── Main.tsx
+│   │       ├── Nav
+│   │       │   ├── index.ts
+│   │       │   └── Nav.tsx
+│   │       └── Section
+│   │           ├── index.ts
+│   │           └── Section.tsx
+│   ├── configs.ts
+│   ├── constants.ts
+│   ├── (dashboard)
+│   │   ├── admin
+│   │   │   ├── dashboard
+│   │   │   │   ├── changes
+│   │   │   │   │   ├── course
+│   │   │   │   │   ├── dashboard
+│   │   │   │   │   ├── layout
+│   │   │   │   │   ├── page
+│   │   │   │   │   └── portal
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── testing
+│   │   │   │       ├── api
+│   │   │   │       ├── dashboard
+│   │   │   │       ├── pages
+│   │   │   │       └── sandbox
+│   │   │   └── settings
+│   │   │       ├── account
+│   │   │       │   └── page.tsx
+│   │   │       ├── badges
+│   │   │       │   └── page.tsx
+│   │   │       ├── connectors
+│   │   │       │   └── page.tsx
+│   │   │       ├── datacontrol
+│   │   │       │   └── page.tsx
+│   │   │       ├── general
+│   │   │       │   └── page.tsx
+│   │   │       ├── layout.tsx
+│   │   │       ├── licenses
+│   │   │       │   └── page.tsx
+│   │   │       ├── notifications
+│   │   │       │   └── page.tsx
+│   │   │       ├── payments
+│   │   │       │   ├── history
+│   │   │       │   └── page.tsx
+│   │   │       ├── personalization
+│   │   │       │   └── page.tsx
+│   │   │       └── security
+│   │   │           └── page.tsx
+│   │   ├── (auth)
+│   │   │   ├── layout.tsx
+│   │   │   ├── login
+│   │   │   │   └── page.tsx
+│   │   │   ├── oauth
+│   │   │   │   ├── callback
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── signup
+│   │   │       └── page.tsx
+│   │   └── (user)
+│   │       ├── course
+│   │       │   ├── layout.tsx
+│   │       │   ├── leaderboard
+│   │       │   │   └── page.tsx
+│   │       │   ├── learning
+│   │       │   │   └── page.tsx
+│   │       │   └── profile
+│   │       │       └── page.tsx
+│   │       ├── dashboard
+│   │       │   ├── billing
+│   │       │   │   └── page.tsx
+│   │       │   ├── clients
+│   │       │   │   ├── [clientId]
+│   │       │   │   └── page.tsx
+│   │       │   ├── connections
+│   │       │   │   ├── community
+│   │       │   │   ├── create
+│   │       │   │   ├── loadboard
+│   │       │   │   ├── page.tsx
+│   │       │   │   └── status
+│   │       │   ├── documents
+│   │       │   │   └── page.tsx
+│   │       │   ├── layout.tsx
+│   │       │   ├── loads
+│   │       │   │   ├── [loadId]
+│   │       │   │   └── page.tsx
+│   │       │   ├── profile
+│   │       │   │   └── page.tsx
+│   │       │   ├── reports
+│   │       │   │   └── page.tsx
+│   │       │   └── tools
+│   │       │       └── page.tsx
+│   │       └── settings
+│   │           ├── account
+│   │           │   └── page.tsx
+│   │           ├── badges
+│   │           │   └── page.tsx
+│   │           ├── connectors
+│   │           │   └── page.tsx
+│   │           ├── datacontrol
+│   │           │   └── page.tsx
+│   │           ├── general
+│   │           │   └── page.tsx
+│   │           ├── layout.tsx
+│   │           ├── licenses
+│   │           │   └── page.tsx
+│   │           ├── notifications
+│   │           │   └── page.tsx
+│   │           ├── payments
+│   │           │   ├── history
+│   │           │   └── page.tsx
+│   │           ├── personalization
+│   │           │   └── page.tsx
+│   │           └── security
+│   │               └── page.tsx
+│   ├── index.ts
+│   ├── layout.tsx
+│   ├── (marketing)
+│   │   ├── about
+│   │   │   └── page.tsx
+│   │   ├── careers
+│   │   │   └── page.tsx
+│   │   ├── contact
+│   │   │   └── page.tsx
+│   │   ├── feedback
+│   │   │   └── page.tsx
+│   │   ├── page.tsx
+│   │   ├── pricing
+│   │   │   └── page.tsx
+│   │   └── testimonial
+│   │       └── page.tsx
+│   ├── utils
+│   │   ├── classNames.ts
+│   │   ├── cn.ts
+│   │   ├── index.ts
+│   │   ├── props.ts
+│   │   └── ui.ts
+│   └── utils.ts
+└── zbox-env
+    ├── agents
+    │   ├── gpg-agent.zsh
+    │   └── ssh-agent.zsh
+    ├── defaults
+    │   ├── autoload.zsh
+    │   ├── color.zsh
+    │   ├── keybind.zsh
+    │   ├── setopt.zsh
+    │   └── zstyle.zsh
+    ├── dotdirs
+    │   ├── finda
+    │   │   ├── config
+    │   │   └── history
+    │   ├── fixa
+    │   │   ├── config
+    │   │   └── fix.log
+    │   ├── gita
+    │   │   └── config
+    │   ├── hypr
+    │   │   └── hyprland.conf
+    │   ├── neovide
+    │   │   └── config.toml
+    │   ├── ranger
+    │   │   ├── commands_full.py
+    │   │   ├── commands.py
+    │   │   ├── rc.conf
+    │   │   ├── rifle.conf
+    │   │   └── scope.sh
+    │   ├── serva
+    │   │   ├── config
+    │   │   ├── groups.conf
+    │   │   ├── serva.log
+    │   │   └── servers.conf
+    │   └── zed
+    │       ├── development_credentials
+    │       ├── settings.json
+    │       └── themes
+    ├── dotfiles
+    │   ├── .gitconfig
+    │   ├── .nanorc
+    │   ├── .zprofile
+    │   ├── .zshenv
+    │   └── .zshrc
+    ├── functions
+    │   ├── archive.zsh
+    │   ├── backup.zsh
+    │   ├── docker.zsh
+    │   ├── encryption.zsh
+    │   ├── finda.zsh
+    │   ├── fixa.zsh
+    │   ├── gita.zsh
+    │   ├── github.zsh
+    │   ├── history.zsh
+    │   ├── manifest.zsh
+    │   ├── network.zsh
+    │   ├── nuka.zsh
+    │   ├── quick.zsh
+    │   ├── scana.zsh
+    │   ├── search.zsh
+    │   ├── senda.zsh
+    │   ├── serva.zsh
+    │   ├── siza.zsh
+    │   ├── storage.zsh
+    │   ├── system.zsh
+    │   ├── trash.zsh
+    │   └── vm-manager.zsh
+    ├── helpers
+    │   ├── agent_helpers.zsh
+    │   ├── file_helpers.zsh
+    │   ├── fix_ssh_config.sh
+    │   ├── github-repo-selector.zsh
+    │   ├── hydration_helpers.zsh
+    │   ├── input_helpers.zsh
+    │   ├── logging_helpers.zsh
+    │   ├── memory_helpers.zsh
+    │   ├── model_helpers.zsh
+    │   ├── network_helpers.zsh
+    │   ├── node-manager.zsh
+    │   ├── nomad-integration.zsh
+    │   ├── output_helpers.zsh
+    │   ├── parsing_helpers.zsh
+    │   ├── profile-monitor.zsh
+    │   ├── resource-monitor.zsh
+    │   ├── security_helpers.zsh
+    │   ├── sync-identity.zsh
+    │   ├── system_helpers.zsh
+    │   ├── _untested
+    │   │   ├── zbox-agent-environment.plugin.zsh
+    │   │   ├── zbox_agent_environment.zsh
+    │   │   ├── zbox-master-agent-enviroment.plugin.zsh
+    │   │   ├── zbox_memory_advanced_system.zsh
+    │   │   ├── zbox_memory_integration_wrapper.zsh
+    │   │   ├── zbox_memory_management_system.zsh
+    │   │   ├── zbox_path_constants.zsh
+    │   │   ├── zbox_postgreSQL_memory_interface.py
+    │   │   ├── zbox_security_system.zsh
+    │   │   ├── zbox_spawn_instants.zsh
+    │   │   ├── zboxxy.zsh
+    │   │   └── zbox.zsh
+    │   └── validation_helpers.zsh
+    ├── loader.zsh
+    ├── main.zsh
+    ├── scripts
+    │   ├── add_missing_docstrings.py
+    │   ├── agency-client.py
+    │   ├── ai-control.sh
+    │   ├── audit_components.sh
+    │   ├── audit-system-status.sh
+    │   ├── build-all.sh
+    │   ├── check-models-integrity.sh
+    │   ├── code-indexer.py
+    │   ├── collect
+    │   │   ├── daily-digest.sh
+    │   │   ├── quick-test.sh
+    │   │   ├── scrape-leads.sh
+    │   │   ├── start-lead-system.sh
+    │   │   ├── status-lead-system.sh
+    │   │   ├── stop-lead-system.sh
+    │   │   └── test_leads.py
+    │   ├── collection-webhook.py
+    │   ├── common
+    │   │   ├── analyze-full-projects.zsh
+    │   │   ├── barrel-typescript-ui.sh
+    │   │   ├── c++-api-extractor.sh
+    │   │   ├── check-for-duplicates.zsh
+    │   │   ├── check-ollama-cluster.py
+    │   │   ├── check-recent-outputs.sh
+    │   │   ├── cleanup-whitespaces.sh
+    │   │   ├── convert-json-o-yaml.sh
+    │   │   ├── convert-yaml-o-json.sh
+    │   │   ├── git-keep-helper.sh
+    │   │   ├── helpful-auto-fix.zsh
+    │   │   ├── push-file-updates.sh
+    │   │   ├── remove-barrel-typescript-ui.sh
+    │   │   └── reverse-init-collector.zsh
+    │   ├── create-all-commands.sh
+    │   ├── create-commands.sh
+    │   ├── data-collector-orchestrator.py
+    │   ├── deep-scan.sh
+    │   ├── download-models.sh
+    │   ├── generate_model_configs.py
+    │   ├── golang
+    │   │   ├── go-auto-fix.sh
+    │   │   ├── go-build-errors.sh
+    │   │   ├── go-comprehensive-check.sh
+    │   │   ├── go-debug-toolkit.sh
+    │   │   ├── go-fix-content.sh
+    │   │   ├── go-quick-debug.sh
+    │   │   ├── go-scaffold-check.sh
+    │   │   └── go-tools.zsh
+    │   ├── index-models.sh
+    │   ├── index-prompts.sh
+    │   ├── install
+    │   │   ├── install-dependencies.zsh
+    │   │   ├── install-infrastructure.zsh
+    │   │   ├── install_llama_cpp.sh
+    │   │   ├── install-miniconda.sh
+    │   │   ├── install-poetry.sh
+    │   │   ├── install-systems.zsh
+    │   │   ├── install-tools.zsh
+    │   │   ├── install-yq.sh
+    │   │   └── install-zsh-5.9.zsh
+    │   ├── install-models.sh
+    │   ├── list-models.sh
+    │   ├── list-prompts.sh
+    │   ├── ollama-cluster.py
+    │   ├── pre-flight.sh
+    │   ├── pull-models.sh
+    │   ├── python-make-init.sh
+    │   ├── setup-auto-sync.sh
+    │   ├── setup-data-collectors.sh
+    │   ├── setup-rag-mcp.sh
+    │   ├── setup.sh
+    │   ├── setup.sh_
+    │   ├── start-agency.sh
+    │   ├── start-all-services.sh
+    │   ├── start-auto-collection.sh
+    │   ├── start.sh
+    │   ├── state-restore.sh
+    │   ├── state-sync.sh
+    │   ├── status-check.sh
+    │   ├── status.sh
+    │   ├── stop-agency.sh
+    │   ├── stop.sh
+    │   ├── system-status.sh
+    │   ├── test-db.sh
+    │   ├── trigger-collection-api.sh
+    │   ├── update_with_env_pairs.py
+    │   ├── utility
+    │   │   ├── bash_helpers.sh
+    │   │   ├── .broken
+    │   │   │   ├── config_readers.sh
+    │   │   │   └── dotfiles_setups.sh
+    │   │   └── package_helpers.sh
+    │   └── validate-models.sh
+    ├── settings
+    │   ├── aliases.zsh
+    │   ├── exports.zsh
+    │   ├── plugins.zsh
+    │   └── prompts.zsh
+    ├── setups
+    │   ├── android.zsh
+    │   ├── bun.zsh
+    │   ├── cargo.zsh
+    │   ├── ollama.zsh
+    │   └── pyenv.zsh
+    └── testings
+        ├── go_test
+        │   ├── go.mod
+        │   └── main.go
+        ├── node_test
+        │   ├── index.js
+        │   ├── index.ts
+        │   └── package.json
+        ├── python_test
+        │   └── python_test.py
+        ├── pytorch_test
+        │   ├── core
+        │   │   ├── config.py
+        │   │   └── logic.py
+        │   ├── deploy.sh
+        │   ├── docs
+        │   │   ├── INSTALL.md
+        │   │   └── QUICKSTART.md
+        │   ├── main.py
+        │   ├── README.md
+        │   └── src
+        │       ├── generate.py
+        │       ├── handlers.py
+        │       ├── helpers.py
+        │       ├── utils.py
+        │       └── validators.py
+        ├── rust_test
+        │   ├── Cargo.toml
+        │   └── src
+        │       └── main.rs
+        ├── _untested
+        │   ├── archive-manager-v1.sh
+        │   ├── archive-manager-v2.sh
+        │   ├── backup-manager-v1.sh
+        │   ├── backup-manager-v2.sh
+        │   ├── enterprise_setup.zsh
+        │   ├── environment
+        │   │   ├── env-acces-bootstrap-v1.sh
+        │   │   ├── env-bootstrap-v1.sh
+        │   │   ├── env-bootstrap-v2.zsh
+        │   │   ├── env-containerd-v1.sh
+        │   │   ├── env-init-v1.zsh
+        │   │   ├── env-list-and-load-v1.zsh
+        │   │   ├── env-loader-v1.zsh
+        │   │   ├── env-loader-v2.zsh
+        │   │   ├── env-load-order-v1.zsh
+        │   │   ├── env-load-secrets-v1.zsh
+        │   │   ├── env-prompt-for-backup-v1.zsh
+        │   │   ├── env-quick-launch-v1.zsh
+        │   │   └── env-sandbox-v1.sh
+        │   ├── generate-enterprise-leptos.sh
+        │   ├── quick_archives.sh
+        │   ├── quick_backups.sh
+        │   ├── setup_python-project.sh
+        │   └── system
+        │       ├── boostrap.sh
+        │       ├── build-perf-storage.sh
+        │       ├── check-system-health.sh
+        │       ├── cloudflare-lockdown.sh
+        │       ├── deploy-secure.sh
+        │       ├── start-exit-node.zsh
+        │       ├── system-health-check.zsh
+        │       ├── test-system.zsh
+        │       ├── tune-my-nvme.sh
+        │       └── watch-exit-node.zsh
+        └── verify-dev-setup.sh
+
+424 directories, 945 files

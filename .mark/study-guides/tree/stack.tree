@@ -1,0 +1,26 @@
+.
+├── agent.yaml
+├── api.yaml
+├── current.yaml
+├── debug.yaml
+├── fail_safe.yaml
+├── file.yaml
+├── goal.yaml
+├── history.yaml
+├── inbox.yaml
+├── index.tree
+├── input.yaml
+├── limits.yaml
+├── loop.yaml
+├── output.yaml
+├── reasons.yaml
+├── stack.yaml
+├── system.yaml
+├── task.yaml
+├── ticks.yaml
+├── tmestamps.yaml
+├── tokens.yaml
+├── topic.yaml
+└── verbose.yaml
+
+1 directory, 23 files
