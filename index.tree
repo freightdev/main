@@ -1,403 +1,104 @@
 .
+├── Codriver
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   ├── Dockerfile.codriver
+│   ├── etc
+│   │   ├── codriver.toml
+│   │   └── systemd
+│   │       ├── codriver-auth.service
+│   │       ├── codriver-email.service
+│   │       ├── codriver-payment.service
+│   │       ├── codriver.service
+│   │       ├── codriver-user.service
+│   │       ├── housing-collector.service
+│   │       ├── housing-collector.timer
+│   │       ├── lead-analyzer.service
+│   │       ├── lead-manager.service
+│   │       ├── lead-scraper-daily.service
+│   │       ├── lead-scraper-daily.timer
+│   │       ├── lead-scraper.service
+│   │       ├── llamacpp.service
+│   │       ├── surrealdb.service
+│   │       ├── trucking-collector.service
+│   │       └── trucking-collector.timer
+│   └── src
+│       ├── api
+│       │   ├── admin-server.rs
+│       │   └── mod.rs
+│       ├── bin
+│       │   ├── codriver.rs
+│       │   └── codriver_v0.rs
+│       ├── chat
+│       │   ├── mod.rs
+│       │   ├── monitor.rs
+│       │   ├── parser.rs
+│       │   └── writer.rs
+│       ├── config
+│       │   ├── codriver.toml
+│       │   ├── loader.rs
+│       │   ├── mod.rs
+│       │   ├── types.rs
+│       │   └── validator.rs
+│       ├── core
+│       │   ├── agent.rs
+│       │   ├── command.rs
+│       │   ├── grpc_service.rs
+│       │   ├── http_service.rs
+│       │   ├── lib.rs
+│       │   ├── llm.rs
+│       │   ├── main.rs
+│       │   ├── mod.rs
+│       │   ├── monitor.rs
+│       │   ├── openhwy-tms-api.rs
+│       │   ├── system.rs
+│       │   └── tools.rs
+│       ├── extractors
+│       │   ├── auth.rs
+│       │   ├── json.rs
+│       │   └── mod.rs
+│       ├── handlers
+│       │   ├── batch.rs
+│       │   ├── inference.rs
+│       │   ├── mod.rs
+│       │   ├── streaming.rs
+│       │   └── websocket.rs
+│       ├── lib.rs
+│       ├── main.rs
+│       ├── main_v1.rs
+│       ├── middleware
+│       │   ├── auth.rs
+│       │   ├── cors.rs
+│       │   ├── logging.rs
+│       │   ├── metrics.rs
+│       │   ├── mod.rs
+│       │   └── rate_limit.rs
+│       ├── responses
+│       │   ├── error.rs
+│       │   ├── mod.rs
+│       │   ├── streaming.rs
+│       │   └── success.rs
+│       ├── routes
+│       │   ├── admin.rs
+│       │   ├── chat.rs
+│       │   ├── completions.rs
+│       │   ├── embeddings.rs
+│       │   ├── health.rs
+│       │   ├── matcher.rs
+│       │   ├── models.rs
+│       │   └── mod.rs
+│       ├── server
+│       │   ├── mod.rs
+│       │   ├── server.rs
+│       │   └── upstream.rs
+│       ├── static
+│       │   └── mod.rs
+│       └── tls
+│           └── mod.rs
+├── .gitignore
 ├── index.tree
 ├── .mark
-│   ├── ai-agents
-│   │   ├── Cargo.toml
-│   │   ├── Codriver
-│   │   │   ├── etc
-│   │   │   │   └── systemd
-│   │   │   │       ├── codriver-auth.service
-│   │   │   │       ├── codriver-email.service
-│   │   │   │       ├── codriver-payment.service
-│   │   │   │       ├── codriver-user.service
-│   │   │   │       ├── housing-collector.service
-│   │   │   │       ├── housing-collector.timer
-│   │   │   │       ├── lead-analyzer.service
-│   │   │   │       ├── lead-manager.service
-│   │   │   │       ├── lead-scraper-daily.service
-│   │   │   │       ├── lead-scraper-daily.timer
-│   │   │   │       ├── lead-scraper.service
-│   │   │   │       ├── llamacpp.service
-│   │   │   │       ├── surrealdb.service
-│   │   │   │       ├── trucking-collector.service
-│   │   │   │       └── trucking-collector.timer
-│   │   │   └── src
-│   │   │       ├── api
-│   │   │       │   ├── admin-server.rs
-│   │   │       │   └── mod.rs
-│   │   │       ├── bin
-│   │   │       │   ├── codriver.rs
-│   │   │       │   ├── codriver_v0.rs
-│   │   │       │   ├── marketeer.rs
-│   │   │       │   └── marketeer_v0.rs
-│   │   │       ├── chat
-│   │   │       │   ├── mod.rs
-│   │   │       │   ├── monitor.rs
-│   │   │       │   ├── parser.rs
-│   │   │       │   └── writer.rs
-│   │   │       ├── config
-│   │   │       │   ├── codriver.toml
-│   │   │       │   ├── loader.rs
-│   │   │       │   ├── marketeer.toml
-│   │   │       │   ├── mod.rs
-│   │   │       │   ├── types.rs
-│   │   │       │   └── validator.rs
-│   │   │       ├── core
-│   │   │       │   ├── agent.rs
-│   │   │       │   ├── command.rs
-│   │   │       │   ├── grpc_service.rs
-│   │   │       │   ├── http_service.rs
-│   │   │       │   ├── lib.rs
-│   │   │       │   ├── llm.rs
-│   │   │       │   ├── main.rs
-│   │   │       │   ├── monitor.rs
-│   │   │       │   ├── openhwy-tms-api.rs
-│   │   │       │   ├── system.rs
-│   │   │       │   └── tools.rs
-│   │   │       ├── extractors
-│   │   │       │   ├── auth.rs
-│   │   │       │   ├── json.rs
-│   │   │       │   └── mod.rs
-│   │   │       ├── handlers
-│   │   │       │   ├── batch.rs
-│   │   │       │   ├── inference.rs
-│   │   │       │   ├── mod.rs
-│   │   │       │   ├── streaming.rs
-│   │   │       │   └── websocket.rs
-│   │   │       ├── lib.rs
-│   │   │       ├── main.rs
-│   │   │       ├── main_v1.rs
-│   │   │       ├── middleware
-│   │   │       │   ├── auth.rs
-│   │   │       │   ├── cors.rs
-│   │   │       │   ├── logging.rs
-│   │   │       │   ├── metrics.rs
-│   │   │       │   ├── mod.rs
-│   │   │       │   └── rate_limit.rs
-│   │   │       ├── responses
-│   │   │       │   ├── error.rs
-│   │   │       │   ├── mod.rs
-│   │   │       │   ├── streaming.rs
-│   │   │       │   └── success.rs
-│   │   │       ├── routes
-│   │   │       │   ├── admin.rs
-│   │   │       │   ├── chat.rs
-│   │   │       │   ├── completions.rs
-│   │   │       │   ├── embeddings.rs
-│   │   │       │   ├── health.rs
-│   │   │       │   ├── matcher.rs
-│   │   │       │   ├── models.rs
-│   │   │       │   └── mod.rs
-│   │   │       ├── server
-│   │   │       │   ├── mod.rs
-│   │   │       │   ├── server.rs
-│   │   │       │   └── upstream.rs
-│   │   │       ├── static
-│   │   │       │   └── mod.rs
-│   │   │       └── tls
-│   │   │           └── mod.rs
-│   │   ├── docker-compose.yml
-│   │   ├── Dockerfile.codriver
-│   │   ├── Dockerfile.marketeer
-│   │   ├── .env.example
-│   │   └── Marketeer
-│   │       └── src
-│   │           ├── api
-│   │           │   ├── admin-server.rs
-│   │           │   └── mod.rs
-│   │           ├── bin
-│   │           │   ├── codriver.rs
-│   │           │   ├── codriver_v0.rs
-│   │           │   ├── marketeer.rs
-│   │           │   └── marketeer_v0.rs
-│   │           ├── chat
-│   │           │   ├── mod.rs
-│   │           │   ├── monitor.rs
-│   │           │   ├── parser.rs
-│   │           │   └── writer.rs
-│   │           ├── config
-│   │           │   ├── codriver.toml
-│   │           │   ├── loader.rs
-│   │           │   ├── marketeer.toml
-│   │           │   ├── mod.rs
-│   │           │   ├── types.rs
-│   │           │   └── validator.rs
-│   │           ├── core
-│   │           │   ├── agent.rs
-│   │           │   ├── command.rs
-│   │           │   ├── grpc_service.rs
-│   │           │   ├── http_service.rs
-│   │           │   ├── lib.rs
-│   │           │   ├── llm.rs
-│   │           │   ├── main.rs
-│   │           │   ├── monitor.rs
-│   │           │   ├── openhwy-tms-api.rs
-│   │           │   ├── system.rs
-│   │           │   └── tools.rs
-│   │           ├── extractors
-│   │           │   ├── auth.rs
-│   │           │   ├── json.rs
-│   │           │   └── mod.rs
-│   │           ├── handlers
-│   │           │   ├── batch.rs
-│   │           │   ├── inference.rs
-│   │           │   ├── mod.rs
-│   │           │   ├── streaming.rs
-│   │           │   └── websocket.rs
-│   │           ├── lib.rs
-│   │           ├── main.rs
-│   │           ├── main_v1.rs
-│   │           ├── middleware
-│   │           │   ├── auth.rs
-│   │           │   ├── cors.rs
-│   │           │   ├── logging.rs
-│   │           │   ├── metrics.rs
-│   │           │   ├── mod.rs
-│   │           │   └── rate_limit.rs
-│   │           ├── responses
-│   │           │   ├── error.rs
-│   │           │   ├── mod.rs
-│   │           │   ├── streaming.rs
-│   │           │   └── success.rs
-│   │           ├── routes
-│   │           │   ├── admin.rs
-│   │           │   ├── chat.rs
-│   │           │   ├── completions.rs
-│   │           │   ├── embeddings.rs
-│   │           │   ├── health.rs
-│   │           │   ├── matcher.rs
-│   │           │   ├── models.rs
-│   │           │   └── mod.rs
-│   │           ├── server
-│   │           │   ├── mod.rs
-│   │           │   ├── server.rs
-│   │           │   └── upstream.rs
-│   │           ├── static
-│   │           │   └── mod.rs
-│   │           └── tls
-│   │               └── mod.rs
-│   ├── ai-crates
-│   │   ├── agent
-│   │   │   ├── Big_Bear
-│   │   │   │   ├── Cargo.toml
-│   │   │   │   └── src
-│   │   │   │       ├── alert_engine.rs
-│   │   │   │       ├── alert_system.rs
-│   │   │   │       ├── bin
-│   │   │   │       ├── geo_cache.rs
-│   │   │   │       ├── geo_mapper.rs
-│   │   │   │       ├── incident_feed.rs
-│   │   │   │       ├── report_collector.rs
-│   │   │   │       └── weigh_station_tracker.rs
-│   │   │   ├── Cargo_Connect
-│   │   │   │   ├── Cargo.toml
-│   │   │   │   └── src
-│   │   │   │       ├── bin
-│   │   │   │       ├── credential_vault.rs
-│   │   │   │       ├── filter_engine.rs
-│   │   │   │       ├── load_boards.rs
-│   │   │   │       ├── load_fetcher.rs
-│   │   │   │       ├── score_ranker.rs
-│   │   │   │       └── session_manager.rs
-│   │   │   ├── Legal_Logger
-│   │   │   │   ├── Cargo.toml
-│   │   │   │   └── src
-│   │   │   │       ├── bin
-│   │   │   │       ├── compression.rs
-│   │   │   │       ├── encryption_module.rs
-│   │   │   │       ├── ledger_writer.rs
-│   │   │   │       ├── signature_engine.rs
-│   │   │   │       └── timestamp_engine.rs
-│   │   │   ├── Packet_Pilot
-│   │   │   │   ├── Cargo.toml
-│   │   │   │   └── src
-│   │   │   │       ├── bin
-│   │   │   │       ├── email_monitor.rs
-│   │   │   │       ├── form_filler.rs
-│   │   │   │       ├── pdf_processor.rs
-│   │   │   │       ├── protocol_detector.rs
-│   │   │   │       └── signature_handler.rs
-│   │   │   ├── Trucker_Tales
-│   │   │   │   ├── Cargo.toml
-│   │   │   │   └── src
-│   │   │   │       ├── bin
-│   │   │   │       ├── emotion_enhancer.rs
-│   │   │   │       ├── format_converter.rs
-│   │   │   │       ├── publishing.rs
-│   │   │   │       ├── story_structurer.rs
-│   │   │   │       └── tale_listener.rs
-│   │   │   └── Whisper_Witness
-│   │   │       ├── Cargo.toml
-│   │   │       └── src
-│   │   │           ├── audio_listener.rs
-│   │   │           ├── bin
-│   │   │           ├── broker_tactics.rs
-│   │   │           ├── tactic_detector.rs
-│   │   │           ├── transcript_summarizer.rs
-│   │   │           └── whisper_engine.rs
-│   │   ├── audit
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   ├── docs
-│   │   │   │   └── audit-checks.md
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── chat
-│   │   │   ├── build.sh
-│   │   │   ├── BUILD_SUMMARY.md
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   ├── configs
-│   │   │   │   └── config.toml
-│   │   │   ├── examples.sh
-│   │   │   ├── README.md
-│   │   │   ├── src
-│   │   │   │   ├── analyzer.rs
-│   │   │   │   ├── entities.rs
-│   │   │   │   ├── main.rs
-│   │   │   │   ├── models.rs
-│   │   │   │   ├── parser.rs
-│   │   │   │   ├── patterns.rs
-│   │   │   │   └── storage.rs
-│   │   │   └── USAGE.md
-│   │   ├── code
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── collection
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── data
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       ├── main.rs
-│   │   │       └── markdown_generator.rs
-│   │   ├── database
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── file
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── lead::analyzer
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── lead::handler
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── lead::scraper
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── mail
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── mcp
-│   │   │   ├── Cargo.toml
-│   │   │   ├── CLAUDE.md
-│   │   │   ├── config.toml
-│   │   │   ├── .env.example
-│   │   │   ├── examples
-│   │   │   │   ├── agent_client.rs
-│   │   │   │   └── agent_server.rs
-│   │   │   ├── QUICKSTART.md
-│   │   │   ├── README.md
-│   │   │   └── src
-│   │   │       ├── client.rs
-│   │   │       ├── config.rs
-│   │   │       ├── discovery.rs
-│   │   │       ├── error.rs
-│   │   │       ├── integrations.rs
-│   │   │       ├── lib.rs
-│   │   │       ├── protocol.rs
-│   │   │       ├── resources.rs
-│   │   │       ├── server.rs
-│   │   │       └── tools.rs
-│   │   ├── pdf
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── prompt
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── rag::qdrant
-│   │   │   ├── Cargo.toml
-│   │   │   ├── CLAUDE.md
-│   │   │   ├── config.toml
-│   │   │   ├── docker-compose.yml
-│   │   │   ├── .env.example
-│   │   │   ├── examples
-│   │   │   │   ├── index_codebase.rs
-│   │   │   │   └── search_demo.rs
-│   │   │   ├── QUICKSTART.md
-│   │   │   ├── README.md
-│   │   │   └── src
-│   │   │       ├── client.rs
-│   │   │       ├── config.rs
-│   │   │       ├── embeddings.rs
-│   │   │       ├── error.rs
-│   │   │       ├── indexer.rs
-│   │   │       ├── lib.rs
-│   │   │       └── search.rs
-│   │   ├── screen
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── search
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── service
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   ├── test
-│   │   │   └── src
-│   │   │       ├── api_tests.rs
-│   │   │       ├── bench
-│   │   │       │   └── inference_bench.rs
-│   │   │       ├── cli_tests.rs
-│   │   │       ├── common
-│   │   │       │   ├── fixtures
-│   │   │       │   └── mod.rs
-│   │   │       ├── examples
-│   │   │       │   ├── batch_demo.rs
-│   │   │       │   └── interactive_demo.rs
-│   │   │       ├── integration_tests.rs
-│   │   │       ├── model_tests.rs
-│   │   │       ├── pronunciation_tests.rs
-│   │   │       ├── runtime_tests.rs
-│   │   │       └── token_tests.rs
-│   │   ├── vision
-│   │   │   ├── Cargo.lock
-│   │   │   ├── Cargo.toml
-│   │   │   └── src
-│   │   │       └── main.rs
-│   │   └── workflow
-│   │       ├── Cargo.lock
-│   │       ├── Cargo.toml
-│   │       └── src
-│   │           └── lib.rs
-│   ├── ai-tools
+│   ├── agent-tools
 │   │   ├── chat-indexer
 │   │   │   ├── ai_query.py
 │   │   │   ├── analytics.py
@@ -530,8 +231,6 @@
 │   │       │   └── web-searcher.prompt.json
 │   │       ├── render_service.py
 │   │       └── update_values.py
-│   ├── claude-documents
-│   │   └── RAG_AND_MCP_SETUP.md
 │   ├── design-systems
 │   │   ├── astro-resources
 │   │   │   ├── api
@@ -1241,17 +940,53 @@
 │   │       ├── tests.ts
 │   │       └── ui.ts
 │   ├── devtool-script
-│   │   ├── add_missing_docstrings.py
-│   │   ├── agency-client.py
-│   │   ├── agents
-│   │   │   ├── gpg-agent.zsh
-│   │   │   └── ssh-agent.zsh
-│   │   ├── ai-control.sh
-│   │   ├── audit_components.sh
-│   │   ├── audit-system-status.sh
-│   │   ├── build-all.sh
-│   │   ├── check-models-integrity.sh
-│   │   ├── code-indexer.py
+│   │   ├── agent
+│   │   │   ├── add_missing_docstrings.py
+│   │   │   ├── agency-client.py
+│   │   │   ├── ai-control.sh
+│   │   │   ├── audit_components.sh
+│   │   │   ├── audit-system-status.sh
+│   │   │   ├── build-all.sh
+│   │   │   ├── check-models-integrity.sh
+│   │   │   ├── code-indexer.py
+│   │   │   ├── collection-webhook.py
+│   │   │   ├── create-all-commands.sh
+│   │   │   ├── create-commands.sh
+│   │   │   ├── data-collector-orchestrator.py
+│   │   │   ├── deep-scan.sh
+│   │   │   ├── download-models.sh
+│   │   │   ├── generate_model_configs.py
+│   │   │   ├── index-models.sh
+│   │   │   ├── index-prompts.sh
+│   │   │   ├── install-models.sh
+│   │   │   ├── list-models.sh
+│   │   │   ├── list-prompts.sh
+│   │   │   ├── loader.zsh
+│   │   │   ├── main.zsh
+│   │   │   ├── ollama-cluster.py
+│   │   │   ├── pre-flight.sh
+│   │   │   ├── pull-models.sh
+│   │   │   ├── python-make-init.sh
+│   │   │   ├── setup-auto-sync.sh
+│   │   │   ├── setup-data-collectors.sh
+│   │   │   ├── setup-rag-mcp.sh
+│   │   │   ├── setup.sh
+│   │   │   ├── setup.sh_
+│   │   │   ├── start-agency.sh
+│   │   │   ├── start-all-services.sh
+│   │   │   ├── start-auto-collection.sh
+│   │   │   ├── start.sh
+│   │   │   ├── state-restore.sh
+│   │   │   ├── state-sync.sh
+│   │   │   ├── status-check.sh
+│   │   │   ├── status.sh
+│   │   │   ├── stop-agency.sh
+│   │   │   ├── stop.sh
+│   │   │   ├── system-status.sh
+│   │   │   ├── test-db.sh
+│   │   │   ├── trigger-collection-api.sh
+│   │   │   ├── update_with_env_pairs.py
+│   │   │   └── validate-models.sh
 │   │   ├── collect
 │   │   │   ├── daily-digest.sh
 │   │   │   ├── quick-test.sh
@@ -1260,7 +995,6 @@
 │   │   │   ├── status-lead-system.sh
 │   │   │   ├── stop-lead-system.sh
 │   │   │   └── test_leads.py
-│   │   ├── collection-webhook.py
 │   │   ├── common
 │   │   │   ├── analyze-full-projects.zsh
 │   │   │   ├── barrel-typescript-ui.sh
@@ -1276,47 +1010,6 @@
 │   │   │   ├── push-file-updates.sh
 │   │   │   ├── remove-barrel-typescript-ui.sh
 │   │   │   └── reverse-init-collector.zsh
-│   │   ├── create-all-commands.sh
-│   │   ├── create-commands.sh
-│   │   ├── data-collector-orchestrator.py
-│   │   ├── deep-scan.sh
-│   │   ├── defaults
-│   │   │   ├── autoload.zsh
-│   │   │   ├── color.zsh
-│   │   │   ├── keybind.zsh
-│   │   │   ├── setopt.zsh
-│   │   │   └── zstyle.zsh
-│   │   ├── dotfiles
-│   │   │   ├── .gitconfig
-│   │   │   ├── .nanorc
-│   │   │   ├── .zprofile
-│   │   │   ├── .zshenv
-│   │   │   └── .zshrc
-│   │   ├── download-models.sh
-│   │   ├── functions
-│   │   │   ├── archive.zsh
-│   │   │   ├── backup.zsh
-│   │   │   ├── docker.zsh
-│   │   │   ├── encryption.zsh
-│   │   │   ├── finda.zsh
-│   │   │   ├── fixa.zsh
-│   │   │   ├── gita.zsh
-│   │   │   ├── github.zsh
-│   │   │   ├── history.zsh
-│   │   │   ├── manifest.zsh
-│   │   │   ├── network.zsh
-│   │   │   ├── nuka.zsh
-│   │   │   ├── quick.zsh
-│   │   │   ├── scana.zsh
-│   │   │   ├── search.zsh
-│   │   │   ├── senda.zsh
-│   │   │   ├── serva.zsh
-│   │   │   ├── siza.zsh
-│   │   │   ├── storage.zsh
-│   │   │   ├── system.zsh
-│   │   │   ├── trash.zsh
-│   │   │   └── vm-manager.zsh
-│   │   ├── generate_model_configs.py
 │   │   ├── golang
 │   │   │   ├── go-auto-fix.sh
 │   │   │   ├── go-build-errors.sh
@@ -1326,29 +1019,6 @@
 │   │   │   ├── go-quick-debug.sh
 │   │   │   ├── go-scaffold-check.sh
 │   │   │   └── go-tools.zsh
-│   │   ├── helpers
-│   │   │   ├── agent_helpers.zsh
-│   │   │   ├── file_helpers.zsh
-│   │   │   ├── fix_ssh_config.sh
-│   │   │   ├── github-repo-selector.zsh
-│   │   │   ├── hydration_helpers.zsh
-│   │   │   ├── input_helpers.zsh
-│   │   │   ├── logging_helpers.zsh
-│   │   │   ├── memory_helpers.zsh
-│   │   │   ├── model_helpers.zsh
-│   │   │   ├── network_helpers.zsh
-│   │   │   ├── node-manager.zsh
-│   │   │   ├── nomad-integration.zsh
-│   │   │   ├── output_helpers.zsh
-│   │   │   ├── parsing_helpers.zsh
-│   │   │   ├── profile-monitor.zsh
-│   │   │   ├── resource-monitor.zsh
-│   │   │   ├── security_helpers.zsh
-│   │   │   ├── sync-identity.zsh
-│   │   │   ├── system_helpers.zsh
-│   │   │   └── validation_helpers.zsh
-│   │   ├── index-models.sh
-│   │   ├── index-prompts.sh
 │   │   ├── install
 │   │   │   ├── install-dependencies.zsh
 │   │   │   ├── install-infrastructure.zsh
@@ -1359,43 +1029,6 @@
 │   │   │   ├── install-tools.zsh
 │   │   │   ├── install-yq.sh
 │   │   │   └── install-zsh-5.9.zsh
-│   │   ├── install-models.sh
-│   │   ├── list-models.sh
-│   │   ├── list-prompts.sh
-│   │   ├── loader.zsh
-│   │   ├── main.zsh
-│   │   ├── ollama-cluster.py
-│   │   ├── pre-flight.sh
-│   │   ├── pull-models.sh
-│   │   ├── python-make-init.sh
-│   │   ├── settings
-│   │   │   ├── aliases.zsh
-│   │   │   ├── exports.zsh
-│   │   │   ├── plugins.zsh
-│   │   │   └── prompts.zsh
-│   │   ├── setup-auto-sync.sh
-│   │   ├── setup-data-collectors.sh
-│   │   ├── setup-rag-mcp.sh
-│   │   ├── setups
-│   │   │   ├── android.zsh
-│   │   │   ├── bun.zsh
-│   │   │   ├── cargo.zsh
-│   │   │   ├── ollama.zsh
-│   │   │   └── pyenv.zsh
-│   │   ├── setup.sh
-│   │   ├── setup.sh_
-│   │   ├── start-agency.sh
-│   │   ├── start-all-services.sh
-│   │   ├── start-auto-collection.sh
-│   │   ├── start.sh
-│   │   ├── state-restore.sh
-│   │   ├── state-sync.sh
-│   │   ├── status-check.sh
-│   │   ├── status.sh
-│   │   ├── stop-agency.sh
-│   │   ├── stop.sh
-│   │   ├── system-status.sh
-│   │   ├── test-db.sh
 │   │   ├── testings
 │   │   │   ├── go_test
 │   │   │   │   ├── go.mod
@@ -1427,211 +1060,12 @@
 │   │   │   │   └── src
 │   │   │   │       └── main.rs
 │   │   │   └── verify-dev-setup.sh
-│   │   ├── trigger-collection-api.sh
-│   │   ├── update_with_env_pairs.py
-│   │   ├── utility
-│   │   │   ├── bash_helpers.sh
-│   │   │   ├── .broken
-│   │   │   │   ├── config_readers.sh
-│   │   │   │   └── dotfiles_setups.sh
-│   │   │   └── package_helpers.sh
-│   │   └── validate-models.sh
-│   ├── ~Fast&Easy Dispatching LLC~
-│   │   ├── Blank Agreements and Forms
-│   │   │   ├── GENERIC Factoring Company - Payment Deduction.pdf
-│   │   │   ├── GENERIC Full Dispatcher Agreement.pdf
-│   │   │   ├── GENERIC Load Finder Agreement.pdf
-│   │   │   ├── GENERIC Paperwork Only Agreement.pdf
-│   │   │   └── GENERIC Rate Agreement.pdf
-│   │   ├── Carrier Agreements
-│   │   │   ├── Carrier Agreement Packet.docx
-│   │   │   ├── Carrier Agreement Packet.pdf
-│   │   │   ├── Carrier Profile.docx
-│   │   │   ├── Carrier Profile Sheet - Master Copy.docx
-│   │   │   ├── Credit Card Authorization.docx
-│   │   │   ├── Credit Card Authorization.pdf
-│   │   │   ├── Dispatcher Agreement.docx
-│   │   │   ├── Dispatcher Agreement.pdf
-│   │   │   ├── Dispatcher Carrier - Limited Power.docx
-│   │   │   ├── Dispatcher Carrier - Limited Power.pdf
-│   │   │   ├── Factoring Company - Payment Deduction.docx
-│   │   │   ├── Factoring Company - Payment Deduction.pdf
-│   │   │   ├── Full Dispatcher Agreement.docx
-│   │   │   ├── Full Dispatcher Agreement.pdf
-│   │   │   ├── Load Finder Agreement Carrier Package.docx
-│   │   │   ├── Load Finder Agreement.docx
-│   │   │   ├── Load Finder Agreement.pdf
-│   │   │   ├── Paperwork Only Agreement Carrier Package.docx
-│   │   │   ├── Paperwork Only Agreement.docx
-│   │   │   ├── Paperwork Only Agreement.pdf
-│   │   │   ├── Rate Agreement.docx
-│   │   │   └── Rate Agreement.pdf
-│   │   ├── Course Structure
-│   │   │   ├── Billing.png
-│   │   │   ├── Carriers.png
-│   │   │   ├── Daily Process.png
-│   │   │   ├── Flatbed Trailer.png
-│   │   │   ├── Knowledge.png
-│   │   │   ├── Landing Page.png
-│   │   │   ├── Reefer Trailer.png
-│   │   │   ├── Trucking Industry.png
-│   │   │   ├── Upsell Script for Purchase Screen.png
-│   │   │   ├── Van Trailer.png
-│   │   │   ├── What is a Dispatcher.png
-│   │   │   └── Your Business.png
-│   │   ├── Emails
-│   │   │   └── Email Ideas for Freight Dispatcher 101.docx
-│   │   ├── Factoring and Bond Info.pdf
-│   │   ├── FullColor_1280x1024.pdf
-│   │   ├── Hotshot neededs.docx
-│   │   ├── Invoices
-│   │   │   ├── 8 STEPS MARK J. KOHLER.eml
-│   │   │   ├── Adobe Reader.png
-│   │   │   ├── Adobe Reader.png_
-│   │   │   ├── Broker Training.png
-│   │   │   ├── Constant Contact.png
-│   │   │   ├── DAT.eml
-│   │   │   ├── DAT Load Board (2).pdf
-│   │   │   ├── DAT Load Board.pdf
-│   │   │   ├── DAT Load Board.png
-│   │   │   ├── DAT Load Board.png_
-│   │   │   ├── Dispatcher Training.pdf
-│   │   │   ├── Dispatcher Training.pdf_
-│   │   │   ├── Dispatcher Training.png
-│   │   │   ├── Docusign.png
-│   │   │   ├── Doodly (2).png
-│   │   │   ├── Doodly.png
-│   │   │   ├── E-Fax.png
-│   │   │   ├── E-Fax.png_
-│   │   │   ├── Facebook Ads.png
-│   │   │   ├── Flash Drive for Work Documents.png
-│   │   │   ├── Go Daddy and Microsoft 365.pdf
-│   │   │   ├── Go Daddy and Microsoft 365.pdf_
-│   │   │   ├── Laptop for Work and Personal Use.png
-│   │   │   ├── Laptop Protection Plan.png
-│   │   │   ├── LOGO.pdf
-│   │   │   ├── LOGO.pdf_
-│   │   │   ├── MJK Business Plan 8 Steps.png
-│   │   │   ├── MJK Business Plan 8 Steps.png_
-│   │   │   ├── PDFEscape.png
-│   │   │   ├── PressPlay (Special Offer - Toonly) Receipt Order # PK-PRLO03JK9E.eml
-│   │   │   ├── Quickbooks .PDF
-│   │   │   ├── Quickbooks .PDF_
-│   │   │   ├── Screen Cast.pdf
-│   │   │   ├── Speechelo (1).png
-│   │   │   ├── Speechelo (2).png
-│   │   │   ├── Speechelo (3).png
-│   │   │   ├── Thumbnail Blaster (2).eml
-│   │   │   ├── Thumbnail Blaster.eml
-│   │   │   ├── ThumpBlaster.eml
-│   │   │   ├── Toonly Enterprise (1-time) Receipt Order # PK-P6EJKDDN6L.eml
-│   │   │   ├── Toonly Standard (in app) Receipt Order # PK-PMWQ079D9W.eml
-│   │   │   ├── Toonplates book Receipt Order # PK-PKE3R8Q39L.eml
-│   │   │   ├── TotalAV Viris Protection.png
-│   │   │   ├── Traffic and Funnels.png
-│   │   │   ├── Traffic and Funnels.png_
-│   │   │   ├── WIX - 2 Emails.pdf
-│   │   │   ├── WIX - 2 Emails.pdf_
-│   │   │   ├── WIX - Business Phone Line.pdf
-│   │   │   ├── WIX - Epic Form Builder.pdf
-│   │   │   ├── WIX - Epic Form Builder.pdf_
-│   │   │   ├── WIX - Pro.pdf
-│   │   │   └── WIX - Pro.pdf_
-│   │   ├── Speechelo Scripts
-│   │   │   ├── 5097941_1615238204.mp3
-│   │   │   ├── 5097977_1615238308.mp3
-│   │   │   ├── Pitch 10.mp3
-│   │   │   ├── Pitch 12.mp3
-│   │   │   ├── Pitch 1.mp3
-│   │   │   ├── Pitch 2.mp3
-│   │   │   ├── Pitch 4.mp3
-│   │   │   ├── Pitch 5.mp3
-│   │   │   ├── Pitch 6.mp3
-│   │   │   ├── Pitch 7.mp3
-│   │   │   ├── Pitch 8.mp3
-│   │   │   └── Pitch 9.mp3
-│   │   ├── Split Files
-│   │   │   ├── Facebook Group Agreements (3).png
-│   │   │   ├── Facebook Group Agreements.png
-│   │   │   ├── Footer.png
-│   │   │   ├── have lesson title at top.png
-│   │   │   ├── Landing Page.png
-│   │   │   ├── Screenshot (10).png
-│   │   │   ├── Screenshot (1.5).png
-│   │   │   ├── Screenshot (227).png
-│   │   │   ├── Screenshot (228).png
-│   │   │   ├── Screenshot (229).png
-│   │   │   ├── Screenshot (230).png
-│   │   │   ├── Screenshot (231).png
-│   │   │   ├── Screenshot (232).png
-│   │   │   ├── Screenshot (233).png
-│   │   │   ├── Screenshot (234).png
-│   │   │   ├── Screenshot (235).png
-│   │   │   ├── Screenshot (236).png
-│   │   │   ├── Screenshot (237).png
-│   │   │   ├── Screenshot (45).png
-│   │   │   ├── Screenshot (46).png
-│   │   │   ├── Screenshot (51).png
-│   │   │   ├── Screenshot (52).png
-│   │   │   ├── Screenshot (64).png
-│   │   │   ├── Screenshot (75).png
-│   │   │   ├── Screenshot (7).png
-│   │   │   ├── Screenshot (85).png
-│   │   │   ├── Screenshot (88).png
-│   │   │   ├── Screenshot (89).png
-│   │   │   ├── Screenshot (92).png
-│   │   │   └── Screenshot (9).png
-│   │   ├── Text Into Script.pptx
-│   │   ├── Thinks I need to create your video.docx
-│   │   ├── Training Content
-│   │   │   ├── 3 Equipment Types Cheat Sheet.docx
-│   │   │   ├── 3 Equipment Types Cheat Sheet.docx_
-│   │   │   ├── BOL sample.pdf
-│   │   │   ├── BOL sample.pdf_
-│   │   │   ├── Broker Carrier Packet Preview.pdf
-│   │   │   ├── Broker Carrier Packet Preview.pdf_
-│   │   │   ├── Brokers for NEW MC.docx
-│   │   │   ├── Brokers for NEW MC.docx_
-│   │   │   ├── Brokers INFO.docx
-│   │   │   ├── Brokers INFO.docx_
-│   │   │   ├── CargoVan Sprinter Van Load Boards and Contacts.pdf
-│   │   │   ├── CargoVan Sprinter Van Load Boards and Contacts.pdf_
-│   │   │   ├── COI preview.pdf
-│   │   │   ├── COI preview.pdf_
-│   │   │   ├── Cold Call Cheat Sheet.docx
-│   │   │   ├── Cold Call Cheat Sheet.docx_
-│   │   │   ├── Credit Card Authorization.docx
-│   │   │   ├── Dispatcher Roles.pdf
-│   │   │   ├── Dispatcher Roles.pdf_
-│   │   │   ├── Dispatcher Training 4.pdf
-│   │   │   ├── Dispatcher Training 4.pdf_
-│   │   │   ├── Eamil Script.docx
-│   │   │   ├── Factoring and Bond Info.pdf
-│   │   │   ├── Factoring Company - Payment Deduction.docx
-│   │   │   ├── Layover Prices.docx
-│   │   │   ├── Layover Prices.docx_
-│   │   │   ├── load board log ins.pdf
-│   │   │   ├── load board log ins.pdf_
-│   │   │   ├── Load Cheat Sheet.docx
-│   │   │   ├── Load Cheat Sheet.docx_
-│   │   │   ├── MC authority preview.pdf
-│   │   │   ├── MC authority preview.pdf_
-│   │   │   ├── Module 1 quiz.pdf
-│   │   │   ├── Module 1 quiz.pdf_
-│   │   │   ├── Module 2 quiz.pdf
-│   │   │   ├── Module 2 quiz.pdf_
-│   │   │   ├── Module 3 Quiz.pdf
-│   │   │   ├── Module 3 Quiz.pdf_
-│   │   │   ├── NOA preview.pdf
-│   │   │   ├── NOA preview.pdf_
-│   │   │   ├── Rate Agreement.docx
-│   │   │   ├── Text Script.docx
-│   │   │   ├── Things Drivers May Ask.docx
-│   │   │   ├── Truck Cost and Expenses.pdf
-│   │   │   ├── Truck Cost and Expenses.pdf_
-│   │   │   ├── W9 preview.pdf
-│   │   │   └── W9 preview.pdf_
-│   │   └── WEBSITE IDEAS.docx
+│   │   └── utility
+│   │       ├── bash_helpers.sh
+│   │       ├── .broken
+│   │       │   ├── config_readers.sh
+│   │       │   └── dotfiles_setups.sh
+│   │       └── package_helpers.sh
 │   ├── index.tree
 │   ├── infra-machines
 │   │   ├── callbox(4vCPU, null, 12GB RAM, [256GB SSD, 1TB HDD])
@@ -1736,6 +1170,228 @@
 │   │       │   ├── download_models.sh
 │   │       │   └── ml-framework.zsh
 │   │       └── setup-openvino.sh
+│   ├── rust-crates
+│   │   ├── agent
+│   │   │   ├── Big_Bear
+│   │   │   │   ├── Cargo.toml
+│   │   │   │   └── src
+│   │   │   │       ├── alert_engine.rs
+│   │   │   │       ├── alert_system.rs
+│   │   │   │       ├── bin
+│   │   │   │       ├── geo_cache.rs
+│   │   │   │       ├── geo_mapper.rs
+│   │   │   │       ├── incident_feed.rs
+│   │   │   │       ├── report_collector.rs
+│   │   │   │       └── weigh_station_tracker.rs
+│   │   │   ├── Cargo_Connect
+│   │   │   │   ├── Cargo.toml
+│   │   │   │   └── src
+│   │   │   │       ├── bin
+│   │   │   │       ├── credential_vault.rs
+│   │   │   │       ├── filter_engine.rs
+│   │   │   │       ├── load_boards.rs
+│   │   │   │       ├── load_fetcher.rs
+│   │   │   │       ├── score_ranker.rs
+│   │   │   │       └── session_manager.rs
+│   │   │   ├── Legal_Logger
+│   │   │   │   ├── Cargo.toml
+│   │   │   │   └── src
+│   │   │   │       ├── bin
+│   │   │   │       ├── compression.rs
+│   │   │   │       ├── encryption_module.rs
+│   │   │   │       ├── ledger_writer.rs
+│   │   │   │       ├── signature_engine.rs
+│   │   │   │       └── timestamp_engine.rs
+│   │   │   ├── Packet_Pilot
+│   │   │   │   ├── Cargo.toml
+│   │   │   │   └── src
+│   │   │   │       ├── bin
+│   │   │   │       ├── email_monitor.rs
+│   │   │   │       ├── form_filler.rs
+│   │   │   │       ├── pdf_processor.rs
+│   │   │   │       ├── protocol_detector.rs
+│   │   │   │       └── signature_handler.rs
+│   │   │   ├── Trucker_Tales
+│   │   │   │   ├── Cargo.toml
+│   │   │   │   └── src
+│   │   │   │       ├── bin
+│   │   │   │       ├── emotion_enhancer.rs
+│   │   │   │       ├── format_converter.rs
+│   │   │   │       ├── publishing.rs
+│   │   │   │       ├── story_structurer.rs
+│   │   │   │       └── tale_listener.rs
+│   │   │   └── Whisper_Witness
+│   │   │       ├── Cargo.toml
+│   │   │       └── src
+│   │   │           ├── audio_listener.rs
+│   │   │           ├── bin
+│   │   │           ├── broker_tactics.rs
+│   │   │           ├── tactic_detector.rs
+│   │   │           ├── transcript_summarizer.rs
+│   │   │           └── whisper_engine.rs
+│   │   ├── audit
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   ├── docs
+│   │   │   │   └── audit-checks.md
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── chat
+│   │   │   ├── build.sh
+│   │   │   ├── BUILD_SUMMARY.md
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   ├── configs
+│   │   │   │   └── config.toml
+│   │   │   ├── examples.sh
+│   │   │   ├── README.md
+│   │   │   ├── src
+│   │   │   │   ├── analyzer.rs
+│   │   │   │   ├── entities.rs
+│   │   │   │   ├── main.rs
+│   │   │   │   ├── models.rs
+│   │   │   │   ├── parser.rs
+│   │   │   │   ├── patterns.rs
+│   │   │   │   └── storage.rs
+│   │   │   └── USAGE.md
+│   │   ├── code
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── collection
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── data
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       ├── main.rs
+│   │   │       └── markdown_generator.rs
+│   │   ├── database
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── file
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── lead::analyzer
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── lead::handler
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── lead::scraper
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── mail
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── mcp
+│   │   │   ├── Cargo.toml
+│   │   │   ├── CLAUDE.md
+│   │   │   ├── config.toml
+│   │   │   ├── .env.example
+│   │   │   ├── examples
+│   │   │   │   ├── agent_client.rs
+│   │   │   │   └── agent_server.rs
+│   │   │   ├── QUICKSTART.md
+│   │   │   ├── README.md
+│   │   │   └── src
+│   │   │       ├── client.rs
+│   │   │       ├── config.rs
+│   │   │       ├── discovery.rs
+│   │   │       ├── error.rs
+│   │   │       ├── integrations.rs
+│   │   │       ├── lib.rs
+│   │   │       ├── protocol.rs
+│   │   │       ├── resources.rs
+│   │   │       ├── server.rs
+│   │   │       └── tools.rs
+│   │   ├── pdf
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── prompt
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── RAG_AND_MCP_SETUP.md
+│   │   ├── rag::qdrant
+│   │   │   ├── Cargo.toml
+│   │   │   ├── CLAUDE.md
+│   │   │   ├── config.toml
+│   │   │   ├── docker-compose.yml
+│   │   │   ├── .env.example
+│   │   │   ├── examples
+│   │   │   │   ├── index_codebase.rs
+│   │   │   │   └── search_demo.rs
+│   │   │   ├── QUICKSTART.md
+│   │   │   ├── README.md
+│   │   │   └── src
+│   │   │       ├── client.rs
+│   │   │       ├── config.rs
+│   │   │       ├── embeddings.rs
+│   │   │       ├── error.rs
+│   │   │       ├── indexer.rs
+│   │   │       ├── lib.rs
+│   │   │       └── search.rs
+│   │   ├── screen
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── search
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── service
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   ├── test
+│   │   │   └── src
+│   │   │       ├── api_tests.rs
+│   │   │       ├── bench
+│   │   │       │   └── inference_bench.rs
+│   │   │       ├── cli_tests.rs
+│   │   │       ├── common
+│   │   │       │   ├── fixtures
+│   │   │       │   └── mod.rs
+│   │   │       ├── examples
+│   │   │       │   ├── batch_demo.rs
+│   │   │       │   └── interactive_demo.rs
+│   │   │       ├── integration_tests.rs
+│   │   │       ├── model_tests.rs
+│   │   │       ├── pronunciation_tests.rs
+│   │   │       ├── runtime_tests.rs
+│   │   │       └── token_tests.rs
+│   │   ├── vision
+│   │   │   ├── Cargo.lock
+│   │   │   ├── Cargo.toml
+│   │   │   └── src
+│   │   │       └── main.rs
+│   │   └── workflow
+│   │       ├── Cargo.lock
+│   │       ├── Cargo.toml
+│   │       └── src
+│   │           └── lib.rs
 │   └── study-guides
 │       ├── code
 │       │   ├── zsh-cheat-sheet.md
@@ -1929,6 +1585,45 @@
 │           ├── server.tree
 │           ├── service.tree
 │           └── stack.tree
+├── Marketeer
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   ├── Dockerfile.marketeer
+│   ├── etc
+│   │   ├── marketeer.toml
+│   │   └── systemd
+│   │       └── marketeer.service
+│   └── src
+│       ├── api
+│       │   ├── admin-server.rs
+│       │   └── mod.rs
+│       ├── bin
+│       │   └── marketeer.rs
+│       ├── config
+│       │   ├── loader.rs
+│       │   ├── mod.rs
+│       │   ├── types.rs
+│       │   └── validator.rs
+│       ├── lib.rs
+│       ├── main.rs
+│       ├── main_v1.rs
+│       ├── middleware
+│       │   ├── auth.rs
+│       │   ├── cors.rs
+│       │   ├── mod.rs
+│       │   └── rate_limit.rs
+│       ├── pingora_router.rs
+│       ├── routes
+│       │   ├── matcher.rs
+│       │   └── mod.rs
+│       ├── server
+│       │   ├── mod.rs
+│       │   ├── server.rs
+│       │   └── upstream.rs
+│       ├── static
+│       │   └── mod.rs
+│       └── tls
+│           └── mod.rs
 └── OpenHWY
     ├── app
     │   ├── ELDA_DISPATCH-COURSE
@@ -2034,4 +1729,4 @@
     ├── index.tree
     └── lib -> /home/admin/ws/.mark
 
-521 directories, 1514 files
+500 directories, 1230 files

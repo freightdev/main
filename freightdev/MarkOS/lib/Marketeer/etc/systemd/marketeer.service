@@ -1,0 +1,22 @@
+[Unit]
+Description=Marketeer Edge Router
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=admin
+WorkingDirectory=/home/admin/ws/Marketeer
+EnvironmentFile=-/home/admin/ws/Marketeer/.env
+ExecStart=/home/admin/.cargo/bin/cargo run --bin marketeer
+Restart=always
+RestartSec=10
+StandardOutput=append:/var/log/marketeer-output.log
+StandardError=append:/var/log/marketeer-error.log
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
