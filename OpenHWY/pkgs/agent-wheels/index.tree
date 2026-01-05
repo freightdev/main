@@ -1,0 +1,67 @@
+.
+├── Big_Bear
+│   ├── Cargo.toml
+│   └── src
+│       ├── alert_engine.rs
+│       ├── alert_system.rs
+│       ├── bin
+│       │   └── big_bear_v0.rs
+│       ├── geo_cache.rs
+│       ├── geo_mapper.rs
+│       ├── incident_feed.rs
+│       ├── report_collector.rs
+│       └── weigh_station_tracker.rs
+├── Cargo_Connect
+│   ├── Cargo.toml
+│   └── src
+│       ├── bin
+│       │   └── cargo_connect_v0.rs
+│       ├── credential_vault.rs
+│       ├── filter_engine.rs
+│       ├── load_boards.rs
+│       ├── load_fetcher.rs
+│       ├── score_ranker.rs
+│       └── session_manager.rs
+├── index.tree
+├── Legal_Logger
+│   ├── Cargo.toml
+│   └── src
+│       ├── bin
+│       │   └── legal_logger_v0.rs
+│       ├── compression.rs
+│       ├── encryption_module.rs
+│       ├── ledger_writer.rs
+│       ├── signature_engine.rs
+│       └── timestamp_engine.rs
+├── Packet_Pilot
+│   ├── Cargo.toml
+│   └── src
+│       ├── bin
+│       │   └── packet_pilot_v0.rs
+│       ├── email_monitor.rs
+│       ├── form_filler.rs
+│       ├── pdf_processor.rs
+│       ├── protocol_detector.rs
+│       └── signature_handler.rs
+├── Trucker_Tales
+│   ├── Cargo.toml
+│   └── src
+│       ├── bin
+│       │   └── trucker_tales_v0.rs
+│       ├── emotion_enhancer.rs
+│       ├── format_converter.rs
+│       ├── publishing.rs
+│       ├── story_structurer.rs
+│       └── tale_listener.rs
+└── Whisper_Witness
+    ├── Cargo.toml
+    └── src
+        ├── audio_listener.rs
+        ├── bin
+        │   └── whisper_witness_v0.rs
+        ├── broker_tactics.rs
+        ├── tactic_detector.rs
+        ├── transcript_summarizer.rs
+        └── whisper_engine.rs
+
+19 directories, 46 files

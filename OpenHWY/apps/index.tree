@@ -1,0 +1,163 @@
+.
+├── ELDA-APP
+│   ├── interfaces
+│   │   └── .gitkeep
+│   └── Modelfile.elda
+├── FED-APP
+│   ├── interfaces
+│   │   ├── dashboard-designs
+│   │   │   ├── fed-calendar.html
+│   │   │   ├── fed-cargo-connect.html
+│   │   │   ├── fed-dashboard.html
+│   │   │   ├── fed-dispatch-board.html
+│   │   │   ├── fed-documents.html
+│   │   │   ├── fed-drivers.html
+│   │   │   ├── fed-elda.html
+│   │   │   ├── fed-eld.html
+│   │   │   ├── fed-invoicing.html
+│   │   │   ├── fed-live-tracking.html
+│   │   │   ├── fed-loads.html
+│   │   │   ├── fed-messaging.html
+│   │   │   ├── fed-packet-pilot.html
+│   │   │   ├── fed-payments.html
+│   │   │   └── fed-training-center.html
+│   │   ├── flutter-designs
+│   │   │   ├── analysis_options.yaml
+│   │   │   ├── app.dart
+│   │   │   ├── bootstraps
+│   │   │   │   └── bootstrap.dart
+│   │   │   ├── configs
+│   │   │   │   ├── env.dart
+│   │   │   │   └── flavors.dart
+│   │   │   ├── devtools_options.yaml
+│   │   │   ├── docker-compose.yml
+│   │   │   ├── Dockerfile
+│   │   │   ├── errors
+│   │   │   │   ├── exception.dart
+│   │   │   │   └── failure.dart
+│   │   │   ├── main1.dart
+│   │   │   ├── main.dart
+│   │   │   ├── map_view.dart
+│   │   │   ├── models
+│   │   │   │   ├── company.dart
+│   │   │   │   ├── document.dart
+│   │   │   │   ├── driver.dart
+│   │   │   │   ├── invoice.dart
+│   │   │   │   ├── load.dart
+│   │   │   │   ├── message.dart
+│   │   │   │   ├── payment.dart
+│   │   │   │   └── user.dart
+│   │   │   ├── pages
+│   │   │   │   ├── accounting_page.dart
+│   │   │   │   ├── compliance_page.dart
+│   │   │   │   ├── dispatch_page.dart
+│   │   │   │   ├── onboarding_page.dart
+│   │   │   │   ├── settings_page.dart
+│   │   │   │   └── training_page.dart
+│   │   │   ├── providers
+│   │   │   │   ├── auth_provider.dart
+│   │   │   │   ├── document_provider.dart
+│   │   │   │   ├── driver_provider.dart
+│   │   │   │   ├── invoice_provider.dart
+│   │   │   │   ├── load_provider.dart
+│   │   │   │   ├── message_provider.dart
+│   │   │   │   └── payment_provider.dart
+│   │   │   ├── pubspec.yaml
+│   │   │   ├── router.dart
+│   │   │   ├── screens
+│   │   │   │   ├── accounting
+│   │   │   │   │   ├── invoice_details_screen.dart
+│   │   │   │   │   ├── invoices_list_screen.dart
+│   │   │   │   │   ├── invoices_screen.dart
+│   │   │   │   │   ├── invoicing_screen.dart
+│   │   │   │   │   └── payments_screen.dart
+│   │   │   │   ├── compliance
+│   │   │   │   │   ├── documents_manager_screen.dart
+│   │   │   │   │   ├── documents_screen.dart
+│   │   │   │   │   ├── eld_screen.dart
+│   │   │   │   │   ├── hos_screen.dart
+│   │   │   │   │   ├── hos_tracking_screen.dart
+│   │   │   │   │   └── reports_screen.dart
+│   │   │   │   ├── dashboard
+│   │   │   │   │   ├── calendar_dispatch_screen.dart
+│   │   │   │   │   ├── calendar_screen.dart
+│   │   │   │   │   ├── create_load_screen.dart
+│   │   │   │   │   ├── dashboard_screen.dart
+│   │   │   │   │   ├── dashboardv2_screen.dart
+│   │   │   │   │   ├── driver_details_screen.dart
+│   │   │   │   │   ├── drivers_screen.dart
+│   │   │   │   │   ├── loadboard_screen.dart
+│   │   │   │   │   ├── load_detail_screen.dart
+│   │   │   │   │   ├── load_details_screen.dart
+│   │   │   │   │   ├── loads_list_screen.dart
+│   │   │   │   │   ├── loads_screen.dart
+│   │   │   │   │   └── tracking_screen.dart
+│   │   │   │   ├── notifications
+│   │   │   │   │   ├── messages_screen.dart
+│   │   │   │   │   ├── messaging_screen.dart
+│   │   │   │   │   ├── notifications_screen.dart
+│   │   │   │   │   └── response_model.dart
+│   │   │   │   ├── onboarding
+│   │   │   │   │   └── company_screen.dart
+│   │   │   │   ├── reports
+│   │   │   │   │   └── analytics_screen.dart
+│   │   │   │   ├── settings
+│   │   │   │   │   ├── company_screen.dart
+│   │   │   │   │   ├── profile_screen.dart
+│   │   │   │   │   └── settings_main_screen.dart
+│   │   │   │   ├── splash
+│   │   │   │   │   └── splash_screen.dart
+│   │   │   │   └── training
+│   │   │   │       └── courses_screen.dart
+│   │   │   ├── services
+│   │   │   │   ├── api_client.dart
+│   │   │   │   ├── auth_service.dart
+│   │   │   │   ├── cloud_storage_service.dart
+│   │   │   │   ├── database_service.dart
+│   │   │   │   ├── document_service.dart
+│   │   │   │   ├── driver_service.dart
+│   │   │   │   ├── http_client.dart
+│   │   │   │   ├── invoice_service.dart
+│   │   │   │   ├── load_service.dart
+│   │   │   │   ├── local_storage_service.dart
+│   │   │   │   ├── logger.dart
+│   │   │   │   ├── message_service.dart
+│   │   │   │   └── payment_service.dart
+│   │   │   ├── styles
+│   │   │   │   ├── app_theme.dart
+│   │   │   │   ├── colors.dart
+│   │   │   │   ├── theme.dart
+│   │   │   │   └── typography.dart
+│   │   │   ├── theme.dart
+│   │   │   ├── utils
+│   │   │   │   └── theme.dart
+│   │   │   └── widgets
+│   │   │       ├── app_button.dart
+│   │   │       ├── app_card.dart
+│   │   │       ├── app_drawer.dart
+│   │   │       ├── app_drawer.dart_
+│   │   │       ├── app_empty_state.dart
+│   │   │       ├── app_icon.dart
+│   │   │       ├── app_loader.dart
+│   │   │       ├── app_search_bar.dart
+│   │   │       ├── app_stat_card.dart
+│   │   │       ├── app_text_field.dart
+│   │   │       ├── detail_card.dart
+│   │   │       ├── driver_card.dart
+│   │   │       ├── driver_detail_card.dart
+│   │   │       ├── load_card.dart
+│   │   │       ├── load_status_badge.dart
+│   │   │       ├── main_navigation.dart
+│   │   │       ├── notification_tile.dart
+│   │   │       ├── rate_confirmation_form.dart
+│   │   │       ├── setup_card.dart
+│   │   │       └── video_card.dart
+│   │   └── .gitkeep
+│   └── Modelfile.fed
+├── HWY-APP
+│   ├── interfaces
+│   │   └── .gitkeep
+│   └── Modelfile.hwy
+└── index.tree
+
+29 directories, 132 files
