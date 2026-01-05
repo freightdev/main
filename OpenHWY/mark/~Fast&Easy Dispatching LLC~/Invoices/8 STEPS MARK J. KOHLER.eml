@@ -1,0 +1,1340 @@
+Delivered-To: jcon4494@gmail.com
+Received: by 2002:a05:6a10:4143:0:0:0:0 with SMTP id f3csp983169pxc;
+        Thu, 3 Dec 2020 16:39:22 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxLlQJL3Nk9T/xGXP1Po9rFaIEf1pjuZF5aBq+QWxrV2KHDwZWxXPygJJ2uXtgCrJHYNXi3
+X-Received: by 2002:a05:6602:388:: with SMTP id f8mr2510316iov.56.1607042362401;
+        Thu, 03 Dec 2020 16:39:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607042362; cv=none;
+        d=google.com; s=arc-20160816;
+        b=UaTUuJuWCDR3gPUmHt0aUbMcFmanNqJgr3JTgXg/6FBG4onhnw8voI6V9z++Xo5V90
+         9EVWVkEOo/6ZBr2tSUgYuI/RDoVxP7L40DViOwooTrUKz7QzGsqdRDiRlWQt/pRAz8zM
+         yvweFFt42AqeOeJ3hNYBOguKYdK2z5QAESznFbyDZxT1tSxYamd32xfOTFMIkF9fJscR
+         j10GKIkRReZ+Pkly+KzAu7Omd6lCrhGy1wpvF6eP1DQIIwnZuaLYM67i0ZFy2vNfW/nN
+         F/dawTqYLa6FMIj87Ys50WqCnHUShS7yH6WzfrEGJukJUyVKTvyCmXoX83Lgin0rfEkf
+         cC4A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:feedback-id:to:message-id:subject:date:from
+         :dkim-signature;
+        bh=W0lf2TPSb3W2DDtr91bRS1sJNkCf+r/daFedlB94HHY=;
+        b=b4mV1Ds9KYbfYk7J2AWdzvNts8BnU8Wcn8IIoTS39Quk/siYNllUzvqLFdLL43oXuQ
+         k5hCDaUYdvtKbg/STifp5kuixbWpo9gVF+v1jzwdQXtVgueom4eVqVElvY1UITfNdgwt
+         7Xntd3qQ/rseqbhFb2asoXS52ozD6r2Yy5sMh/lkiTJAgzdSH32LWLurgV5RZ5tiPpPP
+         uVFqpV9HkZNGSZFEyduMEG7tKiZyhKpj5+MN9jh3yTz5jHIys2JBu87CiKDRYyusL1qV
+         BRVS3x19m1hHZ5hs2luc0jhD+fSBvWWwz0gy6AoHbcXw0hKSZBlk8tLnsoGHzYn7jVKl
+         LlEg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pm.mtasv.net header.s=pm header.b=GrL4LU8S;
+       spf=pass (google.com: domain of pm_bounces@pm.mtasv.net designates 104.245.209.224 as permitted sender) smtp.mailfrom=pm_bounces@pm.mtasv.net
+Return-Path: <pm_bounces@pm.mtasv.net>
+Received: from mta224b-ord.mtasv.net (mta224b-ord.mtasv.net. [104.245.209.224])
+        by mx.google.com with ESMTPS id b73si621598jai.4.2020.12.03.16.39.22
+        for <jcon4494@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 03 Dec 2020 16:39:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of pm_bounces@pm.mtasv.net designates 104.245.209.224 as permitted sender) client-ip=104.245.209.224;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pm.mtasv.net header.s=pm header.b=GrL4LU8S;
+       spf=pass (google.com: domain of pm_bounces@pm.mtasv.net designates 104.245.209.224 as permitted sender) smtp.mailfrom=pm_bounces@pm.mtasv.net
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=pm; d=pm.mtasv.net;
+ h=From:Date:Subject:Message-Id:To:Feedback-ID:MIME-Version:Content-Type;
+ bh=Z/fkuTTgCf4H7uzbd83WsZjozFk=;
+ b=GrL4LU8SDIb1YTH4eKsrAe+KypZqlGmmkpSkG/Zqsw/hlTXoOPVhv8taehd31pArH00OBZUd1aNU
+   a3MjIaUSq7TafsxcHW4Z6WVdFQQzNroj34HvKebZ88p9Gk6v354PyaNhOj8SGmuPpp1eZkMuvT0G
+   vweUTZR1bhmKVHCRxD0=
+Received: by mta224b-ord.mtasv.net id hp62jk27tk43 for <jcon4494@gmail.com>; Thu, 3 Dec 2020 19:39:21 -0500 (envelope-from <pm_bounces@pm.mtasv.net>)
+X-PM-IP: 104.245.209.224
+X-IADB-IP: 104.245.209.224
+X-IADB-IP-REVERSE: 224.209.245.104
+From: csm@markjkohler.com
+Date: Thu, 03 Dec 2020 19:39:21 -0500
+Subject: Order #794 Confirmation =?utf-8?b?4oCU?= Mark J Kohler Shop
+Message-Id: <46c579d8-eb97-4d46-88d3-8bf6f63d9d13@mtasv.net>
+To: Jesse Conley <jcon4494@gmail.com>
+X-MC-Tags: order, placed
+X-MC-Autotext: true
+X-ecwid-store-id: 34089525
+Feedback-ID: s1958983-_:s1958983:a111557:postmark
+X-Complaints-To: abuse@postmarkapp.com
+X-PM-Message-Id: 46c579d8-eb97-4d46-88d3-8bf6f63d9d13
+X-PM-RCPT: |bTB8MTExNTU3fDE5NTg5ODN8amNvbjQ0OTRAZ21haWwuY29t|
+X-PM-Message-Options: v1;9Hcc_PIAriBnYBOfaIwCcyIPcaJJ4QcTBG0Vjf0upsLgpqRZa9tU6RIlMq6j-Xrc
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary=mk-bc25b65400fa42ae94e70cd20f472eba; charset=UTF-8
+
+--mk-bc25b65400fa42ae94e70cd20f472eba
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Order #794 Confirmation =E2=80=94 Mark J Kohler Shop Order Confirmatio=
+n Hello Jesse Conley, We have received your Mark J Kohler Shop order! =
+Thank you for your purchase. Order #794 Payment status Paid Fulfillmen=
+t status Awaiting Processing We will deliver your order to Jesse Conle=
+y 129 S. Pierce St., GALION, Ohio 44833, United States Phone 419834022=
+5 Shipping method Shipping to US & Canada Your order =C2=A0 8 Steps to=
+ Start and Grow Your Business SKU: #SKU-8StepsWorkbook 1 =C3=97 $99.00=
+ Items $99.00 Shipping $6.99 Total $105.99 You may also like Business =
+Owner=E2=80=99s Guide to Financial Freedom $19.99 The Tax and Legal Pl=
+aybook $14.99 Thanks for shopping with us! You can check the status of=
+ your orders at any time on our Orders History Page . We welcome you t=
+o our store anytime. If you need assistance or have any questions, ple=
+ase email us at csm@markjkohler.com or call 1-888-801-0010. We are hap=
+py to help! Sincerely, Mark J Kohler Shop =C2=A9 Mark J Kohler Shop Ma=
+rk J. Kohler / KKOS Lawyers, 15 S 1st E Ste 200, Rexburg, Idaho 83440,=
+ United States =C2=A0
+--mk-bc25b65400fa42ae94e70cd20f472eba
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http:/=
+/www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv=3D"Content-Type" content=3D"text/html; charse=
+t=3DUTF-8" />
+        <meta name=3D"viewport" content=3D"initial-scale=3D1.0"/>
+        <title>Order #794 Confirmation =E2=80=94 Mark J Kohler Shop</t=
+itle>
+        <link href=3D"https://fonts.googleapis.com/css?family=3DPT+Mon=
+o" rel=3D"stylesheet">
+        <style type=3D"text/css">/* Client-specific styles */
+#outlook a {
+	padding: 0;
+}
+
+/* Force Outlook to provide a "view in browser" message */
+.ReadMsgBody {
+	width: 100%;
+}
+
+.ExternalClass {
+	width: 100%;
+}
+
+/* Force Hotmail to display emails at full width */
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+	line-height: 100%;
+}
+
+/* Force Hotmail to display normal line spacing */
+img {
+	max-width: 100%;
+	height: auto;
+	border: 0;
+	outline: none;
+	line-height: 100%;
+	text-decoration: none;
+	-ms-interpolation-mode: bicubic;
+}
+
+/* Image borders & formatting, allow smoother rendering of resized ima=
+ge in Internet Explorer */
+a img {
+	border: none;
+}
+
+a[href^=3Dtel],
+.mobile_link,
+.mobile_link a {
+	text-decoration: none;
+}
+
+/* Styles the tel URL scheme */
+.applelinks a {
+	color: #222;
+	text-decoration: none;
+}
+
+/* Re-style iPhone automatic links (eg. phone numbers) */
+.yshortcuts a {
+	border-bottom: none;
+}
+
+/* Styles Yahoo's auto-sensing link color and border */
+.ExternalClass img[class^=3DEmoji] {
+	display: inline;
+	width: 10px;
+	height: 10px;
+}
+
+/* Hotmail symbol fix for mobile devices */
+body,
+table,
+td,
+p,
+a,
+li,
+blockquote {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+/* Prevent WebKit and Windows mobile changing default text sizes */
+table,
+td {
+	border-collapse: collapse;
+	mso-table-lspace: 0pt;
+	mso-table-rspace: 0pt;
+}
+
+/*  Resolves the Outlook 2007, 2010, and Gmail td padding issue, and r=
+emoves spacing around tables that Outlook adds. */
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+/* Resolves webkit padding issue. */
+.thread-item.expanded .thread-body .body,
+.msg-body {
+	display: block;
+	width: 100%;
+}
+
+/* Forces Yahoo! to display emails at full width */
+
+/* Reset styles */
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body,
+#bodyTable,
+#bodyCell {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/* Custom styles */
+h1 {
+	display: block;
+	margin: 0;
+	padding: 0;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 40px;
+}
+
+h2 {
+	display: block;
+	margin: 0;
+	padding: 0;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 36px;
+}
+
+p {
+	margin: 10px 0 0;
+	padding: 0;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 20px;
+	text-align: left;
+}
+
+ol {
+	list-style: decimal;
+}
+
+ol ol {
+	list-style: lower-alpha;
+}
+
+ol ol ol {
+	list-style: lower-roman;
+}
+
+#bodyTable {
+	width: 100%;
+}
+
+.emailLogo img {
+	max-width: 200px;
+}
+
+@media (max-width: 480px) {
+	h1 {
+		font-size: 18px;
+		line-height: 24px;
+	}
+
+	h2 {
+		padding-top: 17px;
+		font-size: 16px;
+		line-height: 22px;
+		text-align: left;
+	}
+
+	h3 {
+		font-size: 14px;
+		line-height: 24px;
+	}
+
+	p {
+		font-size: 12px;
+		line-height: 20px;
+	}
+
+	.emailTile {
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+
+	.emailTile td {
+		font-size: 12px;
+		line-height: 20px;
+	}
+
+	.emailLogo {
+		vertical-align: top;
+	}
+
+	.emailLogo img {
+		max-width: 160px;
+	}
+
+	.emailAdmin .emailTitle td {
+		padding-top: 5px;
+		vertical-align: middle;
+	}
+
+	.emailTile .emailHeaderNote {
+		display: block;
+		padding-right: 10px;
+		padding-bottom: 10px;
+		line-height: 16px;
+	}
+
+	.emailBody {
+		padding-top: 11px;
+	}
+
+	.emailHeader td {
+		padding-top: 3px;
+		vertical-align: top;
+	}
+
+	.emailLogoText {
+		width: 100px;
+		height: auto;
+	}
+
+	.emailLogoText td {
+		padding: 5px;
+		font-size: 11px;
+		line-height: 18px;
+		vertical-align: middle;
+	}
+
+	.emailProductContainer {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	td[class=3D"emailProduct"] table {
+		width: 100%;
+	}
+
+	.emailProductImage {
+		width: 100px;
+		padding-left: 0;
+	}
+
+	.emailProductContainer .emailProductImage {
+		padding-left: 10px;
+	}
+
+	.emailProductContainer .emailProductImageNoPadding {
+		padding-left: 0;
+	}
+
+	.emailProductImage img {
+		min-width: 50px;
+		max-width: 100px;
+	}
+
+	.emailProductContainer .emailProductDesc {
+		width: 70%;
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+
+	.emailProductDesc td {
+		padding-top: 0;
+	}
+
+	.emailProductContainer .emailProductName {
+		line-height: 16px;
+	}
+
+	.emailProductTotal {
+		width: 100%;
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+
+	.emailProductTotal table {
+		width: 100%;
+	}
+
+	.emailProductTotal table td {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.emailOrderStatus {
+		display: block;
+		font-size: 14px;
+	}
+
+	.emailHeader .emailOrderTotal,
+	.emailHeader .emailOrderDate {
+		font-size: 14px;
+	}
+
+	.emailShippingInfo,
+	.emailBillingInfo {
+		display: block;
+		width: 100%;
+		padding-top: 13px;
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.emailBodyBottom {
+		padding-top: 17px;
+		padding-bottom: 0;
+	}
+
+	.emailStoreAddress {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.emailStoreAddress p {
+		font-size: 10px;
+	}
+
+	.emailOrderInfo {
+		padding-top: 15px;
+	}
+
+	.emailOrderInfo table td {
+		font-size: 14px;
+		line-height: 20px;
+	}
+
+	.emailOrderInfo tr:first-child td {
+		padding-top: 18px;
+	}
+
+	.emailOrderInfo tr:last-child td {
+		padding-bottom: 25px;
+	}
+
+	.emailWelcome .emailLogo {
+		padding-bottom: 10px;
+	}
+
+	.emailTile .emailButtonLink {
+		font-size: 11px;
+		line-height: 18px;
+	}
+
+	.emailTile .emailProductButton {
+		padding-top: 20px;
+	}
+
+	.emailProductContainer.emailProductLowStock {
+		padding-top: 0;
+	}
+
+	.emailCustomerNote {
+		padding-top: 10px;
+	}
+}
+@media (max-width: 500px) {
+	.table-col-2 .table-col-2__cell {
+		display: block;
+		width: 100%;
+	}
+
+	.mobile-hidden {
+		display: none;
+	}
+
+	.emailContainer {
+		min-width: 100%;
+	}
+
+	.html-template .mobile-paddings {
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+
+	u ~ div .html-template .mobile-paddings {
+		padding-left: 0;
+	}
+
+	u ~ div .emailContainer {
+		min-width: 100vw;
+	}
+
+	.full-width-mobile {
+		width: 100%;
+	}
+}
+
+.has-link a {
+	color: #1155cc;
+	text-decoration: none;
+}
+
+.mso-hide {
+	mso-hide: all;
+}
+
+.welcome-page__block {
+	display: none;
+}
+
+.welcome-page__state--VERIFIED .welcome-page__block--VERIFIED,
+.welcome-page__state--NOT_VERIFIED.welcome-page__state--EXPIRED .welco=
+me-page__block--EXPIRED,
+.welcome-page__state--NOT_VERIFIED.welcome-page__state--ACTIVE .welcom=
+e-page__block--NOT_VERIFIED {
+	display: block;
+}
+
+.form.amp-form-submitting > .form__self,
+.form.amp-form-submit-success > .form__self {
+	display: none;
+}
+
+.form__loader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+</style>
+        <style type=3D"text/css">
+            .html-template-font-family {
+                font-family: -apple-system,BlinkMacSystemFont,'Segoe U=
+I',Roboto,Ubuntu,sans-serif;
+            }
+        </style>
+    </head>
+<body leftmargin=3D"0" topmargin=3D"0" marginwidth=3D"0" marginheight=3D=
+"0" bgcolor=3D"#FFFFFF" style=3D"margin:0; padding:0; -webkit-text-siz=
+e-adjust:none; -ms-text-size-adjust:none;">
+    <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" height=3D"=
+100%" width=3D"100%" bgcolor=3D"#FFFFFF" id=3D"bodyTable" class=3D"htm=
+l-template" style=3D"border-collapse: collapse;table-layout: fixed;mar=
+gin:0 auto;"><tr><td>
+
+    <!-- Email wrapper : BEGIN -->
+<script type=3D"application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Order",
+    "merchant": {
+        "@type": "Organization",
+        "name": "Mark J Kohler Shop"
+    },
+    "orderNumber": "794",
+    "orderStatus": "http://schema.org/OrderProcessing",
+    "priceCurrency": "USD",
+    "price": "105.99",
+    "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "USD",
+        "price": "105.99"
+    }
+    ,
+    "discount": "$0.00",
+    "discountCurrency": "USD"
+    ,
+    "acceptedOffer":  [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Product",
+                    "name": "8 Steps to Start and Grow Your Business",
+                    "sku": "SKU-8StepsWorkbook",
+                    "url": "https://markjkohler.com/all-books/#!/8-Ste=
+ps-to-Start-and-Grow-Your-Business/p/225942102",
+                    "image": "https://d2j6dbq0eux0bg.cloudfront.net/im=
+ages/34089525/1695232061.jpg"
+                },
+                "price": "99.00",
+                "priceCurrency": "USD",
+                "eligibleQuantity": {
+                    "@type": "QuantitativeValue",
+                    "value": "1"
+                }
+            }
+           =20
+
+
+    ]
+    ,
+    "url": "https://markjkohler.com/all-books/#!/~/orders/keywords=3D7=
+94&offset=3D0",
+    "potentialAction": {
+        "@type": "ViewAction",
+        "url": "https://markjkohler.com/all-books/#!/~/orders/keywords=
+=3D794&offset=3D0"
+    }
+    ,
+    "paymentMethod": {
+        "@type": "PaymentMethod",
+        "name": "Credit or debit card"
+    }
+}
+</script>
+<!--[if mso]>
+<center><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><t=
+d width=3D"640">
+<![endif]-->
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"=
+ align=3D"center" style=3D"max-width: 640px; margin: auto;" class=3D"e=
+mailContainer">
+    <tr>
+        <td align=3D"left" valign=3D"top" style=3D"padding-top: 20px">
+
+
+            <!-- Header : start -->
+
+            <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" wi=
+dth=3D"100%">
+                <tr>
+                    <td align=3D"left" valign=3D"top">
+                        <table cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" width=3D"100%">
+                            <tr class=3D"emailTitle">
+
+                                <!-- Title -->
+                                <td>
+                                    <h1 style=3D"font-family: -apple-s=
+ystem,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-siz=
+e: 30px; font-weight: normal; line-height: 40px; color: #333; margin: =
+0; padding: 0; padding-right: 10px;">
+Order Confirmation                                    </h1>
+                                </td>
+
+                                <!-- Store logo -->
+                                <td align=3D"right" valign=3D"top" row=
+span=3D"2">
+        <a href=3D"https://markjkohler.com/all-products/" style=3D"tex=
+t-decoration: none;" target=3D"_blank">
+            <img border=3D'0' width=3D"193" height=3D"70" src=3D"https=
+://d2j6dbq0eux0bg.cloudfront.net/images/34089525/1562690609.jpg" style=
+=3D"display: block; width: auto; height: auto; max-width: 200px; max-h=
+eight: 70px;" alt=3D"Mark J Kohler Shop"/>
+        </a>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+
+            <!-- Header : end -->
+
+
+        </td>
+    </tr>
+    <tr>
+        <td align=3D"left" valign=3D"top" style=3D"padding-top: 30px;"=
+>
+            <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" wi=
+dth=3D"100%">
+
+                <!-- Customer greeting : start -->
+
+                <tr>
+                    <td align=3D"left" valign=3D"top" style=3D"font-fa=
+mily: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-s=
+erif; font-size: 16px; line-height: 24px; color: #333;">
+Hello Jesse Conley,                    </td>
+                </tr>
+                <tr>
+                    <td align=3D"left" valign=3D"top" style=3D"font-fa=
+mily: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-s=
+erif; font-size: 16px; line-height: 24px; color: #333; padding-top: 10=
+px">
+We have received your Mark J Kohler Shop order! Thank you for your pur=
+chase.                    </td>
+                </tr>
+
+                <!-- Customer greeting : end -->
+
+                <!-- Invoice payment info : start -->
+                <!-- Invoice payment info : end -->
+
+                <tr>
+                    <td align=3D"center" valign=3D"top" style=3D"paddi=
+ng-top: 20px;">
+
+                        <div style=3D"padding-top: 10px; text-align: l=
+eft;">
+                                <a href=3D"https://markjkohler.com/all=
+-books/#!/~/orders/keywords=3D794&amp;offset=3D0" style=3D"text-decora=
+tion: none;">
+                                    <h2 style=3D"color: #1155cc; font-=
+family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans=
+-serif; font-size: 24px; font-weight: normal; line-height: 36px; margi=
+n: 0; padding: 0;">
+Order #794                                    </h2>
+                                </a>
+                        </div>
+
+                        <!-- Order status : start -->
+                            <div style=3D"padding-top: 15px; text-alig=
+n: left;">
+                                <div style=3D"display: inline-block; p=
+adding: 0 50px 20px 0;">
+                                    <div style=3D"font-family: -apple-=
+system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-si=
+ze: 14px; line-height: 24px; color: #333;">
+Payment status                                    </div>
+                                    <div style=3D"font-family: -apple-=
+system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-si=
+ze: 24px; line-height: 30px; color:     #43985c
+;">
+                                        Paid
+                                    </div>
+                                </div>
+                                <div style=3D"display: inline-block; p=
+adding: 0 50px 20px 0;">
+                                    <div style=3D"font-family: -apple-=
+system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-si=
+ze: 14px; line-height: 24px; color: #333;">
+Fulfillment status                                    </div>
+                                    <div style=3D"font-family: -apple-=
+system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-si=
+ze: 24px; line-height: 30px; color:     #2080c8
+;">
+                                        Awaiting Processing
+                                    </div>
+                                </div>
+                            </div>
+                            <table border=3D"0" width=3D"100%" cellpad=
+ding=3D"0" cellspacing=3D"0" >
+                                <tr>
+                                    <td align=3D"left" valign=3D"top" =
+style=3D"font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Robo=
+to,Ubuntu,sans-serif; font-size: 14px; line-height: 24px; color: #999;=
+ padding-top:10px; border-top: 1px solid #ddd"></td>
+                                </tr>
+                            </table>
+
+                        <!-- Order status : end -->
+
+                    </td>
+                </tr>
+
+                <!-- Shipping address : start -->
+                <!-- The shipping address is shown here if the order i=
+s paid -->
+
+                            <tr>
+                                <td align=3D"left" valign=3D"top" styl=
+e=3D"padding-top: 30px;">
+                                    <h2 style=3D"font-family: -apple-s=
+ystem,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-siz=
+e: 24px; font-weight: normal; line-height: 36px; color: #333; margin: =
+0; padding: 0;">
+We will deliver your order to                                    </h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align=3D"left" valign=3D"top" styl=
+e=3D"font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,U=
+buntu,sans-serif; font-size: 14px; line-height: 24px; color: #333; pad=
+ding-top: 10px;">
+                                    <strong>Jesse Conley</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align=3D"left" valign=3D"top" styl=
+e=3D"font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,U=
+buntu,sans-serif; font-size: 14px; line-height: 18px; color: #333; pad=
+ding-top: 5px;">
+                                    129 S. Pierce St., GALION, Ohio 44=
+833, United States
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td align=3D"left" valign=3D"top" =
+style=3D"font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Robo=
+to,Ubuntu,sans-serif; font-size: 14px; line-height: 18px; color: #333;=
+ padding-top: 5px;">
+Phone 4198340225                                    </td>
+                                </tr>
+                            <tr>
+                                <td align=3D"left" valign=3D"top" styl=
+e=3D"font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,U=
+buntu,sans-serif; font-size: 14px; line-height: 24px; color: #333; pad=
+ding-top: 10px;">
+                                    <strong>Shipping method</strong><b=
+r />
+                                    Shipping to US &amp; Canada<br />
+                                   =20
+                                </td>
+                            </tr>
+
+                    <!-- Shipping address : end -->
+
+                    <!-- Payment instructions : start -->
+                    <!-- The payment instructions are shown here inste=
+ad of the shipping address if the order is not paid yet -->
+
+
+                <!-- Payment instructions: end -->
+
+
+                <!-- Item list: start -->
+
+                <tr>
+                    <td align=3D"left" valign=3D"top" style=3D"padding=
+-top: 30px;">
+                        <h2 style=3D"font-family: -apple-system,BlinkM=
+acSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-size: 24px; fon=
+t-weight: normal; line-height: 36px; color: #333; margin: 0; padding: =
+0;">
+Your order                        </h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td align=3D"left" valign=3D"top" style=3D"padding=
+-top: 10px;">
+                        <table cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" width=3D"100%" style=3D"border: 1px solid #ddd;">
+                            <tr>
+                                <td style=3D"padding-top: 20px; paddin=
+g-right: 20px; padding-bottom: 0; padding-left: 20px;">
+                                    <table cellpadding=3D"0" cellspaci=
+ng=3D"0" border=3D"0" width=3D"100%">
+                                        <tr>
+                                            <td>
+                                                <table cellpadding=3D"=
+0" cellspacing=3D"0" border=3D"0" width=3D"100%">
+                                                        <tr>
+                                                            <td valign=
+=3D"top" width=3D"600" style=3D"padding-bottom: 20px;">
+
+
+                                                                <!-- I=
+tem: start -->
+
+                                                                <table=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"table-layou=
+t: fixed;">
+                                                                    <t=
+r>
+                                                                      =
+  <td align=3D"center" valign=3D"top" width=3D"140">
+                                                                      =
+          <a href=3D"https://markjkohler.com/all-books/#!/8-Steps-to-S=
+tart-and-Grow-Your-Business/p/225942102" style=3D"display: block;">
+                                                                      =
+               <img border=3D'0' width=3D"140" height=3D"140" src=3D"h=
+ttps://d2j6dbq0eux0bg.cloudfront.net/images/34089525/1695232061.jpg" a=
+lt=3D"8 Steps to Start and Grow Your Business" />
+                                                                      =
+          </a>
+                                                                      =
+  </td>
+                                                                      =
+  <td width=3D"20">&nbsp; </td>
+                                                                      =
+  <td align=3D"left" valign=3D"middle" width=3D"420">
+                                                                      =
+      <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D=
+"100%">
+                                                                      =
+          <tr>
+                                                                      =
+              <td style=3D"font-family: -apple-system,BlinkMacSystemFo=
+nt,'Segoe UI',Roboto,Ubuntu,sans-serif; font-size: 14px; line-height: =
+20px; padding-top: 5px">
+                                                                      =
+                  <a href=3D"https://markjkohler.com/all-books/#!/8-St=
+eps-to-Start-and-Grow-Your-Business/p/225942102" style=3D"display: blo=
+ck; text-decoration: none; color: #1155cc;">
+                                                                      =
+                      8 Steps to Start and Grow Your Business
+                                                                      =
+                  </a>
+                                                                      =
+              </td>
+                                                                      =
+          </tr>
+                                                                      =
+          <tr>
+                                                                      =
+              <td style=3D"font-family: -apple-system,BlinkMacSystemFo=
+nt,'Segoe UI',Roboto,Ubuntu,sans-serif; font-size: 12px; line-height: =
+20px; color: #999; padding-top: 10px;">
+                                                                      =
+                  SKU: #SKU-8StepsWorkbook<br />
+                                                                      =
+              </td>
+                                                                      =
+          </tr>
+                                                                      =
+          <tr>
+                                                                      =
+              <td style=3D"font-family: -apple-system,BlinkMacSystemFo=
+nt,'Segoe UI',Roboto,Ubuntu,sans-serif; font-size: 14px; line-height: =
+20px; color: #333; padding-top: 10px;">
+                                                                      =
+                  1 =C3=97 $99.00
+                                                                      =
+              </td>
+                                                                      =
+          </tr>
+                                                                      =
+      </table>
+                                                                      =
+  </td>
+                                                                    </=
+tr>
+                                                                </tabl=
+e>
+
+                                                                <!-- I=
+tem: end -->
+
+
+                                                            </td>
+                                                        </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+
+                                        <!-- Order summary : start -->
+
+                                        <tr>
+                                            <td align=3D"left" valign=3D=
+"top">
+                                                <table cellpadding=3D"=
+0" cellspacing=3D"0" border=3D"0" width=3D"100%">
+                                                    <tr>
+                                                        <td style=3D"p=
+adding-top: 15px; padding-bottom: 20px; padding-left: 20px; border-top=
+: 1px solid #ddd;">
+
+                                                            <table cel=
+lpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"50%" align=3D"r=
+ight">
+                                                                <tr>
+                                                                    <t=
+d align=3D"left" valign=3D"top" width=3D"100%" style=3D"font-family: -=
+apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; f=
+ont-size: 12px; line-height: 20px; color: #333; padding-left: 30px; pa=
+dding-right: 20px; white-space: nowrap;">
+Items                                                                 =
+   </td>
+
+                                                                    <!=
+-- Subtotal -->
+                                                                    <t=
+d align=3D"right" valign=3D"top" style=3D"font-family: -apple-system,B=
+linkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-size: 12px=
+; line-height: 20px; color: #333; white-space: nowrap;">
+                                                                      =
+  $99.00
+                                                                    </=
+td>
+                                                                </tr>
+
+                                                                <!-- S=
+hipping rate -->
+                                                                    <t=
+r>
+                                                                      =
+  <td align=3D"left" valign=3D"top" width=3D"100%" style=3D"font-famil=
+y: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-seri=
+f; font-size: 12px; line-height: 20px; color: #333; padding-left: 30px=
+; padding-right: 20px; white-space: nowrap;">
+Shipping                                                              =
+          </td>
+                                                                      =
+  <td align=3D"right" valign=3D"top" style=3D"font-family: -apple-syst=
+em,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-size: =
+12px; line-height: 20px; color: #333; white-space: nowrap;">
+                                                                      =
+      $6.99
+                                                                      =
+  </td>
+                                                                    </=
+tr>
+
+                                                                <!-- T=
+axes -->
+
+                                                                <!-- S=
+urcharges -->
+
+                                                                <!-- D=
+iscounts -->
+
+                                                                <!-- G=
+ift =D1=81ard -->
+
+                                                                <!-- T=
+otal -->
+                                                                <tr>
+                                                                    <t=
+d align=3D"left" valign=3D"top" width=3D"100%" style=3D"font-family: -=
+apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; f=
+ont-size: 18px; line-height: 24px; color: #333; padding-top: 5px; padd=
+ing-left: 30px; padding-right: 20px; white-space: nowrap;">
+                                                                      =
+  <strong>Total</strong>
+                                                                    </=
+td>
+                                                                    <t=
+d align=3D"right" valign=3D"top" style=3D"font-family: -apple-system,B=
+linkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-size: 18px=
+; line-height: 24px; color: #333; padding-top: 5px; white-space: nowra=
+p;">
+                                                                      =
+  <strong>$105.99</strong>
+                                                                    </=
+td>
+                                                                </tr>
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Order summary : end -->
+
+
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- Item list: end -->
+
+
+                <!-- Order comments : start -->
+
+
+                <!-- Order comments : end -->
+
+
+                <!-- Shipping address: start -->
+                <!-- The shipping address is shown here if the order i=
+s not paid yet -->
+
+
+                <!-- Shipping address : end -->
+
+                <!-- block-related-products: start -->
+
+                    <tr>
+                        <td align=3D"left" valign=3D"top" style=3D"pad=
+ding-top: 40px;">
+                            <hr style=3D"border-top: 0;border-right: 0=
+;border-bottom: 1px solid #d8d8d8;border-left: 0;margin: 0;height: 0;c=
+lear: both;"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align=3D"left" valign=3D"top" style=3D"pad=
+ding-top: 40px; font-size: 24px; line-height: 32px; color: #333; font-=
+family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans=
+-serif;">
+You may also like                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align=3D"left" valign=3D"top" style=3D"pad=
+ding-top: 10px;">
+
+                            <table cellpadding=3D"0" cellspacing=3D"0"=
+ border=3D"0" style=3D"width: 100%; min-width: 100%;" class=3D"table-c=
+ol-2">
+                                <tr>
+
+                                            <td align=3D"center" valig=
+n=3D"top" width=3D"186" class=3D"table-col-2__cell">
+                                                <a href=3D"https://mar=
+kjkohler.com/all-products/?utm_source=3Dtriggered_email&amp;utm_campai=
+gn=3Dorder_confirmation&amp;utm_medium=3Demail#!/Business-Owner=E2=80=99=
+s-Guide-to-Financial-Freedom/p/222940963" style=3D"display: block;">
+                                                    <img border=3D'0' =
+width=3D"126" height=3D"186" src=3D"https://d2j6dbq0eux0bg.cloudfront.=
+net/images/34089525/1562721243.jpg" alt=3D"Business Owner=E2=80=99s Gu=
+ide to Financial Freedom" />
+                                                </a>
+                                                <span style=3D"font-si=
+ze: 16px; line-height: 24px; color: #333; font-family: -apple-system,B=
+linkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif;word-wrap: break=
+-word; word-break: break-word; display:block; padding-top:10px;">Busin=
+ess Owner=E2=80=99s Guide to Financial Freedom</span>
+                                                <span style=3D"font-si=
+ze: 16px; line-height: 24px; color: #333; font-family: -apple-system,B=
+linkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; display:block;"=
+>$19.99</span>
+                                            </td>
+
+                                        <td width=3D"40" class=3D"mobi=
+le-hidden"></td>
+
+
+                                            <td align=3D"center" valig=
+n=3D"top" width=3D"186" class=3D"table-col-2__cell">
+                                                <a href=3D"https://mar=
+kjkohler.com/all-products/?utm_source=3Dtriggered_email&amp;utm_campai=
+gn=3Dorder_confirmation&amp;utm_medium=3Demail#!/The-Tax-and-Legal-Pla=
+ybook/p/225551144" style=3D"display: block;">
+                                                    <img border=3D'0' =
+width=3D"106" height=3D"186" src=3D"https://d2j6dbq0eux0bg.cloudfront.=
+net/images/34089525/1583757582.jpg" alt=3D"The Tax and Legal Playbook"=
+ />
+                                                </a>
+                                                <span style=3D"font-si=
+ze: 16px; line-height: 24px; color: #333; font-family: -apple-system,B=
+linkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif;word-wrap: break=
+-word; word-break: break-word; display:block; padding-top:10px;">The T=
+ax and Legal Playbook</span>
+                                                <span style=3D"font-si=
+ze: 16px; line-height: 24px; color: #333; font-family: -apple-system,B=
+linkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; display:block;"=
+>$14.99</span>
+                                            </td>
+
+                                        <td width=3D"40" class=3D"mobi=
+le-hidden"></td>
+
+
+                                            <td align=3D"center" valig=
+n=3D"top" width=3D"186" height=3D"0" style=3D"padding:0px; height:0px"=
+ class=3D"table-col-2__cell"></td>
+
+                                       =20
+
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                <!-- block-related-products: end -->
+
+                <!-- block-discount: start -->
+                <!-- block-discount: end -->
+
+                <!-- Store contact info and help note : start -->
+                <tr>
+                    <td align=3D"left" valign=3D"top" style=3D"padding=
+-top: 40px; padding-bottom: 0;">
+                        <h2 style=3D"font-family: -apple-system,BlinkM=
+acSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-size: 24px; fon=
+t-weight: normal; line-height: 36px; color: #333; margin: 0; padding: =
+0;">
+Thanks for shopping with us!                        </h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td align=3D"left" valign=3D"top">
+                        <table cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" width=3D"100%">
+                                <tr>
+                                    <td style=3D"padding-top: 15px; pa=
+dding-bottom: 0;">
+                                        <p style=3D"font-family: -appl=
+e-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-=
+size: 16px; line-height: 24px; color: #333; margin: 0; padding: 0;">
+You can check the status of your orders at any time on our <a href=3D"=
+https://markjkohler.com/all-books/#!/~/orders/offset=3D0" style=3D"tex=
+t-decoration: underline; color: #1155cc;">Orders History Page</a>
+.                                        </p>
+                                    </td>
+                                </tr>
+                            <tr>
+                                <td style=3D"padding-top: 15px; paddin=
+g-bottom: 0;">
+                                    <p style=3D"font-family: -apple-sy=
+stem,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif; font-size=
+: 15px; line-height: 24px; color: #333; margin: 0; padding: 0;">
+
+
+
+We welcome you to our store anytime. If you need assistance or have an=
+y questions, please email us at <a href=3D"mailto:csm@markjkohler.com"=
+ style=3D"text-decoration: underline; color: #1155cc;">csm@markjkohler=
+.com</a>
+or call <b>1-888-801-0010</b>. We are happy to help!                  =
+                  </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- Store contact info and help note : end -->
+
+
+                <!-- Signature : start -->
+
+                <tr>
+                    <td align=3D"left" valign=3D"top" style=3D"padding=
+-top: 10px;">
+                        <p style=3D"font-size: 16px; line-height: 24px=
+; color: #333; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI=
+',Roboto,Ubuntu,sans-serif; padding:0; margin:0;">
+                            Sincerely,<br/>
+                            <a href=3D"https://markjkohler.com/all-pro=
+ducts/" style=3D"text-decoration: none; color: #1155cc;">Mark J Kohler=
+ Shop</a>
+                        </p>
+                    </td>
+                </tr>
+
+                <!-- Signature : end -->
+
+                <!-- block-social-icons: start -->
+                    <tr>
+                        <td align=3D"left" valign=3D"top" style=3D"pad=
+ding-top: 20px;">
+
+                                <table cellpadding=3D"0" cellspacing=3D=
+"0" border=3D"0">
+                                    <tr>
+                                            <td align=3D"left" valign=3D=
+"top" width=3D"60">
+                                                <a href=3D"https://fac=
+ebook.com/125536980950407" target=3D"_blank" style=3D"text-decoration:=
+ none;vertical-align: top; display: inline-block; width: 40px; height:=
+ 40px;">
+                                                    <img border=3D'0' =
+width=3D"40" height=3D"40" src=3D"https://d1howb1wwyap5o.cloudfront.ne=
+t/mail_notifications/social_circled_facebook.png" alt=3D"Facebook" />
+                                                </a>
+                                            </td>
+
+                                            <td align=3D"left" valign=3D=
+"top" width=3D"60">
+                                                <a href=3D"https://twi=
+tter.com/markkohler" target=3D"_blank" style=3D"text-decoration: none;=
+vertical-align: top; display: inline-block; width: 40px; height: 40px;=
+">
+                                                    <img border=3D'0' =
+width=3D"40" height=3D"40" src=3D"https://d1howb1wwyap5o.cloudfront.ne=
+t/mail_notifications/social_circled_twitter.png" alt=3D"Twitter" />
+                                                </a>
+                                            </td>
+
+                                            <td align=3D"left" valign=3D=
+"top" width=3D"60">
+                                                <a href=3D"https://ins=
+tagram.com/markjkohler" target=3D"_blank" style=3D"text-decoration: no=
+ne;vertical-align: top; display: inline-block; width: 40px; height: 40=
+px;">
+                                                    <img border=3D'0' =
+width=3D"40" height=3D"40" src=3D"https://d1howb1wwyap5o.cloudfront.ne=
+t/mail_notifications/social_circled_instagram.png" alt=3D"Instagram" /=
+>
+                                                </a>
+                                            </td>
+
+
+
+                                            <td align=3D"left" valign=3D=
+"top" width=3D"60">
+                                                <a href=3D"https://you=
+tube.com/channel/UCHYeaAH3D-wzQyDiXndSfMA" target=3D"_blank" style=3D"=
+text-decoration: none;vertical-align: top; display: inline-block; widt=
+h: 40px; height: 40px;">
+                                                    <img border=3D'0' =
+width=3D"40" height=3D"40" src=3D"https://d1howb1wwyap5o.cloudfront.ne=
+t/mail_notifications/social_circled_youtube.png" alt=3D"Youtube" />
+                                                </a>
+                                            </td>
+                                    </tr>
+                                </table>
+                        </td>
+                    </tr>
+                <!-- block-social-icons: end -->
+
+                <!-- Footer : start -->
+
+                <tr>
+                    <td align=3D"left" style=3D"font-size: 12px; line-=
+height: 18px; color: #999; font-family: -apple-system,BlinkMacSystemFo=
+nt,'Segoe UI',Roboto,Ubuntu,sans-serif; padding-top: 40px;">
+                        &copy; Mark J Kohler Shop
+                            <br />Mark J. Kohler / KKOS Lawyers, 15 S =
+1st E
+Ste 200, Rexburg, Idaho 83440, United States
+                    </td>
+                </tr>
+                <tr>
+                    <td align=3D"left" valign=3D"top" style=3D"padding=
+-top: 10px">
+                    </td>
+                </tr>
+
+                <!-- Footer : end -->
+
+            </table>
+        </td>
+    </tr>
+</table>
+<!--[if mso]>
+</td></tr></table></center>
+<![endif]-->
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"=
+ style=3D"max-width: 640px; margin: 0 auto;" class=3D"emailContainer">
+    <tr>
+        <td style=3D"font-size: 1px;line-height: 40px;">&nbsp;<td>
+    </tr>
+</table>
+
+    <img border=3D'0' src=3D"https://ecomm.events/spacer.gif?event_nam=
+e=3DOPEN_MAIL&amp;store_id=3D34089525&amp;entity_type=3DORDER_CONFIRMA=
+TION_EMAIL_HTML&amp;cache_killer=3Dee76b244-5d5d-4807-bdd8-6e7a7be1cea=
+3" alt=3D"" width=3D"1" height=3D"1">
+    <!-- Email wrapper : END -->
+
+    </td></tr></table>
+    </body>
+    </html>
+
+--mk-bc25b65400fa42ae94e70cd20f472eba--

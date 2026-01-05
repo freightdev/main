@@ -1,0 +1,222 @@
+.
+├── acceleration-service
+│   └── .gitkeep
+├── accounting-service
+│   └── .gitkeep
+├── advertising-service
+│   └── .gitkeep
+├── affiliation-service
+│   └── .gitkeep
+├── analytics-service
+│   └── .gitkeep
+├── animation-service
+│   └── .gitkeep
+├── application-service
+│   └── .gitkeep
+├── artifact-service
+│   └── .gitkeep
+├── assembly-service
+│   └── .gitkeep
+├── authentication-service
+│   └── .gitkeep
+├── backups-service
+│   └── .gitkeep
+├── banking-service
+│   └── .gitkeep
+├── benchmark-service
+│   └── .gitkeep
+├── binding-service
+│   └── .gitkeep
+├── blockchain-service
+│   └── .gitkeep
+├── caching-service
+│   └── .gitkeep
+├── cloud-service
+│   └── .gitkeep
+├── clustering-service
+│   └── .gitkeep
+├── collaboration-service
+│   └── .gitkeep
+├── commerce-service
+│   └── .gitkeep
+├── communication-service
+│   └── .gitkeep
+├── compression-service
+│   └── .gitkeep
+├── compute-service
+│   └── .gitkeep
+├── conferencing-service
+│   └── .gitkeep
+├── connection-service
+│   └── .gitkeep
+├── consulting-service
+│   └── .gitkeep
+├── containerization-service
+│   └── .gitkeep
+├── contract-service
+│   └── .gitkeep
+├── cryptocurrency-service
+│   └── .gitkeep
+├── dashboard-service
+│   └── .gitkeep
+├── database-service
+│   └── .gitkeep
+├── decentralizing-service
+│   └── .gitkeep
+├── designing-service
+│   └── .gitkeep
+├── devops-service
+│   └── .gitkeep
+├── documentation-service
+│   └── .gitkeep
+├── embedding-service
+│   └── .gitkeep
+├── encryption-service
+│   └── .gitkeep
+├── environment-service
+│   └── .gitkeep
+├── experimentation-service
+│   └── .gitkeep
+├── fallback-service
+│   └── .gitkeep
+├── featuring-service
+│   └── .gitkeep
+├── feedback-service
+│   └── .gitkeep
+├── filesystem-service
+│   └── .gitkeep
+├── financing-service
+│   └── .gitkeep
+├── firewall-service
+│   └── .gitkeep
+├── gaming-service
+│   └── .gitkeep
+├── gateway-service
+│   └── .gitkeep
+├── generation-seervice
+│   └── .gitkeep
+├── hosting-service
+│   └── .gitkeep
+├── illustration-service
+│   └── .gitkeep
+├── immutability-service
+│   └── .gitkeep
+├── indexing-service
+│   └── .gitkeep
+├── index.tree
+├── infrastructure-service
+│   └── .gitkeep
+├── integration-service
+│   └── .gitkeep
+├── intrusion-service
+│   └── .gitkeep
+├── inventory-service
+│   └── .gitkeep
+├── language-service
+│   └── .gitkeep
+├── localization-service
+│   └── .gitkeep
+├── logging-service
+│   └── .gitkeep
+├── management-service
+│   └── .gitkeep
+├── mapping-service
+│   └── .gitkeep
+├── marketing-service
+│   └── .gitkeep
+├── memory-service
+│   └── .gitkeep
+├── messaging-service
+│   └── .gitkeep
+├── miscellaneous-service
+│   └── .gitkeep
+├── modeling-service
+│   └── .gitkeep
+├── navigation-service
+│   └── .gitkeep
+├── netmech-service
+│   └── .gitkeep
+├── notification-service
+│   └── .gitkeep
+├── obervability-service
+│   └── .gitkeep
+├── optimization-service
+│   └── .gitkeep
+├── orchistration-service
+│   └── .gitkeep
+├── packaging-service
+│   └── .gitkeep
+├── password-service
+│   └── .gitkeep
+├── payment-service
+│   └── .gitkeep
+├── photography-service
+│   └── .gitkeep
+├── pipeline-service
+│   └── .gitkeep
+├── presentation-service
+│   └── .gitkeep
+├── processing-service
+│   └── .gitkeep
+├── productivity-service
+│   └── .gitkeep
+├── provisioning-service
+│   └── .gitkeep
+├── queuing-service
+│   └── .gitkeep
+├── recording-service
+│   └── .gitkeep
+├── recovery-service
+│   └── .gitkeep
+├── referencing-service
+│   └── .gitkeep
+├── rendering-service
+│   └── .gitkeep
+├── rotation-service
+│   └── .gitkeep
+├── routing-service
+│   └── .gitkeep
+├── runtime-service
+│   └── .gitkeep
+├── sampling-service
+│   └── .gitkeep
+├── scheduling-service
+│   └── .gitkeep
+├── selection-service
+│   └── .gitkeep
+├── seo-service
+│   └── .gitkeep
+├── sercrets-service
+│   └── .gitkeep
+├── storage-service
+│   └── .gitkeep
+├── strategy-service
+│   └── .gitkeep
+├── streaming-service
+│   └── .gitkeep
+├── support-service
+│   └── .gitkeep
+├── telemetry-service
+│   └── .gitkeep
+├── testing-service
+│   └── .gitkeep
+├── threads-service
+│   └── .gitkeep
+├── tokenizing-service
+│   └── .gitkeep
+├── tracking-service
+│   └── .gitkeep
+├── training-service
+│   └── .gitkeep
+├── transcription-service
+│   └── .gitkeep
+├── translation-service
+│   └── .gitkeep
+├── tunneling-service
+│   └── .gitkeep
+├── versioning-service
+│   └── .gitkeep
+└── weather-service
+    └── .gitkeep
+
+110 directories, 110 files

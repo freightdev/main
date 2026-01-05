@@ -1,0 +1,168 @@
+.
+├── audit
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   ├── docs
+│   │   └── audit-checks.md
+│   └── src
+│       └── main.rs
+├── chat
+│   ├── build.sh
+│   ├── BUILD_SUMMARY.md
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   ├── configs
+│   │   └── config.toml
+│   ├── examples.sh
+│   ├── README.md
+│   ├── src
+│   │   ├── analyzer.rs
+│   │   ├── entities.rs
+│   │   ├── main.rs
+│   │   ├── models.rs
+│   │   ├── parser.rs
+│   │   ├── patterns.rs
+│   │   └── storage.rs
+│   └── USAGE.md
+├── code
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── collection
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── data
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       ├── main.rs
+│       └── markdown_generator.rs
+├── database
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── file
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── index.tree
+├── lead::analyzer
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── lead::handler
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── lead::scraper
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── mail
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── mcp
+│   ├── Cargo.toml
+│   ├── CLAUDE.md
+│   ├── config.toml
+│   ├── .env.example
+│   ├── examples
+│   │   ├── agent_client.rs
+│   │   └── agent_server.rs
+│   ├── QUICKSTART.md
+│   ├── README.md
+│   └── src
+│       ├── client.rs
+│       ├── config.rs
+│       ├── discovery.rs
+│       ├── error.rs
+│       ├── integrations.rs
+│       ├── lib.rs
+│       ├── protocol.rs
+│       ├── resources.rs
+│       ├── server.rs
+│       └── tools.rs
+├── pdf
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── prompt
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── RAG_AND_MCP_SETUP.md
+├── rag::qdrant
+│   ├── Cargo.toml
+│   ├── CLAUDE.md
+│   ├── config.toml
+│   ├── docker-compose.yml
+│   ├── .env.example
+│   ├── examples
+│   │   ├── index_codebase.rs
+│   │   └── search_demo.rs
+│   ├── QUICKSTART.md
+│   ├── README.md
+│   └── src
+│       ├── client.rs
+│       ├── config.rs
+│       ├── embeddings.rs
+│       ├── error.rs
+│       ├── indexer.rs
+│       ├── lib.rs
+│       └── search.rs
+├── screen
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── search
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── service
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+├── test
+│   └── src
+│       ├── api_tests.rs
+│       ├── bench
+│       │   └── inference_bench.rs
+│       ├── cli_tests.rs
+│       ├── common
+│       │   ├── fixtures
+│       │   │   └── tests_model.rs
+│       │   └── mod.rs
+│       ├── examples
+│       │   ├── batch_demo.rs
+│       │   └── interactive_demo.rs
+│       ├── integration_tests.rs
+│       ├── model_tests.rs
+│       ├── pronunciation_tests.rs
+│       ├── runtime_tests.rs
+│       └── token_tests.rs
+├── vision
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   └── src
+│       └── main.rs
+└── workflow
+    ├── Cargo.lock
+    ├── Cargo.toml
+    └── src
+        └── lib.rs
+
+51 directories, 115 files

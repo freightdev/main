@@ -2498,112 +2498,6 @@
 ├── index.tree_
 ├── MarkerOS
 │   ├── etc
-│   │   ├── markos-idea
-│   │   │   ├── beat.yaml
-│   │   │   ├── bet.yaml
-│   │   │   ├── book.yaml
-│   │   │   ├── chapter.yaml
-│   │   │   ├── core
-│   │   │   │   ├── actor.md
-│   │   │   │   ├── agency.proto
-│   │   │   │   ├── agent.md
-│   │   │   │   ├── api
-│   │   │   │   │   └── integration.md
-│   │   │   │   ├── base
-│   │   │   │   │   ├── beat
-│   │   │   │   │   ├── bet
-│   │   │   │   │   ├── mark
-│   │   │   │   │   ├── marker
-│   │   │   │   │   ├── ribbon
-│   │   │   │   │   └── trail
-│   │   │   │   ├── beat.md
-│   │   │   │   ├── beats
-│   │   │   │   │   └── intro.md
-│   │   │   │   ├── bet.md
-│   │   │   │   ├── bets
-│   │   │   │   │   └── intro.md
-│   │   │   │   ├── books
-│   │   │   │   │   └── intro.md
-│   │   │   │   ├── clock.md
-│   │   │   │   ├── cmds
-│   │   │   │   │   ├── init
-│   │   │   │   │   ├── mark-beat.md
-│   │   │   │   │   ├── mark-exec.md
-│   │   │   │   │   └── mark-tempo.md
-│   │   │   │   ├── commands.proto
-│   │   │   │   ├── core
-│   │   │   │   │   ├── architecture.md
-│   │   │   │   │   ├── bookmark-stub.md
-│   │   │   │   │   ├── directory-structure.md
-│   │   │   │   │   ├── filetype-map.md
-│   │   │   │   │   ├── glossary
-│   │   │   │   │   ├── stroke.md
-│   │   │   │   │   └── trails
-│   │   │   │   ├── delay.md
-│   │   │   │   ├── economy
-│   │   │   │   │   └── cost-structure.md
-│   │   │   │   ├── ink.md
-│   │   │   │   ├── kernel
-│   │   │   │   │   ├── beat-sync
-│   │   │   │   │   ├── bet-engine
-│   │   │   │   │   ├── ink-burn
-│   │   │   │   │   ├── ink_trails
-│   │   │   │   │   ├── keeper-db
-│   │   │   │   │   ├── key-mark
-│   │   │   │   │   ├── marker-router
-│   │   │   │   │   ├── memory-scroll
-│   │   │   │   │   ├── ribbon-trail
-│   │   │   │   │   └── token_stroke
-│   │   │   │   ├── marker.md
-│   │   │   │   ├── markers
-│   │   │   │   │   └── intro.md
-│   │   │   │   ├── mark.md
-│   │   │   │   ├── marks
-│   │   │   │   │   └── intro.md
-│   │   │   │   ├── memory
-│   │   │   │   │   └── intro.md
-│   │   │   │   ├── pulse.md
-│   │   │   │   ├── README.md
-│   │   │   │   ├── ribbon.md
-│   │   │   │   ├── ribbons
-│   │   │   │   │   └── intro.md
-│   │   │   │   ├── stroke.md
-│   │   │   │   ├── sync.md
-│   │   │   │   ├── tempo.md
-│   │   │   │   ├── trail.md
-│   │   │   │   └── types
-│   │   │   ├── cover.yaml
-│   │   │   ├── ink.yaml
-│   │   │   ├── keeper.yaml
-│   │   │   ├── license.yaml
-│   │   │   ├── marker.yaml
-│   │   │   ├── mark.yaml
-│   │   │   ├── page.yaml
-│   │   │   ├── ribbon.yaml
-│   │   │   ├── stroke.yaml
-│   │   │   └── trail.yaml
-│   │   ├── Modelfile.mark
-│   │   ├── setup-firecracker.sh
-│   │   ├── zbox-env -> /home/zbox-env
-│   │   └── zed-ide
-│   │       ├── config
-│   │       │   ├── keymap.json
-│   │       │   ├── settings.json
-│   │       │   ├── tasks.json
-│   │       │   └── themes
-│   │       │       └── .gitkeep
-│   │       ├── src
-│   │       │   ├── lib
-│   │       │   │   ├── create-management-scripts.zsh
-│   │       │   │   └── install-dependencies.zsh
-│   │       │   ├── main.zsh
-│   │       │   ├── option
-│   │       │   │   ├── build-source.zsh
-│   │       │   │   └── try-prebuilt.zsh
-│   │       │   └── util
-│   │       │       ├── config.zsh
-│   │       │       └── logging.zsh
-│   │       └── zed-installer.zsh
 │   └── var
 │       └── www
 │           ├── markos-build-documents.html
@@ -3240,23 +3134,129 @@
     │   │       ├── surrealdb.service
     │   │       ├── trucking-collector.service
     │   │       └── trucking-collector.timer
-    │   └── nodes
-    │       ├── ASUS-TUF-Gaming.md
-    │       ├── callbox(4vCPU, null, 12GB RAM, [256GB SSD, 1TB HDD])
-    │       │   └── callbox_node.yaml
-    │       ├── devbox(22vCPU, [iGPU,NPU], 16GB RAM, 1TB NVMe)
-    │       │   └── devbox_node.yaml
-    │       ├── gpubox(8vCPU, GPU 4vRAM, 32GB RAM, 1TB NVMe)
-    │       │   ├── gpubox_node.yaml
-    │       │   └── nix
-    │       │       ├── configuration.nix
-    │       │       ├── duckdb-analyzer.nix
-    │       │       ├── flake.nix
-    │       │       └── openwebui.nomad.hcl
-    │       ├── infrastructue.md
-    │       ├── Lenovo-Yoga-9i.md
-    │       └── workbox(20vCPU, iGPU, 24GB RAM, 1TB NVMe)
-    │           └── workbox_node.yaml
+    │   ├── markos-idea
+    │   │   ├── beat.yaml
+    │   │   ├── bet.yaml
+    │   │   ├── book.yaml
+    │   │   ├── chapter.yaml
+    │   │   ├── core
+    │   │   │   ├── actor.md
+    │   │   │   ├── agency.proto
+    │   │   │   ├── agent.md
+    │   │   │   ├── api
+    │   │   │   │   └── integration.md
+    │   │   │   ├── base
+    │   │   │   │   ├── beat
+    │   │   │   │   ├── bet
+    │   │   │   │   ├── mark
+    │   │   │   │   ├── marker
+    │   │   │   │   ├── ribbon
+    │   │   │   │   └── trail
+    │   │   │   ├── beat.md
+    │   │   │   ├── beats
+    │   │   │   │   └── intro.md
+    │   │   │   ├── bet.md
+    │   │   │   ├── bets
+    │   │   │   │   └── intro.md
+    │   │   │   ├── books
+    │   │   │   │   └── intro.md
+    │   │   │   ├── clock.md
+    │   │   │   ├── cmds
+    │   │   │   │   ├── init
+    │   │   │   │   ├── mark-beat.md
+    │   │   │   │   ├── mark-exec.md
+    │   │   │   │   └── mark-tempo.md
+    │   │   │   ├── commands.proto
+    │   │   │   ├── core
+    │   │   │   │   ├── architecture.md
+    │   │   │   │   ├── bookmark-stub.md
+    │   │   │   │   ├── directory-structure.md
+    │   │   │   │   ├── filetype-map.md
+    │   │   │   │   ├── glossary
+    │   │   │   │   ├── stroke.md
+    │   │   │   │   └── trails
+    │   │   │   ├── delay.md
+    │   │   │   ├── economy
+    │   │   │   │   └── cost-structure.md
+    │   │   │   ├── ink.md
+    │   │   │   ├── kernel
+    │   │   │   │   ├── beat-sync
+    │   │   │   │   ├── bet-engine
+    │   │   │   │   ├── ink-burn
+    │   │   │   │   ├── ink_trails
+    │   │   │   │   ├── keeper-db
+    │   │   │   │   ├── key-mark
+    │   │   │   │   ├── marker-router
+    │   │   │   │   ├── memory-scroll
+    │   │   │   │   ├── ribbon-trail
+    │   │   │   │   └── token_stroke
+    │   │   │   ├── marker.md
+    │   │   │   ├── markers
+    │   │   │   │   └── intro.md
+    │   │   │   ├── mark.md
+    │   │   │   ├── marks
+    │   │   │   │   └── intro.md
+    │   │   │   ├── memory
+    │   │   │   │   └── intro.md
+    │   │   │   ├── pulse.md
+    │   │   │   ├── README.md
+    │   │   │   ├── ribbon.md
+    │   │   │   ├── ribbons
+    │   │   │   │   └── intro.md
+    │   │   │   ├── stroke.md
+    │   │   │   ├── sync.md
+    │   │   │   ├── tempo.md
+    │   │   │   ├── trail.md
+    │   │   │   └── types
+    │   │   ├── cover.yaml
+    │   │   ├── ink.yaml
+    │   │   ├── keeper.yaml
+    │   │   ├── license.yaml
+    │   │   ├── marker.yaml
+    │   │   ├── mark.yaml
+    │   │   ├── page.yaml
+    │   │   ├── ribbon.yaml
+    │   │   ├── stroke.yaml
+    │   │   └── trail.yaml
+    │   ├── Modelfile.mark
+    │   ├── nodes
+    │   │   ├── ASUS-TUF-Gaming.md
+    │   │   ├── callbox(4vCPU, null, 12GB RAM, [256GB SSD, 1TB HDD])
+    │   │   │   └── callbox_node.yaml
+    │   │   ├── devbox(22vCPU, [iGPU,NPU], 16GB RAM, 1TB NVMe)
+    │   │   │   └── devbox_node.yaml
+    │   │   ├── gpubox(8vCPU, GPU 4vRAM, 32GB RAM, 1TB NVMe)
+    │   │   │   ├── gpubox_node.yaml
+    │   │   │   └── nix
+    │   │   │       ├── configuration.nix
+    │   │   │       ├── duckdb-analyzer.nix
+    │   │   │       ├── flake.nix
+    │   │   │       └── openwebui.nomad.hcl
+    │   │   ├── infrastructue.md
+    │   │   ├── Lenovo-Yoga-9i.md
+    │   │   └── workbox(20vCPU, iGPU, 24GB RAM, 1TB NVMe)
+    │   │       └── workbox_node.yaml
+    │   ├── setup-firecracker.sh
+    │   ├── zbox-env -> /home/zbox-env
+    │   └── zed-ide
+    │       ├── config
+    │       │   ├── keymap.json
+    │       │   ├── settings.json
+    │       │   ├── tasks.json
+    │       │   └── themes
+    │       │       └── .gitkeep
+    │       ├── src
+    │       │   ├── lib
+    │       │   │   ├── create-management-scripts.zsh
+    │       │   │   └── install-dependencies.zsh
+    │       │   ├── main.zsh
+    │       │   ├── option
+    │       │   │   ├── build-source.zsh
+    │       │   │   └── try-prebuilt.zsh
+    │       │   └── util
+    │       │       ├── config.zsh
+    │       │       └── logging.zsh
+    │       └── zed-installer.zsh
     ├── docs
     │   ├── architecture.md
     │   ├── BIG_VISION.md
