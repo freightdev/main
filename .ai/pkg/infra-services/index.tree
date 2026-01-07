@@ -1,0 +1,130 @@
+.
+├── boundary
+│   └── .gitkeep
+├── cloudflare
+│   ├── add-cloudflared-service.sh
+│   ├── cfctl.sh
+│   └── setup-cloudflared-advanced.sh
+├── consul
+│   └── .gitkeep
+├── custom
+│   ├── email-custom
+│   │   ├── bin
+│   │   │   └── email-service
+│   │   ├── cmd
+│   │   │   └── server
+│   │   │       └── main.go
+│   │   ├── email-service.log
+│   │   ├── .env
+│   │   ├── .env.example
+│   │   ├── .gitignore
+│   │   ├── go.mod
+│   │   ├── go.sum
+│   │   ├── internal
+│   │   │   ├── config
+│   │   │   │   └── config.go
+│   │   │   ├── handlers
+│   │   │   │   └── handlers.go
+│   │   │   └── services
+│   │   │       └── email_service.go
+│   │   ├── Makefile
+│   │   ├── pkg
+│   │   │   └── .gitkeep
+│   │   └── README.md
+│   ├── payment-custom
+│   │   ├── cmd
+│   │   │   └── server
+│   │   │       └── main.go
+│   │   ├── .env
+│   │   ├── .env.example
+│   │   ├── go.mod
+│   │   ├── internal
+│   │   │   ├── core
+│   │   │   │   ├── config
+│   │   │   │   │   ├── configs.go
+│   │   │   │   │   └── database.go
+│   │   │   │   ├── domain
+│   │   │   │   │   ├── analytics.go
+│   │   │   │   │   ├── audit.go
+│   │   │   │   │   ├── errors.go
+│   │   │   │   │   ├── fraud.go
+│   │   │   │   │   ├── payment.go
+│   │   │   │   │   └── transaction.go
+│   │   │   │   └── infra
+│   │   │   │       ├── config
+│   │   │   │       ├── docker
+│   │   │   │       ├── k8
+│   │   │   │       └── monitoring
+│   │   │   └── src
+│   │   │       ├── api
+│   │   │       │   ├── adapters
+│   │   │       │   ├── dto
+│   │   │       │   ├── handlers
+│   │   │       │   ├── middleware
+│   │   │       │   └── services
+│   │   │       ├── base
+│   │   │       │   ├── migrations
+│   │   │       │   └── repositories
+│   │   │       ├── pkg
+│   │   │       │   ├── errors
+│   │   │       │   ├── logger
+│   │   │       │   └── validator
+│   │   │       └── ports
+│   │   │           ├── analytics_service.go
+│   │   │           ├── audit_service.go
+│   │   │           ├── cache_service.go
+│   │   │           ├── fraud_service.go
+│   │   │           ├── notification_service.go
+│   │   │           ├── payment_processor.go
+│   │   │           ├── payment_repository.go
+│   │   │           └── payment_service.go
+│   │   ├── Makefile
+│   │   ├── README.md
+│   │   └── scripts
+│   │       ├── build.sh
+│   │       ├── deploy.sh
+│   │       ├── migrate.sh
+│   │       └── smoke_test.sh
+│   └── profile-custom
+│       ├── cmd
+│       │   └── server
+│       │       └── main.go
+│       ├── .env
+│       ├── go.mod
+│       ├── internal
+│       │   ├── core
+│       │   │   ├── config
+│       │   │   │   ├── config.go
+│       │   │   │   ├── database.go
+│       │   │   │   └── env.go
+│       │   │   ├── domain
+│       │   │   │   ├── entities
+│       │   │   │   ├── interfaces
+│       │   │   │   └── services
+│       │   │   └── infra
+│       │   │       └── docker
+│       │   └── src
+│       │       ├── api
+│       │       │   ├── dto
+│       │       │   ├── handlers
+│       │       │   ├── middleware
+│       │       │   └── services
+│       │       ├── base
+│       │       │   ├── container
+│       │       │   ├── migrations
+│       │       │   └── repositories
+│       │       └── pkg
+│       │           ├── errors
+│       │           ├── logger
+│       │           └── validator
+│       ├── Makefile
+│       └── README.md
+├── index.tree
+├── nomad
+│   └── .gitkeep
+├── terraform
+│   └── .gitkeep
+└── vault
+    └── .gitkeep
+
+71 directories, 57 files

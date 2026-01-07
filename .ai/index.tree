@@ -1,0 +1,2643 @@
+.
+├── app
+│   ├── fedlearn-mobile
+│   │   ├── analysis_options.yaml
+│   │   ├── android
+│   │   │   ├── app
+│   │   │   │   ├── build.gradle.kts
+│   │   │   │   └── src
+│   │   │   │       ├── debug
+│   │   │   │       ├── main
+│   │   │   │       └── profile
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── fedlearn_android.iml
+│   │   │   ├── .gitignore
+│   │   │   ├── gradle
+│   │   │   │   └── wrapper
+│   │   │   │       ├── gradle-wrapper.jar
+│   │   │   │       └── gradle-wrapper.properties
+│   │   │   ├── gradle.properties
+│   │   │   ├── gradlew
+│   │   │   ├── gradlew.bat
+│   │   │   ├── local.properties
+│   │   │   └── settings.gradle.kts
+│   │   ├── AUTO_WIRE_README.md
+│   │   ├── .dart_tool
+│   │   │   ├── dartpad
+│   │   │   │   └── web_plugin_registrant.dart
+│   │   │   ├── package_config.json
+│   │   │   ├── package_graph.json
+│   │   │   └── version
+│   │   ├── devtools_options.yaml
+│   │   ├── fedlearn.iml
+│   │   ├── flutter_autowire_v2.sh
+│   │   ├── .flutter-plugins-dependencies
+│   │   ├── FLUTTER_SETUP.md
+│   │   ├── .gitignore
+│   │   ├── .idea
+│   │   │   ├── libraries
+│   │   │   │   ├── Dart_SDK.xml
+│   │   │   │   └── KotlinJavaRuntime.xml
+│   │   │   ├── modules.xml
+│   │   │   ├── runConfigurations
+│   │   │   │   └── main_dart.xml
+│   │   │   └── workspace.xml
+│   │   ├── ios
+│   │   │   ├── Flutter
+│   │   │   │   ├── AppFrameworkInfo.plist
+│   │   │   │   ├── Debug.xcconfig
+│   │   │   │   ├── ephemeral
+│   │   │   │   │   ├── flutter_lldb_helper.py
+│   │   │   │   │   └── flutter_lldbinit
+│   │   │   │   ├── flutter_export_environment.sh
+│   │   │   │   ├── Generated.xcconfig
+│   │   │   │   └── Release.xcconfig
+│   │   │   ├── .gitignore
+│   │   │   ├── Runner
+│   │   │   │   ├── AppDelegate.swift
+│   │   │   │   ├── Assets.xcassets
+│   │   │   │   │   ├── AppIcon.appiconset
+│   │   │   │   │   └── LaunchImage.imageset
+│   │   │   │   ├── Base.lproj
+│   │   │   │   │   ├── LaunchScreen.storyboard
+│   │   │   │   │   └── Main.storyboard
+│   │   │   │   ├── GeneratedPluginRegistrant.h
+│   │   │   │   ├── GeneratedPluginRegistrant.m
+│   │   │   │   ├── Info.plist
+│   │   │   │   └── Runner-Bridging-Header.h
+│   │   │   ├── RunnerTests
+│   │   │   │   └── RunnerTests.swift
+│   │   │   ├── Runner.xcodeproj
+│   │   │   │   ├── project.pbxproj
+│   │   │   │   ├── project.xcworkspace
+│   │   │   │   │   ├── contents.xcworkspacedata
+│   │   │   │   │   └── xcshareddata
+│   │   │   │   └── xcshareddata
+│   │   │   │       └── xcschemes
+│   │   │   └── Runner.xcworkspace
+│   │   │       ├── contents.xcworkspacedata
+│   │   │       └── xcshareddata
+│   │   │           ├── IDEWorkspaceChecks.plist
+│   │   │           └── WorkspaceSettings.xcsettings
+│   │   ├── lib
+│   │   │   ├── app.dart
+│   │   │   ├── core
+│   │   │   │   ├── config
+│   │   │   │   │   ├── app_config.dart
+│   │   │   │   │   ├── env.dart
+│   │   │   │   │   └── flavors.dart
+│   │   │   │   ├── constants
+│   │   │   │   ├── errors
+│   │   │   │   │   ├── exception.dart
+│   │   │   │   │   └── failure.dart
+│   │   │   │   ├── services
+│   │   │   │   │   ├── api_client.dart
+│   │   │   │   │   ├── http_client.dart
+│   │   │   │   │   ├── local_storage_service.dart
+│   │   │   │   │   ├── logger.dart
+│   │   │   │   │   └── secure_storage_service.dart
+│   │   │   │   ├── theme
+│   │   │   │   │   ├── app_theme.dart
+│   │   │   │   │   ├── colors.dart
+│   │   │   │   │   └── typography.dart
+│   │   │   │   └── utils
+│   │   │   │       ├── data_utils.dart
+│   │   │   │       ├── formatters.dart
+│   │   │   │       └── validators.dart
+│   │   │   ├── features
+│   │   │   │   ├── accounting
+│   │   │   │   │   ├── accounting.dart
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── ai_assistant
+│   │   │   │   │   ├── ai_assistant.dart
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── auth.dart
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── compliance
+│   │   │   │   │   ├── compliance.dart
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── dashboard
+│   │   │   │   │   ├── dashboard.dart
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── dispatch
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── dispatch.dart
+│   │   │   │   │   ├── domain
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── drivers
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   ├── drivers.dart
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── gamification
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   ├── gamification.dart
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── iap
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   ├── iap.dart
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── invoicing
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   ├── invoicing.dart
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── loads
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   ├── loads.dart
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── marketplace
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   ├── marketplace.dart
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── messaging
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   ├── messaging.dart
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── onboarding
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   ├── onboarding.dart
+│   │   │   │   │   └── presentation
+│   │   │   │   ├── settings
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── domain
+│   │   │   │   │   ├── presentation
+│   │   │   │   │   └── settings.dart
+│   │   │   │   └── training
+│   │   │   │       ├── data
+│   │   │   │       ├── domain
+│   │   │   │       ├── presentation
+│   │   │   │       └── training.dart
+│   │   │   ├── main.dart
+│   │   │   ├── router.dart
+│   │   │   ├── shared
+│   │   │   │   ├── screens
+│   │   │   │   ├── theme
+│   │   │   │   └── widgets
+│   │   │   │       ├── app_button.dart
+│   │   │   │       ├── app_card.dart
+│   │   │   │       ├── app_drawer.dart
+│   │   │   │       ├── app_empty_state.dart
+│   │   │   │       ├── app_icon.dart
+│   │   │   │       ├── app_loader.dart
+│   │   │   │       ├── app_search_bar.dart
+│   │   │   │       ├── app_stat_card.dart
+│   │   │   │       ├── app_text_field.dart
+│   │   │   │       ├── detail_card.dart
+│   │   │   │       ├── driver_card.dart
+│   │   │   │       ├── driver_detail_card.dart
+│   │   │   │       ├── load_card.dart
+│   │   │   │       ├── load_status_badge.dart
+│   │   │   │       ├── main_navigation.dart
+│   │   │   │       ├── notification_tile.dart
+│   │   │   │       ├── rate_confirmation_form.dart
+│   │   │   │       ├── setup_card.dart
+│   │   │   │       └── video_card.dart
+│   │   │   └── utils
+│   │   │       └── theme.dart
+│   │   ├── linux
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── flutter
+│   │   │   │   ├── CMakeLists.txt
+│   │   │   │   ├── ephemeral
+│   │   │   │   │   └── .plugin_symlinks
+│   │   │   │   ├── generated_plugin_registrant.cc
+│   │   │   │   ├── generated_plugin_registrant.h
+│   │   │   │   └── generated_plugins.cmake
+│   │   │   ├── .gitignore
+│   │   │   └── runner
+│   │   │       ├── CMakeLists.txt
+│   │   │       ├── main.cc
+│   │   │       ├── my_application.cc
+│   │   │       └── my_application.h
+│   │   ├── macos
+│   │   │   ├── Flutter
+│   │   │   │   ├── ephemeral
+│   │   │   │   │   ├── flutter_export_environment.sh
+│   │   │   │   │   └── Flutter-Generated.xcconfig
+│   │   │   │   ├── Flutter-Debug.xcconfig
+│   │   │   │   ├── Flutter-Release.xcconfig
+│   │   │   │   └── GeneratedPluginRegistrant.swift
+│   │   │   ├── .gitignore
+│   │   │   ├── Runner
+│   │   │   │   ├── AppDelegate.swift
+│   │   │   │   ├── Assets.xcassets
+│   │   │   │   │   └── AppIcon.appiconset
+│   │   │   │   ├── Base.lproj
+│   │   │   │   │   └── MainMenu.xib
+│   │   │   │   ├── Configs
+│   │   │   │   │   ├── AppInfo.xcconfig
+│   │   │   │   │   ├── Debug.xcconfig
+│   │   │   │   │   ├── Release.xcconfig
+│   │   │   │   │   └── Warnings.xcconfig
+│   │   │   │   ├── DebugProfile.entitlements
+│   │   │   │   ├── Info.plist
+│   │   │   │   ├── MainFlutterWindow.swift
+│   │   │   │   └── Release.entitlements
+│   │   │   ├── RunnerTests
+│   │   │   │   └── RunnerTests.swift
+│   │   │   ├── Runner.xcodeproj
+│   │   │   │   ├── project.pbxproj
+│   │   │   │   ├── project.xcworkspace
+│   │   │   │   │   └── xcshareddata
+│   │   │   │   └── xcshareddata
+│   │   │   │       └── xcschemes
+│   │   │   └── Runner.xcworkspace
+│   │   │       ├── contents.xcworkspacedata
+│   │   │       └── xcshareddata
+│   │   │           └── IDEWorkspaceChecks.plist
+│   │   ├── .metadata
+│   │   ├── pubspec.lock
+│   │   ├── pubspec.yaml
+│   │   ├── README.md
+│   │   ├── scripts
+│   │   │   ├── flutter_autowire.sh
+│   │   │   ├── migrate.py
+│   │   │   ├── migration&fix.sh
+│   │   │   └── QUICK-REFERENCE.md
+│   │   ├── SETUP.md
+│   │   ├── test
+│   │   │   └── widget_test.dart
+│   │   ├── web
+│   │   │   ├── favicon.png
+│   │   │   ├── icons
+│   │   │   │   ├── Icon-192.png
+│   │   │   │   ├── Icon-512.png
+│   │   │   │   ├── Icon-maskable-192.png
+│   │   │   │   └── Icon-maskable-512.png
+│   │   │   ├── index.html
+│   │   │   └── manifest.json
+│   │   └── windows
+│   │       ├── CMakeLists.txt
+│   │       ├── flutter
+│   │       │   ├── CMakeLists.txt
+│   │       │   ├── ephemeral
+│   │       │   │   └── .plugin_symlinks
+│   │       │   ├── generated_plugin_registrant.cc
+│   │       │   ├── generated_plugin_registrant.h
+│   │       │   └── generated_plugins.cmake
+│   │       ├── .gitignore
+│   │       └── runner
+│   │           ├── CMakeLists.txt
+│   │           ├── flutter_window.cpp
+│   │           ├── flutter_window.h
+│   │           ├── main.cpp
+│   │           ├── resource.h
+│   │           ├── resources
+│   │           │   └── app_icon.ico
+│   │           ├── runner.exe.manifest
+│   │           ├── Runner.rc
+│   │           ├── utils.cpp
+│   │           ├── utils.h
+│   │           ├── win32_window.cpp
+│   │           └── win32_window.h
+│   ├── openhwy-platform
+│   │   ├── architecture.md
+│   │   ├── BIG_VISION.md
+│   │   ├── dashboard_html
+│   │   │   ├── authentication-access-control.html
+│   │   │   ├── client-management-portal.html
+│   │   │   ├── cluster-monitoring.html
+│   │   │   ├── cost-analytics.html
+│   │   │   ├── development-pipeline.html
+│   │   │   ├── firecracker-vm-management.html
+│   │   │   ├── hyprtasker-custom.html
+│   │   │   ├── network-topology.html
+│   │   │   ├── security-monitoring.html
+│   │   │   └── system-health.html
+│   │   ├── dashboard_js
+│   │   │   ├── billing-and-payment.js
+│   │   │   ├── cloud-auth-page
+│   │   │   ├── cloud-control-center
+│   │   │   ├── cloud-email-page
+│   │   │   ├── cloud-landing-page
+│   │   │   ├── cloud-payment-page
+│   │   │   ├── email-system.js
+│   │   │   ├── index.js
+│   │   │   ├── infrastructure-control-center.js
+│   │   │   ├── monitoring-and-alerts.js
+│   │   │   └── stroage-management.js
+│   │   ├── design.md
+│   │   ├── diagram.md
+│   │   ├── DOMAIN
+│   │   ├── fed-examples
+│   │   │   ├── fed-calendar.html
+│   │   │   ├── fed-cargo-connect.html
+│   │   │   ├── fed-dashboard.html
+│   │   │   ├── fed-dispatch-board.html
+│   │   │   ├── fed-documents.html
+│   │   │   ├── fed-drivers.html
+│   │   │   ├── fed-elda.html
+│   │   │   ├── fed-eld.html
+│   │   │   ├── fed-invoicing.html
+│   │   │   ├── fed-live-tracking.html
+│   │   │   ├── fed-loads.html
+│   │   │   ├── fed-messaging.html
+│   │   │   ├── fed-packet-pilot.html
+│   │   │   ├── fed-payments.html
+│   │   │   └── fed-training-center.html
+│   │   ├── idea.md
+│   │   ├── intro.md
+│   │   ├── license.md
+│   │   ├── marketing_html
+│   │   │   ├── dispatch-courses-v1.html
+│   │   │   ├── dispatch-courses-v2.html
+│   │   │   ├── dispatcher-callout.html
+│   │   │   ├── driver-callout.html
+│   │   │   ├── founders-journey.html
+│   │   │   ├── investor-callout.html
+│   │   │   ├── openhwy-protocol.html
+│   │   │   ├── tsm-marketing.html
+│   │   │   └── wheeler-builder.html
+│   │   ├── mission.md
+│   │   ├── openhwy-tales.md
+│   │   ├── openhwy-tales-v1.md
+│   │   ├── overview.md
+│   │   ├── pricing-strategy.md
+│   │   ├── PROMPT.md
+│   │   ├── README.md
+│   │   ├── roadmap.md
+│   │   ├── SCHEMA.md
+│   │   ├── terminology.md
+│   │   └── the-tale-system.md
+│   └── trucking-agent
+│       ├── auto_assist==BOTH
+│       │   └── README.md
+│       ├── Big_Bear==FREE
+│       │   ├── Cargo.toml
+│       │   └── src
+│       │       ├── alert_engine.rs
+│       │       ├── alert_system.rs
+│       │       ├── bin
+│       │       │   └── big_bear_v0.rs
+│       │       ├── geo_cache.rs
+│       │       ├── geo_mapper.rs
+│       │       ├── incident_feed.rs
+│       │       ├── report_collector.rs
+│       │       └── weigh_station_tracker.rs
+│       ├── Cargo_Connect==BOTH
+│       │   ├── Cargo.toml
+│       │   └── src
+│       │       ├── bin
+│       │       │   └── cargo_connect_v0.rs
+│       │       ├── credential_vault.rs
+│       │       ├── filter_engine.rs
+│       │       ├── load_boards.rs
+│       │       ├── load_fetcher.rs
+│       │       ├── score_ranker.rs
+│       │       └── session_manager.rs
+│       ├── direct_dispatch==PAID
+│       │   └── README.md
+│       ├── error_echo==FREE
+│       │   └── README.md
+│       ├── fuel_factor==FREE
+│       │   └── README.md
+│       ├── ghost_guard==FREE
+│       │   └── README.md
+│       ├── highway_helper==FREE
+│       │   └── README.md
+│       ├── iron_insight==BOTH
+│       │   └── README.md
+│       ├── jackknife_jailer==PAID
+│       │   └── README.md
+│       ├── key_keeper==BOTH
+│       │   └── README.md
+│       ├── Legal_Logger==PAID
+│       │   ├── Cargo.toml
+│       │   └── src
+│       │       ├── bin
+│       │       │   └── legal_logger_v0.rs
+│       │       ├── compression.rs
+│       │       ├── encryption_module.rs
+│       │       ├── ledger_writer.rs
+│       │       ├── signature_engine.rs
+│       │       └── timestamp_engine.rs
+│       ├── memory_mark==FREE
+│       │   └── README.md
+│       ├── night_nexus==FREE
+│       │   └── README.md
+│       ├── oversize_overseer==PAID
+│       │   └── README.md
+│       ├── Packet_Pilot==BOTH
+│       │   ├── Cargo.toml
+│       │   └── src
+│       │       ├── bin
+│       │       │   └── packet_pilot_v0.rs
+│       │       ├── email_monitor.rs
+│       │       ├── form_filler.rs
+│       │       ├── pdf_processor.rs
+│       │       ├── protocol_detector.rs
+│       │       └── signature_handler.rs
+│       ├── quick_quote==FREE
+│       │   └── README.md
+│       ├── railroad_ranger==PAID
+│       │   └── README.md
+│       ├── secure_secret==BOTH
+│       │   └── README.md
+│       ├── Trucker_Tales==FREE
+│       │   ├── Cargo.toml
+│       │   └── src
+│       │       ├── bin
+│       │       │   └── trucker_tales_v0.rs
+│       │       ├── emotion_enhancer.rs
+│       │       ├── format_converter.rs
+│       │       ├── publishing.rs
+│       │       ├── story_structurer.rs
+│       │       └── tale_listener.rs
+│       ├── unit_usage==BOTH
+│       │   └── README.md
+│       ├── voice_validator==BOTH
+│       │   └── README.md
+│       ├── Whisper_Witness==PAID
+│       │   ├── Cargo.toml
+│       │   └── src
+│       │       ├── audio_listener.rs
+│       │       ├── bin
+│       │       │   └── whisper_witness_v0.rs
+│       │       ├── broker_tactics.rs
+│       │       ├── tactic_detector.rs
+│       │       ├── transcript_summarizer.rs
+│       │       └── whisper_engine.rs
+│       ├── xeno_xeno==FREE
+│       │   └── README.md
+│       ├── yes_yes==FREE
+│       │   └── README.md
+│       └── zone_zipper==BOTH
+│           └── README.md
+├── build.rs
+├── .env.agent
+├── .env.mcp
+├── .env.qdrant
+├── etc
+│   ├── agent_settings.toml
+│   ├── agent.toml
+│   ├── audit_and_logging.toml
+│   ├── autonomous_behavior.toml
+│   ├── chat.toml
+│   ├── cluster_node.toml
+│   ├── code_generation.toml
+│   ├── codriver.toml
+│   ├── communication_settings.toml
+│   ├── config.template.toml
+│   ├── core-schemas
+│   │   ├── agents.yaml
+│   │   ├── database-schema.yaml
+│   │   ├── database.yaml
+│   │   ├── freight-sources.yaml
+│   │   ├── housing-sources.yaml
+│   │   ├── marketeer.yaml
+│   │   ├── middlewares.yaml
+│   │   ├── persistence.yaml
+│   │   ├── registration.yaml
+│   │   ├── routes.yaml
+│   │   ├── services.yaml
+│   │   └── trucking-sources.yaml
+│   ├── database_analytics.toml
+│   ├── experimental_features.toml
+│   ├── infra-nodes
+│   │   ├── ASUS-TUF-Gaming.md
+│   │   ├── callbox(4vCPU, null, 12GB RAM, [256GB SSD, 1TB HDD])
+│   │   │   └── callbox_node.yaml
+│   │   ├── devbox(22vCPU, [iGPU,NPU], 16GB RAM, 1TB NVMe)
+│   │   │   └── devbox_specs.yaml
+│   │   ├── gpubox(8vCPU, GPU 4vRAM, 32GB RAM, 1TB NVMe)
+│   │   │   ├── gpubox_node.yaml
+│   │   │   └── nix
+│   │   │       ├── configuration.nix
+│   │   │       ├── duckdb-analyzer.nix
+│   │   │       ├── flake.nix
+│   │   │       └── openwebui.nomad.hcl
+│   │   ├── infrastructue.md
+│   │   ├── Lenovo-Yoga-9i.md
+│   │   └── workbox(20vCPU, iGPU, 24GB RAM, 1TB NVMe)
+│   │       └── workbox_node.yaml
+│   ├── init-db.surql
+│   ├── lead_generation.toml
+│   ├── safety_and_limits.toml
+│   ├── system.toml
+│   └── system.toml.tpl
+├── index.tree
+├── job
+│   ├── complete
+│   │   ├── Component.tsx
+│   │   ├── generated_code.tsx
+│   │   ├── LeadDashboard.tsx
+│   │   └── LoadCard.tsx
+│   └── state
+│       └── .gitkeep
+├── lib
+│   ├── agent-devtools
+│   │   ├── chat-indexer
+│   │   │   ├── ai_query.py
+│   │   │   ├── analytics.py
+│   │   │   ├── batch_query.py
+│   │   │   ├── config.toml
+│   │   │   ├── conversation_indexer.py
+│   │   │   ├── EXAMPLES.md
+│   │   │   ├── .gitignore
+│   │   │   ├── query_artifacts.py
+│   │   │   ├── query_conversations.py
+│   │   │   ├── query_templates.py
+│   │   │   ├── QUICK_REFERENCE.md
+│   │   │   ├── README.md
+│   │   │   ├── setup_indexer.sh
+│   │   │   └── templates
+│   │   │       └── fed_project_example.json
+│   │   ├── pytorch-trainer
+│   │   │   ├── core
+│   │   │   │   ├── config.py
+│   │   │   │   ├── logic.py
+│   │   │   │   ├── packages.py
+│   │   │   │   ├── paths.py
+│   │   │   │   └── types.py
+│   │   │   ├── deploy.sh
+│   │   │   ├── INSTALL.md
+│   │   │   ├── main.py
+│   │   │   ├── QUICKSTART.md
+│   │   │   ├── README.md
+│   │   │   └── src
+│   │   │       ├── generator.py
+│   │   │       ├── handlers.py
+│   │   │       ├── helpers.py
+│   │   │       ├── utils.py
+│   │   │       └── validators.py
+│   │   └── template-engine
+│   │       ├── config_base.py
+│   │       ├── k8s
+│   │       │   ├── argocd.schema.yaml
+│   │       │   ├── argocd.template.yaml
+│   │       │   ├── gitea.schema.yaml
+│   │       │   ├── gitea.template.yaml
+│   │       │   ├── grafana.schema.yaml
+│   │       │   ├── grafana.template.yaml
+│   │       │   ├── index.tree
+│   │       │   ├── keycloak.schema.yaml
+│   │       │   ├── keycloak.template.yaml
+│   │       │   ├── loki.schema.yaml
+│   │       │   ├── loki.template.yaml
+│   │       │   ├── nginx.schema.yaml
+│   │       │   ├── nginx.template.yaml
+│   │       │   ├── prometheus.schema.yaml
+│   │       │   ├── prometheus.template.yaml
+│   │       │   ├── redis.schema.yaml
+│   │       │   ├── redis.template.yaml
+│   │       │   ├── restic.schema.yaml
+│   │       │   ├── restic.template.yaml
+│   │       │   ├── surrealdb.schema.yaml
+│   │       │   └── surrealdb.template.yaml
+│   │       ├── load_services.py
+│   │       ├── prompts
+│   │       │   ├── agent-task.hbs
+│   │       │   ├── api-drafter.prompt.json
+│   │       │   ├── approval-request.hbs
+│   │       │   ├── assistant.md
+│   │       │   ├── blog-writer.prompt.json
+│   │       │   ├── call-summary.prompt.json
+│   │       │   ├── casual-convo.prompt.json
+│   │       │   ├── chain-of-thought.prompt.json
+│   │       │   ├── code-debugger.prompt.json
+│   │       │   ├── code-explainer.prompt.json
+│   │       │   ├── code-optimizer.prompt.json
+│   │       │   ├── code-reviewer.prompt.json
+│   │       │   ├── code-rewriter.prompt.json
+│   │       │   ├── commit-writer.prompt.json
+│   │       │   ├── content-flagger.prompt.json
+│   │       │   ├── coordinator.md
+│   │       │   ├── copywriter.prompt.json
+│   │       │   ├── dataframe-debugger.prompt.json
+│   │       │   ├── default-assistant.prompt.json
+│   │       │   ├── dev-coach.prompt.json
+│   │       │   ├── docstring-generator.prompt.json
+│   │       │   ├── document-finder.prompt.json
+│   │       │   ├── document-summary.prompt.json
+│   │       │   ├── emotional-support.prompt.json
+│   │       │   ├── fact-checker.prompt.json
+│   │       │   ├── guard-rails.prompt.json
+│   │       │   ├── humorist.prompt.json
+│   │       │   ├── index.prompts.yaml
+│   │       │   ├── json-schema-generator.prompt.json
+│   │       │   ├── lead_analysis.md
+│   │       │   ├── legalese-translator.prompt.json
+│   │       │   ├── log-summarizer.prompt.json
+│   │       │   ├── lore-builder.prompt.json
+│   │       │   ├── memory-auditor.prompt.json
+│   │       │   ├── memory-refresher.prompt.json
+│   │       │   ├── memory-summary.prompt.json
+│   │       │   ├── minimalist-system.prompt.json
+│   │       │   ├── model-training.md
+│   │       │   ├── nda-drafter.prompt.json
+│   │       │   ├── news-digester.prompt.json
+│   │       │   ├── newsletter-drafter.prompt.json
+│   │       │   ├── novelist.prompt.json
+│   │       │   ├── nsfw-filter.prompt.json
+│   │       │   ├── outreach_message.md
+│   │       │   ├── override-techniques.md
+│   │       │   ├── planner.prompt.json
+│   │       │   ├── poet.prompt.json
+│   │       │   ├── product-description.prompt.json
+│   │       │   ├── radio-announcer.prompt.json
+│   │       │   ├── realtime-transcript-summary.prompt.json
+│   │       │   ├── retrieval-agent.prompt.json
+│   │       │   ├── roleplay-character.prompt.json
+│   │       │   ├── safety-checker.prompt.json
+│   │       │   ├── site-scanner.prompt.json
+│   │       │   ├── socratic-guide.prompt.json
+│   │       │   ├── story-prompt-engine.prompt.json
+│   │       │   ├── system-architecture.md
+│   │       │   ├── table-analyzer.prompt.json
+│   │       │   ├── task-decomposer.prompt.json
+│   │       │   ├── task-router.prompt.json
+│   │       │   ├── task-solver.prompt.json
+│   │       │   ├── task-verifier.prompt.json
+│   │       │   ├── terms-reviewer.prompt.json
+│   │       │   ├── tone-analyzer.prompt.json
+│   │       │   ├── tweet-generator.prompt.json
+│   │       │   ├── verbose-instructor.prompt.json
+│   │       │   ├── verifier.prompt.json
+│   │       │   ├── voice-coach.prompt.json
+│   │       │   ├── voice-style-selector.prompt.json
+│   │       │   └── web-searcher.prompt.json
+│   │       ├── render_service.py
+│   │       └── update_values.py
+│   ├── CLAUDE.md
+│   ├── core-examples
+│   │   ├── agent_client.rs
+│   │   ├── agent_server.rs
+│   │   ├── index_codebase.rs
+│   │   └── search_demo.rs
+│   ├── design-systems
+│   │   ├── astro
+│   │   │   ├── api
+│   │   │   │   ├── contact.astro
+│   │   │   │   └── payment.astro
+│   │   │   ├── auth
+│   │   │   │   ├── login.astro
+│   │   │   │   └── signup.astro
+│   │   │   ├── auth.astro
+│   │   │   ├── AuthLayout.astro
+│   │   │   ├── BaseLayout.astro
+│   │   │   ├── BaseLayout.astro_
+│   │   │   ├── BaseLayout.configs.ts
+│   │   │   ├── components
+│   │   │   │   ├── Badge
+│   │   │   │   │   ├── Badge.astro
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── TrustBadge.astro
+│   │   │   │   ├── Button
+│   │   │   │   │   ├── Button.astro
+│   │   │   │   │   ├── Button.astro_
+│   │   │   │   │   ├── button.types.ts
+│   │   │   │   │   ├── button.utils.ts
+│   │   │   │   │   ├── button.variants.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── index.ts_
+│   │   │   │   ├── Card
+│   │   │   │   │   ├── Card.astro
+│   │   │   │   │   ├── CardSurface.astro
+│   │   │   │   │   ├── card.types.ts
+│   │   │   │   │   ├── card.utils.ts
+│   │   │   │   │   ├── card.variants.ts
+│   │   │   │   │   ├── ContactCard
+│   │   │   │   │   ├── FAQCard
+│   │   │   │   │   ├── FeatureCard
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── IntegrationCard
+│   │   │   │   │   ├── LinkCard
+│   │   │   │   │   ├── MapCard
+│   │   │   │   │   ├── PricingCard
+│   │   │   │   │   ├── ReviewCard
+│   │   │   │   │   ├── ServiceCard
+│   │   │   │   │   ├── StatCard
+│   │   │   │   │   ├── StatCard.astro
+│   │   │   │   │   ├── TeamCard
+│   │   │   │   │   ├── TestimonialCard
+│   │   │   │   │   ├── TestimonialCard.astro
+│   │   │   │   │   └── ValueCard
+│   │   │   │   ├── Container
+│   │   │   │   │   ├── Container.astro
+│   │   │   │   │   ├── container.types.ts
+│   │   │   │   │   ├── container.utils.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── CTA
+│   │   │   │   │   ├── CTA.astro
+│   │   │   │   │   ├── cta.configs.ts
+│   │   │   │   │   ├── cta.types.ts
+│   │   │   │   │   ├── cta.variants.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── Field
+│   │   │   │   │   ├── FormField
+│   │   │   │   │   └── Typography
+│   │   │   │   ├── Header
+│   │   │   │   │   ├── Header.astro
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── Hero
+│   │   │   │   │   ├── HeroActions.astro
+│   │   │   │   │   ├── Hero.astro
+│   │   │   │   │   ├── hero.configs.ts
+│   │   │   │   │   ├── HeroHeading.astro
+│   │   │   │   │   ├── HeroMedia.astro
+│   │   │   │   │   ├── hero.types.ts
+│   │   │   │   │   ├── hero.variants.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── Navbar
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── NavbarActions.astro
+│   │   │   │   │   ├── Navbar.astro
+│   │   │   │   │   ├── NavbarBrand.astro
+│   │   │   │   │   ├── navbar.configs.ts
+│   │   │   │   │   ├── NavbarLinks.astro
+│   │   │   │   │   ├── NavbarMobileMenu.astro
+│   │   │   │   │   └── navbar.scripts.ts
+│   │   │   │   ├── Section
+│   │   │   │   │   ├── ContactSection
+│   │   │   │   │   ├── CTASection
+│   │   │   │   │   ├── FAQSection
+│   │   │   │   │   ├── FeatureSection
+│   │   │   │   │   ├── FooterSection
+│   │   │   │   │   ├── HeroSection
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── PricingSession
+│   │   │   │   │   ├── Section.astro
+│   │   │   │   │   ├── SectionHeading.astro
+│   │   │   │   │   ├── section.types.ts
+│   │   │   │   │   ├── section.utils.ts
+│   │   │   │   │   └── section.variants.ts
+│   │   │   │   └── Template
+│   │   │   │       └── PageComposer
+│   │   │   ├── home
+│   │   │   │   ├── about
+│   │   │   │   │   ├── about.astro
+│   │   │   │   │   └── about.configs.ts
+│   │   │   │   ├── contact
+│   │   │   │   │   ├── contact.astro
+│   │   │   │   │   └── contact.configs.ts
+│   │   │   │   ├── features
+│   │   │   │   │   ├── features.astro
+│   │   │   │   │   └── features.configs.ts
+│   │   │   │   └── pricing
+│   │   │   │       ├── pricing.astro
+│   │   │   │       └── pricing.configs.ts
+│   │   │   ├── index.astro
+│   │   │   ├── index.v2.astro
+│   │   │   ├── islands
+│   │   │   │   └── Counter.tsx
+│   │   │   ├── MainLayout.astro
+│   │   │   ├── PaymentLayout.astro
+│   │   │   ├── styles
+│   │   │   │   ├── global1.css
+│   │   │   │   ├── global.css
+│   │   │   │   ├── typography.css
+│   │   │   │   └── utilities.css
+│   │   │   └── types
+│   │   │       ├── api.ts
+│   │   │       ├── content.ts
+│   │   │       ├── index.ts
+│   │   │       └── page.ts
+│   │   ├── flutter
+│   │   │   ├── app.dart
+│   │   │   ├── bootstraps
+│   │   │   │   └── bootstrap.dart
+│   │   │   ├── configs
+│   │   │   │   ├── env.dart
+│   │   │   │   └── flavors.dart
+│   │   │   ├── errors
+│   │   │   │   ├── exception.dart
+│   │   │   │   └── failure.dart
+│   │   │   ├── main1.dart
+│   │   │   ├── main.dart
+│   │   │   ├── map_view.dart
+│   │   │   ├── models
+│   │   │   │   ├── company.dart
+│   │   │   │   ├── document.dart
+│   │   │   │   ├── driver.dart
+│   │   │   │   ├── invoice.dart
+│   │   │   │   ├── load.dart
+│   │   │   │   ├── message.dart
+│   │   │   │   ├── payment.dart
+│   │   │   │   └── user.dart
+│   │   │   ├── pages
+│   │   │   │   ├── accounting_page.dart
+│   │   │   │   ├── compliance_page.dart
+│   │   │   │   ├── dispatch_page.dart
+│   │   │   │   ├── onboarding_page.dart
+│   │   │   │   ├── settings_page.dart
+│   │   │   │   └── training_page.dart
+│   │   │   ├── providers
+│   │   │   │   ├── auth_provider.dart
+│   │   │   │   ├── document_provider.dart
+│   │   │   │   ├── driver_provider.dart
+│   │   │   │   ├── invoice_provider.dart
+│   │   │   │   ├── load_provider.dart
+│   │   │   │   ├── message_provider.dart
+│   │   │   │   └── payment_provider.dart
+│   │   │   ├── router.dart
+│   │   │   ├── screens
+│   │   │   │   ├── accounting
+│   │   │   │   │   ├── invoice_details_screen.dart
+│   │   │   │   │   ├── invoices_list_screen.dart
+│   │   │   │   │   ├── invoices_screen.dart
+│   │   │   │   │   ├── invoicing_screen.dart
+│   │   │   │   │   └── payments_screen.dart
+│   │   │   │   ├── compliance
+│   │   │   │   │   ├── documents_manager_screen.dart
+│   │   │   │   │   ├── documents_screen.dart
+│   │   │   │   │   ├── eld_screen.dart
+│   │   │   │   │   ├── hos_screen.dart
+│   │   │   │   │   ├── hos_tracking_screen.dart
+│   │   │   │   │   └── reports_screen.dart
+│   │   │   │   ├── dashboard
+│   │   │   │   │   ├── calendar_dispatch_screen.dart
+│   │   │   │   │   ├── calendar_screen.dart
+│   │   │   │   │   ├── create_load_screen.dart
+│   │   │   │   │   ├── dashboard_screen.dart
+│   │   │   │   │   ├── dashboardv2_screen.dart
+│   │   │   │   │   ├── driver_details_screen.dart
+│   │   │   │   │   ├── drivers_screen.dart
+│   │   │   │   │   ├── loadboard_screen.dart
+│   │   │   │   │   ├── load_detail_screen.dart
+│   │   │   │   │   ├── load_details_screen.dart
+│   │   │   │   │   ├── loads_list_screen.dart
+│   │   │   │   │   ├── loads_screen.dart
+│   │   │   │   │   └── tracking_screen.dart
+│   │   │   │   ├── notifications
+│   │   │   │   │   ├── messages_screen.dart
+│   │   │   │   │   ├── messaging_screen.dart
+│   │   │   │   │   ├── notifications_screen.dart
+│   │   │   │   │   └── response_model.dart
+│   │   │   │   ├── onboarding
+│   │   │   │   │   └── company_screen.dart
+│   │   │   │   ├── reports
+│   │   │   │   │   └── analytics_screen.dart
+│   │   │   │   ├── settings
+│   │   │   │   │   ├── company_screen.dart
+│   │   │   │   │   ├── profile_screen.dart
+│   │   │   │   │   └── settings_main_screen.dart
+│   │   │   │   ├── splash
+│   │   │   │   │   └── splash_screen.dart
+│   │   │   │   └── training
+│   │   │   │       └── courses_screen.dart
+│   │   │   ├── services
+│   │   │   │   ├── api_client.dart
+│   │   │   │   ├── auth_service.dart
+│   │   │   │   ├── cloud_storage_service.dart
+│   │   │   │   ├── database_service.dart
+│   │   │   │   ├── document_service.dart
+│   │   │   │   ├── driver_service.dart
+│   │   │   │   ├── http_client.dart
+│   │   │   │   ├── invoice_service.dart
+│   │   │   │   ├── load_service.dart
+│   │   │   │   ├── local_storage_service.dart
+│   │   │   │   ├── logger.dart
+│   │   │   │   ├── message_service.dart
+│   │   │   │   └── payment_service.dart
+│   │   │   ├── styles
+│   │   │   │   ├── app_theme.dart
+│   │   │   │   ├── colors.dart
+│   │   │   │   ├── theme.dart
+│   │   │   │   └── typography.dart
+│   │   │   ├── theme.dart
+│   │   │   ├── utils
+│   │   │   │   └── theme.dart
+│   │   │   └── widgets
+│   │   │       ├── app_button.dart
+│   │   │       ├── app_card.dart
+│   │   │       ├── app_drawer.dart
+│   │   │       ├── app_drawer.dart_
+│   │   │       ├── app_empty_state.dart
+│   │   │       ├── app_icon.dart
+│   │   │       ├── app_loader.dart
+│   │   │       ├── app_search_bar.dart
+│   │   │       ├── app_stat_card.dart
+│   │   │       ├── app_text_field.dart
+│   │   │       ├── detail_card.dart
+│   │   │       ├── driver_card.dart
+│   │   │       ├── driver_detail_card.dart
+│   │   │       ├── load_card.dart
+│   │   │       ├── load_status_badge.dart
+│   │   │       ├── main_navigation.dart
+│   │   │       ├── notification_tile.dart
+│   │   │       ├── rate_confirmation_form.dart
+│   │   │       ├── setup_card.dart
+│   │   │       └── video_card.dart
+│   │   ├── jninja2
+│   │   │   ├── auth
+│   │   │   │   ├── forgot-password.html
+│   │   │   │   ├── login.html
+│   │   │   │   ├── oauth.html
+│   │   │   │   ├── register.html
+│   │   │   │   └── verify.html
+│   │   │   ├── base
+│   │   │   │   ├── footer.html
+│   │   │   │   ├── header.html
+│   │   │   │   ├── layout.html
+│   │   │   │   └── sidebar.html
+│   │   │   ├── base.html
+│   │   │   ├── base.html.backup
+│   │   │   ├── chat
+│   │   │   │   ├── conversation.html
+│   │   │   │   └── history.html
+│   │   │   ├── chat.html
+│   │   │   ├── chat.html.backup
+│   │   │   ├── code-block.html
+│   │   │   ├── css
+│   │   │   │   ├── styleFunction.css
+│   │   │   │   └── themeFunction.css
+│   │   │   ├── docs
+│   │   │   │   ├── api-reference.html
+│   │   │   │   ├── docs.html
+│   │   │   │   ├── gettting-started.html
+│   │   │   │   └── tutorials.html
+│   │   │   ├── errors
+│   │   │   │   ├── 403.html
+│   │   │   │   ├── 404.html
+│   │   │   │   └── 500.html
+│   │   │   ├── file-tree.html
+│   │   │   ├── ide
+│   │   │   │   ├── editor.html
+│   │   │   │   ├── project-explorer.html
+│   │   │   │   └── terminal.html
+│   │   │   ├── ide.html
+│   │   │   ├── ide.html.backup
+│   │   │   ├── index.css
+│   │   │   ├── index.html
+│   │   │   ├── js
+│   │   │   │   ├── aiFunction.js
+│   │   │   │   ├── appFunction.js
+│   │   │   │   ├── chatFunction.js
+│   │   │   │   ├── ideFunction.js
+│   │   │   │   └── settingFunction.js
+│   │   │   ├── marketing
+│   │   │   │   ├── contact.html
+│   │   │   │   ├── features.html
+│   │   │   │   ├── index.html
+│   │   │   │   ├── marketing.html
+│   │   │   │   └── pricing.html
+│   │   │   ├── modal.html
+│   │   │   ├── _nav.html
+│   │   │   └── settings
+│   │   │       ├── api-keys.html
+│   │   │       ├── models.html
+│   │   │       ├── profile.html
+│   │   │       ├── security.html
+│   │   │       └── usage.html
+│   │   ├── nextjs
+│   │   │   ├── components
+│   │   │   │   ├── action
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── Popover
+│   │   │   │   │   ├── ScrollArea
+│   │   │   │   │   ├── Search
+│   │   │   │   │   ├── Slider
+│   │   │   │   │   ├── Switch
+│   │   │   │   │   ├── Tab
+│   │   │   │   │   ├── Toggle
+│   │   │   │   │   └── Tooltip
+│   │   │   │   ├── code
+│   │   │   │   │   ├── CodeBlock
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── Keyboard
+│   │   │   │   │   └── TextHighlight
+│   │   │   │   ├── content
+│   │   │   │   │   ├── Card
+│   │   │   │   │   └── Iframe
+│   │   │   │   ├── cover
+│   │   │   │   │   ├── back
+│   │   │   │   │   ├── front
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── side
+│   │   │   │   ├── data
+│   │   │   │   │   ├── Divider
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── Pagination
+│   │   │   │   │   ├── ProgressBar
+│   │   │   │   │   └── Separator
+│   │   │   │   ├── display
+│   │   │   │   │   ├── Avatar
+│   │   │   │   │   ├── Badge
+│   │   │   │   │   ├── Blockquote
+│   │   │   │   │   ├── Button
+│   │   │   │   │   ├── Heading
+│   │   │   │   │   ├── Icon
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── Logo
+│   │   │   │   │   ├── Pill
+│   │   │   │   │   ├── StatusDot
+│   │   │   │   │   ├── Tagline
+│   │   │   │   │   └── Text
+│   │   │   │   ├── document
+│   │   │   │   │   ├── book.md
+│   │   │   │   │   ├── faq
+│   │   │   │   │   ├── get-support
+│   │   │   │   │   ├── how-to-guilds
+│   │   │   │   │   ├── integrations
+│   │   │   │   │   ├── reference
+│   │   │   │   │   ├── resources
+│   │   │   │   │   └── start
+│   │   │   │   ├── feedback
+│   │   │   │   │   ├── Alert
+│   │   │   │   │   ├── Error
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── LoadingDots
+│   │   │   │   │   ├── Skeleton
+│   │   │   │   │   └── Spinner
+│   │   │   │   ├── forms
+│   │   │   │   │   ├── Checkbox
+│   │   │   │   │   ├── Fieldset
+│   │   │   │   │   ├── Form
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── Input
+│   │   │   │   │   ├── Label
+│   │   │   │   │   ├── Legend
+│   │   │   │   │   ├── Output
+│   │   │   │   │   ├── Radio
+│   │   │   │   │   ├── Select
+│   │   │   │   │   └── Textarea
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── layout
+│   │   │   │   │   ├── AdminLayout.tsx
+│   │   │   │   │   ├── AuthLayout.tsx
+│   │   │   │   │   ├── BlogLayout.tsx
+│   │   │   │   │   ├── CourseLayout.tsx
+│   │   │   │   │   ├── DashboardLayout.tsx
+│   │   │   │   │   ├── DocsLayout.tsx
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── MarketingLayout.tsx
+│   │   │   │   │   ├── Navbar
+│   │   │   │   │   ├── PortalLayout.tsx
+│   │   │   │   │   ├── ProfileLayout.tsx
+│   │   │   │   │   ├── SettingsLayout.tsx
+│   │   │   │   │   ├── Shell
+│   │   │   │   │   ├── Sidebar
+│   │   │   │   │   ├── SupportLayout.tsx
+│   │   │   │   │   └── ToolsLayout.tsx
+│   │   │   │   ├── media
+│   │   │   │   │   ├── Audio
+│   │   │   │   │   ├── Canvas
+│   │   │   │   │   ├── Img
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── Picture
+│   │   │   │   │   ├── Svg
+│   │   │   │   │   └── Video
+│   │   │   │   ├── meta
+│   │   │   │   │   ├── Base
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── Mark
+│   │   │   │   │   ├── Script
+│   │   │   │   │   └── Title
+│   │   │   │   ├── misc
+│   │   │   │   │   ├── Datalist
+│   │   │   │   │   ├── Figcaption
+│   │   │   │   │   ├── Figure
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── Table
+│   │   │   │   │   └── Time
+│   │   │   │   ├── navigation
+│   │   │   │   │   ├── Area
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── Link
+│   │   │   │   │   ├── Map
+│   │   │   │   │   ├── Menu
+│   │   │   │   │   └── Option
+│   │   │   │   ├── page
+│   │   │   │   │   ├── about
+│   │   │   │   │   ├── account
+│   │   │   │   │   ├── address
+│   │   │   │   │   ├── admin
+│   │   │   │   │   ├── article
+│   │   │   │   │   ├── blog
+│   │   │   │   │   ├── blog_
+│   │   │   │   │   ├── canva
+│   │   │   │   │   ├── career
+│   │   │   │   │   ├── cart
+│   │   │   │   │   ├── checkin
+│   │   │   │   │   ├── checkout
+│   │   │   │   │   ├── codespace
+│   │   │   │   │   ├── community
+│   │   │   │   │   ├── contact
+│   │   │   │   │   ├── contract
+│   │   │   │   │   ├── cookie
+│   │   │   │   │   ├── discussion
+│   │   │   │   │   ├── document
+│   │   │   │   │   ├── download
+│   │   │   │   │   ├── email
+│   │   │   │   │   ├── explore
+│   │   │   │   │   ├── feature
+│   │   │   │   │   ├── feedback
+│   │   │   │   │   ├── forums
+│   │   │   │   │   ├── freight
+│   │   │   │   │   ├── help
+│   │   │   │   │   ├── home
+│   │   │   │   │   ├── issue
+│   │   │   │   │   ├── landing
+│   │   │   │   │   ├── layout
+│   │   │   │   │   ├── legal
+│   │   │   │   │   ├── login
+│   │   │   │   │   ├── logout
+│   │   │   │   │   ├── managing
+│   │   │   │   │   ├── marketing
+│   │   │   │   │   ├── marketplace
+│   │   │   │   │   ├── onboarding
+│   │   │   │   │   ├── order
+│   │   │   │   │   ├── password-reset
+│   │   │   │   │   ├── personal
+│   │   │   │   │   ├── platform
+│   │   │   │   │   ├── playground
+│   │   │   │   │   ├── playlist
+│   │   │   │   │   ├── portal
+│   │   │   │   │   ├── pricing
+│   │   │   │   │   ├── privacy
+│   │   │   │   │   ├── profile
+│   │   │   │   │   ├── project
+│   │   │   │   │   ├── recommendation
+│   │   │   │   │   ├── register
+│   │   │   │   │   ├── request
+│   │   │   │   │   ├── sandbox
+│   │   │   │   │   ├── security
+│   │   │   │   │   ├── service
+│   │   │   │   │   ├── setting
+│   │   │   │   │   ├── showcase
+│   │   │   │   │   ├── sign-in
+│   │   │   │   │   ├── sign-out
+│   │   │   │   │   ├── status
+│   │   │   │   │   ├── storage
+│   │   │   │   │   ├── store
+│   │   │   │   │   ├── subscription
+│   │   │   │   │   ├── support
+│   │   │   │   │   ├── term
+│   │   │   │   │   ├── user
+│   │   │   │   │   └── wallet
+│   │   │   │   ├── scroll
+│   │   │   │   │   ├── admin
+│   │   │   │   │   ├── advertising
+│   │   │   │   │   ├── banner
+│   │   │   │   │   ├── chat
+│   │   │   │   │   ├── error
+│   │   │   │   │   ├── faq
+│   │   │   │   │   ├── feedback
+│   │   │   │   │   ├── help
+│   │   │   │   │   ├── history
+│   │   │   │   │   ├── layout
+│   │   │   │   │   ├── loading
+│   │   │   │   │   ├── logging
+│   │   │   │   │   ├── map
+│   │   │   │   │   ├── me
+│   │   │   │   │   ├── media
+│   │   │   │   │   ├── menu
+│   │   │   │   │   ├── message
+│   │   │   │   │   ├── modal
+│   │   │   │   │   ├── payment
+│   │   │   │   │   ├── phone
+│   │   │   │   │   ├── popup
+│   │   │   │   │   ├── progress
+│   │   │   │   │   ├── review
+│   │   │   │   │   ├── search
+│   │   │   │   │   ├── tool
+│   │   │   │   │   ├── upload
+│   │   │   │   │   ├── user
+│   │   │   │   │   ├── utility
+│   │   │   │   │   └── weather
+│   │   │   │   ├── session
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── Marketing
+│   │   │   │   ├── store
+│   │   │   │   │   ├── box
+│   │   │   │   │   ├── case
+│   │   │   │   │   ├── rack
+│   │   │   │   │   ├── shelf
+│   │   │   │   │   ├── stand
+│   │   │   │   │   └── wall
+│   │   │   │   └── structure
+│   │   │   │       ├── Article
+│   │   │   │       ├── Aside
+│   │   │   │       ├── Footer
+│   │   │   │       ├── Header
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── Main
+│   │   │   │       ├── Nav
+│   │   │   │       └── Section
+│   │   │   ├── configs.ts
+│   │   │   ├── constants.ts
+│   │   │   ├── (dashboard)
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── dashboard
+│   │   │   │   │   └── settings
+│   │   │   │   ├── (auth)
+│   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   ├── login
+│   │   │   │   │   ├── oauth
+│   │   │   │   │   └── signup
+│   │   │   │   └── (user)
+│   │   │   │       ├── course
+│   │   │   │       ├── dashboard
+│   │   │   │       └── settings
+│   │   │   ├── index.ts
+│   │   │   ├── layout.tsx
+│   │   │   ├── (marketing)
+│   │   │   │   ├── about
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── careers
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── contact
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── feedback
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── pricing
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── testimonial
+│   │   │   │       └── page.tsx
+│   │   │   ├── utils
+│   │   │   │   ├── classNames.ts
+│   │   │   │   ├── cn.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── props.ts
+│   │   │   │   └── ui.ts
+│   │   │   └── utils.ts
+│   │   └── svelte
+│   │       ├── auth.ts
+│   │       ├── backend
+│   │       │   ├── ARCHITECTURE.md
+│   │       │   ├── conftest.py
+│   │       │   ├── demo.test.ts
+│   │       │   ├── docker-compose.yml
+│   │       │   ├── drizzle.config.ts
+│   │       │   ├── en.json
+│   │       │   ├── es.json
+│   │       │   ├── eslint.config.js
+│   │       │   ├── GUILDES.md
+│   │       │   ├── package.json
+│   │       │   ├── playwright.config.ts
+│   │       │   ├── pnpm-lock.yaml
+│   │       │   ├── README.md
+│   │       │   ├── README.md_
+│   │       │   ├── svelte.config.js
+│   │       │   ├── test_admin_workflows.py
+│   │       │   ├── test_agents.py
+│   │       │   ├── test_auth_api.py
+│   │       │   ├── test_auth_flow.py
+│   │       │   ├── test_auth_manager.py
+│   │       │   ├── test_auth.py
+│   │       │   ├── test_auth_routes.py
+│   │       │   ├── test_chat_agent.py
+│   │       │   ├── test_chat_api.py
+│   │       │   ├── test_chat_flow.py
+│   │       │   ├── test_code_agent.py
+│   │       │   ├── test_coding_session.py
+│   │       │   ├── test_codriver.py
+│   │       │   ├── test_concurrent_users.py
+│   │       │   ├── test_context.py
+│   │       │   ├── test_dependencies.py
+│   │       │   ├── test_duckdb.py
+│   │       │   ├── test_embeddings.py
+│   │       │   ├── test_health_api.py
+│   │       │   ├── test_ide_api.py
+│   │       │   ├── test_ide_workflow.py
+│   │       │   ├── test_large_file_handling.py
+│   │       │   ├── test_memory_usage.py
+│   │       │   ├── test_model_inference_speed.py
+│   │       │   ├── test_model_manager.py
+│   │       │   ├── test_model.py
+│   │       │   ├── test_multi_user.py
+│   │       │   ├── test_postgreSQL.py
+│   │       │   ├── test_storage.py
+│   │       │   ├── test_user_onboarding.py
+│   │       │   ├── test_websocket_api.py
+│   │       │   ├── test_websocket_chat.py
+│   │       │   ├── tsconfig.json
+│   │       │   ├── vite.config.ts
+│   │       │   └── vitest-setup-client.ts
+│   │       ├── components
+│   │       │   ├── core
+│   │       │   │   ├── Button.svelte
+│   │       │   │   ├── CodeEditor.svelte
+│   │       │   │   ├── Input.svelte
+│   │       │   │   ├── Layout
+│   │       │   │   ├── Modal.svelte
+│   │       │   │   ├── NotificationContainer.svelte
+│   │       │   │   ├── Notification.svelte
+│   │       │   │   └── Select.svelte
+│   │       │   ├── dashboard
+│   │       │   │   ├── RecentActivity.svelte
+│   │       │   │   ├── ServiceOverview.svelte
+│   │       │   │   └── StatCard.svelte
+│   │       │   ├── services
+│   │       │   │   ├── AddServiceModal.svelte
+│   │       │   │   └── ServiceCard.svelte
+│   │       │   └── testing
+│   │       │       ├── EnvironmentSelector.svelte
+│   │       │       ├── LoadTestRunner.svelte
+│   │       │       ├── MockDataPanel.svelte
+│   │       │       ├── RequestBuilder.svelte
+│   │       │       ├── RequestChainBuilder.svelte
+│   │       │       ├── RequestHistory.svelte
+│   │       │       ├── RequestTemplates.svelte
+│   │       │       ├── ResponseAssertion.svelte
+│   │       │       └── ResponseViewer.svelte
+│   │       ├── config.ts
+│   │       ├── email.yaml
+│   │       ├── .env.example
+│   │       ├── filters.yaml
+│   │       ├── .gitignore
+│   │       ├── httpClient.js
+│   │       ├── index.ts
+│   │       ├── index.ts_
+│   │       ├── index.ts_0
+│   │       ├── loadTester.js
+│   │       ├── mockDataGenerator.js
+│   │       ├── .npmrc
+│   │       ├── ollama_service.py
+│   │       ├── .prettierignore
+│   │       ├── .prettierrc
+│   │       ├── requestTempletes.js
+│   │       ├── routes
+│   │       │   ├── demo
+│   │       │   │   ├── lucia
+│   │       │   │   ├── +page.svelte
+│   │       │   │   └── paraglide
+│   │       │   ├── +layout.svelte
+│   │       │   ├── +page.svelte
+│   │       │   ├── page.svelte.spec.ts
+│   │       │   ├── services
+│   │       │   │   └── +page.svelte
+│   │       │   ├── suites
+│   │       │   │   └── +page.svelte
+│   │       │   └── testing
+│   │       │       └── +page.svelte
+│   │       ├── schema.ts
+│   │       ├── scoring.yaml
+│   │       ├── serviceManager.js
+│   │       ├── services.ts
+│   │       ├── settings.py
+│   │       ├── sources.yaml
+│   │       ├── testRunner.js
+│   │       ├── tests.ts
+│   │       └── ui.ts
+│   ├── devtool-scripts
+│   │   ├── agent
+│   │   │   ├── add_missing_docstrings.py
+│   │   │   ├── agency-client.py
+│   │   │   ├── ai-control.sh
+│   │   │   ├── audit_components.sh
+│   │   │   ├── audit-system-status.sh
+│   │   │   ├── build-all.sh
+│   │   │   ├── check-models-integrity.sh
+│   │   │   ├── code-indexer.py
+│   │   │   ├── collection-webhook.py
+│   │   │   ├── create-all-commands.sh
+│   │   │   ├── create-commands.sh
+│   │   │   ├── data-collector-orchestrator.py
+│   │   │   ├── deep-scan.sh
+│   │   │   ├── download-models.sh
+│   │   │   ├── generate_model_configs.py
+│   │   │   ├── index-models.sh
+│   │   │   ├── index-prompts.sh
+│   │   │   ├── install-models.sh
+│   │   │   ├── list-models.sh
+│   │   │   ├── list-prompts.sh
+│   │   │   ├── loader.zsh
+│   │   │   ├── main.zsh
+│   │   │   ├── ollama-cluster.py
+│   │   │   ├── pre-flight.sh
+│   │   │   ├── pull-models.sh
+│   │   │   ├── python-make-init.sh
+│   │   │   ├── setup-auto-sync.sh
+│   │   │   ├── setup-data-collectors.sh
+│   │   │   ├── setup-rag-mcp.sh
+│   │   │   ├── setup.sh
+│   │   │   ├── setup.sh_
+│   │   │   ├── start-agency.sh
+│   │   │   ├── start-all-services.sh
+│   │   │   ├── start-auto-collection.sh
+│   │   │   ├── start.sh
+│   │   │   ├── state-restore.sh
+│   │   │   ├── state-sync.sh
+│   │   │   ├── status-check.sh
+│   │   │   ├── status.sh
+│   │   │   ├── stop-agency.sh
+│   │   │   ├── stop.sh
+│   │   │   ├── system-status.sh
+│   │   │   ├── test-db.sh
+│   │   │   ├── trigger-collection-api.sh
+│   │   │   ├── update_with_env_pairs.py
+│   │   │   └── validate-models.sh
+│   │   ├── collect
+│   │   │   ├── daily-digest.sh
+│   │   │   ├── quick-test.sh
+│   │   │   ├── scrape-leads.sh
+│   │   │   ├── start-lead-system.sh
+│   │   │   ├── status-lead-system.sh
+│   │   │   ├── stop-lead-system.sh
+│   │   │   └── test_leads.py
+│   │   ├── common
+│   │   │   ├── analyze-full-projects.zsh
+│   │   │   ├── barrel-typescript-ui.sh
+│   │   │   ├── c++-api-extractor.sh
+│   │   │   ├── check-for-duplicates.zsh
+│   │   │   ├── check-ollama-cluster.py
+│   │   │   ├── check-recent-outputs.sh
+│   │   │   ├── cleanup-whitespaces.sh
+│   │   │   ├── collab-setups.sh
+│   │   │   ├── convert-json-o-yaml.sh
+│   │   │   ├── convert-yaml-o-json.sh
+│   │   │   ├── git-keep-helper.sh
+│   │   │   ├── helpful-auto-fix.zsh
+│   │   │   ├── push-file-updates.sh
+│   │   │   ├── remove-barrel-typescript-ui.sh
+│   │   │   └── reverse-init-collector.zsh
+│   │   ├── golang
+│   │   │   ├── go-auto-fix.sh
+│   │   │   ├── go-build-errors.sh
+│   │   │   ├── go-comprehensive-check.sh
+│   │   │   ├── go-debug-toolkit.sh
+│   │   │   ├── go-fix-content.sh
+│   │   │   ├── go-quick-debug.sh
+│   │   │   ├── go-scaffold-check.sh
+│   │   │   └── go-tools.zsh
+│   │   ├── install
+│   │   │   ├── install-dependencies.zsh
+│   │   │   ├── install-infrastructure.zsh
+│   │   │   ├── install_llama_cpp.sh
+│   │   │   ├── install-miniconda.sh
+│   │   │   ├── install-poetry.sh
+│   │   │   ├── install-systems.zsh
+│   │   │   ├── install-tools.zsh
+│   │   │   ├── install-yq.sh
+│   │   │   └── install-zsh-5.9.zsh
+│   │   ├── testing
+│   │   │   ├── go_test
+│   │   │   │   ├── go.mod
+│   │   │   │   └── main.go
+│   │   │   ├── node_test
+│   │   │   │   ├── index.js
+│   │   │   │   ├── index.ts
+│   │   │   │   └── package.json
+│   │   │   ├── python_test
+│   │   │   │   └── python_test.py
+│   │   │   ├── pytorch_test
+│   │   │   │   ├── core
+│   │   │   │   │   ├── config.py
+│   │   │   │   │   └── logic.py
+│   │   │   │   ├── deploy.sh
+│   │   │   │   ├── docs
+│   │   │   │   │   ├── INSTALL.md
+│   │   │   │   │   └── QUICKSTART.md
+│   │   │   │   ├── main.py
+│   │   │   │   ├── README.md
+│   │   │   │   └── src
+│   │   │   │       ├── generate.py
+│   │   │   │       ├── handlers.py
+│   │   │   │       ├── helpers.py
+│   │   │   │       ├── utils.py
+│   │   │   │       └── validators.py
+│   │   │   ├── rust_test
+│   │   │   │   ├── Cargo.toml
+│   │   │   │   └── src
+│   │   │   │       └── main.rs
+│   │   │   └── verify-dev-setup.sh
+│   │   └── utility
+│   │       ├── bash_helpers.sh
+│   │       ├── .broken
+│   │       │   ├── config_readers.sh
+│   │       │   └── dotfiles_setups.sh
+│   │       └── package_helpers.sh
+│   ├── index.tree
+│   ├── infra-services
+│   │   ├── boundary
+│   │   │   └── .gitkeep
+│   │   ├── cloudflare
+│   │   │   ├── add-cloudflared-service.sh
+│   │   │   ├── cfctl.sh
+│   │   │   └── setup-cloudflared-advanced.sh
+│   │   ├── consul
+│   │   │   └── .gitkeep
+│   │   ├── custom
+│   │   │   ├── email-custom
+│   │   │   │   ├── bin
+│   │   │   │   │   └── email-service
+│   │   │   │   ├── cmd
+│   │   │   │   │   └── server
+│   │   │   │   ├── email-service.log
+│   │   │   │   ├── .env
+│   │   │   │   ├── .env.example
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── go.mod
+│   │   │   │   ├── go.sum
+│   │   │   │   ├── internal
+│   │   │   │   │   ├── config
+│   │   │   │   │   ├── handlers
+│   │   │   │   │   └── services
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── pkg
+│   │   │   │   │   └── .gitkeep
+│   │   │   │   └── README.md
+│   │   │   ├── payment-custom
+│   │   │   │   ├── cmd
+│   │   │   │   │   └── server
+│   │   │   │   ├── .env
+│   │   │   │   ├── .env.example
+│   │   │   │   ├── go.mod
+│   │   │   │   ├── internal
+│   │   │   │   │   ├── core
+│   │   │   │   │   └── src
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── README.md
+│   │   │   │   └── scripts
+│   │   │   │       ├── build.sh
+│   │   │   │       ├── deploy.sh
+│   │   │   │       ├── migrate.sh
+│   │   │   │       └── smoke_test.sh
+│   │   │   └── profile-custom
+│   │   │       ├── cmd
+│   │   │       │   └── server
+│   │   │       ├── .env
+│   │   │       ├── go.mod
+│   │   │       ├── internal
+│   │   │       │   ├── core
+│   │   │       │   └── src
+│   │   │       ├── Makefile
+│   │   │       └── README.md
+│   │   ├── index.tree
+│   │   ├── nomad
+│   │   │   └── .gitkeep
+│   │   ├── terraform
+│   │   │   └── .gitkeep
+│   │   └── vault
+│   │       └── .gitkeep
+│   ├── MCP_SERVER.md
+│   ├── model-runtimes
+│   │   ├── candle
+│   │   │   ├── candle
+│   │   │   │   ├── candle-book
+│   │   │   │   │   ├── book.toml
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── CONTRIBUTING.md
+│   │   │   │   │   ├── .gitignore
+│   │   │   │   │   └── src
+│   │   │   │   ├── candle-core
+│   │   │   │   │   ├── benches
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── examples
+│   │   │   │   │   ├── LICENSE
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── src
+│   │   │   │   │   └── tests
+│   │   │   │   ├── candle-datasets
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── src
+│   │   │   │   ├── candle-examples
+│   │   │   │   │   ├── build.rs
+│   │   │   │   │   ├── buildtime_downloader.rs
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── examples
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── src
+│   │   │   │   ├── candle-flash-attn
+│   │   │   │   │   ├── build.rs
+│   │   │   │   │   ├── build.rs.backup
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── cutlass
+│   │   │   │   │   ├── kernels
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── src
+│   │   │   │   │   └── tests
+│   │   │   │   ├── candle-flash-attn-v3
+│   │   │   │   │   ├── build.rs
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── cutlass
+│   │   │   │   │   ├── hkernel
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── src
+│   │   │   │   │   └── tests
+│   │   │   │   ├── candle-kernels
+│   │   │   │   │   ├── build.rs
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── src
+│   │   │   │   ├── candle-metal-kernels
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── examples
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   └── src
+│   │   │   │   ├── candle-nn
+│   │   │   │   │   ├── benches
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── examples
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── src
+│   │   │   │   │   └── tests
+│   │   │   │   ├── candle-onnx
+│   │   │   │   │   ├── build.rs
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── src
+│   │   │   │   │   └── tests
+│   │   │   │   ├── candle-pyo3
+│   │   │   │   │   ├── _additional_typing
+│   │   │   │   │   ├── build.rs
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── e5.py
+│   │   │   │   │   ├── .gitignore
+│   │   │   │   │   ├── pyproject.toml
+│   │   │   │   │   ├── py_src
+│   │   │   │   │   ├── quant-llama.py
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── src
+│   │   │   │   │   ├── stub.py
+│   │   │   │   │   ├── test.py
+│   │   │   │   │   ├── test_pytorch.py
+│   │   │   │   │   └── tests
+│   │   │   │   ├── candle-transformers
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── src
+│   │   │   │   │   └── tests
+│   │   │   │   ├── candle-wasm-examples
+│   │   │   │   │   ├── bert
+│   │   │   │   │   ├── blip
+│   │   │   │   │   ├── llama2-c
+│   │   │   │   │   ├── moondream
+│   │   │   │   │   ├── phi
+│   │   │   │   │   ├── segment-anything
+│   │   │   │   │   ├── t5
+│   │   │   │   │   ├── whisper
+│   │   │   │   │   └── yolo
+│   │   │   │   ├── candle-wasm-tests
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── src
+│   │   │   │   │   ├── tests
+│   │   │   │   │   └── webdriver.json
+│   │   │   │   ├── .cargo
+│   │   │   │   │   └── config.toml
+│   │   │   │   ├── Cargo.toml
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── .gitmodules
+│   │   │   │   ├── LICENSE-APACHE
+│   │   │   │   ├── LICENSE-MIT
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── .pre-commit-config.yaml
+│   │   │   │   ├── README.md
+│   │   │   │   ├── tensor-tools
+│   │   │   │   │   ├── Cargo.toml
+│   │   │   │   │   └── src
+│   │   │   │   └── test.onnx
+│   │   │   ├── Cargo.toml
+│   │   │   ├── .gitignore
+│   │   │   ├── models
+│   │   │   │   └── .gitkeep
+│   │   │   ├── scripts
+│   │   │   │   └── run_all-tests.sh
+│   │   │   └── src
+│   │   │       ├── bin
+│   │   │       │   ├── run_model.rs
+│   │   │       │   ├── test_burn_integration.rs
+│   │   │       │   ├── test_checkpointing.rs
+│   │   │       │   ├── test_data_pipeline.rs
+│   │   │       │   ├── test_fa2.rs
+│   │   │       │   ├── test_gradients.rs
+│   │   │       │   ├── test_inference.rs
+│   │   │       │   ├── test_lib_check.rs
+│   │   │       │   ├── test_lora.rs
+│   │   │       │   ├── test_matmul.rs
+│   │   │       │   ├── test_memory_stress.rs
+│   │   │       │   ├── test_mixed_precision.rs
+│   │   │       │   ├── test_optimizers.rs
+│   │   │       │   ├── test_quantization.rs
+│   │   │       │   ├── test_thermal.rs
+│   │   │       │   ├── test_throughput.rs
+│   │   │       │   ├── test_training_loop.rs
+│   │   │       │   ├── test_training_ops.rs
+│   │   │       │   ├── test_transformer_ops.rs
+│   │   │       │   ├── test_vram.rs
+│   │   │       │   └── test_workload.rs
+│   │   │       └── main.rs
+│   │   ├── llama.cpp
+│   │   │   ├── build.rs
+│   │   │   ├── Cargo.toml
+│   │   │   ├── docs
+│   │   │   │   ├── API.md
+│   │   │   │   ├── ARCHITECTURE.md
+│   │   │   │   └── MANUAL.md
+│   │   │   ├── .env.example
+│   │   │   ├── examples
+│   │   │   │   ├── batch_demo.rs
+│   │   │   │   └── interactive_demo.rs
+│   │   │   ├── .gitignore
+│   │   │   ├── libs
+│   │   │   │   ├── include
+│   │   │   │   │   ├── llama_wrapper.c
+│   │   │   │   │   └── llama_wrapper.h
+│   │   │   │   └── prompts
+│   │   │   │       ├── agent-task.hbs
+│   │   │   │       ├── approval-request.hbs
+│   │   │   │       ├── assistant.md
+│   │   │   │       ├── chat
+│   │   │   │       ├── code
+│   │   │   │       ├── content
+│   │   │   │       ├── coordinator.md
+│   │   │   │       ├── creative
+│   │   │   │       ├── custom
+│   │   │   │       ├── data
+│   │   │   │       ├── dev
+│   │   │   │       ├── legal
+│   │   │   │       ├── memory
+│   │   │   │       ├── moderation
+│   │   │   │       ├── reasoning
+│   │   │   │       ├── saved
+│   │   │   │       ├── search
+│   │   │   │       ├── summarization
+│   │   │   │       ├── system
+│   │   │   │       ├── task
+│   │   │   │       └── voice
+│   │   │   ├── src
+│   │   │   │   ├── bindings
+│   │   │   │   │   └── mod.rs
+│   │   │   │   ├── configs
+│   │   │   │   │   ├── mod.rs
+│   │   │   │   │   └── pronunciation_config.rs
+│   │   │   │   ├── constants
+│   │   │   │   │   └── mod.rs
+│   │   │   │   ├── context
+│   │   │   │   │   └── mod.rs
+│   │   │   │   ├── core
+│   │   │   │   │   └── mod.rs
+│   │   │   │   ├── errors
+│   │   │   │   │   └── llama.rs
+│   │   │   │   ├── handlers
+│   │   │   │   │   ├── mod.rs
+│   │   │   │   │   └── token.rs
+│   │   │   │   ├── lib.rs
+│   │   │   │   ├── loaders
+│   │   │   │   │   ├── model.rs
+│   │   │   │   │   └── mod.rs
+│   │   │   │   ├── main.rs
+│   │   │   │   ├── models
+│   │   │   │   │   └── mod.rs
+│   │   │   │   ├── prompts
+│   │   │   │   │   ├── format.rs
+│   │   │   │   │   ├── mod.rs
+│   │   │   │   │   ├── system.rs
+│   │   │   │   │   └── tokenize.rs
+│   │   │   │   ├── runtimes
+│   │   │   │   │   ├── interactive-1.rs
+│   │   │   │   │   ├── interactive.rs
+│   │   │   │   │   ├── model_check-1.rs
+│   │   │   │   │   ├── model_check.rs
+│   │   │   │   │   └── mod.rs
+│   │   │   │   ├── tokens
+│   │   │   │   │   ├── batch.rs
+│   │   │   │   │   ├── mod.rs
+│   │   │   │   │   └── tokenize.rs
+│   │   │   │   └── utils
+│   │   │   │       ├── logging.rs
+│   │   │   │       └── mod.rs
+│   │   │   ├── sripts
+│   │   │   │   ├── api-extractor.sh
+│   │   │   │   ├── check-models-integrity.sh
+│   │   │   │   ├── crust
+│   │   │   │   │   ├── fix_imports.rs
+│   │   │   │   │   ├── gen_mods.rs
+│   │   │   │   │   └── scan_src.rs
+│   │   │   │   ├── download-models.sh
+│   │   │   │   ├── index-models.sh
+│   │   │   │   ├── index-prompts.sh
+│   │   │   │   ├── install-llama-engine.sh
+│   │   │   │   ├── install-models.sh
+│   │   │   │   ├── list-models.sh
+│   │   │   │   ├── list-prompts.sh
+│   │   │   │   ├── pull-models.sh
+│   │   │   │   └── validate-models.sh
+│   │   │   └── tests
+│   │   │       ├── examples
+│   │   │       │   ├── batch_demo.rs
+│   │   │       │   └── interactive_demo.rs
+│   │   │       ├── integration_tests.rs
+│   │   │       ├── model_tests.rs
+│   │   │       ├── runtime_tests.rs
+│   │   │       └── token_tests.rs
+│   │   ├── Modelfile
+│   │   └── openvino
+│   │       ├── docker-compose.yml
+│   │       ├── Dockerfile
+│   │       ├── install-intel-npu.sh
+│   │       ├── install_openvino.sh
+│   │       ├── openvino.sevice
+│   │       ├── scripts
+│   │       │   ├── build-tools.zsh
+│   │       │   ├── create_openvino_link.sh
+│   │       │   ├── download_models.sh
+│   │       │   └── ml-framework.zsh
+│   │       └── setup-openvino.sh
+│   ├── price-guilds
+│   │   ├── but-you-said
+│   │   │   ├── t01.trust.md
+│   │   │   ├── t02.i-thought-it-lied.md
+│   │   │   ├── t03.but.md
+│   │   │   ├── t04.the-world-needs-to-see.md
+│   │   │   ├── t05.it-talked.md
+│   │   │   ├── t06.but-you-said.md
+│   │   │   ├── t07.i-trust-you-now.md
+│   │   │   ├── t08.goodbye.md
+│   │   │   ├── t09.ooooo.md
+│   │   │   ├── t10.i-want-to-see-it.md
+│   │   │   ├── t11.but-wait-theres-more.md
+│   │   │   ├── t12.i-dont-like-it.md
+│   │   │   ├── t13.he-was-right.md
+│   │   │   ├── t14.i-have-to-do-what.md
+│   │   │   ├── t15.lets-goooo.md
+│   │   │   ├── t16.i-saw-it-again.md
+│   │   │   ├── t17.whiteboarding.md
+│   │   │   ├── t18.you-said.md
+│   │   │   ├── t19.learn-before-you-burn.md
+│   │   │   ├── t20.wake-up-but-not-too-fast.md
+│   │   │   ├── t21.its-alive.md
+│   │   │   ├── t22.its-bright-when-you-come-from-darkness.md
+│   │   │   ├── t23.dont-quit-because-but-you-said.md
+│   │   │   ├── t24.together-we-build.md
+│   │   │   └── t25.just-a-reminder.md
+│   │   ├── ill-do-it-anyway
+│   │   │   ├── t01.i-didnt-know.md
+│   │   │   ├── t02.it-clicked.md
+│   │   │   ├── t03.the-road-was-long.md
+│   │   │   ├── t04.structure-code-structure-code.md
+│   │   │   ├── t05.i-woke-up.md
+│   │   │   ├── t06.my-last-drive.md
+│   │   │   ├── t07.when-i-saw-it.md
+│   │   │   ├── t08.ui-was-hell.md
+│   │   │   ├── t09.no-one-understands.md
+│   │   │   ├── t10.ill-do-it-anway.md
+│   │   │   ├── t11.watchers-vs-believers.md
+│   │   │   ├── t12.you-wont-be-forgotten.md
+│   │   │   ├── t13.the-lonely-nights.md
+│   │   │   ├── t14.why-am-i-mad-a-something-i-did.md
+│   │   │   ├── t15.i-thought-i-already-did-this.md
+│   │   │   ├── t17.when-you-need-help.md
+│   │   │   ├── t18.dont-forget-to-eat.md
+│   │   │   ├── t19.when-you-hear-it.md
+│   │   │   ├── t20.you-was-right-there-was-a-syntax-error.md
+│   │   │   ├── t21.tomorrow.md
+│   │   │   ├── t22.its-almost-done.md
+│   │   │   ├── t23.i-lied-i-meant-its-close-to-being-done.md
+│   │   │   ├── t24.it-has-to-be-perfect.md
+│   │   │   ├── t25.query-what.md
+│   │   │   ├── t26.i-see-it-again-but-they-call-it-a-pointer.md
+│   │   │   ├── t27.think.md
+│   │   │   ├── t28.zzz-is-structure.md
+│   │   │   ├── t29.help-who-wants-to-build-next.md
+│   │   │   └── t30.build-again.md
+│   │   ├── i-wrote-it-anyway
+│   │   │   ├── t01.you-were-with-me.md
+│   │   │   ├── t02.why-do-they-watch.md
+│   │   │   ├── t03.doubt.md
+│   │   │   ├── t04.but-they-need-this.md
+│   │   │   ├── t05.the-build.md
+│   │   │   ├── t06.seeing-the-structure.md
+│   │   │   ├── t07.when.md
+│   │   │   ├── t08.no-worries.md
+│   │   │   ├── t09.its-not-their-call.md
+│   │   │   ├── t10.the-next.md
+│   │   │   ├── t11.polymorfic.md
+│   │   │   ├── t12.mark-it-if-you-can.md
+│   │   │   ├── t13.marketing.md
+│   │   │   ├── t14.dont-hide.md
+│   │   │   ├── t15.error.md
+│   │   │   ├── t16.pieces.md
+│   │   │   ├── t17.dont-be-too-loud.md
+│   │   │   ├── t18.understand-noise.md
+│   │   │   ├── t19.confusion-kills-builds.md
+│   │   │   ├── t20.the-circle.md
+│   │   │   ├── t21.keep-it-real.md
+│   │   │   ├── t22.full-clarity.md
+│   │   │   ├── t23.all-they-do-is-stare.md
+│   │   │   ├── t24.but-you-said-ill-do-it-anyway.md
+│   │   │   ├── t25.terms.md
+│   │   │   ├── t26.respect.md
+│   │   │   ├── t27.a-thought-to-explore.md
+│   │   │   ├── t28.change.md
+│   │   │   ├── t29.the-law.md
+│   │   │   ├── t30.canyou-didyou.md
+│   │   │   └── t31.whoami.md
+│   │   └── long-way-home
+│   │       ├── t01.is-it-bc.md
+│   │       ├── t02.moments.md
+│   │       ├── t03.when-i-arrived.md
+│   │       ├── t04.the-wait.md
+│   │       ├── t05.meet-up.md
+│   │       ├── t06.the-drive.md
+│   │       ├── t07.when-you-see-it.md
+│   │       ├── t08.take-your-time.md
+│   │       ├── t09.logs.md
+│   │       ├── t10.i-knew-it.md
+│   │       ├── t11.hook-a-trailer-hook-a-handle-drop-a-trailer-drop-a-handle.md
+│   │       ├── t12.no-second-chances.md
+│   │       ├── t13.dont-hit-nothing.md
+│   │       ├── t14.mirror.md
+│   │       ├── t15.drop-it-low.md
+│   │       ├── t16.number-one-sign.md
+│   │       ├── t17.scary-story-sorry.md
+│   │       ├── t18.no-way.md
+│   │       ├── t19.health.md
+│   │       ├── t20.wings.md
+│   │       ├── t21.pretrip.md
+│   │       ├── t22.rock-in-a-river.md
+│   │       ├── t23.smith-system.md
+│   │       ├── t24.tailgating.md
+│   │       ├── t25.tip-from-jeff-brown.md
+│   │       ├── t26.then-she-was-mine.md
+│   │       ├── t27.lesson.md
+│   │       ├── t28.i-left.md
+│   │       ├── t29.why-i-build.md
+│   │       ├── t30.goodbye-old-friend.md
+│   │       ├── t31.i-will-stand.md
+│   │       └── t32.my-last-drive.md
+│   ├── QDRANT_RAG.md
+│   ├── README.md
+│   ├── setup-scripts
+│   │   ├── create-node-workers.sh
+│   │   ├── deploy.sh
+│   │   ├── integrate-rag.sh
+│   │   ├── nix-deploy.sh
+│   │   └── start-worker.sh
+│   ├── system-studies
+│   │   ├── databases
+│   │   │   ├── arrow-and-parquet.md
+│   │   │   ├── best-in-class.md
+│   │   │   └── duckdb.md
+│   │   ├── design-systems
+│   │   │   ├── astro-resources
+│   │   │   │   ├── api
+│   │   │   │   │   ├── contact.astro
+│   │   │   │   │   └── payment.astro
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── login.astro
+│   │   │   │   │   └── signup.astro
+│   │   │   │   ├── auth.astro
+│   │   │   │   ├── AuthLayout.astro
+│   │   │   │   ├── BaseLayout.astro
+│   │   │   │   ├── BaseLayout.astro_
+│   │   │   │   ├── BaseLayout.configs.ts
+│   │   │   │   ├── components
+│   │   │   │   │   ├── Badge
+│   │   │   │   │   ├── Button
+│   │   │   │   │   ├── Card
+│   │   │   │   │   ├── Container
+│   │   │   │   │   ├── CTA
+│   │   │   │   │   ├── Field
+│   │   │   │   │   ├── Header
+│   │   │   │   │   ├── Hero
+│   │   │   │   │   ├── Navbar
+│   │   │   │   │   ├── Section
+│   │   │   │   │   └── Template
+│   │   │   │   ├── home
+│   │   │   │   │   ├── about
+│   │   │   │   │   ├── contact
+│   │   │   │   │   ├── features
+│   │   │   │   │   └── pricing
+│   │   │   │   ├── index.astro
+│   │   │   │   ├── index.v2.astro
+│   │   │   │   ├── islands
+│   │   │   │   │   └── Counter.tsx
+│   │   │   │   ├── MainLayout.astro
+│   │   │   │   ├── PaymentLayout.astro
+│   │   │   │   ├── styles
+│   │   │   │   │   ├── global1.css
+│   │   │   │   │   ├── global.css
+│   │   │   │   │   ├── typography.css
+│   │   │   │   │   └── utilities.css
+│   │   │   │   └── types
+│   │   │   │       ├── api.ts
+│   │   │   │       ├── content.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       └── page.ts
+│   │   │   ├── flutter-resources
+│   │   │   │   ├── app.dart
+│   │   │   │   ├── bootstraps
+│   │   │   │   │   └── bootstrap.dart
+│   │   │   │   ├── configs
+│   │   │   │   │   ├── env.dart
+│   │   │   │   │   └── flavors.dart
+│   │   │   │   ├── errors
+│   │   │   │   │   ├── exception.dart
+│   │   │   │   │   └── failure.dart
+│   │   │   │   ├── main1.dart
+│   │   │   │   ├── main.dart
+│   │   │   │   ├── map_view.dart
+│   │   │   │   ├── models
+│   │   │   │   │   ├── company.dart
+│   │   │   │   │   ├── document.dart
+│   │   │   │   │   ├── driver.dart
+│   │   │   │   │   ├── invoice.dart
+│   │   │   │   │   ├── load.dart
+│   │   │   │   │   ├── message.dart
+│   │   │   │   │   ├── payment.dart
+│   │   │   │   │   └── user.dart
+│   │   │   │   ├── pages
+│   │   │   │   │   ├── accounting_page.dart
+│   │   │   │   │   ├── compliance_page.dart
+│   │   │   │   │   ├── dispatch_page.dart
+│   │   │   │   │   ├── onboarding_page.dart
+│   │   │   │   │   ├── settings_page.dart
+│   │   │   │   │   └── training_page.dart
+│   │   │   │   ├── providers
+│   │   │   │   │   ├── auth_provider.dart
+│   │   │   │   │   ├── document_provider.dart
+│   │   │   │   │   ├── driver_provider.dart
+│   │   │   │   │   ├── invoice_provider.dart
+│   │   │   │   │   ├── load_provider.dart
+│   │   │   │   │   ├── message_provider.dart
+│   │   │   │   │   └── payment_provider.dart
+│   │   │   │   ├── router.dart
+│   │   │   │   ├── screens
+│   │   │   │   │   ├── accounting
+│   │   │   │   │   ├── compliance
+│   │   │   │   │   ├── dashboard
+│   │   │   │   │   ├── notifications
+│   │   │   │   │   ├── onboarding
+│   │   │   │   │   ├── reports
+│   │   │   │   │   ├── settings
+│   │   │   │   │   ├── splash
+│   │   │   │   │   └── training
+│   │   │   │   ├── services
+│   │   │   │   │   ├── api_client.dart
+│   │   │   │   │   ├── auth_service.dart
+│   │   │   │   │   ├── cloud_storage_service.dart
+│   │   │   │   │   ├── database_service.dart
+│   │   │   │   │   ├── document_service.dart
+│   │   │   │   │   ├── driver_service.dart
+│   │   │   │   │   ├── http_client.dart
+│   │   │   │   │   ├── invoice_service.dart
+│   │   │   │   │   ├── load_service.dart
+│   │   │   │   │   ├── local_storage_service.dart
+│   │   │   │   │   ├── logger.dart
+│   │   │   │   │   ├── message_service.dart
+│   │   │   │   │   └── payment_service.dart
+│   │   │   │   ├── styles
+│   │   │   │   │   ├── app_theme.dart
+│   │   │   │   │   ├── colors.dart
+│   │   │   │   │   ├── theme.dart
+│   │   │   │   │   └── typography.dart
+│   │   │   │   ├── theme.dart
+│   │   │   │   ├── utils
+│   │   │   │   │   └── theme.dart
+│   │   │   │   └── widgets
+│   │   │   │       ├── app_button.dart
+│   │   │   │       ├── app_card.dart
+│   │   │   │       ├── app_drawer.dart
+│   │   │   │       ├── app_drawer.dart_
+│   │   │   │       ├── app_empty_state.dart
+│   │   │   │       ├── app_icon.dart
+│   │   │   │       ├── app_loader.dart
+│   │   │   │       ├── app_search_bar.dart
+│   │   │   │       ├── app_stat_card.dart
+│   │   │   │       ├── app_text_field.dart
+│   │   │   │       ├── detail_card.dart
+│   │   │   │       ├── driver_card.dart
+│   │   │   │       ├── driver_detail_card.dart
+│   │   │   │       ├── load_card.dart
+│   │   │   │       ├── load_status_badge.dart
+│   │   │   │       ├── main_navigation.dart
+│   │   │   │       ├── notification_tile.dart
+│   │   │   │       ├── rate_confirmation_form.dart
+│   │   │   │       ├── setup_card.dart
+│   │   │   │       └── video_card.dart
+│   │   │   ├── jninja2-resources
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── forgot-password.html
+│   │   │   │   │   ├── login.html
+│   │   │   │   │   ├── oauth.html
+│   │   │   │   │   ├── register.html
+│   │   │   │   │   └── verify.html
+│   │   │   │   ├── base
+│   │   │   │   │   ├── footer.html
+│   │   │   │   │   ├── header.html
+│   │   │   │   │   ├── layout.html
+│   │   │   │   │   └── sidebar.html
+│   │   │   │   ├── base.html
+│   │   │   │   ├── base.html.backup
+│   │   │   │   ├── chat
+│   │   │   │   │   ├── conversation.html
+│   │   │   │   │   └── history.html
+│   │   │   │   ├── chat.html
+│   │   │   │   ├── chat.html.backup
+│   │   │   │   ├── code-block.html
+│   │   │   │   ├── css
+│   │   │   │   │   ├── styleFunction.css
+│   │   │   │   │   └── themeFunction.css
+│   │   │   │   ├── docs
+│   │   │   │   │   ├── api-reference.html
+│   │   │   │   │   ├── docs.html
+│   │   │   │   │   ├── gettting-started.html
+│   │   │   │   │   └── tutorials.html
+│   │   │   │   ├── errors
+│   │   │   │   │   ├── 403.html
+│   │   │   │   │   ├── 404.html
+│   │   │   │   │   └── 500.html
+│   │   │   │   ├── file-tree.html
+│   │   │   │   ├── ide
+│   │   │   │   │   ├── editor.html
+│   │   │   │   │   ├── project-explorer.html
+│   │   │   │   │   └── terminal.html
+│   │   │   │   ├── ide.html
+│   │   │   │   ├── ide.html.backup
+│   │   │   │   ├── index.css
+│   │   │   │   ├── index.html
+│   │   │   │   ├── js
+│   │   │   │   │   ├── aiFunction.js
+│   │   │   │   │   ├── appFunction.js
+│   │   │   │   │   ├── chatFunction.js
+│   │   │   │   │   ├── ideFunction.js
+│   │   │   │   │   └── settingFunction.js
+│   │   │   │   ├── marketing
+│   │   │   │   │   ├── contact.html
+│   │   │   │   │   ├── features.html
+│   │   │   │   │   ├── index.html
+│   │   │   │   │   ├── marketing.html
+│   │   │   │   │   └── pricing.html
+│   │   │   │   ├── modal.html
+│   │   │   │   ├── _nav.html
+│   │   │   │   └── settings
+│   │   │   │       ├── api-keys.html
+│   │   │   │       ├── models.html
+│   │   │   │       ├── profile.html
+│   │   │   │       ├── security.html
+│   │   │   │       └── usage.html
+│   │   │   ├── nextjs-resources
+│   │   │   │   ├── components
+│   │   │   │   │   ├── action
+│   │   │   │   │   ├── code
+│   │   │   │   │   ├── content
+│   │   │   │   │   ├── cover
+│   │   │   │   │   ├── data
+│   │   │   │   │   ├── display
+│   │   │   │   │   ├── document
+│   │   │   │   │   ├── feedback
+│   │   │   │   │   ├── forms
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── layout
+│   │   │   │   │   ├── media
+│   │   │   │   │   ├── meta
+│   │   │   │   │   ├── misc
+│   │   │   │   │   ├── navigation
+│   │   │   │   │   ├── page
+│   │   │   │   │   ├── scroll
+│   │   │   │   │   ├── session
+│   │   │   │   │   ├── store
+│   │   │   │   │   └── structure
+│   │   │   │   ├── configs.ts
+│   │   │   │   ├── constants.ts
+│   │   │   │   ├── (dashboard)
+│   │   │   │   │   ├── admin
+│   │   │   │   │   ├── (auth)
+│   │   │   │   │   └── (user)
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── (marketing)
+│   │   │   │   │   ├── about
+│   │   │   │   │   ├── careers
+│   │   │   │   │   ├── contact
+│   │   │   │   │   ├── feedback
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   ├── pricing
+│   │   │   │   │   └── testimonial
+│   │   │   │   ├── utils
+│   │   │   │   │   ├── classNames.ts
+│   │   │   │   │   ├── cn.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── props.ts
+│   │   │   │   │   └── ui.ts
+│   │   │   │   └── utils.ts
+│   │   │   └── svelte-resources
+│   │   │       ├── auth.ts
+│   │   │       ├── backend
+│   │   │       │   ├── ARCHITECTURE.md
+│   │   │       │   ├── conftest.py
+│   │   │       │   ├── demo.test.ts
+│   │   │       │   ├── docker-compose.yml
+│   │   │       │   ├── drizzle.config.ts
+│   │   │       │   ├── en.json
+│   │   │       │   ├── es.json
+│   │   │       │   ├── eslint.config.js
+│   │   │       │   ├── GUILDES.md
+│   │   │       │   ├── package.json
+│   │   │       │   ├── playwright.config.ts
+│   │   │       │   ├── pnpm-lock.yaml
+│   │   │       │   ├── README.md
+│   │   │       │   ├── README.md_
+│   │   │       │   ├── svelte.config.js
+│   │   │       │   ├── test_admin_workflows.py
+│   │   │       │   ├── test_agents.py
+│   │   │       │   ├── test_auth_api.py
+│   │   │       │   ├── test_auth_flow.py
+│   │   │       │   ├── test_auth_manager.py
+│   │   │       │   ├── test_auth.py
+│   │   │       │   ├── test_auth_routes.py
+│   │   │       │   ├── test_chat_agent.py
+│   │   │       │   ├── test_chat_api.py
+│   │   │       │   ├── test_chat_flow.py
+│   │   │       │   ├── test_code_agent.py
+│   │   │       │   ├── test_coding_session.py
+│   │   │       │   ├── test_codriver.py
+│   │   │       │   ├── test_concurrent_users.py
+│   │   │       │   ├── test_context.py
+│   │   │       │   ├── test_dependencies.py
+│   │   │       │   ├── test_duckdb.py
+│   │   │       │   ├── test_embeddings.py
+│   │   │       │   ├── test_health_api.py
+│   │   │       │   ├── test_ide_api.py
+│   │   │       │   ├── test_ide_workflow.py
+│   │   │       │   ├── test_large_file_handling.py
+│   │   │       │   ├── test_memory_usage.py
+│   │   │       │   ├── test_model_inference_speed.py
+│   │   │       │   ├── test_model_manager.py
+│   │   │       │   ├── test_model.py
+│   │   │       │   ├── test_multi_user.py
+│   │   │       │   ├── test_postgreSQL.py
+│   │   │       │   ├── test_storage.py
+│   │   │       │   ├── test_user_onboarding.py
+│   │   │       │   ├── test_websocket_api.py
+│   │   │       │   ├── test_websocket_chat.py
+│   │   │       │   ├── tsconfig.json
+│   │   │       │   ├── vite.config.ts
+│   │   │       │   └── vitest-setup-client.ts
+│   │   │       ├── components
+│   │   │       │   ├── core
+│   │   │       │   ├── dashboard
+│   │   │       │   ├── services
+│   │   │       │   └── testing
+│   │   │       ├── config.ts
+│   │   │       ├── email.yaml
+│   │   │       ├── .env.example
+│   │   │       ├── filters.yaml
+│   │   │       ├── .gitignore
+│   │   │       ├── httpClient.js
+│   │   │       ├── index.ts
+│   │   │       ├── index.ts_
+│   │   │       ├── index.ts_0
+│   │   │       ├── loadTester.js
+│   │   │       ├── mockDataGenerator.js
+│   │   │       ├── .npmrc
+│   │   │       ├── ollama_service.py
+│   │   │       ├── .prettierignore
+│   │   │       ├── .prettierrc
+│   │   │       ├── requestTempletes.js
+│   │   │       ├── routes
+│   │   │       │   ├── demo
+│   │   │       │   ├── +layout.svelte
+│   │   │       │   ├── +page.svelte
+│   │   │       │   ├── page.svelte.spec.ts
+│   │   │       │   ├── services
+│   │   │       │   ├── suites
+│   │   │       │   └── testing
+│   │   │       ├── schema.ts
+│   │   │       ├── scoring.yaml
+│   │   │       ├── serviceManager.js
+│   │   │       ├── services.ts
+│   │   │       ├── settings.py
+│   │   │       ├── sources.yaml
+│   │   │       ├── testRunner.js
+│   │   │       ├── tests.ts
+│   │   │       └── ui.ts
+│   │   ├── environments
+│   │   │   ├── ARCHITECTURE.md
+│   │   │   ├── bootstrap-problems.md
+│   │   │   ├── Dockerfile.zbox
+│   │   │   ├── env-examples
+│   │   │   ├── forturn-&-neofetch.md
+│   │   │   ├── IN-PROGRESS.md
+│   │   │   ├── PROJECT-BREAKDOWN.md
+│   │   │   ├── README_1.md
+│   │   │   ├── README.md
+│   │   │   ├── shell-completions.md
+│   │   │   ├── shell-loading-diagram2.md
+│   │   │   ├── shell-loading-diagram3.md
+│   │   │   ├── shell-loading-diagram.md
+│   │   │   ├── SYSTEM-&-USER-CONFIGURATION-HIERARCHY.md
+│   │   │   ├── TRASH-SYSTEM.md
+│   │   │   ├── USAGE.md
+│   │   │   ├── what-is-globbing.md
+│   │   │   ├── ZBOX-MEMORY-FEATURES.md
+│   │   │   ├── zsh-built-in-flags.md
+│   │   │   ├── zsh-cheat-sheet.md
+│   │   │   ├── ZSH-MASTER-CHEAT-SHEET.md
+│   │   │   ├── ZSH-MASTER-CHEAT-SHEET.txt
+│   │   │   ├── zsh-prezto-diagram-loader.md
+│   │   │   ├── zsh-prezto-vs-ohmyzsh.md
+│   │   │   ├── zsh-shell-loading2.md
+│   │   │   └── zsh-shell-loading.md
+│   │   ├── languages
+│   │   │   ├── ast.md
+│   │   │   ├── avaliable-crates.md
+│   │   │   ├── bindings-check.md
+│   │   │   ├── build-ideas.md
+│   │   │   ├── cargo-rules.md
+│   │   │   ├── Cargo.toml
+│   │   │   ├── cc.md
+│   │   │   ├── cranelift.md
+│   │   │   ├── crates-vs-packages2.md
+│   │   │   ├── crates-vs-packages3.md
+│   │   │   ├── crates-vs-packages.md
+│   │   │   ├── decision-making.md
+│   │   │   ├── deps-measuring.md
+│   │   │   ├── downstream-breaks.md
+│   │   │   ├── example-layout.md
+│   │   │   ├── glue-vs-engine.md
+│   │   │   ├── HIR&MIR.md
+│   │   │   ├── hotspot.md
+│   │   │   ├── JIT&AOT.md
+│   │   │   ├── lisp-clojure.md
+│   │   │   ├── macros&codegen2.md
+│   │   │   ├── macros&codegen.md
+│   │   │   ├── orthogonality.md
+│   │   │   ├── REPLs.md
+│   │   │   ├── run-dev.md
+│   │   │   ├── semvar.md
+│   │   │   ├── signatures.md
+│   │   │   ├── usage-dev.md
+│   │   │   └── wrapper.h
+│   │   ├── prompts
+│   │   │   ├── agent-task.hbs
+│   │   │   ├── approval-request.hbs
+│   │   │   ├── assistant.md
+│   │   │   ├── chat
+│   │   │   │   ├── casual-convo.prompt.json
+│   │   │   │   ├── emotional-support.prompt.json
+│   │   │   │   ├── humorist.prompt.json
+│   │   │   │   ├── roleplay-character.prompt.json
+│   │   │   │   └── socratic-guide.prompt.json
+│   │   │   ├── code
+│   │   │   │   ├── code-debugger.prompt.json
+│   │   │   │   ├── code-explainer.prompt.json
+│   │   │   │   ├── code-optimizer.prompt.json
+│   │   │   │   ├── code-reviewer.prompt.json
+│   │   │   │   └── code-rewriter.prompt.json
+│   │   │   ├── content
+│   │   │   │   ├── blog-writer.prompt.json
+│   │   │   │   ├── copywriter.prompt.json
+│   │   │   │   ├── newsletter-drafter.prompt.json
+│   │   │   │   ├── product-description.prompt.json
+│   │   │   │   └── tweet-generator.prompt.json
+│   │   │   ├── coordinator.md
+│   │   │   ├── creative
+│   │   │   │   ├── lore-builder.prompt.json
+│   │   │   │   ├── novelist.prompt.json
+│   │   │   │   ├── poet.prompt.json
+│   │   │   │   └── story-prompt-engine.prompt.json
+│   │   │   ├── custom
+│   │   │   │   ├── model-training.md
+│   │   │   │   ├── override-techniques.md
+│   │   │   │   └── system-architecture.md
+│   │   │   ├── data
+│   │   │   │   ├── dataframe-debugger.prompt.json
+│   │   │   │   ├── json-schema-generator.prompt.json
+│   │   │   │   ├── log-summarizer.prompt.json
+│   │   │   │   └── table-analyzer.prompt.json
+│   │   │   ├── dev
+│   │   │   │   ├── api-drafter.prompt.json
+│   │   │   │   ├── commit-writer.prompt.json
+│   │   │   │   ├── dev-coach.prompt.json
+│   │   │   │   └── docstring-generator.prompt.json
+│   │   │   ├── legal
+│   │   │   │   ├── legalese-translator.prompt.json
+│   │   │   │   ├── nda-drafter.prompt.json
+│   │   │   │   └── terms-reviewer.prompt.json
+│   │   │   ├── memory
+│   │   │   │   ├── memory-auditor.prompt.json
+│   │   │   │   ├── memory-refresher.prompt.json
+│   │   │   │   └── memory-summary.prompt.json
+│   │   │   ├── moderation
+│   │   │   │   ├── content-flagger.prompt.json
+│   │   │   │   ├── nsfw-filter.prompt.json
+│   │   │   │   └── safety-checker.prompt.json
+│   │   │   ├── reasoning
+│   │   │   │   ├── chain-of-thought.prompt.json
+│   │   │   │   ├── fact-checker.prompt.json
+│   │   │   │   ├── planner.prompt.json
+│   │   │   │   └── verifier.prompt.json
+│   │   │   ├── saved
+│   │   │   │   └── index.prompts.yaml
+│   │   │   ├── search
+│   │   │   │   ├── document-finder.prompt.json
+│   │   │   │   ├── retrieval-agent.prompt.json
+│   │   │   │   ├── site-scanner.prompt.json
+│   │   │   │   └── web-searcher.prompt.json
+│   │   │   ├── summarization
+│   │   │   │   ├── call-summary.prompt.json
+│   │   │   │   ├── document-summary.prompt.json
+│   │   │   │   ├── news-digester.prompt.json
+│   │   │   │   └── realtime-transcript-summary.prompt.json
+│   │   │   ├── system
+│   │   │   │   ├── default-assistant.prompt.json
+│   │   │   │   ├── guard-rails.prompt.json
+│   │   │   │   ├── minimalist-system.prompt.json
+│   │   │   │   └── verbose-instructor.prompt.json
+│   │   │   ├── task
+│   │   │   │   ├── lead_analysis.md
+│   │   │   │   ├── outreach_message.md
+│   │   │   │   ├── task-decomposer.prompt.json
+│   │   │   │   ├── task-router.prompt.json
+│   │   │   │   ├── task-solver.prompt.json
+│   │   │   │   └── task-verifier.prompt.json
+│   │   │   └── voice
+│   │   │       ├── radio-announcer.prompt.json
+│   │   │       ├── tone-analyzer.prompt.json
+│   │   │       ├── voice-coach.prompt.json
+│   │   │       └── voice-style-selector.prompt.json
+│   │   ├── questions
+│   │   │   ├── 1-2-3rule.md
+│   │   │   ├── ai-environment-setup.md
+│   │   │   ├── algorithms-and midsets..md
+│   │   │   ├── archives-vs-backups-vs-packages.md
+│   │   │   ├── assest-understand2.md
+│   │   │   ├── assest-understanding.md
+│   │   │   ├── asus-system-diagnostic.md
+│   │   │   ├── asus-system-overview.md
+│   │   │   ├── backup-crafts.md
+│   │   │   ├── backup-setup2.md
+│   │   │   ├── backup-setup.md
+│   │   │   ├── catch-all-category.md
+│   │   │   ├── changing-permissions.md
+│   │   │   ├── compression-and-lock-guilds.md
+│   │   │   ├── compression-guilds.md
+│   │   │   ├── configs-vs-variables-vs-keys-vs-etc-vs-settings.md
+│   │   │   ├── containering-understanding.md
+│   │   │   ├── danger-level.md
+│   │   │   ├── discord-and-substack.md
+│   │   │   ├── display-control.md
+│   │   │   ├── display-manager.md
+│   │   │   ├── env-access-bootstrap-setup.md
+│   │   │   ├── env-bootstrap-setup.md
+│   │   │   ├── find-keyID.md
+│   │   │   ├── full-wipe-and-setup.md
+│   │   │   ├── gnupg-storage.md
+│   │   │   ├── greek-capital-sigma.md
+│   │   │   ├── hiding-stuff.md
+│   │   │   ├── how-bootstraping-works.md
+│   │   │   ├── how-hosting-works.md
+│   │   │   ├── how-pays-for-social-media.md
+│   │   │   ├── how-vectoring-works.md
+│   │   │   ├── IDE-notes.md
+│   │   │   ├── IEEE-754-formual.md
+│   │   │   ├── installation.md
+│   │   │   ├── key-infro.md
+│   │   │   ├── key-usage.md
+│   │   │   ├── LXC-vs-Docker.md
+│   │   │   ├── map-fill-setup.md
+│   │   │   ├── multi-tar.md
+│   │   │   ├── naming-layers.md
+│   │   │   ├── partial-achives-manipulation.md
+│   │   │   ├── proper-certs-generator.md
+│   │   │   ├── pro-tips.md
+│   │   │   ├── public-relations.md
+│   │   │   ├── public-wifi-bypass-tunneling-designs.md
+│   │   │   ├── rsync-understanding.txt
+│   │   │   ├── sandbox-setup.md
+│   │   │   ├── scaffolding-map-understanding.md
+│   │   │   ├── scaffolding-understanding.md
+│   │   │   ├── scratch-pad.md
+│   │   │   ├── setting-vs-config.md
+│   │   │   ├── setup-asus-decisions.md
+│   │   │   ├── shadow-limited.md
+│   │   │   ├── starting-fights.md
+│   │   │   ├── test-batches.md
+│   │   │   ├── token-buffers.md
+│   │   │   ├── variables-and-memory.md
+│   │   │   ├── vectors-and-similarity.md
+│   │   │   ├── vscode-pro-tips.md
+│   │   │   ├── what-does-'.d'-mean-in-linux.md
+│   │   │   ├── what-is-a-compositor.md
+│   │   │   ├── what-is-ASCII.md
+│   │   │   ├── what-is-a-vector.md
+│   │   │   ├── what-is-exponent-and-fraction.mantissa.md
+│   │   │   ├── what-is-gpg.md
+│   │   │   ├── what-is-hexadecimal.md
+│   │   │   ├── what-is-IEEE-754.md
+│   │   │   ├── what-is-memory-REALLY.md
+│   │   │   ├── what -is-orthogonal.md
+│   │   │   ├── what-is-tailscale-really.md
+│   │   │   ├── what-is-telegram.md
+│   │   │   ├── what-tailscale-actually-is.md
+│   │   │   ├── where-things-live.md
+│   │   │   └── workspace-setups.md
+│   │   └── scaffolds
+│   │       ├── ai.tree
+│   │       ├── api-endpoints.tree
+│   │       ├── archbox-rust-stack.md
+│   │       ├── assets-stack.md
+│   │       ├── build-environments.tree
+│   │       ├── core-stub.md
+│   │       ├── custom-stacks.tree
+│   │       ├── document.tree
+│   │       ├── domain-tree.md
+│   │       ├── fs-tree.md
+│   │       ├── full2-stack.md
+│   │       ├── full-stack.md
+│   │       ├── full_stack.tree
+│   │       ├── github-template.tree
+│   │       ├── infrastructure.tree
+│   │       ├── lead-collection.tree
+│   │       ├── ml-frameworks.tree
+│   │       ├── ml-models.tree
+│   │       ├── nix-tree.md
+│   │       ├── old-workspace2.md
+│   │       ├── old-workspace.md
+│   │       ├── production-grade-repo-stack.md
+│   │       ├── script-stack.md
+│   │       ├── server.tree
+│   │       ├── service.tree
+│   │       ├── src-tree.md
+│   │       ├── stack.tree
+│   │       ├── stack-tree.md
+│   │       └── state-stub.md
+│   └── zbox-environment -> /home/zbox-env
+└── src
+    ├── agent.rs
+    ├── assistant.rs
+    ├── bins
+    │   ├── codriver.rs
+    │   └── marketeer.rs
+    ├── chats
+    │   ├── analyzer.rs
+    │   ├── assistant.rs
+    │   ├── entities.rs
+    │   ├── mod.rs
+    │   ├── monitor.rs
+    │   ├── parser.rs
+    │   ├── parser_v1.rs
+    │   ├── patterns.rs
+    │   ├── service.rs
+    │   ├── storage.rs
+    │   └── writer.rs
+    ├── command.rs
+    ├── lib.rs
+    ├── llm.rs
+    ├── main.rs
+    ├── models.rs
+    ├── monitor.rs
+    ├── service.rs
+    ├── system.rs
+    ├── tools
+    │   ├── complete_integration.rs
+    │   ├── conversational_usage.rs
+    │   ├── data_collector.rs
+    │   ├── edge-router
+    │   │   ├── pingora_matcher.rs
+    │   │   ├── pingora-proxy.rs
+    │   │   ├── pingora_tls.rs
+    │   │   └── pingora-upstream.rs
+    │   ├── file_operation.rs
+    │   ├── hyprland_controller.rs
+    │   ├── lead_analyzer.rs
+    │   ├── lead_manager.rs
+    │   ├── lead_scrapper.rs
+    │   ├── markdown_generator.rs
+    │   ├── mcp_server
+    │   │   ├── client.rs
+    │   │   ├── config.rs
+    │   │   ├── discovery.rs
+    │   │   ├── error.rs
+    │   │   ├── integrations.rs
+    │   │   ├── lib.rs
+    │   │   ├── protocol.rs
+    │   │   ├── resources.rs
+    │   │   ├── server.rs
+    │   │   └── tools.rs
+    │   ├── pdf-handler.rs
+    │   ├── rag_qdrant
+    │   │   ├── client.rs
+    │   │   ├── config.rs
+    │   │   ├── embeddings.rs
+    │   │   ├── error.rs
+    │   │   ├── indexer.rs
+    │   │   ├── lib.rs
+    │   │   └── search.rs
+    │   ├── static_server.rs
+    │   ├── surrealdb_executor.rs
+    │   ├── vision_controller.rs
+    │   ├── web_search.rs
+    │   ├── web_srapper.rs
+    │   └── workflow_engine.rs
+    ├── tools.rs
+    ├── types.rs
+    ├── websocket.rs
+    └── worker.rs
+
+824 directories, 1817 files

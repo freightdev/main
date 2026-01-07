@@ -1,0 +1,118 @@
+# devbox_specs.yaml
+host: devbox
+device:
+  address:
+    local: "192.168.1.22"
+
+details:
+  software:
+    os: "Debian 13 (Trixie)"
+    kernel: "Linix"
+    display: "headless w/ hyprland binary"
+
+  hardware:
+    network:
+      id: wlp0s20f3
+      name: wireless
+      vendor: Intel Corporation
+      model: "Meteor Lake PCH CNVi WiFi"
+      driver: iwlwifi
+      firmware: "89.2e78fa67.0 ma-b0-gf-a0-89.uc"
+      mac_address: bc:38:98:a5:40:c4
+      ip_address: 192.168.1.22
+
+    processor:
+      name: Intel Core Ultra 7 155H
+      family: Meteor Lake
+      release_year: 2023
+      architecture: x86_64
+      process_node: Intel 4 (7nm class)
+      threads: 22
+      base_clock_ghz: 3.8
+      boost_clock_ghz: 4.8
+      tdp_watts:
+        min: 28
+        max: 115
+      graphics:
+        type: Intel Arc
+        architecture: Xe-LPG
+        cores: 8
+      ai_accelerator:
+        present: true
+        type: Intel NPU
+      virtualization:
+        vt_x: true
+        vt_d: true
+      cache:
+        l1: "544 KiB (data), 896 KiB (instruction)"
+        l2: "18 MiB total"
+        l3: "24 MiB shared"
+      features:
+        - Hyper-Threading
+        - AVX2
+        - AVX-VNNI
+        - FMA
+        - AES-NI
+        - SHA
+        - VT-x
+        - VT-d
+        - Turbo Boost
+        - Integrated AI NPU
+        - Integrated Arc GPU
+      mitigation_status:
+        meltdown: Not affected
+        spectre_v1: Mitigated
+        spectre_v2: Mitigated
+        retbleed: Not affected
+        mds: Not affected
+        l1tf: Not affected
+
+    graphics:
+      name: "Intel Arc Graphics"
+      vendor: Intel Corporation
+      product: Meteor Lake-P
+      driver: xe
+      bus_info: pci@0000:00:02.0
+      type: integrated
+      resolution: "2880x1800"
+      depth: 32
+      capabilities:
+        - PCIe
+        - msi
+        - bus_master
+        - vga_controller
+
+    memory:
+      type: LPDDR5
+      size: 16
+      manufacturer: Micron Technology
+      part_number: MT62F1G32D2DS-026
+      speed_mt_s: 7467
+      error_correction: None
+      configuration:
+        modules: 8
+        configured_speed_mt_s: 7467
+      architecture: 64-bit bus (LPDDR5)
+
+    storage:
+      type: NVMe SSD
+      model: SAMSUNG MZAL81T0HDLB-00BL2
+      product_name: PM9C1a
+      vendor: Samsung Electronics Co Ltd
+      interface: PCIe 4.0 x4 (NVMe 1.4)
+      capacity_gib: 953
+      capacity_gb: 1024
+      bus_info: pci@0000:01:00.0
+      logical_device: /dev/nvme0n1
+      serial: S77LNF0X463530
+      firmware_version: 6L1QKXD7
+      form_factor: M.2 2280
+      logical_sector_size: 512
+      sector_size: 512
+      partition_table: GPT
+      guid: b4bfac61-0a72-4d49-b500-af26c15db171
+      features:
+        - NVMe 1.4
+        - PCIe Gen4 x4
+        - Power Management (PM)
+        - MSI/MSI-X
