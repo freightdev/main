@@ -1,6 +1,6 @@
 .
 ├── app
-│   ├── fedlearn-mobile
+│   ├── ACTIVE.fedlearn-mobile
 │   │   ├── analysis_options.yaml
 │   │   ├── android
 │   │   │   ├── app
@@ -378,9 +378,7 @@
 │   │   ├── terminology.md
 │   │   └── the-tale-system.md
 │   └── trucking-agent
-│       ├── auto_assist==BOTH
-│       │   └── README.md
-│       ├── Big_Bear==FREE
+│       ├── ACTIVE.Big_Bear==FREE
 │       │   ├── Cargo.toml
 │       │   └── src
 │       │       ├── alert_engine.rs
@@ -392,7 +390,7 @@
 │       │       ├── incident_feed.rs
 │       │       ├── report_collector.rs
 │       │       └── weigh_station_tracker.rs
-│       ├── Cargo_Connect==BOTH
+│       ├── ACTIVE.Cargo_Connect==BOTH
 │       │   ├── Cargo.toml
 │       │   └── src
 │       │       ├── bin
@@ -403,6 +401,48 @@
 │       │       ├── load_fetcher.rs
 │       │       ├── score_ranker.rs
 │       │       └── session_manager.rs
+│       ├── ACTIVE.Legal_Logger==PAID
+│       │   ├── Cargo.toml
+│       │   └── src
+│       │       ├── bin
+│       │       │   └── legal_logger_v0.rs
+│       │       ├── compression.rs
+│       │       ├── encryption_module.rs
+│       │       ├── ledger_writer.rs
+│       │       ├── signature_engine.rs
+│       │       └── timestamp_engine.rs
+│       ├── ACTIVE.Packet_Pilot==BOTH
+│       │   ├── Cargo.toml
+│       │   └── src
+│       │       ├── bin
+│       │       │   └── packet_pilot_v0.rs
+│       │       ├── email_monitor.rs
+│       │       ├── form_filler.rs
+│       │       ├── pdf_processor.rs
+│       │       ├── protocol_detector.rs
+│       │       └── signature_handler.rs
+│       ├── ACTIVE.Trucker_Tales==FREE
+│       │   ├── Cargo.toml
+│       │   └── src
+│       │       ├── bin
+│       │       │   └── trucker_tales_v0.rs
+│       │       ├── emotion_enhancer.rs
+│       │       ├── format_converter.rs
+│       │       ├── publishing.rs
+│       │       ├── story_structurer.rs
+│       │       └── tale_listener.rs
+│       ├── ACTIVE.Whisper_Witness==PAID
+│       │   ├── Cargo.toml
+│       │   └── src
+│       │       ├── audio_listener.rs
+│       │       ├── bin
+│       │       │   └── whisper_witness_v0.rs
+│       │       ├── broker_tactics.rs
+│       │       ├── tactic_detector.rs
+│       │       ├── transcript_summarizer.rs
+│       │       └── whisper_engine.rs
+│       ├── auto_assist==BOTH
+│       │   └── README.md
 │       ├── direct_dispatch==PAID
 │       │   └── README.md
 │       ├── error_echo==FREE
@@ -419,62 +459,22 @@
 │       │   └── README.md
 │       ├── key_keeper==BOTH
 │       │   └── README.md
-│       ├── Legal_Logger==PAID
-│       │   ├── Cargo.toml
-│       │   └── src
-│       │       ├── bin
-│       │       │   └── legal_logger_v0.rs
-│       │       ├── compression.rs
-│       │       ├── encryption_module.rs
-│       │       ├── ledger_writer.rs
-│       │       ├── signature_engine.rs
-│       │       └── timestamp_engine.rs
 │       ├── memory_mark==FREE
 │       │   └── README.md
 │       ├── night_nexus==FREE
 │       │   └── README.md
 │       ├── oversize_overseer==PAID
 │       │   └── README.md
-│       ├── Packet_Pilot==BOTH
-│       │   ├── Cargo.toml
-│       │   └── src
-│       │       ├── bin
-│       │       │   └── packet_pilot_v0.rs
-│       │       ├── email_monitor.rs
-│       │       ├── form_filler.rs
-│       │       ├── pdf_processor.rs
-│       │       ├── protocol_detector.rs
-│       │       └── signature_handler.rs
 │       ├── quick_quote==FREE
 │       │   └── README.md
 │       ├── railroad_ranger==PAID
 │       │   └── README.md
 │       ├── secure_secret==BOTH
 │       │   └── README.md
-│       ├── Trucker_Tales==FREE
-│       │   ├── Cargo.toml
-│       │   └── src
-│       │       ├── bin
-│       │       │   └── trucker_tales_v0.rs
-│       │       ├── emotion_enhancer.rs
-│       │       ├── format_converter.rs
-│       │       ├── publishing.rs
-│       │       ├── story_structurer.rs
-│       │       └── tale_listener.rs
 │       ├── unit_usage==BOTH
 │       │   └── README.md
 │       ├── voice_validator==BOTH
 │       │   └── README.md
-│       ├── Whisper_Witness==PAID
-│       │   ├── Cargo.toml
-│       │   └── src
-│       │       ├── audio_listener.rs
-│       │       ├── bin
-│       │       │   └── whisper_witness_v0.rs
-│       │       ├── broker_tactics.rs
-│       │       ├── tactic_detector.rs
-│       │       ├── transcript_summarizer.rs
-│       │       └── whisper_engine.rs
 │       ├── xeno_xeno==FREE
 │       │   └── README.md
 │       ├── yes_yes==FREE
@@ -485,64 +485,8 @@
 ├── .env.agent
 ├── .env.mcp
 ├── .env.qdrant
-├── etc
-│   ├── agent_settings.toml
-│   ├── agent.toml
-│   ├── audit_and_logging.toml
-│   ├── autonomous_behavior.toml
-│   ├── chat.toml
-│   ├── cluster_node.toml
-│   ├── code_generation.toml
-│   ├── codriver.toml
-│   ├── communication_settings.toml
-│   ├── config.template.toml
-│   ├── core-schemas
-│   │   ├── agents.yaml
-│   │   ├── database-schema.yaml
-│   │   ├── database.yaml
-│   │   ├── freight-sources.yaml
-│   │   ├── housing-sources.yaml
-│   │   ├── marketeer.yaml
-│   │   ├── middlewares.yaml
-│   │   ├── persistence.yaml
-│   │   ├── registration.yaml
-│   │   ├── routes.yaml
-│   │   ├── services.yaml
-│   │   └── trucking-sources.yaml
-│   ├── database_analytics.toml
-│   ├── experimental_features.toml
-│   ├── infra-nodes
-│   │   ├── ASUS-TUF-Gaming.md
-│   │   ├── callbox(4vCPU, null, 12GB RAM, [256GB SSD, 1TB HDD])
-│   │   │   └── callbox_node.yaml
-│   │   ├── devbox(22vCPU, [iGPU,NPU], 16GB RAM, 1TB NVMe)
-│   │   │   └── devbox_specs.yaml
-│   │   ├── gpubox(8vCPU, GPU 4vRAM, 32GB RAM, 1TB NVMe)
-│   │   │   ├── gpubox_node.yaml
-│   │   │   └── nix
-│   │   │       ├── configuration.nix
-│   │   │       ├── duckdb-analyzer.nix
-│   │   │       ├── flake.nix
-│   │   │       └── openwebui.nomad.hcl
-│   │   ├── infrastructue.md
-│   │   ├── Lenovo-Yoga-9i.md
-│   │   └── workbox(20vCPU, iGPU, 24GB RAM, 1TB NVMe)
-│   │       └── workbox_node.yaml
-│   ├── init-db.surql
-│   ├── lead_generation.toml
-│   ├── safety_and_limits.toml
-│   ├── system.toml
-│   └── system.toml.tpl
 ├── index.tree
-├── job
-│   ├── complete
-│   │   ├── Component.tsx
-│   │   ├── generated_code.tsx
-│   │   ├── LeadDashboard.tsx
-│   │   └── LoadCard.tsx
-│   └── state
-│       └── .gitkeep
-├── lib
+├── pkg
 │   ├── agent-devtools
 │   │   ├── chat-indexer
 │   │   │   ├── ai_query.py
@@ -1520,7 +1464,9 @@
 │   ├── index.tree
 │   ├── infra-services
 │   │   ├── boundary
-│   │   │   └── .gitkeep
+│   │   │   ├── .gitkeep
+│   │   │   ├── README.md
+│   │   │   └── setup-boundary.sh
 │   │   ├── cloudflare
 │   │   │   ├── add-cloudflared-service.sh
 │   │   │   ├── cfctl.sh
@@ -1580,6 +1526,54 @@
 │   │   │   └── .gitkeep
 │   │   └── vault
 │   │       └── .gitkeep
+│   ├── main-configs
+│   │   ├── agent_settings.toml
+│   │   ├── agent.toml
+│   │   ├── audit_and_logging.toml
+│   │   ├── autonomous_behavior.toml
+│   │   ├── chat.toml
+│   │   ├── cluster_node.toml
+│   │   ├── code_generation.toml
+│   │   ├── codriver.toml
+│   │   ├── communication_settings.toml
+│   │   ├── config.template.toml
+│   │   ├── core-schemas
+│   │   │   ├── agents.yaml
+│   │   │   ├── database-schema.yaml
+│   │   │   ├── database.yaml
+│   │   │   ├── freight-sources.yaml
+│   │   │   ├── housing-sources.yaml
+│   │   │   ├── marketeer.yaml
+│   │   │   ├── middlewares.yaml
+│   │   │   ├── persistence.yaml
+│   │   │   ├── registration.yaml
+│   │   │   ├── routes.yaml
+│   │   │   ├── services.yaml
+│   │   │   └── trucking-sources.yaml
+│   │   ├── database_analytics.toml
+│   │   ├── experimental_features.toml
+│   │   ├── infra-nodes
+│   │   │   ├── ASUS-TUF-Gaming.md
+│   │   │   ├── callbox(4vCPU, null, 12GB RAM, [256GB SSD, 1TB HDD])
+│   │   │   │   └── callbox_node.yaml
+│   │   │   ├── devbox(22vCPU, [iGPU,NPU], 16GB RAM, 1TB NVMe)
+│   │   │   │   └── devbox_specs.yaml
+│   │   │   ├── gpubox(8vCPU, GPU 4vRAM, 32GB RAM, 1TB NVMe)
+│   │   │   │   ├── gpubox_node.yaml
+│   │   │   │   └── nix
+│   │   │   │       ├── configuration.nix
+│   │   │   │       ├── duckdb-analyzer.nix
+│   │   │   │       ├── flake.nix
+│   │   │   │       └── openwebui.nomad.hcl
+│   │   │   ├── infrastructue.md
+│   │   │   ├── Lenovo-Yoga-9i.md
+│   │   │   └── workbox(20vCPU, iGPU, 24GB RAM, 1TB NVMe)
+│   │   │       └── workbox_node.yaml
+│   │   ├── init-db.surql
+│   │   ├── lead_generation.toml
+│   │   ├── safety_and_limits.toml
+│   │   ├── system.toml
+│   │   └── system.toml.tpl
 │   ├── MCP_SERVER.md
 │   ├── model-runtimes
 │   │   ├── candle
@@ -2640,4 +2634,4 @@
     ├── websocket.rs
     └── worker.rs
 
-824 directories, 1817 files
+821 directories, 1814 files

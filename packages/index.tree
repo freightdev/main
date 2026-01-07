@@ -1455,6 +1455,54 @@
 │   │   └── .gitkeep
 │   └── vault
 │       └── .gitkeep
+├── main-configs
+│   ├── agent_settings.toml
+│   ├── agent.toml
+│   ├── audit_and_logging.toml
+│   ├── autonomous_behavior.toml
+│   ├── chat.toml
+│   ├── cluster_node.toml
+│   ├── code_generation.toml
+│   ├── codriver.toml
+│   ├── communication_settings.toml
+│   ├── config.template.toml
+│   ├── core-schemas
+│   │   ├── agents.yaml
+│   │   ├── database-schema.yaml
+│   │   ├── database.yaml
+│   │   ├── freight-sources.yaml
+│   │   ├── housing-sources.yaml
+│   │   ├── marketeer.yaml
+│   │   ├── middlewares.yaml
+│   │   ├── persistence.yaml
+│   │   ├── registration.yaml
+│   │   ├── routes.yaml
+│   │   ├── services.yaml
+│   │   └── trucking-sources.yaml
+│   ├── database_analytics.toml
+│   ├── experimental_features.toml
+│   ├── infra-nodes
+│   │   ├── ASUS-TUF-Gaming.md
+│   │   ├── callbox(4vCPU, null, 12GB RAM, [256GB SSD, 1TB HDD])
+│   │   │   └── callbox_node.yaml
+│   │   ├── devbox(22vCPU, [iGPU,NPU], 16GB RAM, 1TB NVMe)
+│   │   │   └── devbox_specs.yaml
+│   │   ├── gpubox(8vCPU, GPU 4vRAM, 32GB RAM, 1TB NVMe)
+│   │   │   ├── gpubox_node.yaml
+│   │   │   └── nix
+│   │   │       ├── configuration.nix
+│   │   │       ├── duckdb-analyzer.nix
+│   │   │       ├── flake.nix
+│   │   │       └── openwebui.nomad.hcl
+│   │   ├── infrastructue.md
+│   │   ├── Lenovo-Yoga-9i.md
+│   │   └── workbox(20vCPU, iGPU, 24GB RAM, 1TB NVMe)
+│   │       └── workbox_node.yaml
+│   ├── init-db.surql
+│   ├── lead_generation.toml
+│   ├── safety_and_limits.toml
+│   ├── system.toml
+│   └── system.toml.tpl
 ├── MCP_SERVER.md
 ├── model-runtimes
 │   ├── candle
@@ -3400,4 +3448,4 @@
 │       └── state-stub.md
 └── zbox-environment -> /home/zbox-env
 
-1049 directories, 2352 files
+1057 directories, 2392 files
