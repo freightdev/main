@@ -1,6 +1,0 @@
-# Codriver Agencies Gitignores
-
-# Core System
-core/agencies/
-pkgs/engines/
-pkgs/indexers/

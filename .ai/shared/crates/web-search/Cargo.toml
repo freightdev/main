@@ -1,0 +1,10 @@
+[package]
+name = "web-search"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+shared-types = { path = "../shared-types" }
+tokio.workspace = true
+serde.workspace = true
+anyhow.workspace = true

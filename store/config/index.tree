@@ -1,0 +1,74 @@
+.
+├── agentd
+│   ├── agent_settings.toml
+│   ├── audit_and_logging.toml
+│   ├── autonomous_behavior.toml
+│   ├── cluster_node.toml
+│   ├── code_generation.toml
+│   ├── codriver.toml
+│   ├── communication_settings.toml
+│   ├── config.template.toml
+│   ├── core
+│   │   ├── agents.yaml
+│   │   ├── database-schema.yaml
+│   │   ├── database.yaml
+│   │   ├── freight-sources.yaml
+│   │   ├── housing-sources.yaml
+│   │   ├── marketeer.yaml
+│   │   ├── middlewares.yaml
+│   │   ├── persistence.yaml
+│   │   ├── registration.yaml
+│   │   ├── routes.yaml
+│   │   ├── services.yaml
+│   │   └── trucking-sources.yaml
+│   ├── database_analytics.toml
+│   ├── experimental_features.toml
+│   ├── init-db.surql
+│   ├── lead_generation.toml
+│   ├── nodes
+│   │   ├── callbox_node.yaml
+│   │   ├── helpbox_node.yaml
+│   │   ├── hostbox_node.yaml
+│   │   └── workbox_node.yaml
+│   ├── safety_and_limits.toml
+│   └── service
+│       ├── codriver-auth.service
+│       ├── codriver-email.service
+│       ├── codriver-payment.service
+│       ├── codriver-user.service
+│       ├── housing-collector.service
+│       ├── housing-collector.timer
+│       ├── lead-analyzer.service
+│       ├── lead-manager.service
+│       ├── lead-scraper-daily.service
+│       ├── lead-scraper-daily.timer
+│       ├── lead-scraper.service
+│       ├── llamacpp.service
+│       ├── surrealdb.service
+│       ├── trucking-collector.service
+│       └── trucking-collector.timer
+├── index.tree
+├── Modelfile.mark
+├── setup-firecracker.sh
+├── zbox-env -> /home/zbox-env
+└── zed-ide
+    ├── config
+    │   ├── keymap.json
+    │   ├── settings.json
+    │   ├── tasks.json
+    │   └── themes
+    │       └── .gitkeep
+    ├── src
+    │   ├── lib
+    │   │   ├── create-management-scripts.zsh
+    │   │   └── install-dependencies.zsh
+    │   ├── main.zsh
+    │   ├── option
+    │   │   ├── build-source.zsh
+    │   │   └── try-prebuilt.zsh
+    │   └── util
+    │       ├── config.zsh
+    │       └── logging.zsh
+    └── zed-installer.zsh
+
+13 directories, 59 files
