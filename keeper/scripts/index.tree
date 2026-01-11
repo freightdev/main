@@ -1,0 +1,132 @@
+.
+├── crust
+│   ├── fix_imports.rs
+│   ├── gen_mods.rs
+│   └── scan_src.rs
+├── index.tree
+└── shell
+    ├── agent
+    │   ├── add_missing_docstrings.py
+    │   ├── agency-client.py
+    │   ├── ai-control.sh
+    │   ├── audit_components.sh
+    │   ├── audit-system-status.sh
+    │   ├── build-all.sh
+    │   ├── check-models-integrity.sh
+    │   ├── code-indexer.py
+    │   ├── collection-webhook.py
+    │   ├── create-all-commands.sh
+    │   ├── create-commands.sh
+    │   ├── data-collector-orchestrator.py
+    │   ├── deep-scan.sh
+    │   ├── download-models.sh
+    │   ├── generate_model_configs.py
+    │   ├── index-models.sh
+    │   ├── index-prompts.sh
+    │   ├── install-models.sh
+    │   ├── list-models.sh
+    │   ├── list-prompts.sh
+    │   ├── loader.zsh
+    │   ├── main.zsh
+    │   ├── ollama-cluster.py
+    │   ├── pre-flight.sh
+    │   ├── pull-models.sh
+    │   ├── python-make-init.sh
+    │   ├── setup-auto-sync.sh
+    │   ├── setup-data-collectors.sh
+    │   ├── setup-rag-mcp.sh
+    │   ├── setup.sh
+    │   ├── setup.sh_
+    │   ├── start-agency.sh
+    │   ├── start-all-services.sh
+    │   ├── start-auto-collection.sh
+    │   ├── start.sh
+    │   ├── state-restore.sh
+    │   ├── state-sync.sh
+    │   ├── status-check.sh
+    │   ├── status.sh
+    │   ├── stop-agency.sh
+    │   ├── stop.sh
+    │   ├── system-status.sh
+    │   ├── test-db.sh
+    │   ├── trigger-collection-api.sh
+    │   ├── update_with_env_pairs.py
+    │   └── validate-models.sh
+    ├── collect
+    │   ├── daily-digest.sh
+    │   ├── quick-test.sh
+    │   ├── scrape-leads.sh
+    │   ├── start-lead-system.sh
+    │   ├── status-lead-system.sh
+    │   ├── stop-lead-system.sh
+    │   └── test_leads.py
+    ├── common
+    │   ├── analyze-full-projects.zsh
+    │   ├── barrel-typescript-ui.sh
+    │   ├── c++-api-extractor.sh
+    │   ├── check-for-duplicates.zsh
+    │   ├── check-ollama-cluster.py
+    │   ├── check-recent-outputs.sh
+    │   ├── cleanup-whitespaces.sh
+    │   ├── collab-setups.sh
+    │   ├── convert-json-o-yaml.sh
+    │   ├── convert-yaml-o-json.sh
+    │   ├── git-keep-helper.sh
+    │   ├── helpful-auto-fix.zsh
+    │   ├── push-file-updates.sh
+    │   ├── remove-barrel-typescript-ui.sh
+    │   └── reverse-init-collector.zsh
+    ├── core
+    │   ├── create-node-workers.sh
+    │   ├── deploy.sh
+    │   ├── integrate-rag.sh
+    │   ├── nix-deploy.sh
+    │   └── start-worker.sh
+    ├── golang
+    │   ├── go-auto-fix.sh
+    │   ├── go-build-errors.sh
+    │   ├── go-comprehensive-check.sh
+    │   ├── go-debug-toolkit.sh
+    │   ├── go-fix-content.sh
+    │   ├── go-quick-debug.sh
+    │   ├── go-scaffold-check.sh
+    │   └── go-tools.zsh
+    ├── install
+    │   ├── install-dependencies.zsh
+    │   ├── install-infrastructure.zsh
+    │   ├── install_llama_cpp.sh
+    │   ├── install-miniconda.sh
+    │   ├── install-poetry.sh
+    │   ├── install-systems.zsh
+    │   ├── install-tools.zsh
+    │   ├── install-yq.sh
+    │   └── install-zsh-5.9.zsh
+    ├── testing
+    │   ├── go_test
+    │   │   ├── go.mod
+    │   │   └── main.go
+    │   ├── node_test
+    │   │   ├── index.js
+    │   │   ├── index.ts
+    │   │   └── package.json
+    │   ├── python_test
+    │   │   └── python_test.py
+    │   ├── pytorch_test
+    │   │   ├── core
+    │   │   ├── deploy.sh
+    │   │   ├── docs
+    │   │   ├── main.py
+    │   │   ├── README.md
+    │   │   └── src
+    │   ├── rust_test
+    │   │   ├── Cargo.toml
+    │   │   └── src
+    │   └── verify-dev-setup.sh
+    └── utility
+        ├── bash_helpers.sh
+        ├── .broken
+        │   ├── config_readers.sh
+        │   └── dotfiles_setups.sh
+        └── package_helpers.sh
+
+21 directories, 109 files

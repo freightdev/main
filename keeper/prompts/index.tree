@@ -1,0 +1,92 @@
+.
+├── chat
+│   ├── casual-convo.prompt.json
+│   ├── emotional-support.prompt.json
+│   ├── humorist.prompt.json
+│   ├── roleplay-character.prompt.json
+│   └── socratic-guide.prompt.json
+├── code
+│   ├── code-debugger.prompt.json
+│   ├── code-explainer.prompt.json
+│   ├── code-optimizer.prompt.json
+│   ├── code-reviewer.prompt.json
+│   └── code-rewriter.prompt.json
+├── content
+│   ├── blog-writer.prompt.json
+│   ├── copywriter.prompt.json
+│   ├── newsletter-drafter.prompt.json
+│   ├── product-description.prompt.json
+│   └── tweet-generator.prompt.json
+├── core
+│   ├── agent-task.hbs
+│   ├── approval-request.hbs
+│   ├── assistant.md
+│   └── coordinator.md
+├── creative
+│   ├── lore-builder.prompt.json
+│   ├── novelist.prompt.json
+│   ├── poet.prompt.json
+│   └── story-prompt-engine.prompt.json
+├── custom
+│   ├── model-training.md
+│   ├── override-techniques.md
+│   └── system-architecture.md
+├── data
+│   ├── dataframe-debugger.prompt.json
+│   ├── json-schema-generator.prompt.json
+│   ├── log-summarizer.prompt.json
+│   └── table-analyzer.prompt.json
+├── dev
+│   ├── api-drafter.prompt.json
+│   ├── commit-writer.prompt.json
+│   ├── dev-coach.prompt.json
+│   └── docstring-generator.prompt.json
+├── index.tree
+├── legal
+│   ├── legalese-translator.prompt.json
+│   ├── nda-drafter.prompt.json
+│   └── terms-reviewer.prompt.json
+├── memory
+│   ├── memory-auditor.prompt.json
+│   ├── memory-refresher.prompt.json
+│   └── memory-summary.prompt.json
+├── moderation
+│   ├── content-flagger.prompt.json
+│   ├── nsfw-filter.prompt.json
+│   └── safety-checker.prompt.json
+├── reasoning
+│   ├── chain-of-thought.prompt.json
+│   ├── fact-checker.prompt.json
+│   ├── planner.prompt.json
+│   └── verifier.prompt.json
+├── saved
+│   └── index.prompts.yaml
+├── search
+│   ├── document-finder.prompt.json
+│   ├── retrieval-agent.prompt.json
+│   ├── site-scanner.prompt.json
+│   └── web-searcher.prompt.json
+├── summarization
+│   ├── call-summary.prompt.json
+│   ├── document-summary.prompt.json
+│   ├── news-digester.prompt.json
+│   └── realtime-transcript-summary.prompt.json
+├── system
+│   ├── default-assistant.prompt.json
+│   ├── guard-rails.prompt.json
+│   ├── minimalist-system.prompt.json
+│   └── verbose-instructor.prompt.json
+├── task
+│   ├── lead_analysis.md
+│   ├── outreach_message.md
+│   ├── task-decomposer.prompt.json
+│   ├── task-router.prompt.json
+│   ├── task-solver.prompt.json
+│   └── task-verifier.prompt.json
+└── voice
+    ├── radio-announcer.prompt.json
+    ├── tone-analyzer.prompt.json
+    ├── voice-coach.prompt.json
+    └── voice-style-selector.prompt.json
+
+19 directories, 71 files

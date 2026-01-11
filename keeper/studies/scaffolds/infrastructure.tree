@@ -1,0 +1,62 @@
+.
+├── ai-workloads.yaml
+├── allow-dns.yaml
+├── allow-ingress.yaml
+├── app-config.yaml
+├── argocd.yaml
+├── bootstrap.toml
+├── cloudflared-tunnel.yaml
+├── clusterrolebindings.yaml
+├── coredns.yaml
+├── database.yaml
+├── default-deny.yaml
+├── gitea.yaml
+├── .gitignore
+├── gitops.yaml
+├── grafana.yaml
+├── helpbox-limits.yaml
+├── hostbox-limits.yaml
+├── hosting.yaml
+├── index.tree
+├── ingress.yaml
+├── kube-proxy.yaml
+├── kustomization.yaml
+├── loadbalancer.yaml
+├── loki-config.yaml
+├── loki.yaml
+├── longhorn.yaml
+├── monitoring.yaml
+├── nat-rs.yaml
+├── nginx-config.yaml
+├── nginx.yaml
+├── node-exporter.yaml
+├── pod-to-pod.yaml
+├── prometheus-config.yaml
+├── prometheus.yaml
+├── README.md
+├── redis.yaml
+├── restis.yaml
+├── rolebindings.yaml
+├── roles.yaml
+├── scripts
+│   ├── backup-cluster.sh
+│   ├── bootstrap.sh
+│   ├── deploy-all.sh
+│   ├── failover.sh
+│   ├── health-check.sh
+│   ├── install-k3s-ha.sh
+│   ├── install-k3s-master.sh
+│   ├── install-k3s-worker.sh
+│   ├── restore-cluster.sh
+│   ├── scale-cluster.sh
+│   └── utils.sh
+├── serviceaccount.yaml
+├── service-mesh.yaml
+├── storage-class.yaml
+├── storage.yaml
+├── surrealdb.yaml
+├── system.yaml
+├── versions.txt
+└── workbox-limits.yaml
+
+2 directories, 58 files

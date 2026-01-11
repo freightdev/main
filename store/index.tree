@@ -1,0 +1,507 @@
+.
+├── ~Book of Business~ -> /home/admin/~Book of Business~
+├── dotfiles
+│   ├── bin
+│   │   ├── autoclicker.zsh
+│   │   ├── hey
+│   │   ├── hey.d
+│   │   │   ├── build.janet
+│   │   │   ├── gc.janet
+│   │   │   ├── hook.janet
+│   │   │   ├── info.janet
+│   │   │   ├── ops.janet
+│   │   │   ├── path.janet
+│   │   │   ├── profile.janet
+│   │   │   ├── pull.janet
+│   │   │   ├── reload.janet
+│   │   │   ├── repl.janet
+│   │   │   ├── swap.janet
+│   │   │   ├── sync.janet
+│   │   │   └── vars.janet
+│   │   ├── lab
+│   │   ├── lab.d
+│   │   │   ├── occ.zsh
+│   │   │   ├── rcp
+│   │   │   └── sync.zsh
+│   │   ├── lsiommu.zsh
+│   │   ├── optimize.zsh
+│   │   ├── qr.zsh
+│   │   ├── termcolors.sh
+│   │   ├── when.zsh
+│   │   └── ytdl.zsh
+│   ├── config
+│   │   ├── beets
+│   │   │   └── config.yaml
+│   │   ├── blender
+│   │   │   ├── config
+│   │   │   ├── startup.blend.tar.gz
+│   │   │   └── userpref.blend.tar.gz
+│   │   ├── docker
+│   │   │   └── aliases.zsh
+│   │   ├── emacs
+│   │   │   └── aliases.zsh
+│   │   ├── foot
+│   │   │   └── foot.ini
+│   │   ├── gimp
+│   │   │   └── menurc
+│   │   ├── git
+│   │   │   ├── aliases.zsh
+│   │   │   ├── attributes
+│   │   │   ├── config
+│   │   │   └── ignore
+│   │   ├── hypr
+│   │   │   ├── bin
+│   │   │   ├── hooks
+│   │   │   └── hyprland.conf
+│   │   ├── rofi
+│   │   │   ├── bin
+│   │   │   └── config.rasi
+│   │   ├── secrets
+│   │   │   └── secrets.nix
+│   │   ├── tmux
+│   │   │   ├── aliases.zsh
+│   │   │   ├── bin
+│   │   │   └── tmux.conf
+│   │   ├── waybar
+│   │   │   └── config
+│   │   └── zsh
+│   │       ├── aliases.zsh
+│   │       ├── completions
+│   │       ├── completion.zsh
+│   │       ├── keybinds.zsh
+│   │       └── .zshrc
+│   ├── default.nix
+│   ├── .editorconfig
+│   ├── flake.lock
+│   ├── flake.nix
+│   ├── .gitignore
+│   ├── hosts
+│   │   ├── harusame
+│   │   │   ├── default.nix
+│   │   │   ├── README.org
+│   │   │   └── secrets
+│   │   ├── ramen
+│   │   │   ├── default.nix
+│   │   │   ├── README.org
+│   │   │   └── secrets
+│   │   └── udon
+│   │       ├── bin
+│   │       ├── default.nix
+│   │       ├── README.org
+│   │       ├── rofi
+│   │       └── secrets
+│   ├── install.zsh
+│   ├── lib
+│   │   ├── attrs.nix
+│   │   ├── debug.nix
+│   │   ├── default.nix
+│   │   ├── hey
+│   │   │   ├── cmd.janet
+│   │   │   ├── glob.janet
+│   │   │   ├── init.janet
+│   │   │   ├── lib.janet
+│   │   │   ├── rofi-blocks.janet
+│   │   │   ├── rofi.janet
+│   │   │   ├── sys.janet
+│   │   │   └── vars.janet
+│   │   ├── modules.nix
+│   │   ├── nixos.nix
+│   │   ├── options.nix
+│   │   ├── pkgs.nix
+│   │   └── zsh
+│   │       ├── hey.abort
+│   │       ├── hey.cache
+│   │       ├── hey.do
+│   │       ├── hey.echo
+│   │       ├── hey.error
+│   │       ├── hey.log
+│   │       ├── hey.requires
+│   │       ├── hey.start
+│   │       └── hey.warn
+│   ├── LICENSE
+│   ├── modules
+│   │   ├── agenix.nix
+│   │   ├── desktop
+│   │   │   ├── apps
+│   │   │   ├── browsers
+│   │   │   ├── default.nix
+│   │   │   ├── hyprland.nix
+│   │   │   ├── media
+│   │   │   └── term
+│   │   ├── dev
+│   │   │   ├── cc.nix
+│   │   │   ├── clojure.nix
+│   │   │   ├── common-lisp.nix
+│   │   │   ├── default.nix
+│   │   │   ├── java.nix
+│   │   │   ├── lua.nix
+│   │   │   ├── node.nix
+│   │   │   ├── python.nix
+│   │   │   ├── ruby.nix
+│   │   │   ├── rust.nix
+│   │   │   ├── scala.nix
+│   │   │   └── shell.nix
+│   │   ├── editors
+│   │   │   ├── default.nix
+│   │   │   ├── emacs.nix
+│   │   │   └── vim.nix
+│   │   ├── hey.nix
+│   │   ├── home.nix
+│   │   ├── profiles
+│   │   │   ├── default.nix
+│   │   │   ├── hardware
+│   │   │   ├── network
+│   │   │   ├── platform
+│   │   │   ├── role
+│   │   │   └── user
+│   │   ├── security.nix
+│   │   ├── services
+│   │   │   ├── docker.nix
+│   │   │   ├── flatpak.nix
+│   │   │   ├── hypridle.nix
+│   │   │   ├── printing.nix
+│   │   │   ├── ssh.nix
+│   │   │   ├── swayidle.nix
+│   │   │   ├── waybar.nix
+│   │   │   ├── wlsunset.nix
+│   │   │   └── ydotool.nix
+│   │   ├── shell
+│   │   │   ├── adl.nix
+│   │   │   ├── direnv.nix
+│   │   │   ├── git.nix
+│   │   │   ├── gnupg.nix
+│   │   │   ├── tmux.nix
+│   │   │   ├── vaultwarden.nix
+│   │   │   └── zsh.nix
+│   │   ├── system
+│   │   │   ├── fs.nix
+│   │   │   └── utils.nix
+│   │   ├── themes
+│   │   │   ├── autumnal
+│   │   │   ├── default.nix
+│   │   │   └── .noload
+│   │   ├── virt
+│   │   │   ├── lxd.nix
+│   │   │   └── qemu.nix
+│   │   └── xdg.nix
+│   ├── overlays
+│   │   └── .git-keep
+│   ├── packages
+│   │   ├── feishin
+│   │   │   └── default.nix
+│   │   ├── .git-keep
+│   │   └── rofi-blocks
+│   │       ├── 0001-Patch-plugindir-to-output.patch
+│   │       └── default.nix
+│   ├── project.janet
+│   ├── README.md
+│   ├── shell.nix
+│   └── test
+│       ├── .git-keep
+│       └── hey
+│           ├── glob.janet
+│           ├── hey.janet
+│           ├── lib.janet
+│           ├── mock.d
+│           ├── vars.janet
+│           └── zsh.janet
+├── ~Fast&Easy Dispatching LLC~
+│   ├── Blank Agreements and Forms
+│   │   ├── GENERIC Factoring Company - Payment Deduction.pdf
+│   │   ├── GENERIC Full Dispatcher Agreement.pdf
+│   │   ├── GENERIC Load Finder Agreement.pdf
+│   │   ├── GENERIC Paperwork Only Agreement.pdf
+│   │   └── GENERIC Rate Agreement.pdf
+│   ├── Carrier Agreements
+│   │   ├── Carrier Agreement Packet.docx
+│   │   ├── Carrier Agreement Packet.pdf
+│   │   ├── Carrier Profile.docx
+│   │   ├── Carrier Profile Sheet - Master Copy.docx
+│   │   ├── Credit Card Authorization.docx
+│   │   ├── Credit Card Authorization.pdf
+│   │   ├── Dispatcher Agreement.docx
+│   │   ├── Dispatcher Agreement.pdf
+│   │   ├── Dispatcher Carrier - Limited Power.docx
+│   │   ├── Dispatcher Carrier - Limited Power.pdf
+│   │   ├── Factoring Company - Payment Deduction.docx
+│   │   ├── Factoring Company - Payment Deduction.pdf
+│   │   ├── Full Dispatcher Agreement.docx
+│   │   ├── Full Dispatcher Agreement.pdf
+│   │   ├── Load Finder Agreement Carrier Package.docx
+│   │   ├── Load Finder Agreement.docx
+│   │   ├── Load Finder Agreement.pdf
+│   │   ├── Paperwork Only Agreement Carrier Package.docx
+│   │   ├── Paperwork Only Agreement.docx
+│   │   ├── Paperwork Only Agreement.pdf
+│   │   ├── Rate Agreement.docx
+│   │   └── Rate Agreement.pdf
+│   ├── Course Structure
+│   │   ├── Billing.png
+│   │   ├── Carriers.png
+│   │   ├── Daily Process.png
+│   │   ├── Flatbed Trailer.png
+│   │   ├── Knowledge.png
+│   │   ├── Landing Page.png
+│   │   ├── Reefer Trailer.png
+│   │   ├── Trucking Industry.png
+│   │   ├── Upsell Script for Purchase Screen.png
+│   │   ├── Van Trailer.png
+│   │   ├── What is a Dispatcher.png
+│   │   └── Your Business.png
+│   ├── Emails
+│   │   └── Email Ideas for Freight Dispatcher 101.docx
+│   ├── Factoring and Bond Info.pdf
+│   ├── FullColor_1280x1024.pdf
+│   ├── Hotshot neededs.docx
+│   ├── index.tree
+│   ├── Invoices
+│   │   ├── 8 STEPS MARK J. KOHLER.eml
+│   │   ├── Adobe Reader.png
+│   │   ├── Adobe Reader.png_
+│   │   ├── Broker Training.png
+│   │   ├── Constant Contact.png
+│   │   ├── DAT.eml
+│   │   ├── DAT Load Board (2).pdf
+│   │   ├── DAT Load Board.pdf
+│   │   ├── DAT Load Board.png
+│   │   ├── DAT Load Board.png_
+│   │   ├── Dispatcher Training.pdf
+│   │   ├── Dispatcher Training.pdf_
+│   │   ├── Dispatcher Training.png
+│   │   ├── Docusign.png
+│   │   ├── Doodly (2).png
+│   │   ├── Doodly.png
+│   │   ├── E-Fax.png
+│   │   ├── E-Fax.png_
+│   │   ├── Facebook Ads.png
+│   │   ├── Flash Drive for Work Documents.png
+│   │   ├── Go Daddy and Microsoft 365.pdf
+│   │   ├── Go Daddy and Microsoft 365.pdf_
+│   │   ├── Laptop for Work and Personal Use.png
+│   │   ├── Laptop Protection Plan.png
+│   │   ├── LOGO.pdf
+│   │   ├── LOGO.pdf_
+│   │   ├── MJK Business Plan 8 Steps.png
+│   │   ├── MJK Business Plan 8 Steps.png_
+│   │   ├── PDFEscape.png
+│   │   ├── PressPlay (Special Offer - Toonly) Receipt Order # PK-PRLO03JK9E.eml
+│   │   ├── Quickbooks .PDF
+│   │   ├── Quickbooks .PDF_
+│   │   ├── Screen Cast.pdf
+│   │   ├── Speechelo (1).png
+│   │   ├── Speechelo (2).png
+│   │   ├── Speechelo (3).png
+│   │   ├── Thumbnail Blaster (2).eml
+│   │   ├── Thumbnail Blaster.eml
+│   │   ├── ThumpBlaster.eml
+│   │   ├── Toonly Enterprise (1-time) Receipt Order # PK-P6EJKDDN6L.eml
+│   │   ├── Toonly Standard (in app) Receipt Order # PK-PMWQ079D9W.eml
+│   │   ├── Toonplates book Receipt Order # PK-PKE3R8Q39L.eml
+│   │   ├── TotalAV Viris Protection.png
+│   │   ├── Traffic and Funnels.png
+│   │   ├── Traffic and Funnels.png_
+│   │   ├── WIX - 2 Emails.pdf
+│   │   ├── WIX - 2 Emails.pdf_
+│   │   ├── WIX - Business Phone Line.pdf
+│   │   ├── WIX - Epic Form Builder.pdf
+│   │   ├── WIX - Epic Form Builder.pdf_
+│   │   ├── WIX - Pro.pdf
+│   │   └── WIX - Pro.pdf_
+│   ├── Speechelo Scripts
+│   │   ├── 5097941_1615238204.mp3
+│   │   ├── 5097977_1615238308.mp3
+│   │   ├── Pitch 10.mp3
+│   │   ├── Pitch 12.mp3
+│   │   ├── Pitch 1.mp3
+│   │   ├── Pitch 2.mp3
+│   │   ├── Pitch 4.mp3
+│   │   ├── Pitch 5.mp3
+│   │   ├── Pitch 6.mp3
+│   │   ├── Pitch 7.mp3
+│   │   ├── Pitch 8.mp3
+│   │   └── Pitch 9.mp3
+│   ├── Split Files
+│   │   ├── Facebook Group Agreements (3).png
+│   │   ├── Facebook Group Agreements.png
+│   │   ├── Footer.png
+│   │   ├── have lesson title at top.png
+│   │   ├── Landing Page.png
+│   │   ├── Screenshot (10).png
+│   │   ├── Screenshot (1.5).png
+│   │   ├── Screenshot (227).png
+│   │   ├── Screenshot (228).png
+│   │   ├── Screenshot (229).png
+│   │   ├── Screenshot (230).png
+│   │   ├── Screenshot (231).png
+│   │   ├── Screenshot (232).png
+│   │   ├── Screenshot (233).png
+│   │   ├── Screenshot (234).png
+│   │   ├── Screenshot (235).png
+│   │   ├── Screenshot (236).png
+│   │   ├── Screenshot (237).png
+│   │   ├── Screenshot (45).png
+│   │   ├── Screenshot (46).png
+│   │   ├── Screenshot (51).png
+│   │   ├── Screenshot (52).png
+│   │   ├── Screenshot (64).png
+│   │   ├── Screenshot (75).png
+│   │   ├── Screenshot (7).png
+│   │   ├── Screenshot (85).png
+│   │   ├── Screenshot (88).png
+│   │   ├── Screenshot (89).png
+│   │   ├── Screenshot (92).png
+│   │   └── Screenshot (9).png
+│   ├── Text Into Script.pptx
+│   ├── Thinks I need to create your video.docx
+│   ├── Training Content
+│   │   ├── 3 Equipment Types Cheat Sheet.docx
+│   │   ├── 3 Equipment Types Cheat Sheet.docx_
+│   │   ├── BOL sample.pdf
+│   │   ├── BOL sample.pdf_
+│   │   ├── Broker Carrier Packet Preview.pdf
+│   │   ├── Broker Carrier Packet Preview.pdf_
+│   │   ├── Brokers for NEW MC.docx
+│   │   ├── Brokers for NEW MC.docx_
+│   │   ├── Brokers INFO.docx
+│   │   ├── Brokers INFO.docx_
+│   │   ├── CargoVan Sprinter Van Load Boards and Contacts.pdf
+│   │   ├── CargoVan Sprinter Van Load Boards and Contacts.pdf_
+│   │   ├── COI preview.pdf
+│   │   ├── COI preview.pdf_
+│   │   ├── Cold Call Cheat Sheet.docx
+│   │   ├── Cold Call Cheat Sheet.docx_
+│   │   ├── Credit Card Authorization.docx
+│   │   ├── Dispatcher Roles.pdf
+│   │   ├── Dispatcher Roles.pdf_
+│   │   ├── Dispatcher Training 4.pdf
+│   │   ├── Dispatcher Training 4.pdf_
+│   │   ├── Eamil Script.docx
+│   │   ├── Factoring and Bond Info.pdf
+│   │   ├── Factoring Company - Payment Deduction.docx
+│   │   ├── Layover Prices.docx
+│   │   ├── Layover Prices.docx_
+│   │   ├── load board log ins.pdf
+│   │   ├── load board log ins.pdf_
+│   │   ├── Load Cheat Sheet.docx
+│   │   ├── Load Cheat Sheet.docx_
+│   │   ├── MC authority preview.pdf
+│   │   ├── MC authority preview.pdf_
+│   │   ├── Module 1 quiz.pdf
+│   │   ├── Module 1 quiz.pdf_
+│   │   ├── Module 2 quiz.pdf
+│   │   ├── Module 2 quiz.pdf_
+│   │   ├── Module 3 Quiz.pdf
+│   │   ├── Module 3 Quiz.pdf_
+│   │   ├── NOA preview.pdf
+│   │   ├── NOA preview.pdf_
+│   │   ├── Rate Agreement.docx
+│   │   ├── Text Script.docx
+│   │   ├── Things Drivers May Ask.docx
+│   │   ├── Truck Cost and Expenses.pdf
+│   │   ├── Truck Cost and Expenses.pdf_
+│   │   ├── W9 preview.pdf
+│   │   └── W9 preview.pdf_
+│   └── WEBSITE IDEAS.docx
+├── index.tree
+└── nixos-anywhere
+    ├── CONTRIBUTING.md
+    ├── docs
+    │   ├── book.toml
+    │   ├── cli.md
+    │   ├── flake-module.nix
+    │   ├── howtos
+    │   │   ├── custom-kexec.md
+    │   │   ├── disko-modes.md
+    │   │   ├── extra-files.md
+    │   │   ├── INDEX.md
+    │   │   ├── ipv6.md
+    │   │   ├── limited-ram.md
+    │   │   ├── nix-path.md
+    │   │   ├── no-os.md
+    │   │   ├── secrets.md
+    │   │   ├── terraform.md
+    │   │   └── use-without-flakes.md
+    │   ├── howtos.md
+    │   ├── INDEX.md
+    │   ├── logo.png
+    │   ├── logo.svg
+    │   ├── quickstart.md
+    │   ├── reference.md
+    │   ├── requirements.md
+    │   └── SUMMARY.md
+    ├── .envrc
+    ├── flake.lock
+    ├── flake.nix
+    ├── .github
+    │   ├── ISSUE_TEMPLATE
+    │   │   ├── bug_report.yml
+    │   │   ├── config.yml
+    │   │   └── feature_request.yml
+    │   └── workflows
+    │       ├── auto-merge.yaml
+    │       ├── gh-pages.yml
+    │       └── update-flake-lock.yml
+    ├── .gitignore
+    ├── LICENSE
+    ├── README.md
+    ├── scripts
+    │   └── create-release.sh
+    ├── src
+    │   ├── default.nix
+    │   ├── flake-module.nix
+    │   ├── get-facts.sh
+    │   └── nixos-anywhere.sh
+    ├── terraform
+    │   ├── all-in-one
+    │   │   ├── main.tf
+    │   │   └── variables.tf
+    │   ├── all-in-one.md
+    │   ├── .envrc
+    │   ├── flake-module.nix
+    │   ├── install
+    │   │   ├── main.tf
+    │   │   ├── providers.tf
+    │   │   ├── run-nixos-anywhere.sh
+    │   │   └── variables.tf
+    │   ├── install.md
+    │   ├── nix-build
+    │   │   ├── main.tf
+    │   │   ├── nix-build.sh
+    │   │   └── variables.tf
+    │   ├── nix-build.md
+    │   ├── nixos-rebuild
+    │   │   ├── deploy.sh
+    │   │   ├── main.tf
+    │   │   └── variables.tf
+    │   ├── nixos-rebuild.md
+    │   ├── README.md
+    │   ├── .terraform-docs.yml
+    │   ├── tests
+    │   │   ├── digitalocean
+    │   │   ├── digitalocean-deployment.tftest.hcl
+    │   │   ├── hcloud
+    │   │   ├── hcloud-deployment.tftest.hcl
+    │   │   ├── main.tf
+    │   │   ├── nix-build-special-args.tftest.hcl
+    │   │   ├── nixos-anywhere.tftest.hcl
+    │   │   ├── README.md
+    │   │   └── terraform.tfvars.example
+    │   └── update-docs.sh
+    ├── tests
+    │   ├── flake-module.nix
+    │   ├── from-nixos-build-on-remote.nix
+    │   ├── from-nixos-generate-config.nix
+    │   ├── from-nixos.nix
+    │   ├── from-nixos-separated-phases.nix
+    │   ├── from-nixos-with-sudo.nix
+    │   ├── lib
+    │   │   └── test-base.nix
+    │   ├── linux-kexec-test.nix
+    │   └── modules
+    │       ├── installer.nix
+    │       ├── ssh-keys
+    │       └── system-to-install.nix
+    └── treefmt
+        └── flake-module.nix
+
+95 directories, 410 files

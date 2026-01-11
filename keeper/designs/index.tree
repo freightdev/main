@@ -1,0 +1,710 @@
+.
+├── astro
+│   ├── api
+│   │   ├── contact.astro
+│   │   └── payment.astro
+│   ├── auth
+│   │   ├── login.astro
+│   │   └── signup.astro
+│   ├── auth.astro
+│   ├── AuthLayout.astro
+│   ├── BaseLayout.astro
+│   ├── BaseLayout.astro_
+│   ├── BaseLayout.configs.ts
+│   ├── components
+│   │   ├── Badge
+│   │   │   ├── Badge.astro
+│   │   │   ├── index.ts
+│   │   │   └── TrustBadge.astro
+│   │   ├── Button
+│   │   │   ├── Button.astro
+│   │   │   ├── Button.astro_
+│   │   │   ├── button.types.ts
+│   │   │   ├── button.utils.ts
+│   │   │   ├── button.variants.ts
+│   │   │   ├── index.ts
+│   │   │   └── index.ts_
+│   │   ├── Card
+│   │   │   ├── Card.astro
+│   │   │   ├── CardSurface.astro
+│   │   │   ├── card.types.ts
+│   │   │   ├── card.utils.ts
+│   │   │   ├── card.variants.ts
+│   │   │   ├── ContactCard
+│   │   │   ├── FAQCard
+│   │   │   ├── FeatureCard
+│   │   │   ├── index.ts
+│   │   │   ├── IntegrationCard
+│   │   │   ├── LinkCard
+│   │   │   ├── MapCard
+│   │   │   ├── PricingCard
+│   │   │   ├── ReviewCard
+│   │   │   ├── ServiceCard
+│   │   │   ├── StatCard
+│   │   │   ├── StatCard.astro
+│   │   │   ├── TeamCard
+│   │   │   ├── TestimonialCard
+│   │   │   ├── TestimonialCard.astro
+│   │   │   └── ValueCard
+│   │   ├── Container
+│   │   │   ├── Container.astro
+│   │   │   ├── container.types.ts
+│   │   │   ├── container.utils.ts
+│   │   │   └── index.ts
+│   │   ├── CTA
+│   │   │   ├── CTA.astro
+│   │   │   ├── cta.configs.ts
+│   │   │   ├── cta.types.ts
+│   │   │   ├── cta.variants.ts
+│   │   │   └── index.ts
+│   │   ├── Field
+│   │   │   ├── FormField
+│   │   │   └── Typography
+│   │   ├── Header
+│   │   │   ├── Header.astro
+│   │   │   └── index.ts
+│   │   ├── Hero
+│   │   │   ├── HeroActions.astro
+│   │   │   ├── Hero.astro
+│   │   │   ├── hero.configs.ts
+│   │   │   ├── HeroHeading.astro
+│   │   │   ├── HeroMedia.astro
+│   │   │   ├── hero.types.ts
+│   │   │   ├── hero.variants.ts
+│   │   │   └── index.ts
+│   │   ├── Navbar
+│   │   │   ├── index.ts
+│   │   │   ├── NavbarActions.astro
+│   │   │   ├── Navbar.astro
+│   │   │   ├── NavbarBrand.astro
+│   │   │   ├── navbar.configs.ts
+│   │   │   ├── NavbarLinks.astro
+│   │   │   ├── NavbarMobileMenu.astro
+│   │   │   └── navbar.scripts.ts
+│   │   ├── Section
+│   │   │   ├── ContactSection
+│   │   │   ├── CTASection
+│   │   │   ├── FAQSection
+│   │   │   ├── FeatureSection
+│   │   │   ├── FooterSection
+│   │   │   ├── HeroSection
+│   │   │   ├── index.ts
+│   │   │   ├── PricingSession
+│   │   │   ├── Section.astro
+│   │   │   ├── SectionHeading.astro
+│   │   │   ├── section.types.ts
+│   │   │   ├── section.utils.ts
+│   │   │   └── section.variants.ts
+│   │   └── Template
+│   │       └── PageComposer
+│   ├── home
+│   │   ├── about
+│   │   │   ├── about.astro
+│   │   │   └── about.configs.ts
+│   │   ├── contact
+│   │   │   ├── contact.astro
+│   │   │   └── contact.configs.ts
+│   │   ├── features
+│   │   │   ├── features.astro
+│   │   │   └── features.configs.ts
+│   │   └── pricing
+│   │       ├── pricing.astro
+│   │       └── pricing.configs.ts
+│   ├── index.astro
+│   ├── index.v2.astro
+│   ├── islands
+│   │   └── Counter.tsx
+│   ├── MainLayout.astro
+│   ├── PaymentLayout.astro
+│   ├── styles
+│   │   ├── global1.css
+│   │   ├── global.css
+│   │   ├── typography.css
+│   │   └── utilities.css
+│   └── types
+│       ├── api.ts
+│       ├── content.ts
+│       ├── index.ts
+│       └── page.ts
+├── flutter
+│   ├── app.dart
+│   ├── bootstraps
+│   │   └── bootstrap.dart
+│   ├── configs
+│   │   ├── env.dart
+│   │   └── flavors.dart
+│   ├── errors
+│   │   ├── exception.dart
+│   │   └── failure.dart
+│   ├── main1.dart
+│   ├── main.dart
+│   ├── map_view.dart
+│   ├── models
+│   │   ├── company.dart
+│   │   ├── document.dart
+│   │   ├── driver.dart
+│   │   ├── invoice.dart
+│   │   ├── load.dart
+│   │   ├── message.dart
+│   │   ├── payment.dart
+│   │   └── user.dart
+│   ├── pages
+│   │   ├── accounting_page.dart
+│   │   ├── compliance_page.dart
+│   │   ├── dispatch_page.dart
+│   │   ├── onboarding_page.dart
+│   │   ├── settings_page.dart
+│   │   └── training_page.dart
+│   ├── providers
+│   │   ├── auth_provider.dart
+│   │   ├── document_provider.dart
+│   │   ├── driver_provider.dart
+│   │   ├── invoice_provider.dart
+│   │   ├── load_provider.dart
+│   │   ├── message_provider.dart
+│   │   └── payment_provider.dart
+│   ├── router.dart
+│   ├── screens
+│   │   ├── accounting
+│   │   │   ├── invoice_details_screen.dart
+│   │   │   ├── invoices_list_screen.dart
+│   │   │   ├── invoices_screen.dart
+│   │   │   ├── invoicing_screen.dart
+│   │   │   └── payments_screen.dart
+│   │   ├── compliance
+│   │   │   ├── documents_manager_screen.dart
+│   │   │   ├── documents_screen.dart
+│   │   │   ├── eld_screen.dart
+│   │   │   ├── hos_screen.dart
+│   │   │   ├── hos_tracking_screen.dart
+│   │   │   └── reports_screen.dart
+│   │   ├── dashboard
+│   │   │   ├── calendar_dispatch_screen.dart
+│   │   │   ├── calendar_screen.dart
+│   │   │   ├── create_load_screen.dart
+│   │   │   ├── dashboard_screen.dart
+│   │   │   ├── dashboardv2_screen.dart
+│   │   │   ├── driver_details_screen.dart
+│   │   │   ├── drivers_screen.dart
+│   │   │   ├── loadboard_screen.dart
+│   │   │   ├── load_detail_screen.dart
+│   │   │   ├── load_details_screen.dart
+│   │   │   ├── loads_list_screen.dart
+│   │   │   ├── loads_screen.dart
+│   │   │   └── tracking_screen.dart
+│   │   ├── notifications
+│   │   │   ├── messages_screen.dart
+│   │   │   ├── messaging_screen.dart
+│   │   │   ├── notifications_screen.dart
+│   │   │   └── response_model.dart
+│   │   ├── onboarding
+│   │   │   └── company_screen.dart
+│   │   ├── reports
+│   │   │   └── analytics_screen.dart
+│   │   ├── settings
+│   │   │   ├── company_screen.dart
+│   │   │   ├── profile_screen.dart
+│   │   │   └── settings_main_screen.dart
+│   │   ├── splash
+│   │   │   └── splash_screen.dart
+│   │   └── training
+│   │       └── courses_screen.dart
+│   ├── services
+│   │   ├── api_client.dart
+│   │   ├── auth_service.dart
+│   │   ├── cloud_storage_service.dart
+│   │   ├── database_service.dart
+│   │   ├── document_service.dart
+│   │   ├── driver_service.dart
+│   │   ├── http_client.dart
+│   │   ├── invoice_service.dart
+│   │   ├── load_service.dart
+│   │   ├── local_storage_service.dart
+│   │   ├── logger.dart
+│   │   ├── message_service.dart
+│   │   └── payment_service.dart
+│   ├── styles
+│   │   ├── app_theme.dart
+│   │   ├── colors.dart
+│   │   ├── theme.dart
+│   │   └── typography.dart
+│   ├── theme.dart
+│   ├── utils
+│   │   └── theme.dart
+│   └── widgets
+│       ├── app_button.dart
+│       ├── app_card.dart
+│       ├── app_drawer.dart
+│       ├── app_drawer.dart_
+│       ├── app_empty_state.dart
+│       ├── app_icon.dart
+│       ├── app_loader.dart
+│       ├── app_search_bar.dart
+│       ├── app_stat_card.dart
+│       ├── app_text_field.dart
+│       ├── detail_card.dart
+│       ├── driver_card.dart
+│       ├── driver_detail_card.dart
+│       ├── load_card.dart
+│       ├── load_status_badge.dart
+│       ├── main_navigation.dart
+│       ├── notification_tile.dart
+│       ├── rate_confirmation_form.dart
+│       ├── setup_card.dart
+│       └── video_card.dart
+├── index.tree
+├── jninja2
+│   ├── auth
+│   │   ├── forgot-password.html
+│   │   ├── login.html
+│   │   ├── oauth.html
+│   │   ├── register.html
+│   │   └── verify.html
+│   ├── base
+│   │   ├── footer.html
+│   │   ├── header.html
+│   │   ├── layout.html
+│   │   └── sidebar.html
+│   ├── base.html
+│   ├── base.html.backup
+│   ├── chat
+│   │   ├── conversation.html
+│   │   └── history.html
+│   ├── chat.html
+│   ├── chat.html.backup
+│   ├── code-block.html
+│   ├── css
+│   │   ├── styleFunction.css
+│   │   └── themeFunction.css
+│   ├── docs
+│   │   ├── api-reference.html
+│   │   ├── docs.html
+│   │   ├── gettting-started.html
+│   │   └── tutorials.html
+│   ├── errors
+│   │   ├── 403.html
+│   │   ├── 404.html
+│   │   └── 500.html
+│   ├── file-tree.html
+│   ├── ide
+│   │   ├── editor.html
+│   │   ├── project-explorer.html
+│   │   └── terminal.html
+│   ├── ide.html
+│   ├── ide.html.backup
+│   ├── index.css
+│   ├── index.html
+│   ├── js
+│   │   ├── aiFunction.js
+│   │   ├── appFunction.js
+│   │   ├── chatFunction.js
+│   │   ├── ideFunction.js
+│   │   └── settingFunction.js
+│   ├── marketing
+│   │   ├── contact.html
+│   │   ├── features.html
+│   │   ├── index.html
+│   │   ├── marketing.html
+│   │   └── pricing.html
+│   ├── modal.html
+│   ├── _nav.html
+│   └── settings
+│       ├── api-keys.html
+│       ├── models.html
+│       ├── profile.html
+│       ├── security.html
+│       └── usage.html
+├── nextjs
+│   ├── components
+│   │   ├── action
+│   │   │   ├── index.ts
+│   │   │   ├── Popover
+│   │   │   ├── ScrollArea
+│   │   │   ├── Search
+│   │   │   ├── Slider
+│   │   │   ├── Switch
+│   │   │   ├── Tab
+│   │   │   ├── Toggle
+│   │   │   └── Tooltip
+│   │   ├── code
+│   │   │   ├── CodeBlock
+│   │   │   ├── index.ts
+│   │   │   ├── Keyboard
+│   │   │   └── TextHighlight
+│   │   ├── content
+│   │   │   ├── Card
+│   │   │   └── Iframe
+│   │   ├── cover
+│   │   │   ├── back
+│   │   │   ├── front
+│   │   │   ├── README.md
+│   │   │   └── side
+│   │   ├── data
+│   │   │   ├── Divider
+│   │   │   ├── index.ts
+│   │   │   ├── Pagination
+│   │   │   ├── ProgressBar
+│   │   │   └── Separator
+│   │   ├── display
+│   │   │   ├── Avatar
+│   │   │   ├── Badge
+│   │   │   ├── Blockquote
+│   │   │   ├── Button
+│   │   │   ├── Heading
+│   │   │   ├── Icon
+│   │   │   ├── index.ts
+│   │   │   ├── Logo
+│   │   │   ├── Pill
+│   │   │   ├── StatusDot
+│   │   │   ├── Tagline
+│   │   │   └── Text
+│   │   ├── document
+│   │   │   ├── book.md
+│   │   │   ├── faq
+│   │   │   ├── get-support
+│   │   │   ├── how-to-guilds
+│   │   │   ├── integrations
+│   │   │   ├── reference
+│   │   │   ├── resources
+│   │   │   └── start
+│   │   ├── feedback
+│   │   │   ├── Alert
+│   │   │   ├── Error
+│   │   │   ├── index.ts
+│   │   │   ├── LoadingDots
+│   │   │   ├── Skeleton
+│   │   │   └── Spinner
+│   │   ├── forms
+│   │   │   ├── Checkbox
+│   │   │   ├── Fieldset
+│   │   │   ├── Form
+│   │   │   ├── index.ts
+│   │   │   ├── Input
+│   │   │   ├── Label
+│   │   │   ├── Legend
+│   │   │   ├── Output
+│   │   │   ├── Radio
+│   │   │   ├── Select
+│   │   │   └── Textarea
+│   │   ├── index.ts
+│   │   ├── layout
+│   │   │   ├── AdminLayout.tsx
+│   │   │   ├── AuthLayout.tsx
+│   │   │   ├── BlogLayout.tsx
+│   │   │   ├── CourseLayout.tsx
+│   │   │   ├── DashboardLayout.tsx
+│   │   │   ├── DocsLayout.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── MarketingLayout.tsx
+│   │   │   ├── Navbar
+│   │   │   ├── PortalLayout.tsx
+│   │   │   ├── ProfileLayout.tsx
+│   │   │   ├── SettingsLayout.tsx
+│   │   │   ├── Shell
+│   │   │   ├── Sidebar
+│   │   │   ├── SupportLayout.tsx
+│   │   │   └── ToolsLayout.tsx
+│   │   ├── media
+│   │   │   ├── Audio
+│   │   │   ├── Canvas
+│   │   │   ├── Img
+│   │   │   ├── index.ts
+│   │   │   ├── Picture
+│   │   │   ├── Svg
+│   │   │   └── Video
+│   │   ├── meta
+│   │   │   ├── Base
+│   │   │   ├── index.ts
+│   │   │   ├── Mark
+│   │   │   ├── Script
+│   │   │   └── Title
+│   │   ├── misc
+│   │   │   ├── Datalist
+│   │   │   ├── Figcaption
+│   │   │   ├── Figure
+│   │   │   ├── index.ts
+│   │   │   ├── Table
+│   │   │   └── Time
+│   │   ├── navigation
+│   │   │   ├── Area
+│   │   │   ├── index.ts
+│   │   │   ├── Link
+│   │   │   ├── Map
+│   │   │   ├── Menu
+│   │   │   └── Option
+│   │   ├── page
+│   │   │   ├── about
+│   │   │   ├── account
+│   │   │   ├── address
+│   │   │   ├── admin
+│   │   │   ├── article
+│   │   │   ├── blog
+│   │   │   ├── blog_
+│   │   │   ├── canva
+│   │   │   ├── career
+│   │   │   ├── cart
+│   │   │   ├── checkin
+│   │   │   ├── checkout
+│   │   │   ├── codespace
+│   │   │   ├── community
+│   │   │   ├── contact
+│   │   │   ├── contract
+│   │   │   ├── cookie
+│   │   │   ├── discussion
+│   │   │   ├── document
+│   │   │   ├── download
+│   │   │   ├── email
+│   │   │   ├── explore
+│   │   │   ├── feature
+│   │   │   ├── feedback
+│   │   │   ├── forums
+│   │   │   ├── freight
+│   │   │   ├── help
+│   │   │   ├── home
+│   │   │   ├── issue
+│   │   │   ├── landing
+│   │   │   ├── layout
+│   │   │   ├── legal
+│   │   │   ├── login
+│   │   │   ├── logout
+│   │   │   ├── managing
+│   │   │   ├── marketing
+│   │   │   ├── marketplace
+│   │   │   ├── onboarding
+│   │   │   ├── order
+│   │   │   ├── password-reset
+│   │   │   ├── personal
+│   │   │   ├── platform
+│   │   │   ├── playground
+│   │   │   ├── playlist
+│   │   │   ├── portal
+│   │   │   ├── pricing
+│   │   │   ├── privacy
+│   │   │   ├── profile
+│   │   │   ├── project
+│   │   │   ├── recommendation
+│   │   │   ├── register
+│   │   │   ├── request
+│   │   │   ├── sandbox
+│   │   │   ├── security
+│   │   │   ├── service
+│   │   │   ├── setting
+│   │   │   ├── showcase
+│   │   │   ├── sign-in
+│   │   │   ├── sign-out
+│   │   │   ├── status
+│   │   │   ├── storage
+│   │   │   ├── store
+│   │   │   ├── subscription
+│   │   │   ├── support
+│   │   │   ├── term
+│   │   │   ├── user
+│   │   │   └── wallet
+│   │   ├── scroll
+│   │   │   ├── admin
+│   │   │   ├── advertising
+│   │   │   ├── banner
+│   │   │   ├── chat
+│   │   │   ├── error
+│   │   │   ├── faq
+│   │   │   ├── feedback
+│   │   │   ├── help
+│   │   │   ├── history
+│   │   │   ├── layout
+│   │   │   ├── loading
+│   │   │   ├── logging
+│   │   │   ├── map
+│   │   │   ├── me
+│   │   │   ├── media
+│   │   │   ├── menu
+│   │   │   ├── message
+│   │   │   ├── modal
+│   │   │   ├── payment
+│   │   │   ├── phone
+│   │   │   ├── popup
+│   │   │   ├── progress
+│   │   │   ├── review
+│   │   │   ├── search
+│   │   │   ├── tool
+│   │   │   ├── upload
+│   │   │   ├── user
+│   │   │   ├── utility
+│   │   │   └── weather
+│   │   ├── session
+│   │   │   ├── index.ts
+│   │   │   └── Marketing
+│   │   ├── store
+│   │   │   ├── box
+│   │   │   ├── case
+│   │   │   ├── rack
+│   │   │   ├── shelf
+│   │   │   ├── stand
+│   │   │   └── wall
+│   │   └── structure
+│   │       ├── Article
+│   │       ├── Aside
+│   │       ├── Footer
+│   │       ├── Header
+│   │       ├── index.ts
+│   │       ├── Main
+│   │       ├── Nav
+│   │       └── Section
+│   ├── configs.ts
+│   ├── constants.ts
+│   ├── (dashboard)
+│   │   ├── admin
+│   │   │   ├── dashboard
+│   │   │   └── settings
+│   │   ├── (auth)
+│   │   │   ├── layout.tsx
+│   │   │   ├── login
+│   │   │   ├── oauth
+│   │   │   └── signup
+│   │   └── (user)
+│   │       ├── course
+│   │       ├── dashboard
+│   │       └── settings
+│   ├── index.ts
+│   ├── layout.tsx
+│   ├── (marketing)
+│   │   ├── about
+│   │   │   └── page.tsx
+│   │   ├── careers
+│   │   │   └── page.tsx
+│   │   ├── contact
+│   │   │   └── page.tsx
+│   │   ├── feedback
+│   │   │   └── page.tsx
+│   │   ├── page.tsx
+│   │   ├── pricing
+│   │   │   └── page.tsx
+│   │   └── testimonial
+│   │       └── page.tsx
+│   ├── utils
+│   │   ├── classNames.ts
+│   │   ├── cn.ts
+│   │   ├── index.ts
+│   │   ├── props.ts
+│   │   └── ui.ts
+│   └── utils.ts
+└── svelte
+    ├── auth.ts
+    ├── backend
+    │   ├── ARCHITECTURE.md
+    │   ├── conftest.py
+    │   ├── demo.test.ts
+    │   ├── docker-compose.yml
+    │   ├── drizzle.config.ts
+    │   ├── en.json
+    │   ├── es.json
+    │   ├── eslint.config.js
+    │   ├── GUILDES.md
+    │   ├── package.json
+    │   ├── playwright.config.ts
+    │   ├── pnpm-lock.yaml
+    │   ├── README.md
+    │   ├── README.md_
+    │   ├── svelte.config.js
+    │   ├── test_admin_workflows.py
+    │   ├── test_agents.py
+    │   ├── test_auth_api.py
+    │   ├── test_auth_flow.py
+    │   ├── test_auth_manager.py
+    │   ├── test_auth.py
+    │   ├── test_auth_routes.py
+    │   ├── test_chat_agent.py
+    │   ├── test_chat_api.py
+    │   ├── test_chat_flow.py
+    │   ├── test_code_agent.py
+    │   ├── test_coding_session.py
+    │   ├── test_codriver.py
+    │   ├── test_concurrent_users.py
+    │   ├── test_context.py
+    │   ├── test_dependencies.py
+    │   ├── test_duckdb.py
+    │   ├── test_embeddings.py
+    │   ├── test_health_api.py
+    │   ├── test_ide_api.py
+    │   ├── test_ide_workflow.py
+    │   ├── test_large_file_handling.py
+    │   ├── test_memory_usage.py
+    │   ├── test_model_inference_speed.py
+    │   ├── test_model_manager.py
+    │   ├── test_model.py
+    │   ├── test_multi_user.py
+    │   ├── test_postgreSQL.py
+    │   ├── test_storage.py
+    │   ├── test_user_onboarding.py
+    │   ├── test_websocket_api.py
+    │   ├── test_websocket_chat.py
+    │   ├── tsconfig.json
+    │   ├── vite.config.ts
+    │   └── vitest-setup-client.ts
+    ├── components
+    │   ├── core
+    │   │   ├── Button.svelte
+    │   │   ├── CodeEditor.svelte
+    │   │   ├── Input.svelte
+    │   │   ├── Layout
+    │   │   ├── Modal.svelte
+    │   │   ├── NotificationContainer.svelte
+    │   │   ├── Notification.svelte
+    │   │   └── Select.svelte
+    │   ├── dashboard
+    │   │   ├── RecentActivity.svelte
+    │   │   ├── ServiceOverview.svelte
+    │   │   └── StatCard.svelte
+    │   ├── services
+    │   │   ├── AddServiceModal.svelte
+    │   │   └── ServiceCard.svelte
+    │   └── testing
+    │       ├── EnvironmentSelector.svelte
+    │       ├── LoadTestRunner.svelte
+    │       ├── MockDataPanel.svelte
+    │       ├── RequestBuilder.svelte
+    │       ├── RequestChainBuilder.svelte
+    │       ├── RequestHistory.svelte
+    │       ├── RequestTemplates.svelte
+    │       ├── ResponseAssertion.svelte
+    │       └── ResponseViewer.svelte
+    ├── config.ts
+    ├── email.yaml
+    ├── .env.example
+    ├── filters.yaml
+    ├── .gitignore
+    ├── httpClient.js
+    ├── index.ts
+    ├── index.ts_
+    ├── index.ts_0
+    ├── loadTester.js
+    ├── mockDataGenerator.js
+    ├── .npmrc
+    ├── ollama_service.py
+    ├── .prettierignore
+    ├── .prettierrc
+    ├── requestTempletes.js
+    ├── routes
+    │   ├── demo
+    │   │   ├── lucia
+    │   │   ├── +page.svelte
+    │   │   └── paraglide
+    │   ├── +layout.svelte
+    │   ├── +page.svelte
+    │   ├── page.svelte.spec.ts
+    │   ├── services
+    │   │   └── +page.svelte
+    │   ├── suites
+    │   │   └── +page.svelte
+    │   └── testing
+    │       └── +page.svelte
+    ├── schema.ts
+    ├── scoring.yaml
+    ├── serviceManager.js
+    ├── services.ts
+    ├── settings.py
+    ├── sources.yaml
+    ├── testRunner.js
+    ├── tests.ts
+    └── ui.ts
+
+321 directories, 387 files

@@ -1,0 +1,102 @@
+# Agentic System Configuration
+
+# Controller settings
+[controller]
+max_concurrent_tasks = 100
+task_timeout_seconds = 300
+enable_external_help = true
+
+# Node settings
+[workers]
+# CPU Worker Machines
+[[workers.workbox]]
+id = "workbox"
+ip = "192.168.1.xxx"
+pid = "/var/run/workbox.<hash.workers>.pid"
+role = "cpu"
+context_size = 4096
+thread = 20
+memory = 24
+task = ["checkpoints"]
+
+# CPU Worker (llama.cpp)
+[[workers.callbox]]
+id = "callbox"
+ip = "192.168.1.xxx"
+pid = "/var/run/callbox.<hash.workers>.pid"
+role = "cpu"
+context_size = 4096
+thread = 4
+memory = 12
+task = ["analysis", "file_operation"]
+
+# GPU Worker (Candle)
+[[gpubox.worker.capabilities]]
+id = "gpubox"
+ip = "192.168.1.xxx"
+pid = "/var/run/gpubox.<hash.workers>.pid"
+role = "gpu"
+asset = "GTX1650 Mobile 4vRAM"
+memory = 32
+thread = 8
+model = "UNKNOWN"
+task = ["assistant",  "thinking", "reasoning", "model_inference", "architecture_design"]
+
+# NPU Worker (OpenVINO)
+[[workers.npubox]]
+id = "npubox"
+ip = "192.168.1.xxx"
+pid = "/var/run/npubox.<hash.workers>.pid"
+role = "npu"
+asset = "Meteor Lake"
+thread = 22
+memory = 16
+task = ["chat", "model_inference"]
+
+# External API configuration
+[external_models]
+enable_claude = true
+enable_openai = true
+fallback_to_external = true
+
+[external_models.claude]
+model = "claude-sonnet-4-20250514"
+max_tokens = 4096
+# API key should be set via ANTHROPIC_API_KEY env var
+
+[external_models.openai]
+model = "gpt-4"
+max_tokens = 4096
+# API key should be set via OPENAI_API_KEY env var
+
+# Resource limits
+[resources]
+max_memory_per_worker_gb = 32
+max_cpu_percent = 80
+max_gpu_memory_gb = 24
+
+# Task scheduling
+[scheduling]
+strategy = "least_loaded"  # Options: least_loaded, round_robin, priority
+enable_task_dependencies = true
+max_retries = 3
+
+# Logging
+[logging]
+level = "info"  # Options: trace, debug, info, warn, error
+format = "json"  # Options: json, pretty
+log_to_file = true
+log_file_path = "/var/log/agentic-system.log"
+
+# Distributed settings
+[distributed]
+enable = true
+coordinator_host = "localhost"
+coordinator_port = 8080
+heartbeat_interval_seconds = 30
+
+# Crate builder settings
+[crate_builder]
+workspace_root = "./workspace"
+auto_compile = true
+run_tests_before_deploy = true

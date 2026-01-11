@@ -1,0 +1,451 @@
+.
+├── index.tree
+├── markos
+│   ├── cmds
+│   │   ├── init
+│   │   │   ├── mark-init--agent.md
+│   │   │   ├── mark-init--db.md
+│   │   │   └── mark-init.md
+│   │   ├── mark-beat.md
+│   │   ├── mark-exec.md
+│   │   └── mark-tempo.md
+│   ├── core
+│   │   ├── actor.md
+│   │   ├── agency.proto
+│   │   ├── agent.md
+│   │   ├── architecture.md
+│   │   ├── beat.md
+│   │   ├── bet.md
+│   │   ├── bookmark-stub.md
+│   │   ├── clock.md
+│   │   ├── commands.proto
+│   │   ├── delay.md
+│   │   ├── directory-structure.md
+│   │   ├── filetype-map.md
+│   │   ├── glossary
+│   │   │   ├── index.md
+│   │   │   ├── what-is-a-beat.md
+│   │   │   ├── what-is-a-bet.md
+│   │   │   ├── what-is-a-clock.md
+│   │   │   ├── what-is-a-delay.md
+│   │   │   ├── what-is-a-marker.md
+│   │   │   ├── what-is-a-mark.md
+│   │   │   ├── what-is-an-actor.md
+│   │   │   ├── what-is-an-agent.md
+│   │   │   ├── what-is-an-inkstroke.md
+│   │   │   ├── what-is-an-inkwell.md
+│   │   │   ├── what-is-a-ppur.md
+│   │   │   ├── what-is-a-pulse.md
+│   │   │   ├── what-is-a-ribbon.md
+│   │   │   ├── what-is-a-stroke.md
+│   │   │   ├── what-is-a-sync.md
+│   │   │   ├── what-is-a-tempo.md
+│   │   │   ├── what-is-a-trail.md
+│   │   │   └── what-is-ink.md
+│   │   ├── ink.md
+│   │   ├── marker.md
+│   │   ├── mark.md
+│   │   ├── pulse.md
+│   │   ├── README.md
+│   │   ├── ribbon.md
+│   │   ├── stroke.md
+│   │   ├── stroke.md_
+│   │   ├── sync.md
+│   │   ├── tempo.md
+│   │   └── trail.md
+│   ├── idea
+│   │   ├── beat
+│   │   │   ├── connect.beat
+│   │   │   ├── fallback.beat
+│   │   │   ├── linking.beat
+│   │   │   ├── mark.beat
+│   │   │   ├── marker.beat
+│   │   │   ├── passing.beat
+│   │   │   ├── routing.beat
+│   │   │   ├── signing.beat
+│   │   │   ├── summary.beat
+│   │   │   ├── system.beat
+│   │   │   ├── tempo.beat
+│   │   │   ├── trail.beat
+│   │   │   └── writing.baet
+│   │   ├── bet
+│   │   │   ├── agent.bet
+│   │   │   ├── README.md
+│   │   │   ├── system.bet
+│   │   │   └── user.bet
+│   │   ├── mark
+│   │   │   ├── bet.mrk
+│   │   │   ├── boot.mrk
+│   │   │   ├── ink.mrk
+│   │   │   └── marker.mrk
+│   │   ├── marker
+│   │   │   ├── fallback.mrkr
+│   │   │   ├── linking.mrkr
+│   │   │   ├── mark.mrkr
+│   │   │   ├── passing.mrkr
+│   │   │   ├── routing.mrkr
+│   │   │   ├── signing.mrkr
+│   │   │   ├── summary.mrkr
+│   │   │   ├── system.mrkr
+│   │   │   ├── tempo.mrkr
+│   │   │   ├── trail.mrkr
+│   │   │   └── writing.mrkr
+│   │   ├── ribbon
+│   │   │   ├── cache
+│   │   │   ├── init.rib
+│   │   │   ├── intro.rib
+│   │   │   ├── summary.rib
+│   │   │   └── welcome.rib
+│   │   └── trail
+│   │       ├── agent.trl
+│   │       ├── bet.trl
+│   │       ├── boot.trl
+│   │       ├── ink.trl
+│   │       ├── marker.trl
+│   │       ├── user-session.trl
+│   │       └── user.trl
+│   ├── mods
+│   │   ├── beat-sync
+│   │   │   └── .gitkeep
+│   │   ├── bet-engine
+│   │   │   └── .gitkeep
+│   │   ├── ink-burn
+│   │   │   └── .gitkeep
+│   │   ├── ink_trails
+│   │   │   └── .gitkeep
+│   │   ├── keeper-db
+│   │   │   └── .gitkeep
+│   │   ├── key-mark
+│   │   │   └── .gitkeep
+│   │   ├── marker-router
+│   │   │   └── .gitkeep
+│   │   ├── memory-scroll
+│   │   │   └── .gitkeep
+│   │   ├── ribbon-trail
+│   │   │   └── .gitkeep
+│   │   └── token_stroke
+│   │       └── .gitkeep
+│   └── rule
+│       ├── beat.yaml
+│       ├── bet.yaml
+│       ├── book.yaml
+│       ├── chapter.yaml
+│       ├── cover.yaml
+│       ├── ink.yaml
+│       ├── keeper.yaml
+│       ├── license.yaml
+│       ├── marker.yaml
+│       ├── mark.yaml
+│       ├── page.yaml
+│       ├── ribbon.yaml
+│       ├── stroke.yaml
+│       └── trail.yaml
+├── OpenHWY
+│   ├── apps
+│   │   ├── architecture.md
+│   │   ├── BIG_VISION.md
+│   │   ├── dashboard_html
+│   │   │   ├── authentication-access-control.html
+│   │   │   ├── client-management-portal.html
+│   │   │   ├── cluster-monitoring.html
+│   │   │   ├── cost-analytics.html
+│   │   │   ├── development-pipeline.html
+│   │   │   ├── firecracker-vm-management.html
+│   │   │   ├── hyprtasker-custom.html
+│   │   │   ├── network-topology.html
+│   │   │   ├── security-monitoring.html
+│   │   │   └── system-health.html
+│   │   ├── dashboard_js
+│   │   │   ├── billing-and-payment.js
+│   │   │   ├── cloud-auth-page
+│   │   │   ├── cloud-control-center
+│   │   │   ├── cloud-email-page
+│   │   │   ├── cloud-landing-page
+│   │   │   ├── cloud-payment-page
+│   │   │   ├── email-system.js
+│   │   │   ├── index.js
+│   │   │   ├── infrastructure-control-center.js
+│   │   │   ├── monitoring-and-alerts.js
+│   │   │   └── stroage-management.js
+│   │   ├── design.md
+│   │   ├── diagram.md
+│   │   ├── DOMAIN
+│   │   ├── fed-examples_html
+│   │   │   ├── fed-calendar.html
+│   │   │   ├── fed-cargo-connect.html
+│   │   │   ├── fed-dashboard.html
+│   │   │   ├── fed-dispatch-board.html
+│   │   │   ├── fed-documents.html
+│   │   │   ├── fed-drivers.html
+│   │   │   ├── fed-elda.html
+│   │   │   ├── fed-eld.html
+│   │   │   ├── fed-invoicing.html
+│   │   │   ├── fed-live-tracking.html
+│   │   │   ├── fed-loads.html
+│   │   │   ├── fed-messaging.html
+│   │   │   ├── fed-packet-pilot.html
+│   │   │   ├── fed-payments.html
+│   │   │   └── fed-training-center.html
+│   │   ├── fedlearn_dart
+│   │   │   ├── analysis_options.yaml
+│   │   │   ├── android
+│   │   │   ├── AUTO_WIRE_README.md
+│   │   │   ├── .dart_tool
+│   │   │   ├── devtools_options.yaml
+│   │   │   ├── fedlearn.iml
+│   │   │   ├── flutter_autowire_v2.sh
+│   │   │   ├── .flutter-plugins-dependencies
+│   │   │   ├── FLUTTER_SETUP.md
+│   │   │   ├── .gitignore
+│   │   │   ├── .idea
+│   │   │   ├── ios
+│   │   │   ├── lib
+│   │   │   ├── linux
+│   │   │   ├── macos
+│   │   │   ├── .metadata
+│   │   │   ├── pubspec.lock
+│   │   │   ├── pubspec.yaml
+│   │   │   ├── README.md
+│   │   │   ├── scripts
+│   │   │   ├── SETUP.md
+│   │   │   ├── test
+│   │   │   ├── web
+│   │   │   └── windows
+│   │   ├── idea.md
+│   │   ├── intro.md
+│   │   ├── license.md
+│   │   ├── marketing_html
+│   │   │   ├── dispatch-courses-v1.html
+│   │   │   ├── dispatch-courses-v2.html
+│   │   │   ├── dispatcher-callout.html
+│   │   │   ├── driver-callout.html
+│   │   │   ├── founders-journey.html
+│   │   │   ├── investor-callout.html
+│   │   │   ├── openhwy-protocol.html
+│   │   │   ├── tsm-marketing.html
+│   │   │   └── wheeler-builder.html
+│   │   ├── mission.md
+│   │   ├── openhwy-tales.md
+│   │   ├── openhwy-tales-v1.md
+│   │   ├── overview.md
+│   │   ├── pricing-strategy.md
+│   │   ├── PROMPT.md
+│   │   ├── README.md
+│   │   ├── roadmap.md
+│   │   ├── SCHEMA.md
+│   │   ├── terminology.md
+│   │   └── the-tale-system.md
+│   └── docs
+│       ├── architecture.md
+│       ├── BIG_VISION.md
+│       ├── design.md
+│       ├── diagram.md
+│       ├── DOMAIN
+│       ├── idea.md
+│       ├── intro.md
+│       ├── license.md
+│       ├── mission.md
+│       ├── openhwy-tales.md
+│       ├── openhwy-tales-v1.md
+│       ├── overview.md
+│       ├── pricing-strategy.md
+│       ├── PROMPT.md
+│       ├── README.md
+│       ├── roadmap.md
+│       ├── SCHEMA.md
+│       ├── terminology.md
+│       └── the-tale-system.md
+└── versions
+    ├── lib
+    │   ├── ideas
+    │   │   ├── astro
+    │   │   ├── dragonfly
+    │   │   ├── duckdb
+    │   │   ├── go
+    │   │   ├── nextjs
+    │   │   ├── openvino
+    │   │   ├── pyenv
+    │   │   ├── rustup
+    │   │   ├── surreal 
+    │   │   ├── zed
+    │   │   └── zsh
+    │   ├── models
+    │   │   ├── codellama-7b.json
+    │   │   ├── mythomax-l2-13b.json
+    │   │   ├── nous-hermes-llama2-7b.json
+    │   │   ├── openchat-3.5-1210.json
+    │   │   ├── osmosis-apply-1.7b.json
+    │   │   ├── qwen1.5-1.8b-chat.json
+    │   │   ├── tinyllama-1.1b-chat.json
+    │   │   ├── yi-1.5-9b-chat.json
+    │   │   └── zephyr-7b.json
+    │   └── scripts
+    │       ├── agency-client.py
+    │       ├── audit_components.sh
+    │       ├── audit-system-status.sh
+    │       ├── build-all.sh
+    │       ├── check-models-integrity.sh
+    │       ├── code-indexer.py
+    │       ├── collection-webhook.py
+    │       ├── data-collector-orchestrator.py
+    │       ├── deep-scan.sh
+    │       ├── download-models.sh
+    │       ├── index-models.sh
+    │       ├── index-prompts.sh
+    │       ├── install-models.sh
+    │       ├── list-models.sh
+    │       ├── list-prompts.sh
+    │       ├── ollama-cluster.py
+    │       ├── pre-flight.sh
+    │       ├── pull-models.sh
+    │       ├── setup-auto-sync.sh
+    │       ├── setup-data-collectors.sh
+    │       ├── start-agency.sh
+    │       ├── start-all-services.sh
+    │       ├── start-auto-collection.sh
+    │       ├── start.sh
+    │       ├── state-restore.sh
+    │       ├── state-sync.sh
+    │       ├── status-check.sh
+    │       ├── status.sh
+    │       ├── stop-agency.sh
+    │       ├── stop.sh
+    │       ├── system-status.sh
+    │       ├── test-db.sh
+    │       ├── trigger-collection-api.sh
+    │       └── validate-models.sh
+    ├── main
+    │   ├── ai-resources
+    │   │   ├── agencies
+    │   │   ├── ai-agents
+    │   │   ├── devtools
+    │   │   ├── interfaces
+    │   │   ├── packages
+    │   │   ├── prompts
+    │   │   ├── providers
+    │   │   ├── runtimes
+    │   │   └── scripts
+    │   ├── edge-routers
+    │   │   ├── Cargo.toml
+    │   │   ├── Dockerfile
+    │   │   ├── .env.example
+    │   │   ├── lib.rs
+    │   │   ├── main.rs
+    │   │   ├── README.md
+    │   │   └── src
+    │   ├── infra-clouds
+    │   │   ├── email-service
+    │   │   ├── ollama-service
+    │   │   ├── payment-service
+    │   │   └── profile-service
+    │   └── store-repos
+    │       ├── Cargo.toml
+    │       ├── Dockerfile
+    │       ├── .env.example
+    │       ├── index.js
+    │       ├── index.tree
+    │       ├── lib
+    │       └── README.md
+    ├── main_01
+    │   ├── ai-resources
+    │   │   ├── ai-agents
+    │   │   ├── devtools
+    │   │   ├── interfaces
+    │   │   ├── packages
+    │   │   ├── prompts
+    │   │   ├── providers
+    │   │   ├── runtimes
+    │   │   ├── scripts
+    │   │   └── services
+    │   ├── edge-routers
+    │   │   ├── Cargo.toml
+    │   │   ├── Dockerfile
+    │   │   ├── .env.example
+    │   │   ├── lib.rs
+    │   │   ├── main.rs
+    │   │   ├── README.md
+    │   │   └── src
+    │   ├── infra-clouds
+    │   │   ├── email-service
+    │   │   ├── ollama-service
+    │   │   ├── payment-service
+    │   │   └── profile-service
+    │   └── store-repos
+    │       ├── Cargo.toml
+    │       ├── Dockerfile
+    │       ├── .env.example
+    │       ├── index.js
+    │       ├── index.tree
+    │       ├── lib
+    │       └── README.md
+    ├── mark
+    │   ├── share
+    │   ├── src
+    │   │   ├── go
+    │   │   └── rustup
+    │   └── ws
+    │       ├── ai-resources
+    │       ├── edge-routers
+    │       ├── infra-clouds
+    │       ├── README.md
+    │       └── store-repos
+    ├── markws.version001
+    │   ├── ai-resources
+    │   │   ├── agencies
+    │   │   ├── ai-agents
+    │   │   ├── devtools
+    │   │   ├── interfaces
+    │   │   ├── packages
+    │   │   ├── prompts
+    │   │   ├── providers
+    │   │   ├── runtimes
+    │   │   ├── scripts
+    │   │   └── services
+    │   ├── infra-clouds
+    │   │   └── vault
+    │   ├── README.md
+    │   └── store-repos
+    │       ├── Cargo.toml
+    │       ├── DockerApp
+    │       ├── Dockerfile
+    │       ├── .env.example
+    │       ├── index.js
+    │       ├── index.tree
+    │       ├── MarkOSMarket
+    │       ├── PriceGuide
+    │       ├── README.md
+    │       ├── SetupGuide
+    │       └── StudyGuide
+    ├── WORKSPACE
+    │   ├── documents
+    │   │   ├── design-prices
+    │   │   ├── infra-nodes
+    │   │   └── system-studies
+    │   ├── .gitignore
+    │   ├── idea.md
+    │   ├── projects
+    │   │   ├── ACTIVE
+    │   │   ├── .idea
+    │   │   └── PAUSED
+    │   ├── scripts
+    │   │   ├── core
+    │   │   ├── _draft
+    │   │   ├── go
+    │   │   ├── install
+    │   │   ├── misc
+    │   │   ├── setup
+    │   │   ├── tool
+    │   │   ├── ui
+    │   │   └── util
+    │   ├── templates
+    │   │   ├── NEXTJS-PLATFORMS
+    │   │   └── REACT-COMPONENTS
+    │   └── .workspace.d
+    │       └── profiles
+    └── ws_
+        ├── CLAUDE.md
+        ├── CLAUDE.OpenHWY.md
+        └── nix
+            └── store
+
+158 directories, 291 files

@@ -1,0 +1,188 @@
+.
+├── databases
+│   ├── arrow-and-parquet.md
+│   ├── best-in-class.md
+│   └── duckdb.md
+├── environments
+│   ├── ARCHITECTURE.md
+│   ├── bootstrap-problems.md
+│   ├── Dockerfile.zbox
+│   ├── env-examples
+│   ├── forturn-&-neofetch.md
+│   ├── IN-PROGRESS.md
+│   ├── PROJECT-BREAKDOWN.md
+│   ├── README_1.md
+│   ├── README.md
+│   ├── shell-completions.md
+│   ├── shell-loading-diagram2.md
+│   ├── shell-loading-diagram3.md
+│   ├── shell-loading-diagram.md
+│   ├── SYSTEM-&-USER-CONFIGURATION-HIERARCHY.md
+│   ├── TRASH-SYSTEM.md
+│   ├── USAGE.md
+│   ├── what-is-globbing.md
+│   ├── ZBOX-MEMORY-FEATURES.md
+│   ├── zsh-built-in-flags.md
+│   ├── zsh-cheat-sheet.md
+│   ├── ZSH-MASTER-CHEAT-SHEET.md
+│   ├── ZSH-MASTER-CHEAT-SHEET.txt
+│   ├── zsh-prezto-diagram-loader.md
+│   ├── zsh-prezto-vs-ohmyzsh.md
+│   ├── zsh-shell-loading2.md
+│   └── zsh-shell-loading.md
+├── index.tree
+├── languages
+│   ├── ast.md
+│   ├── avaliable-crates.md
+│   ├── bindings-check.md
+│   ├── build-ideas.md
+│   ├── cargo-rules.md
+│   ├── Cargo.toml
+│   ├── cc.md
+│   ├── cranelift.md
+│   ├── crates-vs-packages2.md
+│   ├── crates-vs-packages3.md
+│   ├── crates-vs-packages.md
+│   ├── decision-making.md
+│   ├── deps-measuring.md
+│   ├── downstream-breaks.md
+│   ├── example-layout.md
+│   ├── glue-vs-engine.md
+│   ├── HIR&MIR.md
+│   ├── hotspot.md
+│   ├── JIT&AOT.md
+│   ├── lisp-clojure.md
+│   ├── macros&codegen2.md
+│   ├── macros&codegen.md
+│   ├── orthogonality.md
+│   ├── REPLs.md
+│   ├── run-dev.md
+│   ├── semvar.md
+│   ├── signatures.md
+│   ├── usage-dev.md
+│   └── wrapper.h
+├── machines
+│   ├── ASUS-TUF-Gaming.md
+│   ├── callbox(4vCPU, null, 12GB RAM, [256GB SSD, 1TB HDD])
+│   │   └── callbox_node.yaml
+│   ├── devbox(22vCPU, [iGPU,NPU], 16GB RAM, 1TB NVMe)
+│   │   └── devbox_specs.yaml
+│   ├── gpubox(8vCPU, GPU 4vRAM, 32GB RAM, 1TB NVMe)
+│   │   ├── gpubox_node.yaml
+│   │   └── nix
+│   │       ├── configuration.nix
+│   │       ├── duckdb-analyzer.nix
+│   │       ├── flake.nix
+│   │       └── openwebui.nomad.hcl
+│   ├── infrastructue.md
+│   ├── Lenovo-Yoga-9i.md
+│   └── workbox(20vCPU, iGPU, 24GB RAM, 1TB NVMe)
+│       └── workbox_node.yaml
+├── questions
+│   ├── 1-2-3rule.md
+│   ├── ai-environment-setup.md
+│   ├── algorithms-and midsets..md
+│   ├── archives-vs-backups-vs-packages.md
+│   ├── assest-understand2.md
+│   ├── assest-understanding.md
+│   ├── asus-system-diagnostic.md
+│   ├── asus-system-overview.md
+│   ├── backup-crafts.md
+│   ├── backup-setup2.md
+│   ├── backup-setup.md
+│   ├── catch-all-category.md
+│   ├── changing-permissions.md
+│   ├── compression-and-lock-guilds.md
+│   ├── compression-guilds.md
+│   ├── configs-vs-variables-vs-keys-vs-etc-vs-settings.md
+│   ├── containering-understanding.md
+│   ├── danger-level.md
+│   ├── discord-and-substack.md
+│   ├── display-control.md
+│   ├── display-manager.md
+│   ├── env-access-bootstrap-setup.md
+│   ├── env-bootstrap-setup.md
+│   ├── find-keyID.md
+│   ├── full-wipe-and-setup.md
+│   ├── gnupg-storage.md
+│   ├── greek-capital-sigma.md
+│   ├── hiding-stuff.md
+│   ├── how-bootstraping-works.md
+│   ├── how-hosting-works.md
+│   ├── how-pays-for-social-media.md
+│   ├── how-vectoring-works.md
+│   ├── IDE-notes.md
+│   ├── IEEE-754-formual.md
+│   ├── installation.md
+│   ├── key-infro.md
+│   ├── key-usage.md
+│   ├── LXC-vs-Docker.md
+│   ├── map-fill-setup.md
+│   ├── multi-tar.md
+│   ├── naming-layers.md
+│   ├── partial-achives-manipulation.md
+│   ├── proper-certs-generator.md
+│   ├── pro-tips.md
+│   ├── public-relations.md
+│   ├── public-wifi-bypass-tunneling-designs.md
+│   ├── rsync-understanding.txt
+│   ├── sandbox-setup.md
+│   ├── scaffolding-map-understanding.md
+│   ├── scaffolding-understanding.md
+│   ├── scratch-pad.md
+│   ├── setting-vs-config.md
+│   ├── setup-asus-decisions.md
+│   ├── shadow-limited.md
+│   ├── starting-fights.md
+│   ├── test-batches.md
+│   ├── token-buffers.md
+│   ├── variables-and-memory.md
+│   ├── vectors-and-similarity.md
+│   ├── vscode-pro-tips.md
+│   ├── what-does-'.d'-mean-in-linux.md
+│   ├── what-is-a-compositor.md
+│   ├── what-is-ASCII.md
+│   ├── what-is-a-vector.md
+│   ├── what-is-exponent-and-fraction.mantissa.md
+│   ├── what-is-gpg.md
+│   ├── what-is-hexadecimal.md
+│   ├── what-is-IEEE-754.md
+│   ├── what-is-memory-REALLY.md
+│   ├── what -is-orthogonal.md
+│   ├── what-is-tailscale-really.md
+│   ├── what-is-telegram.md
+│   ├── what-tailscale-actually-is.md
+│   ├── where-things-live.md
+│   └── workspace-setups.md
+└── scaffolds
+    ├── ai.tree
+    ├── api-endpoints.tree
+    ├── archbox-rust-stack.md
+    ├── assets-stack.md
+    ├── build-environments.tree
+    ├── core-stub.md
+    ├── custom-stacks.tree
+    ├── document.tree
+    ├── domain-tree.md
+    ├── fs-tree.md
+    ├── full2-stack.md
+    ├── full-stack.md
+    ├── full_stack.tree
+    ├── github-template.tree
+    ├── infrastructure.tree
+    ├── lead-collection.tree
+    ├── ml-frameworks.tree
+    ├── ml-models.tree
+    ├── nix-tree.md
+    ├── old-workspace2.md
+    ├── old-workspace.md
+    ├── production-grade-repo-stack.md
+    ├── script-stack.md
+    ├── server.tree
+    ├── service.tree
+    ├── src-tree.md
+    ├── stack.tree
+    ├── stack-tree.md
+    └── state-stub.md
+
+12 directories, 174 files

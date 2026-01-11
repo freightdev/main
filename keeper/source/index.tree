@@ -1,0 +1,218 @@
+.
+├── index.tree
+└── zbox-env
+    ├── config
+    │   ├── deployment.yml
+    │   ├── dotdirs
+    │   │   ├── finda
+    │   │   ├── fixa
+    │   │   ├── gita
+    │   │   ├── hypr
+    │   │   ├── neovide
+    │   │   ├── nvim
+    │   │   ├── ranger
+    │   │   ├── serva
+    │   │   └── zed
+    │   ├── dotfiles
+    │   │   ├── .gitconfig
+    │   │   ├── .nanorc
+    │   │   ├── .zprofile
+    │   │   ├── .zshenv
+    │   │   └── .zshrc
+    │   └── isolation.yaml
+    ├── docs
+    │   ├── ARCHITECTURE.md
+    │   ├── Dockerfile.zbox
+    │   ├── IN-PROGRESS.md
+    │   ├── PROJECT-BREAKDOWN.md
+    │   ├── README_1.md
+    │   ├── README.md
+    │   ├── TRASH-SYSTEM.md
+    │   ├── USAGE.md
+    │   └── ZBOX-MEMORY-FEATURES.md
+    ├── main.zsh
+    ├── scripts
+    │   ├── agent
+    │   │   ├── add_missing_docstrings.py
+    │   │   ├── agency-client.py
+    │   │   ├── ai-control.sh
+    │   │   ├── audit_components.sh
+    │   │   ├── audit-system-status.sh
+    │   │   ├── build-all.sh
+    │   │   ├── check-models-integrity.sh
+    │   │   ├── code-indexer.py
+    │   │   ├── collection-webhook.py
+    │   │   ├── create-all-commands.sh
+    │   │   ├── create-commands.sh
+    │   │   ├── data-collector-orchestrator.py
+    │   │   ├── deep-scan.sh
+    │   │   ├── download-models.sh
+    │   │   ├── generate_model_configs.py
+    │   │   ├── index-models.sh
+    │   │   ├── index-prompts.sh
+    │   │   ├── install-models.sh
+    │   │   ├── list-models.sh
+    │   │   ├── list-prompts.sh
+    │   │   ├── loader.zsh
+    │   │   ├── main.zsh
+    │   │   ├── ollama-cluster.py
+    │   │   ├── pre-flight.sh
+    │   │   ├── pull-models.sh
+    │   │   ├── python-make-init.sh
+    │   │   ├── setup-auto-sync.sh
+    │   │   ├── setup-data-collectors.sh
+    │   │   ├── setup-rag-mcp.sh
+    │   │   ├── setup.sh
+    │   │   ├── setup.sh_
+    │   │   ├── start-agency.sh
+    │   │   ├── start-all-services.sh
+    │   │   ├── start-auto-collection.sh
+    │   │   ├── start.sh
+    │   │   ├── state-restore.sh
+    │   │   ├── state-sync.sh
+    │   │   ├── status-check.sh
+    │   │   ├── status.sh
+    │   │   ├── stop-agency.sh
+    │   │   ├── stop.sh
+    │   │   ├── system-status.sh
+    │   │   ├── test-db.sh
+    │   │   ├── trigger-collection-api.sh
+    │   │   ├── update_with_env_pairs.py
+    │   │   └── validate-models.sh
+    │   ├── collect
+    │   │   ├── daily-digest.sh
+    │   │   ├── quick-test.sh
+    │   │   ├── scrape-leads.sh
+    │   │   ├── start-lead-system.sh
+    │   │   ├── status-lead-system.sh
+    │   │   ├── stop-lead-system.sh
+    │   │   └── test_leads.py
+    │   ├── common
+    │   │   ├── analyze-full-projects.zsh
+    │   │   ├── barrel-typescript-ui.sh
+    │   │   ├── c++-api-extractor.sh
+    │   │   ├── check-for-duplicates.zsh
+    │   │   ├── check-ollama-cluster.py
+    │   │   ├── check-recent-outputs.sh
+    │   │   ├── cleanup-whitespaces.sh
+    │   │   ├── collab-setups.sh
+    │   │   ├── convert-json-o-yaml.sh
+    │   │   ├── convert-yaml-o-json.sh
+    │   │   ├── github-repo-selector.zsh
+    │   │   ├── git-keep-helper.sh
+    │   │   ├── helpful-auto-fix.zsh
+    │   │   ├── push-file-updates.sh
+    │   │   ├── remove-barrel-typescript-ui.sh
+    │   │   └── reverse-init-collector.zsh
+    │   ├── golang
+    │   │   ├── go-auto-fix.sh
+    │   │   ├── go-build-errors.sh
+    │   │   ├── go-comprehensive-check.sh
+    │   │   ├── go-debug-toolkit.sh
+    │   │   ├── go-fix-content.sh
+    │   │   ├── go-quick-debug.sh
+    │   │   ├── go-scaffold-check.sh
+    │   │   └── go-tools.zsh
+    │   ├── install
+    │   │   ├── install-dependencies.zsh
+    │   │   ├── install-infrastructure.zsh
+    │   │   ├── install_llama_cpp.sh
+    │   │   ├── install-miniconda.sh
+    │   │   ├── install-poetry.sh
+    │   │   ├── install-systems.zsh
+    │   │   ├── install-tools.zsh
+    │   │   ├── install-yq.sh
+    │   │   └── install-zsh-5.9.zsh
+    │   ├── secret
+    │   │   ├── fix_ssh_config.sh
+    │   │   └── sync-identity.zsh
+    │   ├── testing
+    │   │   ├── go_test
+    │   │   ├── node_test
+    │   │   ├── python_test
+    │   │   ├── pytorch_test
+    │   │   ├── rust_test
+    │   │   └── verify-dev-setup.sh
+    │   ├── _untested
+    │   │   ├── zbox-agent-environment.plugin.zsh
+    │   │   ├── zbox_agent_environment.zsh
+    │   │   ├── zbox-master-agent-enviroment.plugin.zsh
+    │   │   ├── zbox_memory_advanced_system.zsh
+    │   │   ├── zbox_memory_integration_wrapper.zsh
+    │   │   ├── zbox_memory_management_system.zsh
+    │   │   ├── zbox_path_constants.zsh
+    │   │   ├── zbox_postgreSQL_memory_interface.py
+    │   │   ├── zbox_security_system.zsh
+    │   │   ├── zbox_spawn_instants.zsh
+    │   │   ├── zboxxy.zsh
+    │   │   └── zbox.zsh
+    │   └── utility
+    │       ├── bash_helpers.sh
+    │       ├── .broken
+    │       └── package_helpers.sh
+    └── source
+        ├── agents
+        │   ├── gpg-agent.zsh
+        │   └── ssh-agent.zsh
+        ├── defaults
+        │   ├── autoload.zsh
+        │   ├── color.zsh
+        │   ├── keybind.zsh
+        │   ├── setopt.zsh
+        │   └── zstyle.zsh
+        ├── functions
+        │   ├── archive.zsh
+        │   ├── backup.zsh
+        │   ├── docker.zsh
+        │   ├── encryption.zsh
+        │   ├── finda.zsh
+        │   ├── fixa.zsh
+        │   ├── gita.zsh
+        │   ├── github.zsh
+        │   ├── history.zsh
+        │   ├── manifest.zsh
+        │   ├── network.zsh
+        │   ├── nuka.zsh
+        │   ├── quick.zsh
+        │   ├── scana.zsh
+        │   ├── search.zsh
+        │   ├── senda.zsh
+        │   ├── serva.zsh
+        │   ├── siza.zsh
+        │   ├── storage.zsh
+        │   ├── system.zsh
+        │   ├── trash.zsh
+        │   └── vm-manager.zsh
+        ├── helpers
+        │   ├── agent_helpers.zsh
+        │   ├── file_helpers.zsh
+        │   ├── hydration_helpers.zsh
+        │   ├── input_helpers.zsh
+        │   ├── logging_helpers.zsh
+        │   ├── memory_helpers.zsh
+        │   ├── model_helpers.zsh
+        │   ├── network_helpers.zsh
+        │   ├── node-manager.zsh
+        │   ├── nomad-integration.zsh
+        │   ├── output_helpers.zsh
+        │   ├── parsing_helpers.zsh
+        │   ├── profile-monitor.zsh
+        │   ├── resource-monitor.zsh
+        │   ├── security_helpers.zsh
+        │   ├── system_helpers.zsh
+        │   └── validation_helpers.zsh
+        ├── loader.zsh
+        ├── settings
+        │   ├── aliases.zsh
+        │   ├── exports.zsh
+        │   ├── plugins.zsh
+        │   └── prompts.zsh
+        └── setups
+            ├── android.zsh
+            ├── bun.zsh
+            ├── cargo.zsh
+            ├── flutter.zsh
+            ├── ollama.zsh
+            └── pyenv.zsh
+
+38 directories, 178 files
