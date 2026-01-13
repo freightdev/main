@@ -1,0 +1,65 @@
+.
+├── chat-indexer
+│   ├── ai_query.py
+│   ├── analytics.py
+│   ├── batch_query.py
+│   ├── config.toml
+│   ├── conversation_indexer.py
+│   ├── EXAMPLES.md
+│   ├── .gitignore
+│   ├── query_artifacts.py
+│   ├── query_conversations.py
+│   ├── query_templates.py
+│   ├── QUICK_REFERENCE.md
+│   ├── README.md
+│   ├── setup_indexer.sh
+│   └── templates
+│       └── fed_project_example.json
+├── index.tree
+├── pytorch-trainer
+│   ├── core
+│   │   ├── config.py
+│   │   ├── logic.py
+│   │   ├── packages.py
+│   │   ├── paths.py
+│   │   └── types.py
+│   ├── deploy.sh
+│   ├── INSTALL.md
+│   ├── main.py
+│   ├── QUICKSTART.md
+│   ├── README.md
+│   └── src
+│       ├── generator.py
+│       ├── handlers.py
+│       ├── helpers.py
+│       ├── utils.py
+│       └── validators.py
+└── template-engine
+    ├── config_base.py
+    ├── load_services.py
+    ├── render_service.py
+    ├── schemas
+    │   ├── argocd.schema.yaml
+    │   ├── gitea.schema.yaml
+    │   ├── grafana.schema.yaml
+    │   ├── keycloak.schema.yaml
+    │   ├── loki.schema.yaml
+    │   ├── nginx.schema.yaml
+    │   ├── prometheus.schema.yaml
+    │   ├── redis.schema.yaml
+    │   ├── restic.schema.yaml
+    │   └── surrealdb.schema.yaml
+    ├── templates
+    │   ├── argocd.template.yaml
+    │   ├── gitea.template.yaml
+    │   ├── grafana.template.yaml
+    │   ├── keycloak.template.yaml
+    │   ├── loki.template.yaml
+    │   ├── nginx.template.yaml
+    │   ├── prometheus.template.yaml
+    │   ├── redis.template.yaml
+    │   ├── restic.template.yaml
+    │   └── surrealdb.template.yaml
+    └── update_values.py
+
+9 directories, 54 files

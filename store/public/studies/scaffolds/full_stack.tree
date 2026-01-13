@@ -1,0 +1,99 @@
+.
+├── backup
+│   └── backup.yml
+├── cache
+│   └── cache.yml
+├── cloud
+│   └── cloud.yml
+├── connection
+│   └── connection.yml
+├── container
+│   └── container.yml
+├── database
+│   ├── database.yml
+│   └── _idea
+│       ├── AgentsDB.yml
+│       ├── ModelsDB.yml
+│       ├── QueueDB.yml
+│       ├── README2.md
+│       ├── README.md
+│       ├── UsersDB.yml
+│       └── VectorStore.yml
+├── dev
+│   └── dev.yml
+├── dns
+│   └── dns.yml
+├── engine
+│   └── engine.yml
+├── firewall
+│   └── firewall.yml
+├── gateway
+│   └── gateway.yml
+├── identity
+│   └── identity.yml
+├── index.tree
+├── ingress
+│   └── ingress.yml
+├── loadbalance
+│   └── loadbalance.yml
+├── logging
+│   └── logging.yml
+├── mesh
+│   └── mesh.yml
+├── metric
+│   └── metric.yml
+├── monitoring
+│   └── monitoring.yml
+├── options
+│   ├── connections
+│   │   ├── discord.md
+│   │   ├── signal.md
+│   │   ├── substack.md
+│   │   └── telegram.md
+│   └── databases
+│       ├── options
+│       │   ├── embeddings
+│       │   │   └── vector.md
+│       │   ├── engines
+│       │   │   ├── analyticals
+│       │   │   │   ├── duckdb.md
+│       │   │   │   ├── pandas.md
+│       │   │   │   ├── snowflake.md
+│       │   │   │   └── spark.md
+│       │   │   ├── columnars
+│       │   │   │   ├── arrow.md
+│       │   │   │   ├── csv.md
+│       │   │   │   └── json.md
+│       │   │   └── queues
+│       │   │       ├── faiss.md
+│       │   │       ├── milvus.md
+│       │   │       ├── qdrant.md
+│       │   │       └── weaviate.md
+│       │   ├── relational
+│       │   │   └── postgres.md
+│       │   └── storages
+│       │       └── parquet.md
+│       └── SQL
+│           ├── mysql.md
+│           └── sqlite.md
+├── orchistration
+│   └── orchestration.yml
+├── proxy
+│   └── proxy.yml
+├── scafford
+│   └── scafford.yml
+├── scheduler
+│   └── schdulers.yml
+├── security
+│   └── security.yml
+├── stacks.yml
+├── tracing
+│   └── tracing.yml
+├── tunneling
+│   └── tunneling.yml
+├── visual
+│   └── visual.yml
+└── zero_trust
+    └── zero_trust.yml
+
+41 directories, 56 files

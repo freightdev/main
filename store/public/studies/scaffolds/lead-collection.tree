@@ -1,0 +1,38 @@
+.
+├── freelance-development
+│   ├── applications
+│   │   └── .gitkeep
+│   ├── campaigns
+│   │   └── .gitkeep
+│   ├── devops
+│   │   └── .gitkeep
+│   ├── environments
+│   │   └── .gitkeep
+│   ├── services
+│   │   └── .gitkeep
+│   ├── startups
+│   │   └── .gitkeep
+│   ├── systems
+│   │   └── .gitkeep
+│   ├── videogames
+│   │   └── .gitkeep
+│   ├── websites
+│   │   └── .gitkeep
+│   └── workflows
+│       └── .gitkeep
+├── freight-industry
+│   ├── brokers
+│   │   └── .gitkeep
+│   ├── dispatchers
+│   │   └── .gitkeep
+│   ├── drivers
+│   │   └── .gitkeep
+│   ├── fleets
+│   │   └── .gitkeep
+│   ├── receivers
+│   │   └── .gitkeep
+│   └── shippers
+│       └── .gitkeep
+└── index.tree
+
+19 directories, 17 files

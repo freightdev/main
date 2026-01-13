@@ -1,0 +1,107 @@
+.
+├── auto_assist
+│   └── README.md
+├── big_bear
+│   ├── Cargo.toml
+│   └── src
+│       ├── alert_engine.rs
+│       ├── alert_system.rs
+│       ├── bin
+│       │   └── big_bear_v0.rs
+│       ├── geo_cache.rs
+│       ├── geo_mapper.rs
+│       ├── incident_feed.rs
+│       ├── report_collector.rs
+│       └── weigh_station_tracker.rs
+├── cargo_connect
+│   ├── Cargo.toml
+│   └── src
+│       ├── bin
+│       │   └── cargo_connect_v0.rs
+│       ├── credential_vault.rs
+│       ├── filter_engine.rs
+│       ├── load_boards.rs
+│       ├── load_fetcher.rs
+│       ├── score_ranker.rs
+│       └── session_manager.rs
+├── direct_dispatch
+│   └── README.md
+├── error_echo
+│   └── README.md
+├── fuel_factor
+│   └── README.md
+├── ghost_guard
+│   └── README.md
+├── highway_helper
+│   └── README.md
+├── index.tree
+├── iron_insight
+│   └── README.md
+├── jackknife_jailer
+│   └── README.md
+├── key_keeper
+│   └── README.md
+├── legal_logger
+│   ├── Cargo.toml
+│   └── src
+│       ├── bin
+│       │   └── legal_logger_v0.rs
+│       ├── compression.rs
+│       ├── encryption_module.rs
+│       ├── ledger_writer.rs
+│       ├── signature_engine.rs
+│       └── timestamp_engine.rs
+├── memory_mark
+│   └── README.md
+├── night_nexus
+│   └── README.md
+├── oversize_overseer
+│   └── README.md
+├── packet_pilot
+│   ├── Cargo.toml
+│   └── src
+│       ├── bin
+│       │   └── packet_pilot_v0.rs
+│       ├── email_monitor.rs
+│       ├── form_filler.rs
+│       ├── pdf_processor.rs
+│       ├── protocol_detector.rs
+│       └── signature_handler.rs
+├── quick_quote
+│   └── README.md
+├── railroad_ranger
+│   └── README.md
+├── secure_secret
+│   └── README.md
+├── trucker_tales
+│   ├── Cargo.toml
+│   └── src
+│       ├── bin
+│       │   └── trucker_tales_v0.rs
+│       ├── emotion_enhancer.rs
+│       ├── format_converter.rs
+│       ├── publishing.rs
+│       ├── story_structurer.rs
+│       └── tale_listener.rs
+├── unit_usage
+│   └── README.md
+├── voice_validator
+│   └── README.md
+├── whisper_witness
+│   ├── Cargo.toml
+│   └── src
+│       ├── audio_listener.rs
+│       ├── bin
+│       │   └── whisper_witness_v0.rs
+│       ├── broker_tactics.rs
+│       ├── tactic_detector.rs
+│       ├── transcript_summarizer.rs
+│       └── whisper_engine.rs
+├── xeno_xeno
+│   └── README.md
+├── yes_yes
+│   └── README.md
+└── zone_zipper
+    └── README.md
+
+39 directories, 66 files

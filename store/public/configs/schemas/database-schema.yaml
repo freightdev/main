@@ -1,0 +1,1731 @@
+-- ================================================================
+-- OPENHWY TMS - COMPLETE ENTERPRISE DATABASE SCHEMA
+-- ================================================================
+-- Version: 1.0
+-- Database: PostgreSQL 16+
+-- Purpose: Full-featured Transportation Management System
+-- ================================================================
+
+-- Enable Required Extensions
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "postgis"; -- For geospatial data
+CREATE EXTENSION IF NOT EXISTS "pg_trgm"; -- For fuzzy text search
+CREATE EXTENSION IF NOT EXISTS "btree_gin"; -- For better indexing
+
+-- ================================================================
+-- CORE COMPANY & USER MANAGEMENT
+-- ================================================================
+
+CREATE TABLE companies (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_type VARCHAR(50) NOT NULL CHECK (company_type IN ('carrier', 'broker', 'shipper', '3pl', 'dispatcher', 'hybrid')),
+    legal_name VARCHAR(255) NOT NULL,
+    dba_name VARCHAR(255),
+    mc_number VARCHAR(50), -- Motor Carrier Authority Number
+    dot_number VARCHAR(50) UNIQUE, -- USDOT Number
+    scac_code VARCHAR(4), -- Standard Carrier Alpha Code
+    ein VARCHAR(20), -- Employer Identification Number
+    
+    -- Contact Information
+    email VARCHAR(255),
+    phone VARCHAR(50),
+    fax VARCHAR(50),
+    website VARCHAR(255),
+    
+    -- Address
+    address_line1 VARCHAR(255),
+    address_line2 VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(50),
+    zip_code VARCHAR(20),
+    country VARCHAR(3) DEFAULT 'USA',
+    
+    -- Business Details
+    status VARCHAR(50) DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'suspended', 'pending')),
+    operating_authority VARCHAR(100), -- Interstate, Intrastate
+    insurance_provider VARCHAR(255),
+    insurance_policy_number VARCHAR(100),
+    insurance_expiry DATE,
+    
+    -- Financial
+    factoring_company_id UUID, -- Self-reference or external
+    payment_terms INTEGER DEFAULT 30, -- Net days
+    credit_limit DECIMAL(15, 2),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    created_by UUID,
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE users (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Authentication
+    email VARCHAR(255) UNIQUE NOT NULL,
+    phone VARCHAR(50),
+    password_hash TEXT NOT NULL,
+    two_factor_enabled BOOLEAN DEFAULT FALSE,
+    two_factor_secret TEXT,
+    
+    -- Personal Information
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    role VARCHAR(50) NOT NULL CHECK (role IN ('admin', 'dispatcher', 'driver', 'broker', 'accountant', 'manager', 'viewer')),
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'suspended', 'pending')),
+    last_login TIMESTAMP,
+    
+    -- Permissions (JSONB for flexible permissions)
+    permissions JSONB DEFAULT '{}'::jsonb,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE user_sessions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+    token TEXT UNIQUE NOT NULL,
+    ip_address INET,
+    user_agent TEXT,
+    expires_at TIMESTAMP NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- ================================================================
+-- DRIVER MANAGEMENT
+-- ================================================================
+
+CREATE TABLE drivers (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    user_id UUID REFERENCES users(id) ON DELETE SET NULL,
+    
+    -- Personal Information
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255),
+    phone VARCHAR(50) NOT NULL,
+    date_of_birth DATE,
+    ssn_encrypted TEXT, -- Encrypted SSN
+    
+    -- Address
+    address_line1 VARCHAR(255),
+    address_line2 VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(50),
+    zip_code VARCHAR(20),
+    
+    -- License Information
+    cdl_number VARCHAR(50) UNIQUE NOT NULL,
+    cdl_state VARCHAR(50),
+    cdl_class VARCHAR(10) CHECK (cdl_class IN ('A', 'B', 'C')),
+    cdl_expiry DATE NOT NULL,
+    endorsements TEXT[], -- ['H', 'N', 'T', 'X'] Hazmat, Tank, etc
+    
+    -- Employment
+    hire_date DATE,
+    termination_date DATE,
+    employment_status VARCHAR(50) DEFAULT 'active' CHECK (employment_status IN ('active', 'inactive', 'on_leave', 'terminated')),
+    driver_type VARCHAR(50) CHECK (driver_type IN ('company', 'owner_operator', 'lease', 'temporary')),
+    
+    -- Pay Information
+    pay_type VARCHAR(50) CHECK (pay_type IN ('per_mile', 'per_hour', 'per_load', 'percentage', 'salary')),
+    pay_rate DECIMAL(10, 4),
+    percentage_split DECIMAL(5, 2), -- For percentage pay
+    
+    -- Compliance
+    medical_card_expiry DATE,
+    drug_test_date DATE,
+    background_check_date DATE,
+    
+    -- Performance
+    safety_score DECIMAL(5, 2),
+    on_time_percentage DECIMAL(5, 2),
+    total_miles BIGINT DEFAULT 0,
+    total_loads INTEGER DEFAULT 0,
+    
+    -- Current Status
+    current_status VARCHAR(50) DEFAULT 'available' CHECK (current_status IN ('available', 'on_duty', 'off_duty', 'sleeper', 'driving', 'on_leave')),
+    current_location GEOGRAPHY(POINT),
+    last_location_update TIMESTAMP,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE driver_documents (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    driver_id UUID REFERENCES drivers(id) ON DELETE CASCADE,
+    document_type VARCHAR(100) NOT NULL, -- 'cdl', 'medical_card', 'w9', etc
+    file_url TEXT NOT NULL,
+    file_name VARCHAR(255),
+    expiry_date DATE,
+    uploaded_at TIMESTAMP DEFAULT NOW(),
+    uploaded_by UUID REFERENCES users(id)
+);
+
+CREATE TABLE driver_violations (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    driver_id UUID REFERENCES drivers(id) ON DELETE CASCADE,
+    violation_type VARCHAR(100) NOT NULL,
+    violation_date DATE NOT NULL,
+    description TEXT,
+    severity VARCHAR(50) CHECK (severity IN ('minor', 'major', 'critical')),
+    points INTEGER DEFAULT 0,
+    fine_amount DECIMAL(10, 2),
+    resolved BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- ================================================================
+-- ASSET MANAGEMENT (TRUCKS & TRAILERS)
+-- ================================================================
+
+CREATE TABLE trucks (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Identification
+    truck_number VARCHAR(50) UNIQUE NOT NULL,
+    vin VARCHAR(17) UNIQUE NOT NULL,
+    license_plate VARCHAR(20),
+    license_plate_state VARCHAR(50),
+    
+    -- Specifications
+    make VARCHAR(100),
+    model VARCHAR(100),
+    year INTEGER,
+    truck_type VARCHAR(50) CHECK (truck_type IN ('day_cab', 'sleeper', 'straight', 'box_truck', 'flatbed')),
+    
+    -- Capacity
+    gvwr INTEGER, -- Gross Vehicle Weight Rating
+    empty_weight INTEGER,
+    max_payload INTEGER,
+    
+    -- Ownership
+    ownership_type VARCHAR(50) CHECK (ownership_type IN ('owned', 'leased', 'owner_operator')),
+    owner_operator_id UUID REFERENCES drivers(id),
+    lease_expiry DATE,
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'maintenance', 'out_of_service', 'sold')),
+    current_driver_id UUID REFERENCES drivers(id),
+    current_location GEOGRAPHY(POINT),
+    last_location_update TIMESTAMP,
+    
+    -- Maintenance
+    last_service_date DATE,
+    next_service_due DATE,
+    odometer_reading BIGINT DEFAULT 0,
+    
+    -- Insurance & Registration
+    registration_expiry DATE,
+    insurance_expiry DATE,
+    inspection_expiry DATE,
+    
+    -- ELD Integration
+    eld_device_id VARCHAR(100),
+    eld_provider VARCHAR(100),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE trailers (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Identification
+    trailer_number VARCHAR(50) UNIQUE NOT NULL,
+    vin VARCHAR(17) UNIQUE,
+    license_plate VARCHAR(20),
+    license_plate_state VARCHAR(50),
+    
+    -- Specifications
+    make VARCHAR(100),
+    model VARCHAR(100),
+    year INTEGER,
+    trailer_type VARCHAR(50) CHECK (trailer_type IN ('dry_van', 'reefer', 'flatbed', 'step_deck', 'lowboy', 'tanker', 'hopper', 'conestoga')),
+    length_feet DECIMAL(5, 2),
+    
+    -- Capacity
+    max_weight INTEGER,
+    volume_cubic_feet DECIMAL(10, 2),
+    
+    -- Temperature Control (for reefers)
+    has_temperature_control BOOLEAN DEFAULT FALSE,
+    min_temperature DECIMAL(5, 2),
+    max_temperature DECIMAL(5, 2),
+    
+    -- Ownership
+    ownership_type VARCHAR(50) CHECK (ownership_type IN ('owned', 'leased', 'rental')),
+    lease_expiry DATE,
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'available' CHECK (status IN ('available', 'in_use', 'maintenance', 'out_of_service', 'sold')),
+    current_truck_id UUID REFERENCES trucks(id),
+    current_location GEOGRAPHY(POINT),
+    last_location_update TIMESTAMP,
+    
+    -- Maintenance
+    last_inspection_date DATE,
+    next_inspection_due DATE,
+    
+    -- Insurance & Registration
+    registration_expiry DATE,
+    insurance_expiry DATE,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE maintenance_records (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    asset_type VARCHAR(20) NOT NULL CHECK (asset_type IN ('truck', 'trailer')),
+    asset_id UUID NOT NULL, -- References trucks or trailers
+    
+    -- Maintenance Details
+    maintenance_type VARCHAR(100) NOT NULL, -- 'oil_change', 'tire_rotation', 'brake_repair', etc
+    description TEXT,
+    service_date DATE NOT NULLCREATE TABLE maintenance_records (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    asset_type VARCHAR(20) NOT NULL CHECK (asset_type IN ('truck', 'trailer')),
+    asset_id UUID NOT NULL,
+    
+    maintenance_type VARCHAR(100) NOT NULL,
+    description TEXT,
+    service_date DATE NOT NULL,
+    odometer_reading INTEGER,
+    
+    -- Cost
+    labor_cost DECIMAL(10, 2),
+    parts_cost DECIMAL(10, 2),
+    total_cost DECIMAL(10, 2),
+    
+    -- Provider
+    service_provider VARCHAR(255),
+    mechanic_name VARCHAR(100),
+    location VARCHAR(255),
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'completed' CHECK (status IN ('scheduled', 'in_progress', 'completed', 'cancelled')),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    performed_by UUID REFERENCES users(id)
+);
+
+-- ================================================================
+-- CUSTOMER & SHIPPER MANAGEMENT
+-- ================================================================
+
+CREATE TABLE customers (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Company Information
+    customer_name VARCHAR(255) NOT NULL,
+    dba_name VARCHAR(255),
+    customer_type VARCHAR(50) CHECK (customer_type IN ('shipper', 'broker', 'freight_forwarder', '3pl', 'manufacturer', 'distributor', 'retailer')),
+    
+    -- Contact
+    email VARCHAR(255),
+    phone VARCHAR(50),
+    fax VARCHAR(50),
+    website VARCHAR(255),
+    
+    -- Primary Contact Person
+    contact_first_name VARCHAR(100),
+    contact_last_name VARCHAR(100),
+    contact_email VARCHAR(255),
+    contact_phone VARCHAR(50),
+    
+    -- Billing Address
+    billing_address_line1 VARCHAR(255),
+    billing_address_line2 VARCHAR(255),
+    billing_city VARCHAR(100),
+    billing_state VARCHAR(50),
+    billing_zip VARCHAR(20),
+    billing_country VARCHAR(3) DEFAULT 'USA',
+    
+    -- Payment Terms
+    payment_terms INTEGER DEFAULT 30,
+    credit_limit DECIMAL(15, 2),
+    credit_status VARCHAR(50) CHECK (credit_status IN ('good', 'hold', 'collections', 'prepay_only')),
+    
+    -- Rates & Pricing
+    default_rate_per_mile DECIMAL(10, 4),
+    fuel_surcharge_percentage DECIMAL(5, 2),
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'suspended')),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE customer_locations (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    customer_id UUID REFERENCES customers(id) ON DELETE CASCADE,
+    
+    -- Location Details
+    location_name VARCHAR(255) NOT NULL,
+    location_type VARCHAR(50) CHECK (location_type IN ('pickup', 'delivery', 'both', 'warehouse', 'distribution_center')),
+    
+    -- Address
+    address_line1 VARCHAR(255) NOT NULL,
+    address_line2 VARCHAR(255),
+    city VARCHAR(100) NOT NULL,
+    state VARCHAR(50) NOT NULL,
+    zip_code VARCHAR(20) NOT NULL,
+    country VARCHAR(3) DEFAULT 'USA',
+    coordinates GEOGRAPHY(POINT),
+    
+    -- Contact
+    contact_name VARCHAR(100),
+    contact_phone VARCHAR(50),
+    contact_email VARCHAR(255),
+    
+    -- Operating Hours
+    operating_hours JSONB, -- {"monday": {"open": "08:00", "close": "17:00"}, ...}
+    special_instructions TEXT,
+    
+    -- Appointment Required
+    requires_appointment BOOLEAN DEFAULT FALSE,
+    dock_count INTEGER,
+    
+    -- Status
+    is_active BOOLEAN DEFAULT TRUE,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- ================================================================
+-- CARRIER & BROKER NETWORK
+-- ================================================================
+
+CREATE TABLE carriers (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    
+    -- Company Information
+    carrier_name VARCHAR(255) NOT NULL,
+    mc_number VARCHAR(50) UNIQUE NOT NULL,
+    dot_number VARCHAR(50) UNIQUE NOT NULL,
+    scac_code VARCHAR(4),
+    
+    -- Contact
+    email VARCHAR(255),
+    phone VARCHAR(50),
+    
+    -- Address
+    address_line1 VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(50),
+    zip_code VARCHAR(20),
+    
+    -- Carrier Details
+    carrier_type VARCHAR(50) CHECK (carrier_type IN ('asset_based', 'non_asset_based', 'freight_forwarder', 'owner_operator')),
+    equipment_types TEXT[], -- ['dry_van', 'reefer', 'flatbed']
+    service_areas TEXT[], -- ['nationwide', 'regional', 'local']
+    
+    -- Insurance
+    insurance_provider VARCHAR(255),
+    cargo_insurance_amount DECIMAL(15, 2),
+    liability_insurance_amount DECIMAL(15, 2),
+    insurance_expiry DATE,
+    
+    -- Performance & Rating
+    safety_rating VARCHAR(20) CHECK (safety_rating IN ('satisfactory', 'conditional', 'unsatisfactory', 'not_rated')),
+    on_time_percentage DECIMAL(5, 2),
+    carrier_score DECIMAL(5, 2),
+    total_loads_hauled INTEGER DEFAULT 0,
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'blacklisted', 'pending_approval')),
+    approved_at TIMESTAMP,
+    approved_by UUID REFERENCES users(id),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE carrier_rates (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    carrier_id UUID REFERENCES carriers(id) ON DELETE CASCADE,
+    
+    -- Rate Details
+    origin_city VARCHAR(100),
+    origin_state VARCHAR(50),
+    destination_city VARCHAR(100),
+    destination_state VARCHAR(50),
+    
+    -- Lane Information
+    lane_type VARCHAR(50) CHECK (lane_type IN ('city_to_city', 'state_to_state', 'regional', 'nationwide')),
+    equipment_type VARCHAR(50),
+    
+    -- Pricing
+    rate_per_mile DECIMAL(10, 4),
+    minimum_rate DECIMAL(10, 2),
+    flat_rate DECIMAL(10, 2),
+    
+    -- Fuel Surcharge
+    fuel_surcharge_type VARCHAR(50) CHECK (fuel_surcharge_type IN ('percentage', 'per_mile', 'flat')),
+    fuel_surcharge_value DECIMAL(10, 4),
+    
+    -- Validity
+    effective_date DATE NOT NULL,
+    expiry_date DATE,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- ================================================================
+-- LOAD & ORDER MANAGEMENT
+-- ================================================================
+
+CREATE TABLE loads (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Load Identification
+    load_number VARCHAR(50) UNIQUE NOT NULL,
+    reference_number VARCHAR(100), -- Customer reference
+    bol_number VARCHAR(100), -- Bill of Lading
+    
+    -- Load Type
+    load_type VARCHAR(50) CHECK (load_type IN ('ftl', 'ltl', 'partial', 'intermodal', 'expedited', 'team')),
+    mode VARCHAR(50) CHECK (mode IN ('truckload', 'ltl', 'rail', 'air', 'ocean', 'intermodal')),
+    
+    -- Customer
+    customer_id UUID REFERENCES customers(id),
+    
+    -- Carrier Assignment (for brokered loads)
+    carrier_id UUID REFERENCES carriers(id),
+    
+    -- Internal Assets (for carrier-owned operations)
+    truck_id UUID REFERENCES trucks(id),
+    trailer_id UUID REFERENCES trailers(id),
+    driver_id UUID REFERENCES drivers(id),
+    
+    -- Equipment Requirements
+    equipment_type VARCHAR(50),
+    equipment_length_feet DECIMAL(5, 2),
+    requires_team BOOLEAN DEFAULT FALSE,
+    requires_hazmat BOOLEAN DEFAULT FALSE,
+    requires_temp_control BOOLEAN DEFAULT FALSE,
+    temp_range_min DECIMAL(5, 2),
+    temp_range_max DECIMAL(5, 2),
+    
+    -- Weight & Dimensions
+    total_weight_lbs INTEGER,
+    total_pieces INTEGER,
+    commodity_description TEXT,
+    special_instructions TEXT,
+    
+    -- Status & Tracking
+    status VARCHAR(50) DEFAULT 'pending' CHECK (status IN (
+        'pending', 'quoted', 'booked', 'dispatched', 'in_transit', 
+        'at_pickup', 'picked_up', 'at_delivery', 'delivered', 
+        'completed', 'cancelled', 'problem'
+    )),
+    
+    -- Important Dates
+    created_date TIMESTAMP DEFAULT NOW(),
+    pickup_date DATE NOT NULL,
+    pickup_time_start TIME,
+    pickup_time_end TIME,
+    delivery_date DATE NOT NULL,
+    delivery_time_start TIME,
+    delivery_time_end TIME,
+    actual_pickup_time TIMESTAMP,
+    actual_delivery_time TIMESTAMP,
+    
+    -- Financial
+    customer_rate DECIMAL(10, 2),
+    carrier_rate DECIMAL(10, 2), -- What we pay carrier (if brokered)
+    fuel_surcharge DECIMAL(10, 2),
+    accessorial_charges DECIMAL(10, 2),
+    total_revenue DECIMAL(10, 2),
+    total_cost DECIMAL(10, 2),
+    profit_margin DECIMAL(10, 2),
+    
+    -- Miles
+    total_miles INTEGER,
+    loaded_miles INTEGER,
+    empty_miles INTEGER,
+    
+    -- Documents
+    rate_confirmation_url TEXT,
+    bol_url TEXT,
+    pod_url TEXT, -- Proof of Delivery
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    created_by UUID REFERENCES users(id),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE load_stops (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    load_id UUID REFERENCES loads(id) ON DELETE CASCADE,
+    
+    -- Stop Information
+    stop_sequence INTEGER NOT NULL,
+    stop_type VARCHAR(50) NOT NULL CHECK (stop_type IN ('pickup', 'delivery', 'fuel', 'rest')),
+    
+    -- Location
+    customer_location_id UUID REFERENCES customer_locations(id),
+    location_name VARCHAR(255),
+    address_line1 VARCHAR(255) NOT NULL,
+    address_line2 VARCHAR(255),
+    city VARCHAR(100) NOT NULL,
+    state VARCHAR(50) NOT NULL,
+    zip_code VARCHAR(20) NOT NULL,
+    coordinates GEOGRAPHY(POINT),
+    
+    -- Contact
+    contact_name VARCHAR(100),
+    contact_phone VARCHAR(50),
+    
+    -- Timing
+    scheduled_date DATE NOT NULL,
+    scheduled_time_start TIME,
+    scheduled_time_end TIME,
+    appointment_number VARCHAR(100),
+    actual_arrival_time TIMESTAMP,
+    actual_departure_time TIMESTAMP,
+    
+    -- Cargo Details
+    pieces INTEGER,
+    weight_lbs INTEGER,
+    commodity TEXT,
+    reference_numbers TEXT[], -- PO numbers, etc
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'pending' CHECK (status IN ('pending', 'arrived', 'loading', 'completed', 'departed')),
+    special_instructions TEXT,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE load_documents (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    load_id UUID REFERENCES loads(id) ON DELETE CASCADE,
+    
+    -- Document Details
+    document_type VARCHAR(100) NOT NULL, -- 'rate_con', 'bol', 'pod', 'invoice', 'lumper_receipt', etc
+    file_url TEXT NOT NULL,
+    file_name VARCHAR(255) NOT NULL,
+    file_size INTEGER,
+    mime_type VARCHAR(100),
+    
+    -- Metadata
+    uploaded_by UUID REFERENCES users(id),
+    uploaded_at TIMESTAMP DEFAULT NOW(),
+    description TEXT
+);
+
+CREATE TABLE load_tracking (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    load_id UUID REFERENCES loads(id) ON DELETE CASCADE,
+    
+    -- Location Data
+    latitude DECIMAL(10, 8),
+    longitude DECIMAL(11, 8),
+    location GEOGRAPHY(POINT),
+    
+    -- Status
+    status_update VARCHAR(255),
+    event_type VARCHAR(100), -- 'location_update', 'status_change', 'eld_update'
+    
+    -- Additional Data
+    speed_mph DECIMAL(5, 2),
+    heading DECIMAL(5, 2),
+    odometer INTEGER,
+    
+    -- Source
+    source VARCHAR(50) CHECK (source IN ('gps', 'eld', 'driver_app', 'manual', 'edi')),
+    
+    -- Timestamp
+    tracked_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE load_status_history (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    load_id UUID REFERENCES loads(id) ON DELETE CASCADE,
+    
+    -- Status Change
+    old_status VARCHAR(50),
+    new_status VARCHAR(50) NOT NULL,
+    
+    -- Details
+    notes TEXT,
+    changed_by UUID REFERENCES users(id),
+    changed_at TIMESTAMP DEFAULT NOW(),
+    
+    -- Location at time of change
+    location GEOGRAPHY(POINT)
+);
+
+-- ================================================================
+-- INVOICING & ACCOUNTING
+-- ================================================================
+
+CREATE TABLE invoices (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Invoice Details
+    invoice_number VARCHAR(50) UNIQUE NOT NULL,
+    invoice_type VARCHAR(50) CHECK (invoice_type IN ('customer', 'carrier', 'vendor')),
+    
+    -- Related Entities
+    customer_id UUID REFERENCES customers(id),
+    carrier_id UUID REFERENCES carriers(id),
+    load_id UUID REFERENCES loads(id),
+    
+    -- Financial
+    subtotal DECIMAL(10, 2) NOT NULL,
+    tax_amount DECIMAL(10, 2) DEFAULT 0,
+    discount_amount DECIMAL(10, 2) DEFAULT 0,
+    total_amount DECIMAL(10, 2) NOT NULL,
+    amount_paid DECIMAL(10, 2) DEFAULT 0,
+    balance_due DECIMAL(10, 2) NOT NULL,
+    
+    -- Dates
+    invoice_date DATE NOT NULL,
+    due_date DATE NOT NULL,
+    paid_date DATE,
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'draft' CHECK (status IN ('draft', 'sent', 'viewed', 'partial', 'paid', 'overdue', 'cancelled', 'disputed')),
+    
+    -- Payment
+    payment_method VARCHAR(50) CHECK (payment_method IN ('check', 'ach', 'wire', 'credit_card', 'factoring', 'quickpay')),
+    payment_reference VARCHAR(100),
+    
+    -- Factoring
+    is_factored BOOLEAN DEFAULT FALSE,
+    factoring_company VARCHAR(255),
+    factoring_date DATE,
+    factoring_fee DECIMAL(10, 2),
+    
+    -- Documents
+    pdf_url TEXT,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    created_by UUID REFERENCES users(id),
+    sent_at TIMESTAMP,
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE invoice_line_items (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    invoice_id UUID REFERENCES invoices(id) ON DELETE CASCADE,
+    
+    -- Line Item Details
+    line_number INTEGER NOT NULL,
+    description TEXT NOT NULL,
+    item_type VARCHAR(100), -- 'linehaul', 'fuel_surcharge', 'detention', 'lumper', etc
+    
+    -- Pricing
+    quantity DECIMAL(10, 2) DEFAULT 1,
+    unit_price DECIMAL(10, 4) NOT NULL,
+    total_price DECIMAL(10, 2) NOT NULL,
+    
+    -- Tax
+    is_taxable BOOLEAN DEFAULT FALSE,
+    tax_rate DECIMAL(5, 4),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE payments (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Payment Details
+    payment_number VARCHAR(50) UNIQUE NOT NULL,
+    payment_type VARCHAR(50) CHECK (payment_type IN ('received', 'sent')),
+    
+    -- Related Entities
+    invoice_id UUID REFERENCES invoices(id),
+    customer_id UUID REFERENCES customers(id),
+    carrier_id UUID REFERENCES carriers(id),
+    
+    -- Amount
+    amount DECIMAL(10, 2) NOT NULL,
+    
+    -- Method
+    payment_method VARCHAR(50) CHECK (payment_method IN ('check', 'ach', 'wire', 'credit_card', 'cash', 'factoring')),
+    check_number VARCHAR(50),
+    transaction_id VARCHAR(100),
+    
+    -- Dates
+    payment_date DATE NOT NULL,
+    deposit_date DATE,
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'pending' CHECK (status IN ('pending', 'cleared', 'bounced', 'cancelled')),
+    
+    -- Bank Account
+    bank_account VARCHAR(100),
+    
+    -- Notes
+    notes TEXT,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    created_by UUID REFERENCES users(id)
+);
+
+CREATE TABLE driver_settlements (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    driver_id UUID REFERENCES drivers(id) ON DELETE CASCADE,
+    
+    -- Settlement Period
+    settlement_number VARCHAR(50) UNIQUE NOT NULL,
+    period_start DATE NOT NULL,
+    period_end DATE NOT NULL,
+    
+    -- Gross Pay
+    total_miles INTEGER DEFAULT 0,
+    loaded_miles INTEGER DEFAULT 0,
+    mileage_pay DECIMAL(10, 2) DEFAULT 0,
+    load_pay DECIMAL(10, 2) DEFAULT 0,
+    bonus_pay DECIMAL(10, 2) DEFAULT 0,
+    other_pay DECIMAL(10, 2) DEFAULT 0,
+    gross_pay DECIMAL(10, 2) NOT NULL,
+    
+    -- Deductions
+    fuel_deductions DECIMAL(10, 2) DEFAULT 0,
+    truck_payment DECIMAL(10, 2) DEFAULT 0,
+    insurance_deductions DECIMAL(10, 2) DEFAULT 0,
+    escrow_deductions DECIMAL(10, 2) DEFAULT 0,
+    other_deductions DECIMAL(10, 2) DEFAULT 0,
+    total_deductions DECIMAL(10, 2) DEFAULT 0,
+    
+    -- Net Pay
+    net_pay DECIMAL(10, 2) NOT NULL,
+    
+    -- Payment
+    payment_date DATE,
+    payment_method VARCHAR(50) CHECK (payment_method IN ('direct_deposit', 'check', 'comdata', 'efs')),
+    payment_status VARCHAR(50) DEFAULT 'pending' CHECK (payment_status IN ('pending', 'paid', 'cancelled')),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    created_by UUID REFERENCES users(id),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE settlement_line_items (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    settlement_id UUID REFERENCES driver_settlements(id) ON DELETE CASCADE,
+    load_id UUID REFERENCES loads(id),
+    
+    -- Line Item Details
+    description TEXT NOT NULL,
+    item_type VARCHAR(100), -- 'mileage', 'detention', 'layover', 'bonus', 'deduction'
+    
+    -- Amounts
+    quantity DECIMAL(10, 2),
+    rate DECIMAL(10, 4),
+    amount DECIMAL(10, 2) NOT NULL,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- ================================================================
+-- DISPATCH & ROUTING
+-- ================================================================
+
+CREATE TABLE dispatch_board (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    load_id UUID REFERENCES loads(id) ON DELETE CASCADE,
+    
+    -- Assignment
+    assigned_driver_id UUID REFERENCES drivers(id),
+    assigned_truck_id UUID REFERENCES trucks(id),
+    assigned_trailer_id UUID REFERENCES trailers(id),
+    dispatcher_id UUID REFERENCES users(id),
+    
+    -- Dispatch Status
+    dispatch_status VARCHAR(50) DEFAULT 'unassigned' CHECK (dispatch_status IN (
+        'unassigned', 'assigned', 'accepted', 'rejected', 'en_route', 'completed'
+    )),
+    
+    -- Assignment Details
+    assigned_at TIMESTAMP,
+    accepted_at TIMESTAMP,
+    rejected_at TIMESTAMP,
+    rejection_reason TEXT,
+    
+    -- Route Planning
+    planned_route JSONB, -- Array of waypoints
+    estimated_distance_miles INTEGER,
+    estimated_duration_hours DECIMAL(5, 2),
+    
+    -- Driver Acceptance
+    driver_notes TEXT,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE route_optimization (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Route Details
+    route_name VARCHAR(255),
+    driver_id UUID REFERENCES drivers(id),
+    truck_id UUID REFERENCES trucks(id),
+    
+    -- Loads in Route
+    load_ids UUID[], -- Array of load IDs
+    
+    -- Route Metrics
+    total_distance_miles INTEGER,
+    estimated_duration_hours DECIMAL(5, 2),
+    total_revenue DECIMAL(10, 2),
+    estimated_fuel_cost DECIMAL(10, 2),
+    profit_margin DECIMAL(10, 2),
+    
+    -- Optimization Score
+    optimization_score DECIMAL(5, 2), -- How optimal is this route (0-100)
+    
+    -- Route Data
+    route_data JSONB, -- Full route with waypoints, timing, etc
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'draft' CHECK (status IN ('draft', 'active', 'completed', 'cancelled')),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    created_by UUID REFERENCES users(id)
+);
+
+-- ================================================================
+-- COMMUNICATION & MESSAGING
+-- ================================================================
+
+CREATE TABLE messages (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Message Details
+    subject VARCHAR(255),
+    body TEXT NOT NULL,
+    message_type VARCHAR(50) CHECK (message_type IN ('email', 'sms', 'push', 'in_app', 'dispatch')),
+    
+    -- Sender/Recipient
+    sender_id UUID REFERENCES users(id),
+    recipient_id UUID REFERENCES users(id),
+    recipient_type VARCHAR(50) CHECK (recipient_type IN ('driver', 'dispatcher', 'customer', 'carrier')),
+    
+    -- Related Entity
+    load_id UUID REFERENCES loads(id),
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'sent' CHECK (status IN ('draft', 'sent', 'delivered', 'read', 'failed')),
+    sent_at TIMESTAMP DEFAULT NOW(),
+    delivered_at TIMESTAMP,
+    read_at TIMESTAMP,
+    
+    -- Priority
+    priority VARCHAR(20) CHECK (priority IN ('low', 'normal', 'high', 'urgent')),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE notifications (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+    
+    -- Notification Details
+    title VARCHAR(255) NOT NULL,
+    body TEXT NOT NULL,
+    notification_type VARCHAR(100) NOT NULL, -- 'load_assigned', 'payment_received', 'document_expiring', etc
+    
+    -- Related Entity
+    related_entity_type VARCHAR(50), -- 'load', 'invoice', 'driver', etc
+    related_entity_id UUID,
+    
+    -- Actions
+    action_url TEXT,
+    action_label VARCHAR(100),
+    
+    -- Status
+    is_read BOOLEAN DEFAULT FALSE,
+    read_at TIMESTAMP,
+    
+    -- Delivery
+    delivery_method VARCHAR(50) CHECK (delivery_method IN ('in_app', 'email', 'sms', 'push')),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    expires_at TIMESTAMP
+);
+
+-- ================================================================
+-- FUEL & EXPENSES
+-- ================================================================
+
+CREATE TABLE fuel_cards (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Card Details
+    card_number VARCHAR(50) UNIQUE NOT NULL,
+    card_provider VARCHAR(100), -- 'WEX', 'Comdata', 'EFS', etc
+    
+    -- Assignment
+    driver_id UUID REFERENCES drivers(id),
+    truck_id UUID REFERENCES trucks(id),
+    
+    -- Limits
+    daily_limit DECIMAL(10, 2),
+    weekly_limit DECIMAL(10, 2),
+    transaction_limit DECIMAL(10, 2),
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'active' CHECK (status IN ('active', 'suspended', 'cancelled', 'lost', 'stolen')),
+    
+    -- Dates
+    issue_date DATE,
+    expiry_date DATE,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE fuel_transactions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Transaction Details
+    fuel_card_id UUID REFERENCES fuel_cards(id),
+    driver_id UUID REFERENCES drivers(id),
+    truck_id UUID REFERENCES trucks(id),
+    load_id UUID REFERENCES loads(id),
+    
+    -- Fuel Details
+    gallons DECIMAL(10, 3) NOT NULL,
+    price_per_gallon DECIMAL(10, 4) NOT NULL,
+    total_amount DECIMAL(10, 2) NOT NULL,
+    fuel_type VARCHAR(50) CHECK (fuel_type IN ('diesel', 'gasoline', 'def', 'reefer_fuel')),
+    
+    -- Location
+    station_name VARCHAR(255),
+    station_address VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(50),
+    zip_code VARCHAR(20),
+    location GEOGRAPHY(POINT),
+    
+    -- Odometer
+    odometer_reading INTEGER,
+    
+    -- Transaction Info
+    transaction_date TIMESTAMP NOT NULL,
+    authorization_code VARCHAR(100),
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'approved' CHECK (status IN ('pending', 'approved', 'declined', 'disputed')),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE expenses (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Expense Details
+    expense_type VARCHAR(100) NOT NULL, -- 'fuel', 'tolls', 'parking', 'maintenance', 'food', 'lodging', 'lumper'
+    description TEXT,
+    
+    -- Related Entities
+    driver_id UUID REFERENCES drivers(id),
+    truck_id UUID REFERENCES trucks(id),
+    load_id UUID REFERENCES loads(id),
+    
+    -- Amount
+    amount DECIMAL(10, 2) NOT NULL,
+    tax_amount DECIMAL(10, 2) DEFAULT 0,
+    
+    -- Payment
+    payment_method VARCHAR(50) CHECK (payment_method IN ('company_card', 'fuel_card', 'cash', 'personal', 'comcheck')),
+    
+    -- Receipt
+    receipt_url TEXT,
+    receipt_number VARCHAR(100),
+    
+    -- Location
+    vendor_name VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(50),
+    
+    -- Dates
+    expense_date DATE NOT NULL,
+    
+    -- Reimbursement
+    is_reimbursable BOOLEAN DEFAULT TRUE,
+    reimbursement_status VARCHAR(50) DEFAULT 'pending' CHECK (reimbursement_status IN ('pending', 'approved', 'denied', 'paid')),
+    reimbursed_date DATE,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    created_by UUID REFERENCES users(id),
+    approved_by UUID REFERENCES users(id),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+-- ================================================================
+-- LOAD BOARD & MARKETPLACE
+-- ================================================================
+
+CREATE TABLE posted_loads (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    load_id UUID REFERENCES loads(id),
+    
+    -- Posting Details
+    posting_title VARCHAR(255),
+    posting_description TEXT,
+    
+    -- Load Summary
+    equipment_type VARCHAR(50) NOT NULL,
+    weight_lbs INTEGER,
+    length_feet DECIMAL(5, 2),
+    
+    -- Origin
+    origin_city VARCHAR(100) NOT NULL,
+    origin_state VARCHAR(50) NOT NULL,
+    origin_zip VARCHAR(20),
+    pickup_date DATE NOT NULL,
+    
+    -- Destination
+    destination_city VARCHAR(100) NOT NULL,
+    destination_state VARCHAR(50) NOT NULL,
+    destination_zip VARCHAR(20),
+    delivery_date DATE NOT NULL,
+    
+    -- Distance & Rate
+    total_miles INTEGER,
+    offered_rate DECIMAL(10, 2),
+    rate_per_mile DECIMAL(10, 4),
+    
+    -- Posting Details
+    posted_at TIMESTAMP DEFAULT NOW(),
+    expires_at TIMESTAMP,
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'active' CHECK (status IN ('active', 'pending', 'awarded', 'cancelled', 'expired')),
+    
+    -- Visibility
+    is_public BOOLEAN DEFAULT TRUE,
+    preferred_carriers UUID[], -- Array of carrier IDs
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    created_by UUID REFERENCES users(id)
+);
+
+CREATE TABLE load_board_bids (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    posted_load_id UUID REFERENCES posted_loads(id) ON DELETE CASCADE,
+    carrier_id UUID REFERENCES carriers(id) ON DELETE CASCADE,
+    
+    -- Bid Details
+    bid_amount DECIMAL(10, 2) NOT NULL,
+    message TEXT,
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'pending' CHECK (status IN ('pending', 'accepted', 'rejected', 'withdrawn', 'expired')),
+    
+    -- Dates
+    bid_at TIMESTAMP DEFAULT NOW(),
+    responded_at TIMESTAMP,
+    expires_at TIMESTAMP,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+-- ================================================================
+-- COMPLIANCE & SAFETY
+-- ================================================================
+
+CREATE TABLE hos_logs (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    driver_id UUID REFERENCES drivers(id) ON DELETE CASCADE,
+    truck_id UUID REFERENCES trucks(id),
+    
+    -- Log Date
+    log_date DATE NOT NULL,
+    
+    -- Duty Status
+    duty_status VARCHAR(50) NOT NULL CHECK (duty_status IN ('off_duty', 'sleeper_berth', 'driving', 'on_duty_not_driving', 'personal_conveyance', 'yard_move')),
+    
+    -- Time
+    start_time TIMESTAMP NOT NULL,
+    end_time TIMESTAMP,
+    duration_minutes INTEGER,
+    
+    -- Location
+    location VARCHAR(255),
+    coordinates GEOGRAPHY(POINT),
+    odometer INTEGER,
+    
+    -- ELD Data
+    eld_device_id VARCHAR(100),
+    is_automatic BOOLEAN DEFAULT TRUE,
+    
+    -- Annotations
+    notes TEXT,
+    
+    -- Violations
+    has_violation BOOLEAN DEFAULT FALSE,
+    violation_type VARCHAR(100),
+    
+    -- Certification
+    is_certified BOOLEAN DEFAULT FALSE,
+    certified_at TIMESTAMP,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE ifta_reports (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Report Period
+    quarter INTEGER CHECK (quarter BETWEEN 1 AND 4),
+    year INTEGER,
+    
+    -- Summary Data
+    total_miles INTEGER DEFAULT 0,
+    total_gallons DECIMAL(10, 3) DEFAULT 0,
+    total_tax_due DECIMAL(10, 2) DEFAULT 0,
+    
+    -- Jurisdiction Data (JSONB for flexibility)
+    jurisdiction_data JSONB, -- {"state": {"miles": 1000, "gallons": 100, "tax": 50}, ...}
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'draft' CHECK (status IN ('draft', 'submitted', 'accepted', 'rejected')),
+    
+    -- Filing
+    filed_date DATE,
+    filed_by UUID REFERENCES users(id),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE dot_inspections (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    
+    -- Inspection Details
+    inspection_level VARCHAR(50) CHECK (inspection_level IN ('1', '2', '3', '4', '5', '6')),
+    inspection_date DATE NOT NULL,
+    inspection_number VARCHAR(100),
+    
+    -- Related Assets
+    truck_id UUID REFERENCES trucks(id),
+    trailer_id UUID REFERENCES trailers(id),
+    driver_id UUID REFERENCES drivers(id),
+    
+    -- Location
+    inspection_location VARCHAR(255),
+    state VARCHAR(50),
+    
+    -- Result
+    result VARCHAR(50) CHECK (result IN ('pass', 'pass_with_defects', 'out_of_service')),
+    
+    -- Violations
+    violations_found INTEGER DEFAULT 0,
+    out_of_service_violations INTEGER DEFAULT 0,
+    
+    -- Details
+    violations JSONB, -- Array of violation objects
+    inspector_name VARCHAR(100),
+    inspector_badge VARCHAR(50),
+    
+    -- Documents
+    inspection_report_url TEXT,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+CREATE TABLE accidents (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Accident Details
+    accident_date TIMESTAMP NOT NULL,
+    
+    -- Related Assets
+    driver_id UUID REFERENCES drivers(id),
+    truck_id UUID REFERENCES trucks(id),
+    trailer_id UUID REFERENCES trailers(id),
+    load_id UUID REFERENCES loads(id),
+    
+    -- Location
+    location VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(50),
+    coordinates GEOGRAPHY(POINT),
+    
+    -- Severity
+    severity VARCHAR(50) CHECK (severity IN ('minor', 'major', 'fatal')),
+    
+    -- Parties Involved
+    injuries INTEGER DEFAULT 0,
+    fatalities INTEGER DEFAULT 0,
+    vehicles_involved INTEGER DEFAULT 1,
+    
+    -- Fault & Citations
+    at_fault BOOLEAN,
+    citations_issued INTEGER DEFAULT 0,
+    police_report_number VARCHAR(100),
+    
+    -- Damage
+    vehicle_damage_estimate DECIMAL(10, 2),
+    cargo_damage_estimate DECIMAL(10, 2),
+    property_damage_estimate DECIMAL(10, 2),
+    
+    -- Insurance
+    insurance_claim_number VARCHAR(100),
+    claim_status VARCHAR(50) CHECK (claim_status IN ('pending', 'open', 'closed', 'denied')),
+    
+    -- Description
+    description TEXT,
+    
+    -- Documents
+    photos_urls TEXT[],
+    police_report_url TEXT,
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'reported' CHECK (status IN ('reported', 'investigating', 'resolved', 'closed')),
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    reported_by UUID REFERENCES users(id),
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+-- ================================================================
+-- QUOTES & RATE MANAGEMENT
+-- ================================================================
+
+CREATE TABLE quotes (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Quote Details
+    quote_number VARCHAR(50) UNIQUE NOT NULL,
+    customer_id UUID REFERENCES customers(id),
+    
+    -- Load Details (snapshot)
+    origin_city VARCHAR(100),
+    origin_state VARCHAR(50),
+    destination_city VARCHAR(100),
+    destination_state VARCHAR(50),
+    equipment_type VARCHAR(50),
+    weight_lbs INTEGER,
+    
+    -- Pricing
+    quoted_rate DECIMAL(10, 2) NOT NULL,
+    fuel_surcharge DECIMAL(10, 2),
+    accessorial_charges DECIMAL(10, 2),
+    total_quote DECIMAL(10, 2) NOT NULL,
+    
+    -- Validity
+    valid_until DATE,
+    
+    -- Status
+    status VARCHAR(50) DEFAULT 'pending' CHECK (status IN ('draft', 'sent', 'pending', 'accepted', 'rejected', 'expired', 'converted')),
+    
+    -- Conversion
+    converted_to_load_id UUID REFERENCES loads(id),
+    
+    -- Notes
+    notes TEXT,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    created_by UUID REFERENCES users(id),
+    sent_at TIMESTAMP,
+    responded_at TIMESTAMP
+);
+
+CREATE TABLE rate_matrix (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Lane Definition
+    origin_city VARCHAR(100),
+    origin_state VARCHAR(50),
+    origin_zip VARCHAR(20),
+    destination_city VARCHAR(100),
+    destination_state VARCHAR(50),
+    destination_zip VARCHAR(20),
+    
+    -- Equipment
+    equipment_type VARCHAR(50),
+    
+    -- Distance Range
+    min_miles INTEGER,
+    max_miles INTEGER,
+    
+    -- Weight Range
+    min_weight INTEGER,
+    max_weight INTEGER,
+    
+    -- Rates
+    base_rate DECIMAL(10, 2),
+    rate_per_mile DECIMAL(10, 4),
+    minimum_charge DECIMAL(10, 2),
+    
+    -- Fuel Surcharge
+    fuel_surcharge_percentage DECIMAL(5, 2),
+    
+    -- Customer Specific
+    customer_id UUID REFERENCES customers(id),
+    
+    -- Validity
+    effective_date DATE NOT NULL,
+    expiry_date DATE,
+    
+    -- Status
+    is_active BOOLEAN DEFAULT TRUE,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    created_by UUID REFERENCES users(id)
+);
+
+-- ================================================================
+-- ANALYTICS & REPORTING
+-- ================================================================
+
+CREATE TABLE kpi_metrics (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Metric Details
+    metric_name VARCHAR(100) NOT NULL,
+    metric_type VARCHAR(50) CHECK (metric_type IN ('revenue', 'profit', 'utilization', 'efficiency', 'safety', 'customer_satisfaction')),
+    
+    -- Time Period
+    period_type VARCHAR(50) CHECK (period_type IN ('daily', 'weekly', 'monthly', 'quarterly', 'yearly')),
+    period_start DATE NOT NULL,
+    period_end DATE NOT NULL,
+    
+    -- Value
+    metric_value DECIMAL(15, 4) NOT NULL,
+    target_value DECIMAL(15, 4),
+    
+    -- Additional Data
+    metadata JSONB DEFAULT '{}'::jsonb,
+    
+    -- System
+    calculated_at TIMESTAMP DEFAULT NOW(),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE audit_logs (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Action Details
+    user_id UUID REFERENCES users(id),
+    action VARCHAR(100) NOT NULL, -- 'create', 'update', 'delete', 'login', 'logout'
+    entity_type VARCHAR(100) NOT NULL, -- 'load', 'driver', 'invoice', etc
+    entity_id UUID,
+    
+    -- Changes
+    old_values JSONB,
+    new_values JSONB,
+    
+    -- Request Details
+    ip_address INET,
+    user_agent TEXT,
+    
+    -- Timestamp
+    performed_at TIMESTAMP DEFAULT NOW(),
+    
+    -- Additional Context
+    metadata JSONB DEFAULT '{}'::jsonb
+);
+
+-- ================================================================
+-- INTEGRATIONS & API
+-- ================================================================
+
+CREATE TABLE api_keys (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Key Details
+    key_name VARCHAR(255) NOT NULL,
+    api_key TEXT UNIQUE NOT NULL,
+    api_secret TEXT,
+    
+    -- Permissions
+    permissions JSONB DEFAULT '{}'::jsonb,
+    rate_limit INTEGER DEFAULT 1000, -- Requests per hour
+    
+    -- Status
+    is_active BOOLEAN DEFAULT TRUE,
+    
+    -- Usage
+    last_used_at TIMESTAMP,
+    total_requests BIGINT DEFAULT 0,
+    
+    -- Expiry
+    expires_at TIMESTAMP,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    created_by UUID REFERENCES users(id)
+);
+
+CREATE TABLE webhooks (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    company_id UUID REFERENCES companies(id) ON DELETE CASCADE,
+    
+    -- Webhook Details
+    webhook_url TEXT NOT NULL,
+    event_type VARCHAR(100) NOT NULL, -- 'load.created', 'load.updated', 'invoice.paid', etc
+    
+    -- Authentication
+    secret_key TEXT,
+    
+    -- Status
+    is_active BOOLEAN DEFAULT TRUE,
+    
+    -- Retry Configuration
+    max_retries INTEGER DEFAULT 3,
+    retry_delay_seconds INTEGER DEFAULT 60,
+    
+    -- Stats
+    total_calls BIGINT DEFAULT 0,
+    failed_calls BIGINT DEFAULT 0,
+    last_called_at TIMESTAMP,
+    last_success_at TIMESTAMP,
+    last_failure_at TIMESTAMP,
+    
+    -- System
+    created_at TIMESTAMP DEFAULT NOW(),
+    created_by UUID REFERENCES users(id)
+);
+
+CREATE TABLE webhook_logs (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    webhook_id UUID REFERENCES webhooks(id) ON DELETE CASCADE,
+    
+    -- Request
+    request_payload JSONB,
+    request_headers JSONB,
+    
+    -- Response
+    response_status INTEGER,
+    response_body TEXT,
+    response_time_ms INTEGER,
+    
+    -- Status
+    success BOOLEAN,
+    error_message TEXT,
+    
+    -- Retry
+    attempt_number INTEGER DEFAULT 1,
+    
+    -- Timestamp
+    called_at TIMESTAMP DEFAULT NOW()
+);
+
+-- ================================================================
+-- INDEXES FOR PERFORMANCE
+-- ================================================================
+
+-- Users & Authentication
+CREATE INDEX idx_users_company_id ON users(company_id);
+CREATE INDEX idx_users_email ON users(email);
+CREATE INDEX idx_user_sessions_user_id ON user_sessions(user_id);
+CREATE INDEX idx_user_sessions_token ON user_sessions(token);
+
+-- Drivers
+CREATE INDEX idx_drivers_company_id ON drivers(company_id);
+CREATE INDEX idx_drivers_cdl_number ON drivers(cdl_number);
+CREATE INDEX idx_drivers_status ON drivers(current_status);
+CREATE INDEX idx_drivers_location ON drivers USING GIST(current_location);
+
+-- Assets
+CREATE INDEX idx_trucks_company_id ON trucks(company_id);
+CREATE INDEX idx_trucks_status ON trucks(status);
+CREATE INDEX idx_trucks_location ON trucks USING GIST(current_location);
+CREATE INDEX idx_trailers_company_id ON trailers(company_id);
+CREATE INDEX idx_trailers_status ON trailers(status);
+
+-- Loads
+CREATE INDEX idx_loads_company_id ON loads(company_id);
+CREATE INDEX idx_loads_load_number ON loads(load_number);
+CREATE INDEX idx_loads_status ON loads(status);
+CREATE INDEX idx_loads_customer_id ON loads(customer_id);
+CREATE INDEX idx_loads_driver_id ON loads(driver_id);
+CREATE INDEX idx_loads_pickup_date ON loads(pickup_date);
+CREATE INDEX idx_loads_delivery_date ON loads(delivery_date);
+CREATE INDEX idx_load_stops_load_id ON load_stops(load_id);
+CREATE INDEX idx_load_tracking_load_id ON load_tracking(load_id);
+CREATE INDEX idx_load_tracking_location ON load_tracking USING GIST(location);
+
+-- Financial
+CREATE INDEX idx_invoices_company_id ON invoices(company_id);
+CREATE INDEX idx_invoices_customer_id ON invoices(customer_id);
+CREATE INDEX idx_invoices_status ON invoices(status);
+CREATE INDEX idx_invoices_due_date ON invoices(due_date);
+CREATE INDEX idx_payments_invoice_id ON payments(invoice_id);
+
+-- Search Optimization
+CREATE INDEX idx_customers_name_trgm ON customers USING gin(customer_name gin_trgm_ops);
+CREATE INDEX idx_carriers_name_trgm ON carriers USING gin(carrier_name gin_trgm_ops);
+CREATE INDEX idx_loads_reference_trgm ON loads USING gin(reference_number gin_trgm_ops);
+
+-- ================================================================
+-- TRIGGERS FOR AUTO-UPDATING TIMESTAMPS
+-- ================================================================
+
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$ language 'plpgsql';
+
+-- Apply to all tables with updated_at
+CREATE TRIGGER update_companies_updated_at BEFORE UPDATE ON companies FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+CREATE TRIGGER update_users_updated_at BEFORE UPDATE ON users FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+CREATE TRIGGER update_drivers_updated_at BEFORE UPDATE ON drivers FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+CREATE TRIGGER update_trucks_updated_at BEFORE UPDATE ON trucks FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+CREATE TRIGGER update_trailers_updated_at BEFORE UPDATE ON trailers FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+CREATE TRIGGER update_loads_updated_at BEFORE UPDATE ON loads FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+CREATE TRIGGER update_invoices_updated_at BEFORE UPDATE ON invoices FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- ================================================================
+-- VIEWS FOR COMMON QUERIES
+-- ================================================================
+
+-- Active Loads Dashboard
+CREATE VIEW v_active_loads AS
+SELECT 
+    l.id,
+    l.load_number,
+    l.status,
+    l.pickup_date,
+    l.delivery_date,
+    c.customer_name,
+    d.first_name || ' ' || d.last_name as driver_name,
+    t.truck_number,
+    l.customer_rate,
+    l.carrier_rate,
+    l.total_miles
+FROM loads l
+LEFT JOIN customers c ON l.customer_id = c.id
+LEFT JOIN drivers d ON l.driver_id = d.id
+LEFT JOIN trucks t ON l.truck_id = t.id
+WHERE l.status NOT IN ('delivered', 'completed', 'cancelled');
+
+-- Driver Performance
+CREATE VIEW v_driver_performance AS
+SELECT 
+    d.id,
+    d.first_name || ' ' || d.last_name as driver_name,
+    COUNT(l.id) as total_loads,
+    SUM(l.total_miles) as total_miles,
+    AVG(l.total_miles) as avg_miles_per_load,
+    SUM(l.customer_rate) as total_revenue,
+    d.on_time_percentage,
+    d.safety_score
+FROM drivers d
+LEFT JOIN loads l ON d.id = l.driver_id
+WHERE d.employment_status = 'active'
+GROUP BY d.id, d.first_name, d.last_name, d.on_time_percentage, d.safety_score;
+
+-- Outstanding Invoices
+CREATE VIEW v_outstanding_invoices AS
+SELECT 
+    i.id,
+    i.invoice_number,
+    i.invoice_date,
+    i.due_date,
+    i.total_amount,
+    i.balance_due,
+    c.customer_name,
+    CASE 
+        WHEN i.due_date < CURRENT_DATE THEN 'Overdue'
+        WHEN i.due_date = CURRENT_DATE THEN 'Due Today'
+        ELSE 'Pending'
+    END as aging_status,
+    CURRENT_DATE - i.due_date as days_overdue
+FROM invoices i
+LEFT JOIN customers c ON i.customer_id = c.id
+WHERE i.status NOT IN ('paid', 'cancelled')
+    AND i.balance_due > 0;
+
+-- ================================================================
+-- SAMPLE DATA SEED (Optional - for development)
+-- ================================================================
+
+-- Insert a default company
+INSERT INTO companies (legal_name, company_type, mc_number, dot_number, status)
+VALUES ('OpenHWY Trucking', 'carrier', 'MC-123456', 'DOT-7891011', 'active');
+
+COMMENT ON DATABASE current_database() IS 'OpenHWY TMS - Complete Enterprise Transportation Management System Database';

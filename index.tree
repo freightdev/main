@@ -1,0 +1,309 @@
+.
+├── .env
+│   ├── config
+│   │   ├── dotdirs
+│   │   │   ├── finda
+│   │   │   ├── fixa
+│   │   │   ├── gita
+│   │   │   ├── hypr
+│   │   │   ├── neovide
+│   │   │   ├── nvim
+│   │   │   ├── ranger
+│   │   │   └── serva
+│   │   └── dotfiles
+│   │       ├── .gitconfig
+│   │       ├── .nanorc
+│   │       ├── .zprofile
+│   │       ├── .zshenv
+│   │       └── .zshrc
+│   ├── index.tree
+│   ├── main.zsh
+│   ├── scripts
+│   │   ├── agent
+│   │   │   ├── add_missing_docstrings.py
+│   │   │   ├── agency-client.py
+│   │   │   ├── ai-control.sh
+│   │   │   ├── audit_components.sh
+│   │   │   ├── audit-system-status.sh
+│   │   │   ├── build-all.sh
+│   │   │   ├── check-models-integrity.sh
+│   │   │   ├── code-indexer.py
+│   │   │   ├── collection-webhook.py
+│   │   │   ├── create-all-commands.sh
+│   │   │   ├── create-commands.sh
+│   │   │   ├── data-collector-orchestrator.py
+│   │   │   ├── deep-scan.sh
+│   │   │   ├── download-models.sh
+│   │   │   ├── generate_model_configs.py
+│   │   │   ├── index-models.sh
+│   │   │   ├── index-prompts.sh
+│   │   │   ├── install-models.sh
+│   │   │   ├── list-models.sh
+│   │   │   ├── list-prompts.sh
+│   │   │   ├── loader.zsh
+│   │   │   ├── main.zsh
+│   │   │   ├── ollama-cluster.py
+│   │   │   ├── pre-flight.sh
+│   │   │   ├── pull-models.sh
+│   │   │   ├── python-make-init.sh
+│   │   │   ├── setup-auto-sync.sh
+│   │   │   ├── setup-data-collectors.sh
+│   │   │   ├── setup-rag-mcp.sh
+│   │   │   ├── setup.sh
+│   │   │   ├── setup.sh_
+│   │   │   ├── start-agency.sh
+│   │   │   ├── start-all-services.sh
+│   │   │   ├── start-auto-collection.sh
+│   │   │   ├── start.sh
+│   │   │   ├── state-restore.sh
+│   │   │   ├── state-sync.sh
+│   │   │   ├── status-check.sh
+│   │   │   ├── status.sh
+│   │   │   ├── stop-agency.sh
+│   │   │   ├── stop.sh
+│   │   │   ├── system-status.sh
+│   │   │   ├── test-db.sh
+│   │   │   ├── trigger-collection-api.sh
+│   │   │   ├── update_with_env_pairs.py
+│   │   │   └── validate-models.sh
+│   │   ├── collect
+│   │   │   ├── daily-digest.sh
+│   │   │   ├── quick-test.sh
+│   │   │   ├── scrape-leads.sh
+│   │   │   ├── start-lead-system.sh
+│   │   │   ├── status-lead-system.sh
+│   │   │   ├── stop-lead-system.sh
+│   │   │   └── test_leads.py
+│   │   ├── common
+│   │   │   ├── analyze-full-projects.zsh
+│   │   │   ├── barrel-typescript-ui.sh
+│   │   │   ├── c++-api-extractor.sh
+│   │   │   ├── check-for-duplicates.zsh
+│   │   │   ├── check-ollama-cluster.py
+│   │   │   ├── check-recent-outputs.sh
+│   │   │   ├── cleanup-whitespaces.sh
+│   │   │   ├── collab-setups.sh
+│   │   │   ├── convert-json-o-yaml.sh
+│   │   │   ├── convert-yaml-o-json.sh
+│   │   │   ├── git-keep-helper.sh
+│   │   │   ├── helpful-auto-fix.zsh
+│   │   │   ├── push-file-updates.sh
+│   │   │   ├── remove-barrel-typescript-ui.sh
+│   │   │   └── reverse-init-collector.zsh
+│   │   ├── core
+│   │   │   ├── create-node-workers.sh
+│   │   │   ├── deploy.sh
+│   │   │   ├── integrate-rag.sh
+│   │   │   ├── nix-deploy.sh
+│   │   │   └── start-worker.sh
+│   │   ├── golang
+│   │   │   ├── go-auto-fix.sh
+│   │   │   ├── go-build-errors.sh
+│   │   │   ├── go-comprehensive-check.sh
+│   │   │   ├── go-debug-toolkit.sh
+│   │   │   ├── go-fix-content.sh
+│   │   │   ├── go-quick-debug.sh
+│   │   │   ├── go-scaffold-check.sh
+│   │   │   └── go-tools.zsh
+│   │   ├── index.tree
+│   │   ├── install
+│   │   │   ├── install-dependencies.zsh
+│   │   │   ├── install-infrastructure.zsh
+│   │   │   ├── install_llama_cpp.sh
+│   │   │   ├── install-miniconda.sh
+│   │   │   ├── install-poetry.sh
+│   │   │   ├── install-systems.zsh
+│   │   │   ├── install-tools.zsh
+│   │   │   ├── install-yq.sh
+│   │   │   └── install-zsh-5.9.zsh
+│   │   ├── secret
+│   │   │   ├── fix_ssh_config.sh
+│   │   │   └── sync-identity.zsh
+│   │   ├── testing
+│   │   │   ├── go_test
+│   │   │   ├── node_test
+│   │   │   ├── python_test
+│   │   │   ├── pytorch_test
+│   │   │   ├── rust_test
+│   │   │   └── verify-dev-setup.sh
+│   │   └── utility
+│   │       ├── bash_helpers.sh
+│   │       ├── .broken
+│   │       └── package_helpers.sh
+│   └── source
+│       ├── agents
+│       │   ├── gpg-agent.zsh
+│       │   └── ssh-agent.zsh
+│       ├── defaults
+│       │   ├── autoload.zsh
+│       │   ├── color.zsh
+│       │   ├── keybind.zsh
+│       │   ├── setopt.zsh
+│       │   └── zstyle.zsh
+│       ├── functions
+│       │   ├── archive.zsh
+│       │   ├── backup.zsh
+│       │   ├── docker.zsh
+│       │   ├── encryption.zsh
+│       │   ├── finda.zsh
+│       │   ├── fixa.zsh
+│       │   ├── gita.zsh
+│       │   ├── github.zsh
+│       │   ├── history.zsh
+│       │   ├── manifest.zsh
+│       │   ├── network.zsh
+│       │   ├── nuka.zsh
+│       │   ├── quick.zsh
+│       │   ├── scana.zsh
+│       │   ├── search.zsh
+│       │   ├── senda.zsh
+│       │   ├── serva.zsh
+│       │   ├── siza.zsh
+│       │   ├── storage.zsh
+│       │   ├── system.zsh
+│       │   ├── trash.zsh
+│       │   └── vm-manager.zsh
+│       ├── helpers
+│       │   ├── agent_helpers.zsh
+│       │   ├── file_helpers.zsh
+│       │   ├── hydration_helpers.zsh
+│       │   ├── input_helpers.zsh
+│       │   ├── logging_helpers.zsh
+│       │   ├── memory_helpers.zsh
+│       │   ├── model_helpers.zsh
+│       │   ├── network_helpers.zsh
+│       │   ├── node-manager.zsh
+│       │   ├── nomad-integration.zsh
+│       │   ├── output_helpers.zsh
+│       │   ├── parsing_helpers.zsh
+│       │   ├── profile-monitor.zsh
+│       │   ├── resource-monitor.zsh
+│       │   ├── security_helpers.zsh
+│       │   ├── system_helpers.zsh
+│       │   └── validation_helpers.zsh
+│       ├── loader.zsh
+│       ├── settings
+│       │   ├── aliases.zsh
+│       │   ├── exports.zsh
+│       │   ├── plugins.zsh
+│       │   └── prompts.zsh
+│       └── setups
+│           ├── android.zsh
+│           ├── bun.zsh
+│           ├── cargo.zsh
+│           ├── flutter.zsh
+│           ├── ollama.zsh
+│           └── pyenv.zsh
+├── .gitignore
+├── index.tree
+├── infra
+│   ├── cloudflare
+│   │   ├── add-cloudflared-service.sh
+│   │   ├── cfctl.sh
+│   │   └── setup-cloudflared-advanced.sh
+│   └── index.tree
+└── store
+    ├── index.tree
+    ├── private
+    │   ├── backups
+    │   │   ├── index.tree
+    │   │   ├── Mindy_Wiggins
+    │   │   └── Rebecca_Dyer
+    │   ├── clients
+    │   │   ├── Avery_Wiggins
+    │   │   ├── index.html
+    │   │   ├── index.tree
+    │   │   └── Shawn_Rambo
+    │   ├── content
+    │   │   ├── ~Fast&Easy Dispatching LLC~
+    │   │   └── index.tree
+    │   ├── index.tree
+    │   └── prompts
+    │       ├── chat
+    │       ├── code
+    │       ├── content
+    │       ├── core
+    │       ├── creative
+    │       ├── custom
+    │       ├── data
+    │       ├── dev
+    │       ├── index.tree
+    │       ├── legal
+    │       ├── memory
+    │       ├── moderation
+    │       ├── reasoning
+    │       ├── saved
+    │       ├── search
+    │       ├── summarization
+    │       ├── system
+    │       ├── task
+    │       └── voice
+    └── public
+        ├── agents
+        │   ├── auto_assist
+        │   ├── big_bear
+        │   ├── cargo_connect
+        │   ├── direct_dispatch
+        │   ├── error_echo
+        │   ├── fuel_factor
+        │   ├── ghost_guard
+        │   ├── highway_helper
+        │   ├── index.tree
+        │   ├── iron_insight
+        │   ├── jackknife_jailer
+        │   ├── key_keeper
+        │   ├── legal_logger
+        │   ├── memory_mark
+        │   ├── night_nexus
+        │   ├── oversize_overseer
+        │   ├── packet_pilot
+        │   ├── quick_quote
+        │   ├── railroad_ranger
+        │   ├── secure_secret
+        │   ├── trucker_tales
+        │   ├── unit_usage
+        │   ├── voice_validator
+        │   ├── whisper_witness
+        │   ├── xeno_xeno
+        │   ├── yes_yes
+        │   └── zone_zipper
+        ├── backups
+        │   ├── index.tree
+        │   ├── markos
+        │   └── OpenHWY
+        ├── config
+        │   ├── index.tree
+        │   ├── schemas
+        │   ├── settings
+        │   └── templates
+        ├── crates
+        │   ├── agent_tools
+        │   ├── chat_system
+        │   ├── index.tree
+        │   ├── main_core
+        │   ├── mcp_server
+        │   ├── model_runtime
+        │   └── rag_qdrant
+        ├── designs
+        │   ├── astro
+        │   ├── flutter
+        │   ├── index.tree
+        │   ├── jninja2
+        │   ├── nextjs
+        │   └── svelte
+        ├── index.tree
+        ├── packages
+        │   ├── chat-indexer
+        │   ├── index.tree
+        │   ├── pytorch-trainer
+        │   └── template-engine
+        └── studies
+            ├── databases
+            ├── environments
+            ├── index.tree
+            ├── languages
+            ├── machines
+            ├── questions
+            └── scaffolds
+
+126 directories, 181 files

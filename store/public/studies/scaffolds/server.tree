@@ -1,0 +1,52 @@
+.
+├── api-server
+│   └── .gitkeep
+├── auth-server
+│   └── .gitkeep
+├── cdn-server
+│   └── .gitkeep
+├── chat-server
+│   └── .gitkeep
+├── cicd-server
+│   └── .gitkeep
+├── crm-server
+│   └── .gitkeep
+├── data-server
+│   └── .gitkeep
+├── dns-server
+│   └── .gitkeep
+├── edge-server
+│   └── .gitkeep
+├── erp-server
+│   └── .gitkeep
+├── etl-server
+│   └── .gitkeep
+├── ftp-server
+│   └── .gitkeep
+├── http-server
+│   └── .gitkeep
+├── index.tree
+├── ldap-server
+│   └── .gitkeep
+├── llm-server
+│   └── .gitkeep
+├── mail-server
+│   └── .gitkeep
+├── net-server
+│   └── .gitkeep
+├── nft-server
+│   └── .gitkeep
+├── nlp-server
+│   └── .gitkeep
+├── repo-server
+│   └── .gitkeep
+├── saas-service
+│   └── .gitkeep
+├── sdk-server
+│   └── .gitkeep
+├── voip-server
+│   └── .gitkeep
+└── vpn-server
+    └── .gitkeep
+
+25 directories, 25 files

@@ -1,0 +1,30 @@
+.
+├── ai-scaffold.yaml
+├── chats
+│   └── history
+│       ├── chat
+│       │   ├── 2025-07-01T-session.001.yaml
+│       │   └── 2025-07-02T-session-002.yaml
+│       ├── events
+│       │   ├── agent
+│       │   │   └── 2025-07-01.agent.yaml
+│       │   └── system
+│       │       └── 2025-07-01.events.yaml
+│       └── memory
+│           ├── delta
+│           │   ├── 2025-07-01.changes.yaml
+│           │   └── 2050-07-02.changes.yaml
+│           └── snapshot
+│               ├── 2025-07-01.snapshot.yaml
+│               └── 2025-07-02.snapshot.yaml
+├── core
+│   ├── bootstrape
+│   │   ├── healthcheck.yaml
+│   │   └── startup.yaml
+│   └── dsl
+│       ├── agent.marco
+│       ├── hydration.syntax
+│       └── signal.logic
+└── index.tree
+
+13 directories, 15 files
