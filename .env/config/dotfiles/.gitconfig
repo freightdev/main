@@ -13,5 +13,4 @@
 [commit]
 	gpgsign = false
 [safe]
-	directory = /home/markos
     directory = /ws
