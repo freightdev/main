@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0e27;
+            color: #e0e6ed;
+            padding: 16px;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .auth-status {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .status-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.active { background: #10b981; }
+        .status-dot.warning { background: #f59e0b; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
+            background: #1a1f3a;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #2d3548;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .metric-value.warning { color: #f59e0b; }
+        .metric-value.success { color: #10b981; }
+
+        .metric-label {
+            font-size: 13px;
+            color: #9ca3af;
+        }
+
+        .metric-change {
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .metric-change.up { color: #ef4444; }
+        .metric-change.down { color: #10b981; }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #2d3548;
+            overflow-x: auto;
+        }
+
+        .tab {
+            background: transparent;
+            border: none;
+            color: #9ca3af;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .tab:hover {
+            color: #e0e6ed;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .user-card {
+            background: #1a1f3a;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid #2d3548;
+            transition: all 0.3s;
+        }
+
+        .user-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .user-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .user-details {
+            flex: 1;
+        }
+
+        .user-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .user-email {
+            font-size: 13px;
+            color: #9ca3af;
+            font-family: monospace;
+        }
+
+        .user-status {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .user-status.active {
+            background: #065f46;
+            color: #10b981;
+        }
+
+        .user-status.suspended {
+            background: #7f1d1d;
+            color: #fca5a5;
+        }
+
+        .user-status.pending {
+            background: #78350f;
+            color: #fcd34d;
+        }
+
+        .user-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .meta-item {
+            background: #0f1629;
+            padding: 10px 12px;
+            border-radius: 6px;
+        }
+
+        .meta-label {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e0e6ed;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            flex: 1;
+            background: #2d3548;
+            border: none;
+            color: #9ca3af;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background: #3d4556;
+            color: #e0e6ed;
+        }
+
+        .action-btn.danger {
+            background: #7f1d1d;
+            color: #fca5a5;
+        }
+
+        .action-btn.danger:hover {
+            background: #991b1b;
+        }
+
+        .session-card {
+            background: #1a1f3a;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid #2d3548;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .session-info {
+            flex: 1;
+        }
+
+        .session-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .device-icon {
+            font-size: 20px;
+        }
+
+        .session-device {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .session-details {
+            font-size: 12px;
+            color: #9ca3af;
+            padding-left: 32px;
+        }
+
+        .session-active {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .role-card {
+            background: #1a1f3a;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid #2d3548;
+        }
+
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .role-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .role-count {
+            background: #2d3548;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .permissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .permission-item {
+            background: #0f1629;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .permission-icon {
+            color: #10b981;
+        }
+
+        .activity-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .activity-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #2d3548;
+        }
+
+        .activity-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .activity-dot {
+            position: absolute;
+            left: -33px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid #1a1f3a;
+        }
+
+        .activity-dot.success { background: #10b981; }
+        .activity-dot.warning { background: #f59e0b; }
+        .activity-dot.error { background: #ef4444; }
+
+        .activity-content {
+            background: #1a1f3a;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #2d3548;
+        }
+
+        .activity-time {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-bottom: 4px;
+        }
+
+        .activity-text {
+            font-size: 13px;
+        }
+
+        .activity-details {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px solid #2d3548;
+        }
+
+        .mfa-card {
+            background: #1a1f3a;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid #2d3548;
+        }
+
+        .mfa-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .mfa-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .mfa-enabled {
+            background: #065f46;
+            color: #10b981;
+            padding: 6px 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .mfa-disabled {
+            background: #7f1d1d;
+            color: #fca5a5;
+            padding: 6px 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .mfa-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mfa-method {
+            background: #0f1629;
+            padding: 12px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .method-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .method-icon {
+            font-size: 24px;
+        }
+
+        .method-details {
+            font-size: 13px;
+        }
+
+        .method-type {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .chart-container {
+            background: #1a1f3a;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2d3548;
+            margin-bottom: 16px;
+        }
+
+        .chart-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 16px;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            height: 150px;
+        }
+
+        .bar {
+            flex: 1;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 4px 4px 0 0;
+            min-height: 10px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #9ca3af;
+            white-space: nowrap;
+        }
+
+        .api-key-card {
+            background: #1a1f3a;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid #2d3548;
+        }
+
+        .api-key-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .api-key-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .api-key-value {
+            font-family: monospace;
+            font-size: 12px;
+            color: #9ca3af;
+            background: #0f1629;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .api-key-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 768px) {
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .user-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔐 Authentication & Access Control</h1>
+        <div class="auth-status">
+            <div class="status-badge">
+                <span class="status-dot active"></span>
+                <span>Zitadel: Online</span>
+            </div>
+            <div class="status-badge">
+                <span class="status-dot active"></span>
+                <span>Active Users: <strong id="activeUsers">0</strong></span>
+            </div>
+            <div class="status-badge">
+                <span class="status-dot warning"></span>
+                <span>Failed Logins (24h): <strong id="failedLogins">0</strong></span>
+            </div>
+            <div class="status-badge">
+                <span>MFA Enabled: <strong id="mfaPercentage">0%</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-value" id="totalUsers">0</div>
+            <div class="metric-label">Total Users</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value success" id="activeSessions">0</div>
+            <div class="metric-label">Active Sessions</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value" id="successfulLogins">0</div>
+            <div class="metric-label">Logins (24h)</div>
+            <div class="metric-change down">↓ 12%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value warning" id="failedAttempts">0</div>
+            <div class="metric-label">Failed Attempts</div>
+            <div class="metric-change up">↑ 8%</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-value" id="apiKeys">0</div>
+            <div class="metric-label">API Keys</div>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('users')">👥 Users</button>
+        <button class="tab" onclick="switchTab('sessions')">🖥️ Sessions</button>
+        <button class="tab" onclick="switchTab('roles')">👑 Roles & Permissions</button>
+        <button class="tab" onclick="switchTab('activity')">📊 Activity Log</button>
+        <button class="tab" onclick="switchTab('mfa')">🔒 MFA</button>
+        <button class="tab" onclick="switchTab('apikeys')">🔑 API Keys</button>
+    </div>
+
+    <!-- Users Tab -->
+    <div class="tab-content active" id="users-tab">
+        <div id="usersContainer"></div>
+    </div>
+
+    <!-- Sessions Tab -->
+    <div class="tab-content" id="sessions-tab">
+        <div id="sessionsContainer"></div>
+    </div>
+
+    <!-- Roles Tab -->
+    <div class="tab-content" id="roles-tab">
+        <div id="rolesContainer"></div>
+    </div>
+
+    <!-- Activity Tab -->
+    <div class="tab-content" id="activity-tab">
+        <div class="chart-container">
+            <div class="chart-title">Login Activity (Last 7 Days)</div>
+            <div class="bar-chart" id="activityChart"></div>
+        </div>
+        <div class="activity-timeline" id="activityLog"></div>
+    </div>
+
+    <!-- MFA Tab -->
+    <div class="tab-content" id="mfa-tab">
+        <div id="mfaContainer"></div>
+    </div>
+
+    <!-- API Keys Tab -->
+    <div class="tab-content" id="apikeys-tab">
+        <div id="apiKeysContainer"></div>
+    </div>
+
+    <script>
+        let currentTab = 'users';
+
+        function generateMockData() {
+            return {
+                users: [
+                    {
+                        id: 'user-001',
+                        name: 'Admin User',
+                        email: 'admin@example.com',
+                        status: 'active',
+                        role: 'Administrator',
+                        lastLogin: '2 minutes ago',
+                        loginCount: 1247,
+                        mfaEnabled: true,
+                        created: '2024-01-15'
+                    },
+                    {
+                        id: 'user-002',
+                        name: 'John Doe',
+                        email: 'john@acme.com',
+                        status: 'active',
+                        role: 'Client Admin',
+                        lastLogin: '15 minutes ago',
+                        loginCount: 432,
+                        mfaEnabled: true,
+                        created: '2024-06-20'
+                    },
+                    {
+                        id: 'user-003',
+                        name: 'Jane Smith',
+                        email: 'jane@global.com',
+                        status: 'active',
+                        role: 'Client Admin',
+                        lastLogin: '2 hours ago',
+                        loginCount: 156,
+                        mfaEnabled: false,
+                        created: '2024-08-10'
+                    },
+                    {
+                        id: 'user-004',
+                        name: 'Bob Wilson',
+                        email: 'bob@devshop.com',
+                        status: 'active',
+                        role: 'Client User',
+                        lastLogin: '1 day ago',
+                        loginCount: 87,
+                        mfaEnabled: true,
+                        created: '2024-09-05'
+                    },
+                    {
+                        id: 'user-005',
+                        name: 'Alice Brown',
+                        email: 'alice@techstart.com',
+                        status: 'pending',
+                        role: 'Client User',
+                        lastLogin: 'Never',
+                        loginCount: 0,
+                        mfaEnabled: false,
+                        created: '2024-12-18'
+                    }
+                ],
+                sessions: [
+                    {
+                        user: 'Admin User',
+                        device: 'MacBook Pro',
+                        browser: 'Chrome 120',
+                        ip: '192.168.1.100',
+                        location: 'San Francisco, US',
+                        started: '2 hours ago',
+                        lastActivity: '2 minutes ago',
+                        active: true
+                    },
+                    {
+                        user: 'John Doe',
+                        device: 'iPhone 15',
+                        browser: 'Safari',
+                        ip: '10.0.1.45',
+                        location: 'New York, US',
+                        started: '15 minutes ago',
+                        lastActivity: '15 minutes ago',
+                        active: true
+                    },
+                    {
+                        user: 'Jane Smith',
+                        device: 'Windows PC',
+                        browser: 'Edge 120',
+                        ip: '172.16.0.89',
+                        location: 'London, UK',
+                        started: '2 hours ago',
+                        lastActivity: '2 hours ago',
+                        active: false
+                    }
+                ],
+                roles: [
+                    {
+                        name: 'Administrator',
+                        users: 1,
+                        permissions: [
+                            'Full System Access',
+                            'User Management',
+                            'Service Configuration',
+                            'Security Settings',
+                            'Billing Management',
+                            'API Access'
+                        ]
+                    },
+                    {
+                        name: 'Client Admin',
+                        users: 2,
+                        permissions: [
+                            'View Own Services',
+                            'Deploy Applications',
+                            'Manage Team Members',
+                            'View Logs',
+                            'API Access'
+                        ]
+                    },
+                    {
+                        name: 'Client User',
+                        users: 2,
+                        permissions: [
+                            'View Own Services',
+                            'View Logs',
+                            'Basic API Access'
+                        ]
+                    }
+                ],
+                activity: [
+                    { time: '14:32:15', type: 'success', user: 'admin@example.com', action: 'Logged in successfully', ip: '192.168.1.100', device: 'Chrome/MacOS' },
+                    { time: '14:18:42', type: 'success', user: 'john@acme.com', action: 'Logged in successfully', ip: '10.0.1.45', device: 'Safari/iOS' },
+                    { time: '13:45:23', type: 'error', user: 'unknown', action: 'Failed login attempt', ip: '185.220.101.42', device: 'Unknown' },
+                    { time: '12:55:33', type: 'success', user: 'jane@global.com', action: 'Password changed', ip: '172.16.0.89', device: 'Edge/Windows' },
+                    { time: '11:23:17', type: 'warning', user: 'bob@devshop.com', action: 'Failed MFA verification', ip: '203.0.113.5', device: 'Firefox/Linux' },
+                    { time: '10:45:52', type: 'success', user: 'admin@example.com', action: 'Created new user', ip: '192.168.1.100', device: 'Chrome/MacOS' }
+                ],
+                loginActivity: [245, 267, 189, 312, 278, 234, 289],
+                mfaStats: [
+                    { user: 'Admin User', email: 'admin@example.com', methods: ['TOTP App', 'Backup Codes'], enabled: true },
+                    { user: 'John Doe', email: 'john@acme.com', methods: ['TOTP App'], enabled: true },
+                    { user: 'Jane Smith', email: 'jane@global.com', methods: [], enabled: false },
+                    { user: 'Bob Wilson', email: 'bob@devshop.com', methods: ['TOTP App', 'SMS'], enabled: true },
+                    { user: 'Alice Brown', email: 'alice@techstart.com', methods: [], enabled: false }
+                ],
+                apiKeys: [
+                    { name: 'Production API', key: 'sk_live_***************************xyz', created: '2024-06-15', lastUsed: '2 minutes ago', requests: 1247 },
+                    { name: 'Staging API', key: 'sk_test_***************************abc', created: '2024-08-20', lastUsed: '1 hour ago', requests: 432 },
+                    { name: 'CI/CD Pipeline', key: 'sk_live_***************************def', created: '2024-09-10', lastUsed: '15 minutes ago', requests: 789 }
+                ]
+            };
+        }
+
+        function renderUsers(users) {
+            return users.map(user => {
+                const initial = user.name.charAt(0);
+                return `
+                    <div class="user-card">
+                        <div class="user-header">
+                            <div class="user-info">
+                                <div class="user-avatar">${initial}</div>
+                                <div class="user-details">
+                                    <div class="user-name">${user.name}</div>
+                                    <div class="user-email">${user.email}</div>
+                                </div>
+                            </div>
+                            <span class="user-status ${user.status}">${user.status.toUpperCase()}</span>
+                        </div>
+
+                        <div class="user-meta">
+                            <div class="meta-item">
+                                <div class="meta-label">Role</div>
+                                <div class="meta-value">${user.role}</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Last Login</div>
+                                <div class="meta-value">${user.lastLogin}</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Login Count</div>
+                                <div class="meta-value">${user.loginCount}</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">MFA</div>
+                                <div class="meta-value">${user.mfaEnabled ? '✅ Enabled' : '❌ Disabled'}</div>
+                            </div>
+                            <div class="meta-item">
+                                <div class="meta-label">Created</div>
+                                <div class="meta-value">${user.created}</div>
+                            </div>
+                        </div>
+
+                        <div class="user-actions">
+                            <button class="action-btn" onclick="viewUserDetails('${user.id}')">Details</button>
+                            <button class="action-btn" onclick="editUser('${user.id}')">Edit</button>
+                            <button class="action-btn" onclick="resetPassword('${user.id}')">Reset Password</button>
+                            ${user.status === 'active' ? `
+                                <button class="action-btn danger" onclick="revokeSession('${session.user}')">Revoke</button>
+                </div>
+            `).join('');
+        }
+
+        function renderRoles(roles) {
+            return roles.map(role => `
+                <div class="role-card">
+                    <div class="role-header">
+                        <h3 class="role-name">${role.name}</h3>
+                        <span class="role-count">${role.users} users</span>
+                    </div>
+                    <div class="permissions-grid">
+                        ${role.permissions.map(perm => `
+                            <div class="permission-item">
+                                <span class="permission-icon">✓</span>
+                                <span>${perm}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderActivity(activities) {
+            return activities.map(activity => `
+                <div class="activity-item">
+                    <div class="activity-dot ${activity.type}"></div>
+                    <div class="activity-content">
+                        <div class="activity-time">${activity.time}</div>
+                        <div class="activity-text">${activity.action}</div>
+                        <div class="activity-details">
+                            User: ${activity.user} • IP: ${activity.ip} • Device: ${activity.device}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderActivityChart(data) {
+            const max = Math.max(...data);
+            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            
+            return data.map((val, i) => `
+                <div class="bar" style="height: ${(val / max) * 100}%">
+                    <div class="bar-label">${days[i]}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderMFA(mfaStats) {
+            return mfaStats.map(user => `
+                <div class="mfa-card">
+                    <div class="mfa-header">
+                        <div class="mfa-title">${user.user}</div>
+                        <span class="${user.enabled ? 'mfa-enabled' : 'mfa-disabled'}">
+                            ${user.enabled ? '✓ MFA Enabled' : '✗ MFA Disabled'}
+                        </span>
+                    </div>
+                    <div style="font-size: 13px; color: #9ca3af; margin-bottom: 12px;">
+                        ${user.email}
+                    </div>
+                    ${user.enabled ? `
+                        <div class="mfa-methods">
+                            ${user.methods.map(method => `
+                                <div class="mfa-method">
+                                    <div class="method-info">
+                                        <span class="method-icon">${method.includes('TOTP') ? '📱' : method.includes('SMS') ? '💬' : '🔑'}</span>
+                                        <div class="method-details">
+                                            <div class="method-type">${method}</div>
+                                        </div>
+                                    </div>
+                                    <button class="action-btn danger" onclick="removeMFAMethod('${user.email}', '${method}')">Remove</button>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : `
+                        <button class="action-btn" style="width: 100%;" onclick="setupMFA('${user.email}')">
+                            Setup MFA
+                        </button>
+                    `}
+                </div>
+            `).join('');
+        }
+
+        function renderAPIKeys(apiKeys) {
+            return apiKeys.map(key => `
+                <div class="api-key-card">
+                    <div class="api-key-header">
+                        <div class="api-key-name">${key.name}</div>
+                        <button class="action-btn danger" onclick="revokeAPIKey('${key.name}')">Revoke</button>
+                    </div>
+                    <div class="api-key-value">${key.key}</div>
+                    <div class="api-key-meta">
+                        <div>Created: ${key.created}</div>
+                        <div>Last Used: ${key.lastUsed}</div>
+                        <div>Requests: ${key.requests}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateDashboard() {
+            const data = generateMockData();
+
+            // Update metrics
+            const activeUsers = data.sessions.filter(s => s.active).length;
+            const mfaEnabled = data.users.filter(u => u.mfaEnabled).length;
+            const mfaPercentage = Math.round((mfaEnabled / data.users.length) * 100);
+            const successfulLogins = data.activity.filter(a => a.action.includes('Logged in')).length * 50;
+            const failedAttempts = data.activity.filter(a => a.action.includes('Failed')).length * 15;
+
+            document.getElementById('activeUsers').textContent = activeUsers;
+            document.getElementById('failedLogins').textContent = failedAttempts;
+            document.getElementById('mfaPercentage').textContent = mfaPercentage + '%';
+            document.getElementById('totalUsers').textContent = data.users.length;
+            document.getElementById('activeSessions').textContent = data.sessions.length;
+            document.getElementById('successfulLogins').textContent = successfulLogins;
+            document.getElementById('failedAttempts').textContent = failedAttempts;
+            document.getElementById('apiKeys').textContent = data.apiKeys.length;
+
+            // Render tabs
+            document.getElementById('usersContainer').innerHTML = renderUsers(data.users);
+            document.getElementById('sessionsContainer').innerHTML = renderSessions(data.sessions);
+            document.getElementById('rolesContainer').innerHTML = renderRoles(data.roles);
+            document.getElementById('activityLog').innerHTML = renderActivity(data.activity);
+            document.getElementById('activityChart').innerHTML = renderActivityChart(data.loginActivity);
+            document.getElementById('mfaContainer').innerHTML = renderMFA(data.mfaStats);
+            document.getElementById('apiKeysContainer').innerHTML = renderAPIKeys(data.apiKeys);
+        }
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(`${tab}-tab`).classList.add('active');
+        }
+
+        // User actions
+        function viewUserDetails(id) {
+            alert(`Opening detailed view for user ${id}...`);
+        }
+
+        function editUser(id) {
+            alert(`Opening edit form for user ${id}...`);
+        }
+
+        function resetPassword(id) {
+            if (confirm('Send password reset email to this user?')) {
+                alert('Password reset email sent!');
+            }
+        }
+
+        function suspendUser(id) {
+            if (confirm('Suspend this user? They will lose access immediately.')) {
+                alert(`User ${id} suspended. All active sessions revoked.`);
+                setTimeout(updateDashboard, 500);
+            }
+        }
+
+        function activateUser(id) {
+            if (confirm('Activate this user?')) {
+                alert(`User ${id} activated.`);
+                setTimeout(updateDashboard, 500);
+            }
+        }
+
+        function revokeSession(user) {
+            if (confirm(`Revoke active session for ${user}?\n\nThey will be logged out immediately.`)) {
+                alert(`Session revoked for ${user}.`);
+                setTimeout(updateDashboard, 500);
+            }
+        }
+
+        function setupMFA(email) {
+            alert(`Setting up MFA for ${email}...\n\nWould show:\n• QR code for TOTP app\n• Backup codes\n• SMS setup option`);
+        }
+
+        function removeMFAMethod(email, method) {
+            if (confirm(`Remove ${method} for ${email}?`)) {
+                alert(`${method} removed.`);
+                setTimeout(updateDashboard, 500);
+            }
+        }
+
+        function revokeAPIKey(name) {
+            if (confirm(`Revoke API key "${name}"?\n\nThis will break any applications using this key.`)) {
+                alert(`API key "${name}" revoked.`);
+                setTimeout(updateDashboard, 500);
+            }
+        }
+
+        // Initial render
+        updateDashboard();
+
+        // Auto-refresh every 30 seconds
+        setInterval(updateDashboard, 30000);
+    </script>
+</body>
+</html>suspendUser('${user.id}')">Suspend</button>
+                            ` : `
+                                <button class="action-btn" onclick="activateUser('${user.id}')">Activate</button>
+                            `}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderSessions(sessions) {
+            return sessions.map(session => `
+                <div class="session-card">
+                    <div class="session-info">
+                        <div class="session-header">
+                            <span class="device-icon">${session.device.includes('iPhone') ? '📱' : session.device.includes('Mac') ? '💻' : '🖥️'}</span>
+                            <div>
+                                <div class="session-device">${session.user}</div>
+                            </div>
+                        </div>
+                        <div class="session-details">
+                            ${session.device} • ${session.browser}<br>
+                            ${session.ip} • ${session.location}<br>
+                            Started ${session.started} • Last active ${session.lastActivity}
+                        </div>
+                    </div>
+                    ${session.active ? `<span class="session-active">ACTIVE</span>` : ''}
+                    <button class="action-btn danger" onclick="

@@ -207,37 +207,27 @@
     ├── private
     │   ├── backups
     │   │   ├── index.tree
-    │   │   ├── Mindy_Wiggins
-    │   │   └── Rebecca_Dyer
+    │   │   ├── markos
+    │   │   └── OpenHWY
     │   ├── clients
     │   │   ├── Avery_Wiggins
     │   │   ├── index.html
     │   │   ├── index.tree
+    │   │   ├── Mindy_Wiggins
+    │   │   ├── Rebecca_Dyer
     │   │   └── Shawn_Rambo
     │   ├── content
     │   │   ├── ~Fast&Easy Dispatching LLC~
     │   │   └── index.tree
     │   ├── index.tree
-    │   └── prompts
-    │       ├── chat
-    │       ├── code
-    │       ├── content
-    │       ├── core
-    │       ├── creative
-    │       ├── custom
-    │       ├── data
-    │       ├── dev
-    │       ├── index.tree
-    │       ├── legal
-    │       ├── memory
-    │       ├── moderation
-    │       ├── reasoning
-    │       ├── saved
-    │       ├── search
-    │       ├── summarization
-    │       ├── system
-    │       ├── task
-    │       └── voice
+    │   └── machines
+    │       ├── ASUS-TUF-Gaming.md
+    │       ├── callbox(4vCPU, null, 12GB RAM, [256GB SSD, 1TB HDD])
+    │       ├── devbox(22vCPU, [iGPU,NPU], 16GB RAM, 1TB NVMe)
+    │       ├── gpubox(8vCPU, GPU 4vRAM, 32GB RAM, 1TB NVMe)
+    │       ├── infrastructue.md
+    │       ├── Lenovo-Yoga-9i.md
+    │       └── workbox(20vCPU, iGPU, 24GB RAM, 1TB NVMe)
     └── public
         ├── agents
         │   ├── auto_assist
@@ -267,11 +257,7 @@
         │   ├── xeno_xeno
         │   ├── yes_yes
         │   └── zone_zipper
-        ├── backups
-        │   ├── index.tree
-        │   ├── markos
-        │   └── OpenHWY
-        ├── config
+        ├── configs
         │   ├── index.tree
         │   ├── schemas
         │   ├── settings
@@ -297,13 +283,32 @@
         │   ├── index.tree
         │   ├── pytorch-trainer
         │   └── template-engine
+        ├── prompts
+        │   ├── chat
+        │   ├── code
+        │   ├── content
+        │   ├── core
+        │   ├── creative
+        │   ├── custom
+        │   ├── data
+        │   ├── dev
+        │   ├── index.tree
+        │   ├── legal
+        │   ├── memory
+        │   ├── moderation
+        │   ├── reasoning
+        │   ├── saved
+        │   ├── search
+        │   ├── summarization
+        │   ├── system
+        │   ├── task
+        │   └── voice
         └── studies
             ├── databases
             ├── environments
             ├── index.tree
             ├── languages
-            ├── machines
             ├── questions
             └── scaffolds
 
-126 directories, 181 files
+129 directories, 183 files

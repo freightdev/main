@@ -1,0 +1,255 @@
+.
+├── index.tree
+├── markos
+│   ├── cmds
+│   │   ├── init
+│   │   │   ├── mark-init--agent.md
+│   │   │   ├── mark-init--db.md
+│   │   │   └── mark-init.md
+│   │   ├── mark-beat.md
+│   │   ├── mark-exec.md
+│   │   └── mark-tempo.md
+│   ├── core
+│   │   ├── actor.md
+│   │   ├── agency.proto
+│   │   ├── agent.md
+│   │   ├── architecture.md
+│   │   ├── beat.md
+│   │   ├── bet.md
+│   │   ├── bookmark-stub.md
+│   │   ├── clock.md
+│   │   ├── commands.proto
+│   │   ├── delay.md
+│   │   ├── directory-structure.md
+│   │   ├── filetype-map.md
+│   │   ├── glossary
+│   │   │   ├── index.md
+│   │   │   ├── what-is-a-beat.md
+│   │   │   ├── what-is-a-bet.md
+│   │   │   ├── what-is-a-clock.md
+│   │   │   ├── what-is-a-delay.md
+│   │   │   ├── what-is-a-marker.md
+│   │   │   ├── what-is-a-mark.md
+│   │   │   ├── what-is-an-actor.md
+│   │   │   ├── what-is-an-agent.md
+│   │   │   ├── what-is-an-inkstroke.md
+│   │   │   ├── what-is-an-inkwell.md
+│   │   │   ├── what-is-a-ppur.md
+│   │   │   ├── what-is-a-pulse.md
+│   │   │   ├── what-is-a-ribbon.md
+│   │   │   ├── what-is-a-stroke.md
+│   │   │   ├── what-is-a-sync.md
+│   │   │   ├── what-is-a-tempo.md
+│   │   │   ├── what-is-a-trail.md
+│   │   │   └── what-is-ink.md
+│   │   ├── ink.md
+│   │   ├── marker.md
+│   │   ├── mark.md
+│   │   ├── pulse.md
+│   │   ├── README.md
+│   │   ├── ribbon.md
+│   │   ├── stroke.md
+│   │   ├── stroke.md_
+│   │   ├── sync.md
+│   │   ├── tempo.md
+│   │   └── trail.md
+│   ├── idea
+│   │   ├── beat
+│   │   │   ├── connect.beat
+│   │   │   ├── fallback.beat
+│   │   │   ├── linking.beat
+│   │   │   ├── mark.beat
+│   │   │   ├── marker.beat
+│   │   │   ├── passing.beat
+│   │   │   ├── routing.beat
+│   │   │   ├── signing.beat
+│   │   │   ├── summary.beat
+│   │   │   ├── system.beat
+│   │   │   ├── tempo.beat
+│   │   │   ├── trail.beat
+│   │   │   └── writing.baet
+│   │   ├── bet
+│   │   │   ├── agent.bet
+│   │   │   ├── README.md
+│   │   │   ├── system.bet
+│   │   │   └── user.bet
+│   │   ├── mark
+│   │   │   ├── bet.mrk
+│   │   │   ├── boot.mrk
+│   │   │   ├── ink.mrk
+│   │   │   └── marker.mrk
+│   │   ├── marker
+│   │   │   ├── fallback.mrkr
+│   │   │   ├── linking.mrkr
+│   │   │   ├── mark.mrkr
+│   │   │   ├── passing.mrkr
+│   │   │   ├── routing.mrkr
+│   │   │   ├── signing.mrkr
+│   │   │   ├── summary.mrkr
+│   │   │   ├── system.mrkr
+│   │   │   ├── tempo.mrkr
+│   │   │   ├── trail.mrkr
+│   │   │   └── writing.mrkr
+│   │   ├── ribbon
+│   │   │   ├── cache
+│   │   │   ├── init.rib
+│   │   │   ├── intro.rib
+│   │   │   ├── summary.rib
+│   │   │   └── welcome.rib
+│   │   └── trail
+│   │       ├── agent.trl
+│   │       ├── bet.trl
+│   │       ├── boot.trl
+│   │       ├── ink.trl
+│   │       ├── marker.trl
+│   │       ├── user-session.trl
+│   │       └── user.trl
+│   ├── mods
+│   │   ├── beat-sync
+│   │   │   └── .gitkeep
+│   │   ├── bet-engine
+│   │   │   └── .gitkeep
+│   │   ├── ink-burn
+│   │   │   └── .gitkeep
+│   │   ├── ink_trails
+│   │   │   └── .gitkeep
+│   │   ├── keeper-db
+│   │   │   └── .gitkeep
+│   │   ├── key-mark
+│   │   │   └── .gitkeep
+│   │   ├── marker-router
+│   │   │   └── .gitkeep
+│   │   ├── memory-scroll
+│   │   │   └── .gitkeep
+│   │   ├── ribbon-trail
+│   │   │   └── .gitkeep
+│   │   └── token_stroke
+│   │       └── .gitkeep
+│   └── rule
+│       ├── beat.yaml
+│       ├── bet.yaml
+│       ├── book.yaml
+│       ├── chapter.yaml
+│       ├── cover.yaml
+│       ├── ink.yaml
+│       ├── keeper.yaml
+│       ├── license.yaml
+│       ├── marker.yaml
+│       ├── mark.yaml
+│       ├── page.yaml
+│       ├── ribbon.yaml
+│       ├── stroke.yaml
+│       └── trail.yaml
+└── OpenHWY
+    ├── apps
+    │   ├── architecture.md
+    │   ├── BIG_VISION.md
+    │   ├── dashboard_html
+    │   │   ├── authentication-access-control.html
+    │   │   ├── client-management-portal.html
+    │   │   ├── cluster-monitoring.html
+    │   │   ├── cost-analytics.html
+    │   │   ├── development-pipeline.html
+    │   │   ├── firecracker-vm-management.html
+    │   │   ├── hyprtasker-custom.html
+    │   │   ├── network-topology.html
+    │   │   ├── security-monitoring.html
+    │   │   └── system-health.html
+    │   ├── dashboard_js
+    │   │   ├── billing-and-payment.js
+    │   │   ├── cloud-auth-page
+    │   │   ├── cloud-control-center
+    │   │   ├── cloud-email-page
+    │   │   ├── cloud-landing-page
+    │   │   ├── cloud-payment-page
+    │   │   ├── email-system.js
+    │   │   ├── index.js
+    │   │   ├── infrastructure-control-center.js
+    │   │   ├── monitoring-and-alerts.js
+    │   │   └── stroage-management.js
+    │   ├── design.md
+    │   ├── diagram.md
+    │   ├── DOMAIN
+    │   ├── fed-examples_html
+    │   │   ├── fed-calendar.html
+    │   │   ├── fed-cargo-connect.html
+    │   │   ├── fed-dashboard.html
+    │   │   ├── fed-dispatch-board.html
+    │   │   ├── fed-documents.html
+    │   │   ├── fed-drivers.html
+    │   │   ├── fed-elda.html
+    │   │   ├── fed-eld.html
+    │   │   ├── fed-invoicing.html
+    │   │   ├── fed-live-tracking.html
+    │   │   ├── fed-loads.html
+    │   │   ├── fed-messaging.html
+    │   │   ├── fed-packet-pilot.html
+    │   │   ├── fed-payments.html
+    │   │   └── fed-training-center.html
+    │   ├── fedlearn_dart
+    │   │   ├── analysis_options.yaml
+    │   │   ├── android
+    │   │   ├── AUTO_WIRE_README.md
+    │   │   ├── devtools_options.yaml
+    │   │   ├── flutter_autowire_v2.sh
+    │   │   ├── FLUTTER_SETUP.md
+    │   │   ├── .gitignore
+    │   │   ├── ios
+    │   │   ├── lib
+    │   │   ├── linux
+    │   │   ├── macos
+    │   │   ├── .metadata
+    │   │   ├── pubspec.lock
+    │   │   ├── pubspec.yaml
+    │   │   ├── README.md
+    │   │   ├── scripts
+    │   │   ├── SETUP.md
+    │   │   ├── test
+    │   │   ├── web
+    │   │   └── windows
+    │   ├── idea.md
+    │   ├── intro.md
+    │   ├── license.md
+    │   ├── marketing_html
+    │   │   ├── dispatch-courses-v1.html
+    │   │   ├── dispatch-courses-v2.html
+    │   │   ├── dispatcher-callout.html
+    │   │   ├── driver-callout.html
+    │   │   ├── founders-journey.html
+    │   │   ├── investor-callout.html
+    │   │   ├── openhwy-protocol.html
+    │   │   ├── tsm-marketing.html
+    │   │   └── wheeler-builder.html
+    │   ├── mission.md
+    │   ├── openhwy-tales.md
+    │   ├── openhwy-tales-v1.md
+    │   ├── overview.md
+    │   ├── pricing-strategy.md
+    │   ├── PROMPT.md
+    │   ├── README.md
+    │   ├── roadmap.md
+    │   ├── SCHEMA.md
+    │   ├── terminology.md
+    │   └── the-tale-system.md
+    └── docs
+        ├── architecture.md
+        ├── BIG_VISION.md
+        ├── design.md
+        ├── diagram.md
+        ├── DOMAIN
+        ├── idea.md
+        ├── intro.md
+        ├── license.md
+        ├── mission.md
+        ├── openhwy-tales.md
+        ├── openhwy-tales-v1.md
+        ├── overview.md
+        ├── pricing-strategy.md
+        ├── PROMPT.md
+        ├── README.md
+        ├── roadmap.md
+        ├── SCHEMA.md
+        ├── terminology.md
+        └── the-tale-system.md
+
+43 directories, 210 files

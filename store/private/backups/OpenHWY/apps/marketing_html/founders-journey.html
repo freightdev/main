@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Founder's Journey - OpenHWY</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --road-black: #0a0a0a;
+            --asphalt-gray: #1a1a1a;
+            --line-yellow: #ffd700;
+            --signal-orange: #ff6b35;
+            --diesel-blue: #00a8e8;
+            --steel-gray: #4a5568;
+            --paper-white: #f7f7f7;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--road-black);
+            color: var(--paper-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated road lines background */
+        .road-lines {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.08;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .line {
+            position: absolute;
+            left: 50%;
+            width: 4px;
+            height: 80px;
+            background: var(--line-yellow);
+            animation: roadMove 2s linear infinite;
+        }
+
+        .line:nth-child(1) { animation-delay: 0s; top: -80px; }
+        .line:nth-child(2) { animation-delay: 0.5s; top: -180px; }
+        .line:nth-child(3) { animation-delay: 1s; top: -280px; }
+        .line:nth-child(4) { animation-delay: 1.5s; top: -380px; }
+
+        @keyframes roadMove {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--line-yellow);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .beta-badge {
+            font-size: 0.7rem;
+            background: var(--signal-orange);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--paper-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--line-yellow);
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(180deg, rgba(255, 215, 0, 0.1) 0%, rgba(10, 10, 10, 0) 100%);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--line-yellow), var(--signal-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--steel-gray);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .journey-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .journey-intro {
+            text-align: center;
+            margin-bottom: 6rem;
+            padding: 3rem;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .journey-intro h2 {
+            font-size: 2.5rem;
+            color: var(--line-yellow);
+            margin-bottom: 1.5rem;
+        }
+
+        .journey-intro p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--paper-white);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--line-yellow), var(--signal-orange));
+            transform: translateX(-50%);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 6rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-block:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-block:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: calc(50% - 4rem);
+            padding: 2.5rem;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 16px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.4s;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--line-yellow);
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--signal-orange);
+            border-radius: 50%;
+            border: 6px solid var(--road-black);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .phase-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--signal-orange);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-content h3 {
+            font-size: 2rem;
+            color: var(--line-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-date {
+            color: var(--steel-gray);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .timeline-content p {
+            color: var(--paper-white);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .timeline-content li {
+            padding: 0.5rem 0;
+            color: var(--paper-white);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--line-yellow);
+            font-weight: bold;
+        }
+
+        .stats-highlight {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--line-yellow);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--steel-gray);
+            font-size: 0.85rem;
+        }
+
+        .milestone-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--line-yellow), var(--signal-orange));
+            color: var(--road-black);
+            border-radius: 8px;
+            font-weight: 700;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .current-phase {
+            background: var(--asphalt-gray);
+            border: 3px solid var(--line-yellow);
+            padding: 4rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .current-phase h2 {
+            font-size: 3rem;
+            color: var(--line-yellow);
+            margin-bottom: 1.5rem;
+        }
+
+        .current-phase p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--paper-white);
+            max-width: 900px;
+            margin: 0 auto 2rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 2rem 0;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--line-yellow), var(--signal-orange));
+            border-radius: 15px;
+            transition: width 2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            color: var(--road-black);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(0, 168, 232, 0.1));
+            border-radius: 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: var(--line-yellow);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--line-yellow);
+            color: var(--road-black);
+            padding: 1.2rem 3rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .cta-btn:hover {
+            background: var(--signal-orange);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        @media (max-width: 968px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-block {
+                flex-direction: column !important;
+                padding-left: 60px;
+            }
+
+            .timeline-block:nth-child(even) {
+                flex-direction: column !important;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-marker {
+                left: 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="road-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">
+                OPENHWY
+                <span class="beta-badge">BETA</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="#journey">Journey</a>
+                <a href="/#join">Join Beta</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>The Founder's Journey</h1>
+        <p class="subtitle">16 years of experience. 1.5 years of building. One mission to fix freight.</p>
+    </div>
+
+    <div class="journey-container">
+        <div class="journey-intro">
+            <h2>From The Wheel to The Code</h2>
+            <p>
+                This isn't just a startup story. This is 10 years behind the wheel, 6 years studying dispatching, 
+                and 1.5 years teaching myself distributed systems—all to build something that actually understands 
+                the freight industry from the inside out.
+            </p>
+        </div>
+
+        <div class="timeline" id="journey">
+            <!-- Phase 1: The Foundation Years -->
+            <div class="timeline-block">
+                <div class="timeline-marker">🚛</div>
+                <div class="timeline-content">
+                    <span class="phase-label">Phase 1: Foundation</span>
+                    <h3>10 Years Behind The Wheel</h3>
+                    <p class="timeline-date">2008 - 2018</p>
+                    <p>
+                        A decade of over-the-road trucking. Hauling freight across all 48 states. 
+                        Experiencing every broken system firsthand—dispatch delays, miscommunication, 
+                        margin erosion, and the isolation that comes with the job.
+                    </p>
+                    <p>
+                        <strong>What I learned:</strong> The freight industry runs on relationships, trust, and timing. 
+                        Technology was supposed to fix these problems but kept making them worse because 
+                        nobody building the tools actually understood what we needed.
+                    </p>
+                    <div class="stats-highlight">
+                        <div class="stat-item">
+                            <span class="stat-number">10</span>
+                            <span class="stat-label">Years Driving</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">48</span>
+                            <span class="stat-label">States Covered</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1000s</span>
+                            <span class="stat-label">Loads Hauled</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2: Learning The Business -->
+            <div class="timeline-block">
+                <div class="timeline-marker">📚</div>
+                <div class="timeline-content">
+                    <span class="phase-label">Phase 2: Business Education</span>
+                    <h3>6 Years Mastering Dispatching</h3>
+                    <p class="timeline-date">2018 - 2024</p>
+                    <p>
+                        Founded <strong>Fast&Easy Dispatching LLC</strong> as a hobby company to teach myself 
+                        the business side of freight. Took on 2 clients while still driving—not for profit, 
+                        but to study every detail of how dispatching actually works.
+                    </p>
+                    <p>
+                        Deep-dived into logistics operations, rate negotiations, carrier packets, load boards, 
+                        broker relationships, compliance requirements, and the business economics that make or break 
+                        small fleets and independent dispatchers.
+                    </p>
+                    <ul>
+                        <li>Learned rate negotiation strategies and market dynamics</li>
+                        <li>Understood carrier packet processing and compliance</li>
+                        <li>Studied load board systems and broker relationships</li>
+                        <li>Documented every workflow, pain point, and inefficiency</li>
+                        <li>Built the knowledge base that would become ELDA's 75+ course modules</li>
+                    </ul>
+                    <div class="stats-highlight">
+                        <div class="stat-item">
+                            <span class="stat-number">6</span>
+                            <span class="stat-label">Years Learning</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">75+</span>
+                            <span class="stat-label">Course Modules Created</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3: The Decision -->
+            <div class="timeline-block">
+                <div class="timeline-marker">💡</div>
+                <div class="timeline-content">
+                    <span class="phase-label">Phase 3: The Turning Point</span>
+                    <h3>Stepping Away With A Promise</h3>
+                    <p class="timeline-date">Early 2023</p>
+                    <p>
+                        After 16 years in freight, I made the hardest decision: step away from driving. 
+                        But I couldn't leave without giving back to the industry that made me who I am.
+                    </p>
+                    <p>
+                        <strong>The Promise:</strong> Build the tools we actually need. Create education that's 
+                        accessible. Protect human decision-making as AI transforms freight. Keep it free for those 
+                        who need it most.
+                    </p>
+                    <p>
+                        <strong>The Problem:</strong> I wasn't a developer. I didn't know distributed systems. 
+                        I had ideas but no technical foundation to build them. So I made another decision—
+                        teach myself everything from scratch.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Phase 4: The Deep Dive -->
+            <div class="timeline-block">
+                <div class="timeline-marker">⚡</div>
+                <div class="timeline-content">
+                    <span class="phase-label">Phase 4: Self-Education</span>
+                    <h3>18 Months of Intense Learning</h3>
+                    <p class="timeline-date">Mid 2023 - Present</p>
+                    <p>
+                        Taught myself distributed systems, AI agent orchestration, Flutter development, 
+                        backend architecture, database design, API integration, protocol design—everything 
+                        needed to build an entire ecosystem from scratch.
+                    </p>
+                    <p>
+                        <strong>The Method:</strong> Learn by building. Document everything. Save every conversation, 
+                        every experiment, every version. Build real solutions to real problems instead of following 
+                        tutorials that don't apply to freight logistics.
+                    </p>
+                    <ul>
+                        <li>Mastered distributed systems architecture</li>
+                        <li>Built 30+ specialized AI tools and agents</li>
+                        <li>Designed the Logbook protocol that powers the ecosystem</li>
+                        <li>Created FED TMS from the ground up</li>
+                        <li>Architected ELDA's alignment-focused education system</li>
+                        <li>Developed Highway Watch Yard's human verification layer</li>
+                    </ul>
+                    <div class="stats-highlight">
+                        <div class="stat-item">
+                            <span class="stat-number">1.5</span>
+                            <span class="stat-label">Years Building</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">30+</span>
+                            <span class="stat-label">AI Tools Created</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Full Apps Built</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <span class="milestone-badge">Packet Pilot</span>
+                        <span class="milestone-badge">Cargo Connect</span>
+                        <span class="milestone-badge">Big Bear</span>
+                        <span class="milestone-badge">Legal Logger</span>
+                        <span class="milestone-badge">Whisper Witness</span>
+                        <span class="milestone-badge">+ 25 more tools</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 5: The Architecture -->
+            <div class="timeline-block">
+                <div class="timeline-marker">🏗️</div>
+                <div class="timeline-content">
+                    <span class="phase-label">Phase 5: Ecosystem Design</span>
+                    <h3>Building The Three-App Vision</h3>
+                    <p class="timeline-date">Late 2023 - Early 2024</p>
+                    <p>
+                        Designed the complete OpenHWY ecosystem architecture—three interconnected apps 
+                        that work together while maintaining clear boundaries and purposes.
+                    </p>
+                    <p>
+                        <strong>ELDA:</strong> Free education and alignment for everyone entering logistics. 
+                        Gamified learning, emotional support, basic TMS to get started.
+                    </p>
+                    <p>
+                        <strong>FED TMS:</strong> Commercial product for serious freight operations. 
+                        Advanced features, automation, and the infrastructure backbone that funds OpenHWY's mission.
+                    </p>
+                    <p>
+                        <strong>Highway Watch Yard:</strong> The human verification layer for AI-assisted freight booking. 
+                        Protecting drivers and brokers as automation expands.
+                    </p>
+                    <ul>
+                        <li>Created the Logbook as universal identity system</li>
+                        <li>Designed agent specialization (ELDA, FED, HWY agents)</li>
+                        <li>Built separation of concerns between apps</li>
+                        <li>Architected the non-profit + for-profit business model</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phase 6: Current Phase -->
+            <div class="timeline-block">
+                <div class="timeline-marker">🚀</div>
+                <div class="timeline-content">
+                    <span class="phase-label">Phase 6: Beta Launch</span>
+                    <h3>Opening The Doors</h3>
+                    <p class="timeline-date">December 2024 - Now</p>
+                    <p>
+                        After 1.5 years of solo building, it's time to bring people into the mission. 
+                        ELDA is ready for beta testing. The Logbook system is functional. FED TMS is in development. 
+                        The foundation is solid.
+                    </p>
+                    <p>
+                        <strong>This is where you come in.</strong> Early founders get to shape the tools, 
+                        test features, provide feedback, and help establish OpenHWY as a protected non-profit 
+                        educational foundation that can't be bought out or shut down.
+                    </p>
+                    <ul>
+                        <li>ELDA beta access with 75+ course modules</li>
+                        <li>First Logbooks issued to founders</li>
+                        <li>FED TMS dashboard available for testing</li>
+                        <li>Founder badges and community forming</li>
+                        <li>Direct feedback line to shape development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="current-phase">
+            <h2>🎯 Where We Are Now</h2>
+            <p>
+                18 months of solo development. Three apps architected. 30+ AI tools built. 75+ course modules created. 
+                The infrastructure is ready. The mission is clear. The beta is launching.
+            </p>
+            <p style="font-size: 1.3rem; color: var(--signal-orange); font-weight: 600; margin-top: 1.5rem;">
+                We're approximately 85% complete on ELDA and ready to ship.
+            </p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%;">85% Complete</div>
+            </div>
+            <div class="stats-highlight" style="margin-top: 2rem;">
+                <div class="stat-item">
+                    <span class="stat-number">✓</span>
+                    <span class="stat-label">ELDA Beta Ready</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">⚙️</span>
+                    <span class="stat-label">FED In Development</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">📅</span>
+                    <span class="stat-label">HWY Planned 2025</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">🏁</span>
+                    <span class="stat-label">Almost There</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Be Part of This Journey</h2>
+            <p style="max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem;">
+                This is more than a product launch. It's a mission 16 years in the making. 
+                Join the founders program, get your Logbook, and help shape the future of freight education.
+            </p>
+            <a href="/#join" class="cta-btn">Join The Founders Program</a>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animate timeline items on scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-content').forEach(content => {
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(30px)';
+            content.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(content);
+        });
+
+        // Animate progress bar on load
+        window.addEventListener('load', () => {
+            const progressFill = document.querySelector('.progress-fill');
+            if (progressFill) {
+                setTimeout(() => {
+                    progressFill.style.width = '85%';
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>
