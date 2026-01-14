@@ -10,10 +10,10 @@ ID_ONLY="yes"
 HOSTS=(
     "github:github.com:git"
     "safebox:xxx.xxx.xx.x:admin"
-    "callbox:192.168.1.170:admin"
-    "workbox:192.168.1.70:admin"
-    "gpubox:192.168.1.40:admin"
-    "devbox:192.168.1.22:admin"
+    "callbox:192.168.1.170:jconley"
+    "workbox:192.168.1.72:jconley"
+    "gpubox:192.168.1.40:jconley"
+    "npubox:192.168.1.22:jconley"
 )
 
 # Create directory exists
