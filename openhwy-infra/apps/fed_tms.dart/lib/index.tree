@@ -1,0 +1,116 @@
+.
+├── configs
+│   └── flavors.dart
+├── errors
+│   ├── exception.dart
+│   └── failure.dart
+├── index.tree
+├── main.dart
+├── models
+│   ├── company.dart
+│   ├── company.g.dart
+│   ├── conversation.dart
+│   ├── conversation.g.dart
+│   ├── document.dart
+│   ├── document.g.dart
+│   ├── driver.dart
+│   ├── invoice.dart
+│   ├── invoice.g.dart
+│   ├── load.dart
+│   ├── message.dart
+│   ├── message.g.dart
+│   ├── payment.dart
+│   ├── payment.g.dart
+│   ├── tms_models.dart
+│   ├── user.dart
+│   └── user.g.dart
+├── providers
+│   ├── app_providers.dart
+│   ├── auth_provider.dart
+│   ├── document_provider.dart
+│   ├── driver_provider.dart
+│   ├── invoice_provider.dart
+│   ├── load_provider.dart
+│   ├── message_provider.dart
+│   ├── payment_provider.dart
+│   ├── tms_providers.dart
+│   └── user_provider.dart
+├── router.dart
+├── screens
+│   ├── analytics_screen.dart
+│   ├── calendar_dispatch_screen.dart
+│   ├── calendar_screen.dart
+│   ├── company_screen.dart
+│   ├── courses_screen.dart
+│   ├── create_load_screen.dart
+│   ├── dashboard_screen.dart
+│   ├── documents_manager_screen.dart
+│   ├── documents_screen.dart
+│   ├── driver_details_screen.dart
+│   ├── drivers_screen.dart
+│   ├── eld_screen.dart
+│   ├── hos_screen.dart
+│   ├── hos_tracking_screen.dart
+│   ├── invoice_details_screen.dart
+│   ├── invoices_list_screen.dart
+│   ├── invoices_screen.dart
+│   ├── invoicing_screen.dart
+│   ├── loadboard_screen.dart
+│   ├── load_detail_screen.dart
+│   ├── load_details_screen.dart
+│   ├── loads_list_screen.dart
+│   ├── loads_screen.dart
+│   ├── login_screen.dart
+│   ├── messages_screen.dart
+│   ├── messaging_screen.dart
+│   ├── notifications_screen.dart
+│   ├── onboarding_screen.dart
+│   ├── payments_screen.dart
+│   ├── profile_screen.dart
+│   ├── reports_screen.dart
+│   ├── settings_main_screen.dart
+│   ├── settings_screen.dart
+│   ├── splash_screen.dart
+│   ├── tracking_screen.dart
+│   └── training_screen.dart
+├── services
+│   ├── api_client.dart
+│   ├── auth_service.dart
+│   ├── cloud_storage_service.dart
+│   ├── database_service.dart
+│   ├── document_service.dart
+│   ├── driver_service.dart
+│   ├── http_client.dart
+│   ├── invoice_service.dart
+│   ├── load_service.dart
+│   ├── local_storage_service.dart
+│   ├── logger_service.dart
+│   ├── message_service.dart
+│   ├── payment_service.dart
+│   └── storage_service.dart
+├── styles
+│   ├── app_theme.dart
+│   └── typography.dart
+└── widgets
+    ├── app_button.dart
+    ├── app_card.dart
+    ├── app_drawer.dart
+    ├── app_empty_state.dart
+    ├── app_icon.dart
+    ├── app_loader.dart
+    ├── app_search_bar.dart
+    ├── app_stat_card.dart
+    ├── app_text_field.dart
+    ├── detail_card.dart
+    ├── driver_card.dart
+    ├── driver_detail_card.dart
+    ├── load_card.dart
+    ├── load_status_badge.dart
+    ├── main_navigation.dart
+    ├── notification_tile.dart
+    ├── rate_confirmation_form.dart
+    ├── setup_card.dart
+    ├── tms_load_card.dart
+    └── video_card.dart
+
+9 directories, 105 files

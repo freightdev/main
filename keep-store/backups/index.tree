@@ -1,0 +1,611 @@
+.
+├── index.tree
+├── markos
+│   ├── cmds
+│   │   ├── init
+│   │   │   ├── mark-init--agent.md
+│   │   │   ├── mark-init--db.md
+│   │   │   └── mark-init.md
+│   │   ├── mark-beat.md
+│   │   ├── mark-exec.md
+│   │   └── mark-tempo.md
+│   ├── core
+│   │   ├── actor.md
+│   │   ├── agency.proto
+│   │   ├── agent.md
+│   │   ├── architecture.md
+│   │   ├── beat.md
+│   │   ├── bet.md
+│   │   ├── bookmark-stub.md
+│   │   ├── clock.md
+│   │   ├── commands.proto
+│   │   ├── delay.md
+│   │   ├── directory-structure.md
+│   │   ├── filetype-map.md
+│   │   ├── glossary
+│   │   │   ├── index.md
+│   │   │   ├── what-is-a-beat.md
+│   │   │   ├── what-is-a-bet.md
+│   │   │   ├── what-is-a-clock.md
+│   │   │   ├── what-is-a-delay.md
+│   │   │   ├── what-is-a-marker.md
+│   │   │   ├── what-is-a-mark.md
+│   │   │   ├── what-is-an-actor.md
+│   │   │   ├── what-is-an-agent.md
+│   │   │   ├── what-is-an-inkstroke.md
+│   │   │   ├── what-is-an-inkwell.md
+│   │   │   ├── what-is-a-ppur.md
+│   │   │   ├── what-is-a-pulse.md
+│   │   │   ├── what-is-a-ribbon.md
+│   │   │   ├── what-is-a-stroke.md
+│   │   │   ├── what-is-a-sync.md
+│   │   │   ├── what-is-a-tempo.md
+│   │   │   ├── what-is-a-trail.md
+│   │   │   └── what-is-ink.md
+│   │   ├── ink.md
+│   │   ├── marker.md
+│   │   ├── mark.md
+│   │   ├── pulse.md
+│   │   ├── README.md
+│   │   ├── ribbon.md
+│   │   ├── stroke.md
+│   │   ├── stroke.md_
+│   │   ├── sync.md
+│   │   ├── tempo.md
+│   │   └── trail.md
+│   ├── idea
+│   │   ├── beat
+│   │   │   ├── connect.beat
+│   │   │   ├── fallback.beat
+│   │   │   ├── linking.beat
+│   │   │   ├── mark.beat
+│   │   │   ├── marker.beat
+│   │   │   ├── passing.beat
+│   │   │   ├── routing.beat
+│   │   │   ├── signing.beat
+│   │   │   ├── summary.beat
+│   │   │   ├── system.beat
+│   │   │   ├── tempo.beat
+│   │   │   ├── trail.beat
+│   │   │   └── writing.baet
+│   │   ├── bet
+│   │   │   ├── agent.bet
+│   │   │   ├── README.md
+│   │   │   ├── system.bet
+│   │   │   └── user.bet
+│   │   ├── mark
+│   │   │   ├── bet.mrk
+│   │   │   ├── boot.mrk
+│   │   │   ├── ink.mrk
+│   │   │   └── marker.mrk
+│   │   ├── marker
+│   │   │   ├── fallback.mrkr
+│   │   │   ├── linking.mrkr
+│   │   │   ├── mark.mrkr
+│   │   │   ├── passing.mrkr
+│   │   │   ├── routing.mrkr
+│   │   │   ├── signing.mrkr
+│   │   │   ├── summary.mrkr
+│   │   │   ├── system.mrkr
+│   │   │   ├── tempo.mrkr
+│   │   │   ├── trail.mrkr
+│   │   │   └── writing.mrkr
+│   │   ├── ribbon
+│   │   │   ├── cache
+│   │   │   │   └── summary_gpt4o.rib
+│   │   │   ├── init.rib
+│   │   │   ├── intro.rib
+│   │   │   ├── summary.rib
+│   │   │   └── welcome.rib
+│   │   └── trail
+│   │       ├── agent.trl
+│   │       ├── bet.trl
+│   │       ├── boot.trl
+│   │       ├── ink.trl
+│   │       ├── marker.trl
+│   │       ├── user-session.trl
+│   │       └── user.trl
+│   ├── mods
+│   │   ├── beat-sync
+│   │   │   └── .gitkeep
+│   │   ├── bet-engine
+│   │   │   └── .gitkeep
+│   │   ├── ink-burn
+│   │   │   └── .gitkeep
+│   │   ├── ink_trails
+│   │   │   └── .gitkeep
+│   │   ├── keeper-db
+│   │   │   └── .gitkeep
+│   │   ├── key-mark
+│   │   │   └── .gitkeep
+│   │   ├── marker-router
+│   │   │   └── .gitkeep
+│   │   ├── memory-scroll
+│   │   │   └── .gitkeep
+│   │   ├── ribbon-trail
+│   │   │   └── .gitkeep
+│   │   └── token_stroke
+│   │       └── .gitkeep
+│   └── rule
+│       ├── beat.yaml
+│       ├── bet.yaml
+│       ├── book.yaml
+│       ├── chapter.yaml
+│       ├── cover.yaml
+│       ├── ink.yaml
+│       ├── keeper.yaml
+│       ├── license.yaml
+│       ├── marker.yaml
+│       ├── mark.yaml
+│       ├── page.yaml
+│       ├── ribbon.yaml
+│       ├── stroke.yaml
+│       └── trail.yaml
+└── OpenHWY
+    ├── apps
+    │   ├── architecture.md
+    │   ├── BIG_VISION.md
+    │   ├── dashboard.html
+    │   │   ├── authentication-access-control.html
+    │   │   ├── client-management-portal.html
+    │   │   ├── cluster-monitoring.html
+    │   │   ├── cost-analytics.html
+    │   │   ├── development-pipeline.html
+    │   │   ├── firecracker-vm-management.html
+    │   │   ├── hyprtasker-custom.html
+    │   │   ├── network-topology.html
+    │   │   ├── security-monitoring.html
+    │   │   └── system-health.html
+    │   ├── dashboard.js
+    │   │   ├── billing-and-payment.js
+    │   │   ├── cloud-auth-page
+    │   │   ├── cloud-control-center
+    │   │   ├── cloud-email-page
+    │   │   ├── cloud-landing-page
+    │   │   ├── cloud-payment-page
+    │   │   ├── email-system.js
+    │   │   ├── index.js
+    │   │   ├── infrastructure-control-center.js
+    │   │   ├── monitoring-and-alerts.js
+    │   │   └── stroage-management.js
+    │   ├── design.md
+    │   ├── diagram.md
+    │   ├── fed-examples.html
+    │   │   ├── fed-calendar.html
+    │   │   ├── fed-cargo-connect.html
+    │   │   ├── fed-dashboard.html
+    │   │   ├── fed-dispatch-board.html
+    │   │   ├── fed-documents.html
+    │   │   ├── fed-drivers.html
+    │   │   ├── fed-elda.html
+    │   │   ├── fed-eld.html
+    │   │   ├── fed-invoicing.html
+    │   │   ├── fed-live-tracking.html
+    │   │   ├── fed-loads.html
+    │   │   ├── fed-messaging.html
+    │   │   ├── fed-packet-pilot.html
+    │   │   ├── fed-payments.html
+    │   │   └── fed-training-center.html
+    │   ├── fedlearn.dart
+    │   │   ├── analysis_options.yaml
+    │   │   ├── android
+    │   │   │   ├── app
+    │   │   │   │   ├── build.gradle.kts
+    │   │   │   │   └── src
+    │   │   │   ├── build.gradle.kts
+    │   │   │   ├── .gitignore
+    │   │   │   ├── gradle
+    │   │   │   │   └── wrapper
+    │   │   │   ├── gradle.properties
+    │   │   │   └── settings.gradle.kts
+    │   │   ├── AUTO_WIRE_README.md
+    │   │   ├── devtools_options.yaml
+    │   │   ├── flutter_autowire_v2.sh
+    │   │   ├── FLUTTER_SETUP.md
+    │   │   ├── .gitignore
+    │   │   ├── ios
+    │   │   │   ├── Flutter
+    │   │   │   │   ├── AppFrameworkInfo.plist
+    │   │   │   │   ├── Debug.xcconfig
+    │   │   │   │   └── Release.xcconfig
+    │   │   │   ├── .gitignore
+    │   │   │   ├── Runner
+    │   │   │   │   ├── AppDelegate.swift
+    │   │   │   │   ├── Assets.xcassets
+    │   │   │   │   ├── Base.lproj
+    │   │   │   │   ├── Info.plist
+    │   │   │   │   └── Runner-Bridging-Header.h
+    │   │   │   ├── RunnerTests
+    │   │   │   │   └── RunnerTests.swift
+    │   │   │   ├── Runner.xcodeproj
+    │   │   │   │   ├── project.pbxproj
+    │   │   │   │   ├── project.xcworkspace
+    │   │   │   │   └── xcshareddata
+    │   │   │   └── Runner.xcworkspace
+    │   │   │       ├── contents.xcworkspacedata
+    │   │   │       └── xcshareddata
+    │   │   ├── lib
+    │   │   │   ├── app.dart
+    │   │   │   ├── core
+    │   │   │   │   ├── config
+    │   │   │   │   ├── errors
+    │   │   │   │   ├── services
+    │   │   │   │   ├── theme
+    │   │   │   │   └── utils
+    │   │   │   ├── features
+    │   │   │   │   ├── accounting
+    │   │   │   │   ├── ai_assistant
+    │   │   │   │   ├── auth
+    │   │   │   │   ├── compliance
+    │   │   │   │   ├── dashboard
+    │   │   │   │   ├── dispatch
+    │   │   │   │   ├── drivers
+    │   │   │   │   ├── gamification
+    │   │   │   │   ├── iap
+    │   │   │   │   ├── invoicing
+    │   │   │   │   ├── loads
+    │   │   │   │   ├── marketplace
+    │   │   │   │   ├── messaging
+    │   │   │   │   ├── onboarding
+    │   │   │   │   ├── settings
+    │   │   │   │   └── training
+    │   │   │   ├── main.dart
+    │   │   │   ├── router.dart
+    │   │   │   ├── shared
+    │   │   │   │   └── widgets
+    │   │   │   └── utils
+    │   │   │       └── theme.dart
+    │   │   ├── linux
+    │   │   │   ├── CMakeLists.txt
+    │   │   │   ├── flutter
+    │   │   │   │   ├── CMakeLists.txt
+    │   │   │   │   ├── generated_plugin_registrant.cc
+    │   │   │   │   ├── generated_plugin_registrant.h
+    │   │   │   │   └── generated_plugins.cmake
+    │   │   │   ├── .gitignore
+    │   │   │   └── runner
+    │   │   │       ├── CMakeLists.txt
+    │   │   │       ├── main.cc
+    │   │   │       ├── my_application.cc
+    │   │   │       └── my_application.h
+    │   │   ├── macos
+    │   │   │   ├── Flutter
+    │   │   │   │   ├── Flutter-Debug.xcconfig
+    │   │   │   │   ├── Flutter-Release.xcconfig
+    │   │   │   │   └── GeneratedPluginRegistrant.swift
+    │   │   │   ├── .gitignore
+    │   │   │   ├── Runner
+    │   │   │   │   ├── AppDelegate.swift
+    │   │   │   │   ├── Assets.xcassets
+    │   │   │   │   ├── Base.lproj
+    │   │   │   │   ├── Configs
+    │   │   │   │   ├── DebugProfile.entitlements
+    │   │   │   │   ├── Info.plist
+    │   │   │   │   ├── MainFlutterWindow.swift
+    │   │   │   │   └── Release.entitlements
+    │   │   │   ├── RunnerTests
+    │   │   │   │   └── RunnerTests.swift
+    │   │   │   ├── Runner.xcodeproj
+    │   │   │   │   ├── project.pbxproj
+    │   │   │   │   ├── project.xcworkspace
+    │   │   │   │   └── xcshareddata
+    │   │   │   └── Runner.xcworkspace
+    │   │   │       ├── contents.xcworkspacedata
+    │   │   │       └── xcshareddata
+    │   │   ├── .metadata
+    │   │   ├── pubspec.lock
+    │   │   ├── pubspec.yaml
+    │   │   ├── README.md
+    │   │   ├── scripts
+    │   │   │   ├── flutter_autowire.sh
+    │   │   │   ├── migrate.py
+    │   │   │   ├── migration&fix.sh
+    │   │   │   └── QUICK-REFERENCE.md
+    │   │   ├── SETUP.md
+    │   │   ├── test
+    │   │   │   └── widget_test.dart
+    │   │   ├── web
+    │   │   │   ├── favicon.png
+    │   │   │   ├── icons
+    │   │   │   │   ├── Icon-192.png
+    │   │   │   │   ├── Icon-512.png
+    │   │   │   │   ├── Icon-maskable-192.png
+    │   │   │   │   └── Icon-maskable-512.png
+    │   │   │   ├── index.html
+    │   │   │   └── manifest.json
+    │   │   └── windows
+    │   │       ├── CMakeLists.txt
+    │   │       ├── flutter
+    │   │       │   ├── CMakeLists.txt
+    │   │       │   ├── generated_plugin_registrant.cc
+    │   │       │   ├── generated_plugin_registrant.h
+    │   │       │   └── generated_plugins.cmake
+    │   │       ├── .gitignore
+    │   │       └── runner
+    │   │           ├── CMakeLists.txt
+    │   │           ├── flutter_window.cpp
+    │   │           ├── flutter_window.h
+    │   │           ├── main.cpp
+    │   │           ├── resource.h
+    │   │           ├── resources
+    │   │           ├── runner.exe.manifest
+    │   │           ├── Runner.rc
+    │   │           ├── utils.cpp
+    │   │           ├── utils.h
+    │   │           ├── win32_window.cpp
+    │   │           └── win32_window.h
+    │   ├── fed_tms.dart
+    │   │   ├── analysis_options.yaml
+    │   │   ├── android
+    │   │   │   ├── app
+    │   │   │   │   ├── build.gradle.kts
+    │   │   │   │   └── src
+    │   │   │   ├── build.gradle.kts
+    │   │   │   ├── fed_tms_android.iml
+    │   │   │   ├── .gitignore
+    │   │   │   ├── gradle
+    │   │   │   │   └── wrapper
+    │   │   │   ├── gradle.properties
+    │   │   │   ├── gradlew
+    │   │   │   ├── gradlew.bat
+    │   │   │   ├── local.properties
+    │   │   │   └── settings.gradle.kts
+    │   │   ├── build
+    │   │   │   ├── 32fbc952cc218dd6dff80b9003256dd1
+    │   │   │   │   ├── _composite.stamp
+    │   │   │   │   ├── dart_build.d
+    │   │   │   │   ├── dart_build_result.json
+    │   │   │   │   ├── dart_build.stamp
+    │   │   │   │   ├── .filecache
+    │   │   │   │   ├── gen_dart_plugin_registrant.stamp
+    │   │   │   │   ├── gen_localizations.stamp
+    │   │   │   │   └── outputs.json
+    │   │   │   ├── 6ab642d2d29d49c7c5f5a6d85fcef46b.cache.dill.track.dill
+    │   │   │   ├── flutter_assets
+    │   │   │   │   ├── AssetManifest.bin
+    │   │   │   │   ├── FontManifest.json
+    │   │   │   │   ├── fonts
+    │   │   │   │   ├── kernel_blob.bin
+    │   │   │   │   ├── NativeAssetsManifest.json
+    │   │   │   │   ├── NOTICES.Z
+    │   │   │   │   ├── packages
+    │   │   │   │   ├── shaders
+    │   │   │   │   └── version.json
+    │   │   │   ├── .last_build_id
+    │   │   │   ├── linux
+    │   │   │   │   └── x64
+    │   │   │   ├── native_assets
+    │   │   │   │   └── linux
+    │   │   │   └── native_hooks
+    │   │   │       └── .last_build_id
+    │   │   ├── .dart_tool
+    │   │   │   ├── build
+    │   │   │   │   ├── entrypoint
+    │   │   │   │   ├── fcd1995bc647fb959e82ea360c6c2c9a
+    │   │   │   │   └── generated
+    │   │   │   ├── build_resolvers
+    │   │   │   │   ├── sdk.sum
+    │   │   │   │   └── sdk.sum.deps
+    │   │   │   ├── dartpad
+    │   │   │   │   └── web_plugin_registrant.dart
+    │   │   │   ├── flutter_build
+    │   │   │   │   ├── 395b644b3a71646244831d2e338dd913
+    │   │   │   │   ├── c3be22840b46933f7941343aac516903
+    │   │   │   │   └── dart_plugin_registrant.dart
+    │   │   │   ├── package_config.json
+    │   │   │   ├── package_graph.json
+    │   │   │   ├── pub
+    │   │   │   │   └── bin
+    │   │   │   └── version
+    │   │   ├── fed_tms.iml
+    │   │   ├── .flutter-plugins-dependencies
+    │   │   ├── .gitignore
+    │   │   ├── .idea
+    │   │   │   ├── libraries
+    │   │   │   │   ├── Dart_SDK.xml
+    │   │   │   │   └── KotlinJavaRuntime.xml
+    │   │   │   ├── modules.xml
+    │   │   │   ├── runConfigurations
+    │   │   │   │   └── main_dart.xml
+    │   │   │   └── workspace.xml
+    │   │   ├── ios
+    │   │   │   ├── Flutter
+    │   │   │   │   ├── AppFrameworkInfo.plist
+    │   │   │   │   ├── Debug.xcconfig
+    │   │   │   │   ├── ephemeral
+    │   │   │   │   ├── flutter_export_environment.sh
+    │   │   │   │   ├── Generated.xcconfig
+    │   │   │   │   └── Release.xcconfig
+    │   │   │   ├── .gitignore
+    │   │   │   ├── Runner
+    │   │   │   │   ├── AppDelegate.swift
+    │   │   │   │   ├── Assets.xcassets
+    │   │   │   │   ├── Base.lproj
+    │   │   │   │   ├── GeneratedPluginRegistrant.h
+    │   │   │   │   ├── GeneratedPluginRegistrant.m
+    │   │   │   │   ├── Info.plist
+    │   │   │   │   └── Runner-Bridging-Header.h
+    │   │   │   ├── RunnerTests
+    │   │   │   │   └── RunnerTests.swift
+    │   │   │   ├── Runner.xcodeproj
+    │   │   │   │   ├── project.pbxproj
+    │   │   │   │   ├── project.xcworkspace
+    │   │   │   │   └── xcshareddata
+    │   │   │   └── Runner.xcworkspace
+    │   │   │       ├── contents.xcworkspacedata
+    │   │   │       └── xcshareddata
+    │   │   ├── lib
+    │   │   │   ├── core
+    │   │   │   │   ├── configs
+    │   │   │   │   ├── errors
+    │   │   │   │   ├── index.dart
+    │   │   │   │   ├── models
+    │   │   │   │   ├── providers
+    │   │   │   │   ├── routers
+    │   │   │   │   ├── services
+    │   │   │   │   ├── styles
+    │   │   │   │   └── widgets
+    │   │   │   ├── features
+    │   │   │   │   ├── analytics
+    │   │   │   │   ├── auth
+    │   │   │   │   ├── calendar
+    │   │   │   │   ├── company
+    │   │   │   │   ├── compliance
+    │   │   │   │   ├── dashboard
+    │   │   │   │   ├── documents
+    │   │   │   │   ├── drivers
+    │   │   │   │   ├── index.dart
+    │   │   │   │   ├── invoicing
+    │   │   │   │   ├── loads
+    │   │   │   │   ├── messaging
+    │   │   │   │   ├── notifications
+    │   │   │   │   └── settings
+    │   │   │   ├── IMPORT_GUIDE.md
+    │   │   │   ├── index.tree
+    │   │   │   ├── main.dart
+    │   │   │   └── README.md
+    │   │   ├── linux
+    │   │   │   ├── CMakeLists.txt
+    │   │   │   ├── flutter
+    │   │   │   │   ├── CMakeLists.txt
+    │   │   │   │   ├── ephemeral
+    │   │   │   │   ├── generated_plugin_registrant.cc
+    │   │   │   │   ├── generated_plugin_registrant.h
+    │   │   │   │   └── generated_plugins.cmake
+    │   │   │   ├── .gitignore
+    │   │   │   └── runner
+    │   │   │       ├── CMakeLists.txt
+    │   │   │       ├── main.cc
+    │   │   │       ├── my_application.cc
+    │   │   │       └── my_application.h
+    │   │   ├── macos
+    │   │   │   ├── Flutter
+    │   │   │   │   ├── ephemeral
+    │   │   │   │   ├── Flutter-Debug.xcconfig
+    │   │   │   │   ├── Flutter-Release.xcconfig
+    │   │   │   │   └── GeneratedPluginRegistrant.swift
+    │   │   │   ├── .gitignore
+    │   │   │   ├── Runner
+    │   │   │   │   ├── AppDelegate.swift
+    │   │   │   │   ├── Assets.xcassets
+    │   │   │   │   ├── Base.lproj
+    │   │   │   │   ├── Configs
+    │   │   │   │   ├── DebugProfile.entitlements
+    │   │   │   │   ├── Info.plist
+    │   │   │   │   ├── MainFlutterWindow.swift
+    │   │   │   │   └── Release.entitlements
+    │   │   │   ├── RunnerTests
+    │   │   │   │   └── RunnerTests.swift
+    │   │   │   ├── Runner.xcodeproj
+    │   │   │   │   ├── project.pbxproj
+    │   │   │   │   ├── project.xcworkspace
+    │   │   │   │   └── xcshareddata
+    │   │   │   └── Runner.xcworkspace
+    │   │   │       ├── contents.xcworkspacedata
+    │   │   │       └── xcshareddata
+    │   │   ├── .metadata
+    │   │   ├── pubspec.lock
+    │   │   ├── pubspec.yaml
+    │   │   ├── README.md
+    │   │   ├── scripts
+    │   │   │   ├── fix_code.py
+    │   │   │   ├── fix_code_v2.py
+    │   │   │   ├── fix_code_v3.py
+    │   │   │   ├── fix_code_v4.py
+    │   │   │   ├── fix_imports.py
+    │   │   │   ├── fix_imports.sh
+    │   │   │   └── fix_structure.py
+    │   │   ├── test
+    │   │   │   └── widget_test.dart
+    │   │   ├── utlimate_fixer.py
+    │   │   ├── versions
+    │   │   │   └── lib_v1
+    │   │   │       ├── configs
+    │   │   │       ├── errors
+    │   │   │       ├── index.tree
+    │   │   │       ├── main.dart
+    │   │   │       ├── models
+    │   │   │       ├── providers
+    │   │   │       ├── router.dart
+    │   │   │       ├── screens
+    │   │   │       ├── services
+    │   │   │       ├── styles
+    │   │   │       └── widgets
+    │   │   ├── web
+    │   │   │   ├── favicon.png
+    │   │   │   ├── icons
+    │   │   │   │   ├── Icon-192.png
+    │   │   │   │   ├── Icon-512.png
+    │   │   │   │   ├── Icon-maskable-192.png
+    │   │   │   │   └── Icon-maskable-512.png
+    │   │   │   ├── index.html
+    │   │   │   └── manifest.json
+    │   │   └── windows
+    │   │       ├── CMakeLists.txt
+    │   │       ├── flutter
+    │   │       │   ├── CMakeLists.txt
+    │   │       │   ├── ephemeral
+    │   │       │   ├── generated_plugin_registrant.cc
+    │   │       │   ├── generated_plugin_registrant.h
+    │   │       │   └── generated_plugins.cmake
+    │   │       ├── .gitignore
+    │   │       └── runner
+    │   │           ├── CMakeLists.txt
+    │   │           ├── flutter_window.cpp
+    │   │           ├── flutter_window.h
+    │   │           ├── main.cpp
+    │   │           ├── resource.h
+    │   │           ├── resources
+    │   │           ├── runner.exe.manifest
+    │   │           ├── Runner.rc
+    │   │           ├── utils.cpp
+    │   │           ├── utils.h
+    │   │           ├── win32_window.cpp
+    │   │           └── win32_window.h
+    │   ├── idea.md
+    │   ├── intro.md
+    │   ├── license.md
+    │   ├── marketing.html
+    │   │   ├── dispatch-courses-v1.html
+    │   │   ├── dispatch-courses-v2.html
+    │   │   ├── dispatcher-callout.html
+    │   │   ├── driver-callout.html
+    │   │   ├── founders-journey.html
+    │   │   ├── investor-callout.html
+    │   │   ├── openhwy-protocol.html
+    │   │   ├── tsm-marketing.html
+    │   │   └── wheeler-builder.html
+    │   ├── mission.md
+    │   ├── openhwy-tales.md
+    │   ├── openhwy-tales-v1.md
+    │   ├── overview.md
+    │   ├── pricing-strategy.md
+    │   ├── PROMPT.md
+    │   ├── README.md
+    │   ├── roadmap.md
+    │   ├── SCHEMA.md
+    │   ├── terminology.md
+    │   └── the-tale-system.md
+    ├── docs
+    │   ├── architecture.md
+    │   ├── BIG_VISION.md
+    │   ├── design.md
+    │   ├── diagram.md
+    │   ├── DOMAIN
+    │   ├── idea.md
+    │   ├── intro.md
+    │   ├── license.md
+    │   ├── mission.md
+    │   ├── openhwy-tales.md
+    │   ├── openhwy-tales-v1.md
+    │   ├── overview.md
+    │   ├── pricing-strategy.md
+    │   ├── PROMPT.md
+    │   ├── README.md
+    │   ├── roadmap.md
+    │   ├── SCHEMA.md
+    │   ├── terminology.md
+    │   └── the-tale-system.md
+    └── DOMAIN
+
+204 directories, 405 files

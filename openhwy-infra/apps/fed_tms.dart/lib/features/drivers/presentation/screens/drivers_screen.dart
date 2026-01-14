@@ -1,0 +1,72 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:go_router/go_router.dart';
+
+import 'package:fed_tms/core/styles/app_theme.dart';
+import 'package:fed_tms/core/styles/app_theme.dart';
+import 'package:fed_tms/core/widgets/app_drawer.dart';
+import 'package:fed_tms/features/drivers/data/models/driver.dart';
+import 'package:fed_tms/features/drivers/data/models/driver.dart';
+import 'package:fed_tms/features/drivers/providers/driver_provider.dart';
+
+
+class DriversScreen extends ConsumerWidget {
+  const DriversScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final driversAsync = ref.watch(driversProvider(DriverFilters()));
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Drivers'),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
+      ),
+      drawer: const AppDrawer(),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          GoRouter.of(context).go('/drivers/create');
+        },
+        backgroundColor: AppTheme.purplePrimary,
+        label: const Text('Add Driver'),
+        icon: const Icon(Icons.person_add),
+      ),
+      body: driversAsync.when(
+        data: (drivers) => ListView.builder(
+          padding: const EdgeInsets.all(16),
+          itemCount: drivers.length,
+          itemBuilder: (context, index) {
+            final driver = drivers[index];
+            return Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: AppTheme.purplePrimary,
+                  child: Text(driver.initials),
+                ),
+                title: Text(driver.fullName),
+                subtitle: Text(driver.email),
+                trailing: Icon(
+                  Icons.circle,
+                  size: 12,
+                  color: driver.status == DriverStatus.online
+                      ? AppTheme.success
+                      : AppTheme.textTertiary,
+                ),
+                onTap: () => context.push('/drivers/${driver.id}'),
+              ),
+            );
+          },
+        ),
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (err, stack) => Center(child: Text('Error: $err')),
+      ),
+    );
+  }
+}
