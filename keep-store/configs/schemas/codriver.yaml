@@ -3,7 +3,7 @@
 
 coordinator:
   name: "Codriver"
-  model: "qwen2.5:32b"
+  model: "qwen2.5:16b"
   node: "192.168.12.106"
   port: "11434"
   role: "Primary decision maker and orchestrator"
